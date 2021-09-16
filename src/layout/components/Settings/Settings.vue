@@ -2,7 +2,7 @@
  * @Description: 配置选项
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-09-10 18:49:07
+ * @LastEditTime: 2021-09-16 17:40:35
  * @LastEditors: Gavin
 -->
 <template>
@@ -29,8 +29,9 @@
 
 <script lang='ts' setup>
 import { SettingFilled } from '@ant-design/icons-vue';
-import { ref, UnwrapRef, reactive, watch } from 'vue'
-import { FormProp } from '@/components/Form/interface'
+import { ref, reactive, watch } from 'vue'
+import type { UnwrapRef}from 'vue'
+import type { FormProp } from '@/components/Form/interface'
 import { useStore } from '@/store'
 
 
@@ -48,7 +49,7 @@ interface FormState {
   tabViews: boolean,
   color:string
 }
-const formState: UnwrapRef<FormState> = reactive({
+const formState:UnwrapRef<FormState> = reactive({
   tabViews: $store.state.tagsView.isShow,
   color:$store.state.theme.themeBackgroundColor
 

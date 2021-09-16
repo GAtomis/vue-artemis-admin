@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-09-08 16:54:28
+ * @LastEditTime: 2021-09-16 14:54:57
  * @LastEditors: Gavin
 -->
 
@@ -16,9 +16,9 @@
     @click="clickMenuItem"
   >
     <template v-for="item in menus" :key="item.name">
-      <menu-item :menu-list="item" :collapsed="collapsed" />
+      <menu-item :menu-item="item" :collapsed="collapsed" />
     </template>
-  </a-menu>
+  </a-menu> 
 </template>
 
 
