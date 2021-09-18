@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-09-06 11:36:36
+ * @LastEditTime: 2021-09-18 12:49:21
  * @LastEditors: Gavin
  */
 import { UserConfig , ConfigEnv } from 'vite'
@@ -59,6 +59,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
 
   return {
+    // base:'./',//绝对路径配置根据ngxin
     resolve: {
       alias: [
         {

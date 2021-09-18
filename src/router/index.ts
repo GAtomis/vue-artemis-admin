@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2021-09-08 13:49:28
+ * @LastEditTime: 2021-09-18 14:12:37
  * @LastEditors: Gavin
  */
 
@@ -55,14 +55,14 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
     path: '/dashboard',
     component: layout,
     name: 'Dashboard',
-    redirect: '/dashboard/index',
+    redirect: '/dashboard/monitoring',
     meta: { title: 'Dashboard', icon: 'icon-alibaba', roles: "/dashboard" },
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/dashboard/index.vue'),
-        name: 'DashboardIndex',
-        meta: { title: 'Dashboard', icon: 'icon-taobao', affix: true }
+        path: 'monitoring',
+        component: () => import('@/views/dashboard/Monitoring.vue'),
+        name: 'Monitoring',
+        meta: { title: 'monitoring', icon: 'icon-taobao' , affix: true ,roles: "/dashboard" }
       }
     ],
 
@@ -87,13 +87,13 @@ export const privateRouteTable: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'read',
-        component: () => import('@/views/readme/index.vue'),
+        component: () => import('@/views/readme/Readme.vue'),
         name: 'Read',
         meta: { title: 'Read', icon: 'icon-IE', affix: false, roles: "/readme/read" }
       },
       {
         path: 'me',
-        component: () => import('@/views/readme/index.vue'),
+        component: () => import('@/views/readme/Readme.vue'),
         name: 'Me',
         meta: { title: 'Me', icon: 'icon-google', affix: false, roles: "/readme/me" }
       }

@@ -2,7 +2,7 @@ Arguments:
   C:\Program Files\nodejs\node.exe D:\node\node_global\node_modules\yarn\bin\yarn.js
 
 PATH: 
-  C:\Program Files (x86)\NetSarang\Xftp 6\;C:\Program Files (x86)\NetSarang\Xshell 6\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\NetSarang\Xftp 7\;C:\Program Files (x86)\NetSarang\Xshell 7\;C:\Users\85068\AppData\Local\Microsoft\WindowsApps;C:\Users\85068\AppData\Local\Programs\Microsoft VS Code\bin;D:\node\node_global;C:\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\NetSarang\Xftp 7\;C:\Program Files (x86)\NetSarang\Xshell 7\;C:\Users\85068\AppData\Local\Microsoft\WindowsApps;C:\Users\85068\AppData\Local\Programs\Microsoft VS Code\bin;D:\node\node_global;C:\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell
 
 Yarn version: 
   1.22.10
@@ -14,26 +14,51 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'D:\workspaces\github\vite-crm\node_modules\esbuild\esbuild.exe'
+  Error: EPERM: operation not permitted, unlink 'D:\workspaces\github\vue-artemis-admin\node_modules\esbuild\esbuild.exe'
 
 npm manifest: 
   {
     "name": "vite-crm",
     "version": "0.0.0",
     "scripts": {
-      "dev": "vite",
+      "dev": "cross-env NODE_ENV=development vite",
       "build": "vue-tsc --noEmit && vite build",
       "serve": "vite preview"
     },
     "dependencies": {
-      "vue": "^3.1.0"
+      "@vueuse/core": "^5.1.4",
+      "ant-design-vue": "^2.2.0-beta.6",
+      "axios": "^0.21.1",
+      "echarts": "^5.1.2",
+      "faker": "^5.5.3",
+      "mockjs": "^1.1.0",
+      "moment": "^2.29.1",
+      "nprogress": "^0.2.0",
+      "qs": "^6.10.1",
+      "vite-plugin-eruda": "^1.0.1",
+      "vue": "^3.2.1",
+      "vue-router": "^4.0.11",
+      "vuex": "^4.0.2"
     },
     "devDependencies": {
+      "@types/lodash": "^4.14.170",
+      "@types/node": "^16.0.0",
+      "@typescript-eslint/eslint-plugin": "^4.28.2",
+      "@typescript-eslint/parser": "^4.28.2",
       "@vitejs/plugin-vue": "^1.2.2",
+      "@vitejs/plugin-vue-jsx": "^1.1.7",
       "@vue/compiler-sfc": "^3.0.5",
+      "cross-env": "^7.0.3",
+      "sass": "^1.35.2",
       "typescript": "^4.1.3",
       "vite": "^2.2.3",
+      "vite-plugin-compression": "^0.3.3",
+      "vite-plugin-imagemin": "^0.4.3",
+      "vite-plugin-mock": "^2.9.4",
       "vue-tsc": "^0.0.24"
+    },
+    "resolutions": {
+      "bin-wrapper": "npm:bin-wrapper-china"
     }
   }
 

@@ -1,7 +1,14 @@
+/*
+ * @Description: echars类型定义导出 官网https://echarts.apache.org/handbook/zh/basics/import/
+ * @Author: Gavin
+ * @Date: 2021-09-16 14:08:44
+ * @LastEditTime: 2021-09-17 16:49:55
+ * @LastEditors: Gavin
+ */
 import * as echarts from 'echarts/core'
 import {
     BarChart,
-    // 系列类型的定义后缀都为 SeriesOption
+    // 系列类型的定义后缀都为 SeriesOption 
     BarSeriesOption,
     LineChart,
     RadarChart,

@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-09-10 17:42:55
+ * @LastEditTime: 2021-09-18 13:40:47
  * @LastEditors: Gavin
 -->
 <template>
@@ -39,13 +39,13 @@
       </nav>
       <a-layout-content>
         <section
-          style="padding: 24px; background: #fff;position:relative;min-height:100%;width:100%"
+          style="padding: 10px; background: #fff;position:relative;min-height:100%;width:100%"
           class="appMain"
         >
-          <router-view v-slot="{ Component }">
+          <router-view v-slot="{ Component,route}">
             <transition name="fade" mode="out-in">
               <keep-alive>
-                <component :is="Component" />
+                <component :is="Component" :key="route.full" />
               </keep-alive>
             </transition>
           </router-view>
@@ -65,7 +65,7 @@ import {
 } from '@ant-design/icons-vue';
 import { ArtmsSidebar, ArtmsNavbar, ArtmsTagsView, ArtmsSettings } from '@/layout/components/index'
 import { useRoute } from 'vue-router'
-import { ref,computed,watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useStore } from '@/store'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
@@ -77,10 +77,10 @@ const $store = useStore()
 const pointerLocation = getPointerLocationByElement()
 // watch(()=>pointerLocation,(nVal=>{
 //     console.log(nVal);
-    
+
 // }),{  deep:true})
-const op=computed(()=>{
-  return (document.body.offsetWidth -pointerLocation.x)>(document.body.offsetWidth*0.08)?0:1
+const op = computed(() => {
+  return (document.body.offsetWidth - pointerLocation.x) > (document.body.offsetWidth * 0.08) ? 0 : 1
 })
 
 </script>

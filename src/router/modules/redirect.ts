@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-05 19:11:51
- * @LastEditTime: 2021-09-06 12:44:06
+ * @LastEditTime: 2021-09-17 18:29:52
  * @LastEditors: Gavin
  */
 
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        name: 'Redirect',
+        name: 'RedirectChirden',
         component: () => import('@/views/redirect/index.vue'),
         meta: {
           title: '重定向',

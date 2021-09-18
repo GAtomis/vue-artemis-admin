@@ -18,7 +18,7 @@
     "qs": "^6.10.1",
     "vite-plugin-eruda": "^1.0.1",
     "vue": "^3.2.1",
-    "vue-router": "^4.0.10",
+    "vue-router": "^4.0.11",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
