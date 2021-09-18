@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2021-09-18 14:12:37
+ * @LastEditTime: 2021-09-18 18:32:57
  * @LastEditors: Gavin
  */
 
@@ -60,7 +60,7 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'monitoring',
-        component: () => import('@/views/dashboard/Monitoring.vue'),
+        component: () => import('@/views/dashboard/index.vue'),
         name: 'Monitoring',
         meta: { title: 'monitoring', icon: 'icon-taobao' , affix: true ,roles: "/dashboard" }
       }

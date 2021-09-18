@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2021-09-18 14:32:24
+ * @LastEditTime: 2021-09-18 18:33:09
  * @LastEditors: Gavin
  */
 import { isNavigationFailure, Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'

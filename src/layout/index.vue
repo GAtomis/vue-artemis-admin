@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-09-18 13:40:47
+ * @LastEditTime: 2021-09-18 16:50:02
  * @LastEditors: Gavin
 -->
 <template>
@@ -43,11 +43,11 @@
           class="appMain"
         >
           <router-view v-slot="{ Component,route}">
-            <transition name="fade" mode="out-in">
+            <!-- <transition name="fade" mode="out-in"> -->
               <keep-alive>
                 <component :is="Component" :key="route.full" />
               </keep-alive>
-            </transition>
+            <!-- </transition> -->
           </router-view>
         </section>
       </a-layout-content>
