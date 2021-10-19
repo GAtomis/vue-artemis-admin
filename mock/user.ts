@@ -2,17 +2,26 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2021-09-08 13:44:59
+ * @LastEditTime: 2021-10-19 14:53:01
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
 import faker from "faker"
-import User from './Dao/User'
+import User,{UserInfo} from './Dao/User'
 faker.locale = "zh_CN";
 
 
-
-const userInfo = {
+interface Account {
+    password:Number,
+    token:String,
+    getUserInfo(): UserInfo;
+}
+interface AccountList {
+    admin:Account,
+    user:Account,
+    guest?:Account
+}
+export const userInfo:AccountList = {
     admin: {
         password:123456,
         token: faker.datatype.uuid(),

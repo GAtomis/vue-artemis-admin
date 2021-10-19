@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-09-18 18:32:35
+ * @LastEditTime: 2021-10-19 11:43:09
  * @LastEditors: Gavin
 -->
 <template>
@@ -16,7 +16,7 @@
             </template>
           </a-avatar>
         </a-col>
-        <a-col :span="3" class="userInfo">
+        <a-col :span="5" class="userInfo">
           <ul>
             <li>
               <span>Name</span>
@@ -32,7 +32,7 @@
             </li>
           </ul>
         </a-col>
-        <a-col :span="15" class="greeting">
+        <a-col :span="13" class="greeting">
           <h1>{{ `Hello, ${userInfo.name}. This is your ${userInfo.age} days working here. Wish you a good mood every day!` }}</h1>
         </a-col>
         <a-col :span="4" class="data"></a-col>
@@ -43,11 +43,15 @@
       <a-tab-pane key="1" tab="图表页">
         <component :is="DataPane" />
       </a-tab-pane>
+      <a-tab-pane key="2" tab="留言板">
+        <component :is="MessageBoard" />
+      </a-tab-pane>
     </a-tabs>
   </div>
 </template>
 <script  lang='ts' setup >
 import DataPane from './components/DataPane.vue'
+import MessageBoard from './components/MessageBoard.vue'
 import { useStore } from '@/store'
 import { computed } from 'vue'
 import {

@@ -2,7 +2,7 @@
  * @Description: 图表战术
  * @Author: Gavin
  * @Date: 2021-09-17 14:04:41
- * @LastEditTime: 2021-09-18 12:10:49
+ * @LastEditTime: 2021-10-19 16:53:54
  * @LastEditors: Gavin
 -->
 <template>
@@ -18,7 +18,8 @@
 </template>
 
 <script lang='ts' setup>
-import { echarts, ECOption } from '@/components/Echart'
+import { echarts } from '@/components/Echart'
+import type {ECOption} from '@/components/Echart'
 import { onMounted, ref } from 'vue'
 import { useEchartInit } from './hooks/useEchartInit'
 
