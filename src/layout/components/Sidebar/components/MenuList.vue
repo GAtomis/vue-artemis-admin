@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-09-16 14:54:57
+ * @LastEditTime: 2021-10-26 10:35:21
  * @LastEditors: Gavin
 -->
 
@@ -12,7 +12,6 @@
     v-model:selected-keys="state.selectedKeys"
     mode="inline"
     theme="dark"
-    :inline-collapsed="collapsed"
     @click="clickMenuItem"
   >
     <template v-for="item in menus" :key="item.name">
@@ -25,7 +24,7 @@
  <script lang='ts' setup>
 
 
-import { reactive, computed, watch, } from 'vue'
+import { reactive, computed, watch, onMounted} from 'vue'
 
 
 
@@ -42,8 +41,14 @@ const $route = useRoute()
 const $router = useRouter()
 const $store = useStore()
 //加载菜单
-const menus = computed(() => isHidden($store.getters['permission/routes'], [], "hidden"))
-
+const menus = computed(() => isHidden($store.getters['permission/routes']||[], [], "hidden"))
+  
+// const menus =computed(()=>{
+//   return $store.getters['permission/routes']
+// })
+// onMounted(()=>{
+//   menus=
+// })
 
 // 获取当前打开的子菜单
 const getOpenKeys = () => {

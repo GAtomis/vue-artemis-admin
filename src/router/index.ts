@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2021-09-18 18:32:57
+ * @LastEditTime: 2021-10-26 13:20:03
  * @LastEditors: Gavin
  */
 
@@ -12,6 +12,7 @@ import type { App } from 'vue'
 import { createGuardHook } from './permission'
 import redirect from './modules/redirect'
 import nested from './modules/nested'
+import account from './modules/account'
 
 
 
@@ -21,6 +22,16 @@ const layout = () => import('@/layout/index.vue');
 export const publicRouteTable: Array<RouteRecordRaw> = [
 
 
+
+  /*  meta-api
+ 
+             title: 'Read', // menu name
+             icon: 'icon-IE',// menu icon
+             affix: false, // tagsView fixed header
+             roles: "/readme/read", //backed async router
+             only:true  // no menuGroup  only page
+  
+  */
 
   {
 
@@ -56,18 +67,19 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
     component: layout,
     name: 'Dashboard',
     redirect: '/dashboard/monitoring',
-    meta: { title: 'Dashboard', icon: 'icon-alibaba', roles: "/dashboard" },
+    meta: { title: 'Dashboard', icon: 'icon-alibaba', roles: "/dashboard"},
     children: [
       {
         path: 'monitoring',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Monitoring',
-        meta: { title: 'monitoring', icon: 'icon-taobao' , affix: true ,roles: "/dashboard" }
+        meta: { title: 'monitoring', icon: 'icon-taobao', affix: true, roles: "/dashboard" }
       }
     ],
 
   },
   ...redirect,
+
 
 
 
@@ -104,23 +116,24 @@ export const privateRouteTable: Array<RouteRecordRaw> = [
     component: layout,
     redirect: '/error/404',
     name: 'ErrorPage',
-    meta: { title: 'ErrorPage', icon: 'icon-disconnect', roles: "/error", affix: true },
+    meta: { title: 'ErrorPage', icon: 'icon-disconnect', roles: "/error"},
     children: [
       {
         path: '404',
         component: () => import('@/views/ErrorPage/404.vue'),
         name: '404',
-        meta: { title: '404', icon: 'icon-error', affix: false, roles: "/error/404"}
+        meta: { title: '404', icon: 'icon-error', affix: false, roles: "/error/404" }
       },
       {
         path: '500',
         component: () => import('@/views/ErrorPage/500.vue'),
         name: '500',
-        meta: { title: '500', icon: 'icon-error', affix: false, roles: "/error/500"}
+        meta: { title: '500', icon: 'icon-error', affix: false, roles: "/error/500" }
       }
     ],
   },
-  ...nested 
+  ...nested,
+  ...account
 
 
 

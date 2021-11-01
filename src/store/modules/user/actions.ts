@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-09-13 19:14:01
+ * @LastEditTime: 2021-10-26 17:02:43
  * @LastEditors: Gavin
  */
 import { ActionContext } from 'vuex'
@@ -38,7 +38,7 @@ export const actions = {
          const {roles, ...res}  = await getUserInfo({username})
 
         //信息填充
-        Object.entries(res).forEach(item=>{
+        Object.entries({roles,...res}).forEach(item=>{
           commit('setAny',item)
         })
         if (!roles || roles.length <= 0) {

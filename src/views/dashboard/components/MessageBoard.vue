@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2021-10-19 16:57:34
+ * @LastEditTime: 2021-10-19 17:52:00
  * @LastEditors: Gavin
 -->
 <template>
@@ -75,7 +75,6 @@ onMounted(() => {
 const like = (item, index) => {
 
   item.like = item.like+index
-
   item.action = !item.action
 };
 

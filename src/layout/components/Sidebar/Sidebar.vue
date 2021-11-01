@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-09 12:26:22
- * @LastEditTime: 2021-09-01 18:11:40
+ * @LastEditTime: 2021-10-26 11:11:25
  * @LastEditors: Gavin
 -->
 <template>
@@ -20,9 +20,11 @@
 </template>
 <script lang='ts' setup>
 import MenuList from './components/MenuList.vue'
+import {inject} from 'vue'
 defineProps({
   collapsed:Boolean
 })
+
 
 
 

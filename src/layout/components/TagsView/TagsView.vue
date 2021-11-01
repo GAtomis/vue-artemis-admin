@@ -2,12 +2,10 @@
  * @Description: 标签层机翻勿6^Gavin^
  * @Author: Gavin
  * @Date: 2021-09-01 14:05:34
- * @LastEditTime: 2021-09-06 21:15:03
+ * @LastEditTime: 2021-10-22 15:32:41
  * @LastEditors: Gavin
 -->
 <template>
-
-
   <a-dropdown :trigger="['contextmenu']" v-for="tag in visitedViews" :key="tag.name">
     <a-tag
       class="tag"
@@ -15,19 +13,21 @@
       @close="handleClose(tag)"
       :closable="!tag.meta.affix"
     >
-      <template #icon v-if="$route.name === tag.name">
-        <FolderOpenFilled />
+      <template #icon>
+        <router-link :to="{ name: tag.name }" style="margin-right: 5px;">
+          <FolderOpenFilled v-if="$route.name === tag.name" />
+          <FolderFilled v-else />
+          {{ tag.meta.title }}
+        </router-link>
       </template>
-      <template #icon v-else>
-        <FolderFilled />
-      </template>
-      <router-link :to="{ name: tag.name }">{{ tag.meta.title }}</router-link>
+
+      <!-- <router-link :to="{ name: tag.name }">{{ tag.meta.title }}</router-link> -->
     </a-tag>
     <template #overlay>
       <a-menu>
         <a-menu-item key="1" @click="closeAllLabels">closeAllLabels</a-menu-item>
         <a-menu-item key="2" @click="closeOtherLabels(tag)">closeOtherLabels</a-menu-item>
-        <a-menu-item key="3" :disabled="tag.name!== $route.name" @click="refresh">refresh</a-menu-item>
+        <a-menu-item key="3" :disabled="tag.name !== $route.name" @click="refresh">refresh</a-menu-item>
       </a-menu>
     </template>
   </a-dropdown>
@@ -35,10 +35,10 @@
 
 <script lang='ts' setup>
 
-import { watch, watchEffect, onMounted, computed,unref } from 'vue'
+import { watch, watchEffect, onMounted, computed, unref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
-import { filterChildren as filterAffixTags,filterAsyncRoutes as filterHidden } from "@/hooks/router"
+import { filterChildren as filterAffixTags, filterAsyncRoutes as filterHidden } from "@/hooks/router"
 
 import {
   FolderOpenFilled,
@@ -49,6 +49,7 @@ const $store = useStore()
 const $router = useRouter()
 onMounted(() => {
   initTags()
+  addTags()
 
 })
 
@@ -68,7 +69,7 @@ const initTags = () => {
 
   });
 }
-const affixTags =   filterAffixTags($store.getters['permission/routes'], [''], "affix")
+const affixTags = filterAffixTags($store.getters['permission/routes'], [''], "affix")
 
 
 const visitedViews = computed(() => {
@@ -109,7 +110,7 @@ watch(() => visitedViews.value, () => {
  */
 const addTags = () => {
   //Routes with hidden tags will not be loaded into the tab list
-  if ($route?.name&&!$route?.meta?.hidden) {
+  if ($route?.name && !$route?.meta?.hidden) {
     $store.dispatch('tagsView/addVisitedView', unref($route))
   }
   return false
@@ -124,12 +125,12 @@ const addTags = () => {
 watch($route, (newRoute, oldRoute) => {
   addTags()
 }, {
-  immediate: true,
+  immediate: false,
   deep: true
 })
 
 
-const refresh= () => {
+const refresh = () => {
   // delKeepAliveCompName()
   $router.push({
     path: '/redirect' + unref($route).fullPath
@@ -155,5 +156,4 @@ const handleClose = (tag) => {
 </script>
 
 <style scoped lang='scss'>
-
 </style>

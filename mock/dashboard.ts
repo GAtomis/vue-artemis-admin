@@ -1,15 +1,9 @@
-/*
- * @Description: 请输入....
- * @Author: Gavin
- * @Date: 2021-10-19 14:11:53
- * @LastEditTime: 2021-10-19 15:57:39
- * @LastEditors: Gavin
- */
+
 /*
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2021-10-19 14:08:17
+ * @LastEditTime: 2021-10-26 14:16:35
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'

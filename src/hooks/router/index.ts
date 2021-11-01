@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 10:00:31
- * @LastEditTime: 2021-09-07 00:17:56
+ * @LastEditTime: 2021-10-27 11:03:02
  * @LastEditors: Gavin
  */
 
@@ -79,7 +79,7 @@ function hasPermission(roles: Array<string>, route: RouteRecordRaw | any, key:st
 * @param routes asyncRoutes
 * @param roles
 */
-export function filterAsyncRoutes(routes: Array<RouteRecordRaw>, roles: Array<string>,key?:string): any {
+export function filterAsyncRoutes(routes: Array<RouteRecordRaw>=asyncRoutes, roles: Array<string>,key?:string): any {
     // 关键筛选  第一个参数所有拥有的所有路由权限，第二参数权限路由
     // res是筛选完的路由
     const res: any[] = [];

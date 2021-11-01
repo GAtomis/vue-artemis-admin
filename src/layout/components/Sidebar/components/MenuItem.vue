@@ -2,14 +2,18 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 16:50:22
- * @LastEditTime: 2021-09-16 17:36:06
+ * @LastEditTime: 2021-10-26 15:49:10
  * @LastEditors: Gavin
 -->
 
 
 <template>
   <aside class="aside">
-    <a-sub-menu v-if="menuItem?.children?.length" :key="menuItem.name" v-bind="$attrs">
+    <a-sub-menu
+      v-if="menuItem?.children?.length && !menuItem?.meta?.only"
+      :key="menuItem.name"
+      v-bind="$attrs"
+    >
       <template #icon>
         <icon-font :type="menuItem.meta.icon" />
       </template>
@@ -32,11 +36,12 @@
         </template>
       </template>
     </a-sub-menu>
-    <a-menu-item v-else  :key="menuItem.name" >
+    <!-- 默认读only第一个子集 -->
+    <a-menu-item v-else :key="menuItem?.children?.[0].name">
       <template #icon>
-        <icon-font :type="menuItem?.meta?.icon " />
+        <icon-font :type="menuItem?.children?.[0]?.meta.icon" />
       </template>
-      <span>{{ menuItem?.meta?.title  }}</span>
+      <span>{{ menuItem?.children?.[0]?.meta?.title }}</span>
     </a-menu-item>
   </aside>
 </template>
@@ -60,7 +65,7 @@ const menuItem = {}
 </script> -->
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, inject } from 'vue'
 // import MenuItemChild from './MenuItem.vue'
 
 export default defineComponent({
@@ -75,15 +80,18 @@ export default defineComponent({
     },
     collapsed: Boolean
   },
+
   setup(props) {
 
     //变量css太香了呀
     const fontSize = computed(() => props.collapsed ? '25px' : '20px')
     const fontWidth = computed(() => props.collapsed ? '38px' : '0px')
 
+
     return {
       fontSize,
       fontWidth,
+
 
     }
 

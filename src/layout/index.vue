@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-09-18 16:50:02
+ * @LastEditTime: 2021-10-26 10:18:25
  * @LastEditors: Gavin
 -->
 <template>
@@ -22,7 +22,7 @@
     <!-- 右边区域  包括头部 内容显示区域 -->
 
     <a-layout :style="{ overflow: 'scroll', height: '100vh' }">
-      <a-layout-header style="background: #fff; padding: 0;height:50px">
+      <a-layout-header style="background: #fff; padding: 0; height: 50px">
         <artms-navbar>
           <template #collapsed>
             <menu-unfold-outlined
@@ -39,14 +39,20 @@
       </nav>
       <a-layout-content>
         <section
-          style="padding: 10px; background: #fff;position:relative;min-height:100%;width:100%"
+          style="
+            padding: 10px;
+            background: #fff;
+            position: relative;
+            min-height: 100%;
+            width: 100%;
+          "
           class="appMain"
         >
-          <router-view v-slot="{ Component,route}">
+          <router-view v-slot="{ Component, route }">
             <!-- <transition name="fade" mode="out-in"> -->
-              <keep-alive>
-                <component :is="Component" :key="route.full" />
-              </keep-alive>
+            <keep-alive>
+              <component :is="Component" :key="route.full" />
+            </keep-alive>
             <!-- </transition> -->
           </router-view>
         </section>
@@ -57,15 +63,15 @@
   </a-layout>
 </template>
 <script lang="ts" setup>
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
 import {
-
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-
-} from '@ant-design/icons-vue';
-import { ArtmsSidebar, ArtmsNavbar, ArtmsTagsView, ArtmsSettings } from '@/layout/components/index'
+  ArtmsSidebar,
+  ArtmsNavbar,
+  ArtmsTagsView,
+  ArtmsSettings,
+} from '@/layout/components/index'
 import { useRoute } from 'vue-router'
-import { ref, computed, watch } from 'vue';
+import { ref, computed, provide } from 'vue'
 import { useStore } from '@/store'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
@@ -74,15 +80,25 @@ const collapsed = ref<boolean>(false)
 const $route = useRoute()
 const $store = useStore()
 
+
+// const str1=computed(() => {
+//   return ref<string>("sdd")
+// })
+provide("isCollapsed",computed(() => {
+  return collapsed.value
+}))
+
 const pointerLocation = getPointerLocationByElement()
 // watch(()=>pointerLocation,(nVal=>{
 //     console.log(nVal);
 
 // }),{  deep:true})
 const op = computed(() => {
-  return (document.body.offsetWidth - pointerLocation.x) > (document.body.offsetWidth * 0.08) ? 0 : 1
+  return document.body.offsetWidth - pointerLocation.x >
+    document.body.offsetWidth * 0.08
+    ? 0
+    : 1
 })
-
 </script>
 <style lang="scss" scope>
 .layout {

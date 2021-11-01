@@ -2,7 +2,7 @@
  * @Description: state定义
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-08-08 11:51:57
+ * @LastEditTime: 2021-10-26 16:51:21
  * @LastEditors: Gavin
  */
 import { createStorage } from '@/utils/storage'
@@ -13,6 +13,7 @@ export type IUserState = {
   username?:string
   token?: string
   age:number,
+  level?:string,
   jobType:string,
   name: string
   welcome: string
@@ -27,6 +28,7 @@ export const state: IUserState = {
   welcome: '',
   avatar: '',
   roles: [],
+  level:"",
   username:Storage.get(CACHE_USERNAME, ''),
   age:0,
   jobType:''

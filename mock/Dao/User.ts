@@ -4,14 +4,15 @@ import { Interface } from "readline"
  * @Description: User Tao声明
  * @Author: Gavin
  * @Date: 2021-08-04 16:55:59
- * @LastEditTime: 2021-10-19 16:27:22
+ * @LastEditTime: 2021-10-26 16:53:50
  * @LastEditors: Gavin
  */
 export interface UserInfo {
   name?: string
   age: number | string
   jobType?: string
-  tags?: Array<string>
+  tags?: Array<string>,
+  level?:string,
   avatar?: string
   gender?: string
   token?: string,
@@ -38,12 +39,14 @@ class User implements UserInfo {
   token
   roles
   content
+  level
   setName(name: string | number) {
     this.name = name
   }
-  constructor({ age, jobType, avatar, name, token, roles, content }: UserInfo) {
+  constructor({ age, jobType, avatar, name, token, roles, content,level }: UserInfo) {
     this.age = age
     this.jobType = jobType
+    this.level=level
     // this.tags = tags,
     this.avatar = avatar
     this.setName(name)

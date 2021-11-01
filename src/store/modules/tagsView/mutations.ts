@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-09-10 11:29:13
+ * @LastEditTime: 2021-10-25 12:06:38
  * @LastEditors: Gavin
  */
 import { ITagsViewState } from './state'
@@ -10,7 +10,7 @@ import { ITagsViewState } from './state'
 export const mutations = {
   ADD_VISITED_VIEW: (state: ITagsViewState, view) => {
 
-    console.log(state.visitedViews.some(v => v.name === view.name));
+    // console.log(state.visitedViews.some(v => v.name === view.name));
 
     if (state.visitedViews.some(v => v.name === view.name)) return
 
