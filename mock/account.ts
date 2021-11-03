@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-26 14:16:27
- * @LastEditTime: 2021-10-26 18:55:41
+ * @LastEditTime: 2021-11-01 19:08:55
  * @LastEditors: Gavin
  */
 
@@ -67,6 +67,20 @@ export default [
       }
 
     },
+
+  },
+  {
+    url: baseUrl + model + '/getAccountLevel',
+    method: 'post',
+    response: (res) => {
+
+      return {
+        code: 0,
+        message: 'ok',
+        result: []
+      }
+
+    }
 
   },
 

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-10-28 15:10:48
+ * @LastEditTime: 2021-11-03 11:08:10
  * @LastEditors: Gavin
 -->
 <template>
@@ -13,7 +13,7 @@
       </template>
     </a-table>
 
-    <a-modal v-model:visible="visible" title="Basic" @ok="handleOk">
+    <a-modal v-model:visible="visible" title="Basic" @ok="visible=false">
       <a-tree
         :show-line="showLine"
         :show-icon="showIcon"

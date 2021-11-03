@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-10-26 10:18:25
+ * @LastEditTime: 2021-11-03 11:29:51
  * @LastEditors: Gavin
 -->
 <template>
@@ -30,7 +30,11 @@
               class="trigger"
               @click="() => (collapsed = !collapsed)"
             />
-            <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+            <menu-fold-outlined
+              v-else
+              class="trigger"
+              @click="() => (collapsed = !collapsed)"
+            />
           </template>
         </artms-navbar>
       </a-layout-header>
@@ -80,24 +84,21 @@ const collapsed = ref<boolean>(false)
 const $route = useRoute()
 const $store = useStore()
 
-
 // const str1=computed(() => {
 //   return ref<string>("sdd")
-// })
-provide("isCollapsed",computed(() => {
-  return collapsed.value
-}))
+// // })
+// provide("isCollapsed",computed(() => {
+//   return collapsed.value
+// }))
 
 const pointerLocation = getPointerLocationByElement()
+const offsetWidth = document.body.offsetWidth
 // watch(()=>pointerLocation,(nVal=>{
 //     console.log(nVal);
 
 // }),{  deep:true})
 const op = computed(() => {
-  return document.body.offsetWidth - pointerLocation.x >
-    document.body.offsetWidth * 0.08
-    ? 0
-    : 1
+  return offsetWidth - pointerLocation.x > offsetWidth * 0.08 ? 0 : 1
 })
 </script>
 <style lang="scss" scope>
