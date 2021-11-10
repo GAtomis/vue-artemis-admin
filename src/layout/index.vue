@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-11-03 11:29:51
+ * @LastEditTime: 2021-11-04 14:07:43
  * @LastEditors: Gavin
 -->
 <template>
@@ -30,11 +30,7 @@
               class="trigger"
               @click="() => (collapsed = !collapsed)"
             />
-            <menu-fold-outlined
-              v-else
-              class="trigger"
-              @click="() => (collapsed = !collapsed)"
-            />
+            <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
           </template>
         </artms-navbar>
       </a-layout-header>
@@ -53,16 +49,18 @@
           class="appMain"
         >
           <router-view v-slot="{ Component, route }">
-            <!-- <transition name="fade" mode="out-in"> -->
+            <transition name="fade" mode="out-in">
             <keep-alive>
               <component :is="Component" :key="route.full" />
             </keep-alive>
-            <!-- </transition> -->
+            </transition>
           </router-view>
         </section>
       </a-layout-content>
       <!-- <a-layout-footer :style="{ textAlign: 'center' }">Vite Admin ©2021 Created by ^Gavin^</a-layout-footer> -->
     </a-layout>
+
+    <!-- 右边拓展菜单 -->
     <artms-settings class="artms-settings fixed_settings_icon" />
   </a-layout>
 </template>
@@ -75,31 +73,22 @@ import {
   ArtmsSettings,
 } from '@/layout/components/index'
 import { useRoute } from 'vue-router'
-import { ref, computed, provide } from 'vue'
+import { ref, computed, provide, watch } from 'vue'
 import { useStore } from '@/store'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
-// ref: selectedKeys = ['1'] as string[]
+import { useStorage } from '@vueuse/core'
 const collapsed = ref<boolean>(false)
-const $route = useRoute()
+// const $route = useRoute()
 const $store = useStore()
-
-// const str1=computed(() => {
-//   return ref<string>("sdd")
-// // })
-// provide("isCollapsed",computed(() => {
-//   return collapsed.value
-// }))
-
 const pointerLocation = getPointerLocationByElement()
 const offsetWidth = document.body.offsetWidth
-// watch(()=>pointerLocation,(nVal=>{
-//     console.log(nVal);
 
-// }),{  deep:true})
 const op = computed(() => {
   return offsetWidth - pointerLocation.x > offsetWidth * 0.08 ? 0 : 1
 })
+const storage = useStorage<boolean>('storg', true, sessionStorage)
+
 </script>
 <style lang="scss" scope>
 .layout {

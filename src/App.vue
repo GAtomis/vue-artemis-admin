@@ -2,18 +2,10 @@
  * @Description: 初始化
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-08-03 12:25:47
+ * @LastEditTime: 2021-11-03 17:51:10
  * @LastEditors: Gavin
 -->
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.svg" /> -->
-  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
-  <!-- <lian-xi msg="Gavin-的练习"/> -->
-  <!-- <lian-xi3 msg='Gavin-的联系'/> -->
-  <!-- <computedComp/> -->
-  <!-- <watchComp/> -->
-  <!-- <provideComp :msg="`provide`"/> -->
-  <!-- <demo msg="Gavin so TMD shuai"></demo> -->
   <transition name="slide-up">
     <router-view />
   </transition>
@@ -31,6 +23,14 @@ import { useMouse} from '@vueuse/core'
 // // import provideComp from '@/components/provide&inject.vue'
 // import demo from '@/components/Demo.vue'
 
+  // <!-- <img alt="Vue logo" src="./assets/logo.svg" /> -->
+  // <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+  // <!-- <lian-xi msg="Gavin-的练习"/> -->
+  // <!-- <lian-xi3 msg='Gavin-的联系'/> -->
+  // <!-- <computedComp/> -->
+  // <!-- <watchComp/> -->
+  // <!-- <provideComp :msg="`provide`"/> -->
+  // <!-- <demo msg="Gavin so TMD shuai"></demo> -->
 
 
     onMounted(() => {

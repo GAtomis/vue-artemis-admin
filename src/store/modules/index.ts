@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 16:36:25
- * @LastEditTime: 2021-07-20 16:40:36
+ * @LastEditTime: 2021-11-03 17:16:26
  * @LastEditors: Gavin
  */
 //
@@ -14,7 +14,9 @@ Object.keys(allModules).forEach((path) => {
   modules[fileName] = allModules[path][fileName] || allModules[path].default || allModules[path]
 })
 
-console.log(modules, 'vuex自动导包')
+export {allModules}
+
+console.log(modules, allModules,'vuex自动导包')
 // /********************************自动导包 end********************************/
 //
 export default modules

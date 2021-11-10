@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2021-09-18 18:33:09
+ * @LastEditTime: 2021-11-10 15:35:50
  * @LastEditors: Gavin
  */
 import { isNavigationFailure, Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
@@ -57,8 +57,8 @@ export function createGuardHook(router: Router): void {
 
       if (hasRoute && hasUserInfo) {
         console.log("有条件放行");
-        
-        
+
+
         next()
       } else if (hasUserInfo) { next({ name: '404', query: { redirect: to.fullPath }, replace: true }) } else {
         try {
@@ -66,9 +66,15 @@ export function createGuardHook(router: Router): void {
           const accessedRoutes: Array<RouteRecordRaw> = await store.dispatch('permission/generateRoutes', roles)
           resetRoute(accessedRoutes)
           next({ ...to, replace: true })
-          notification?.['success']?.({
-            message: `Hi! ${store.getters.userInfo.name}, welcome in! Wish you a good mood every day ^-^!`,
-          })
+          setTimeout(() => {
+            notification?.['success']?.({
+              message: `Hi! ${store.getters.userInfo.name}, welcome in! Wish you a good mood every day ^-^!`,
+            }) 
+            console.log('hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！in fact，we are in different world，we are only passengers for each other！Dont matter! i love u! Never expire! I m dying to see how this one ends');
+                       
+
+          }, 500);
+
         } catch (error) {
           message.warning('Login credentials are invalid or expired. Please login again!');
           next({ name: 'Login', query: { redirect: to.fullPath }, replace: true })
@@ -86,8 +92,8 @@ export function createGuardHook(router: Router): void {
   router.afterEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
     const htmlTitle = useTitle()
     htmlTitle.value = to.meta.title as string
-    console.error("导航完成" ,to);
-    
+    console.error("导航完成", to);
+
     NProgress.done()
   })
 

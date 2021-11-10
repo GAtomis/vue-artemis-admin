@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-16 17:04:43
- * @LastEditTime: 2021-11-03 11:47:58
+ * @LastEditTime: 2021-11-03 18:58:08
  * @LastEditors: Gavin
 -->
 
@@ -100,8 +100,9 @@ export type UserInfo = {
 
 }
 const state = reactive<UserInfo>({
-  nickName: $store.getters['userInfo']?.name,
-  avatar: $store.getters['userInfo']?.avatar,
+  nickName: $store?.getters?.['userInfo']?.name??'',
+  avatar: $store?.getters?.['userInfo']?.avatar??'',
+   
 })
 //toRefs解构reactive
 const { nickName, avatar } = toRefs(state)

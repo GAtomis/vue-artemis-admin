@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-10-26 10:35:21
+ * @LastEditTime: 2021-11-03 16:37:04
  * @LastEditors: Gavin
 -->
 
@@ -41,7 +41,7 @@ const $route = useRoute()
 const $router = useRouter()
 const $store = useStore()
 //加载菜单
-const menus = computed(() => isHidden($store.getters['permission/routes']||[], [], "hidden"))
+const menus = computed(() => isHidden($store?.getters?.['permission/routes']??[], [], "hidden"))
   
 // const menus =computed(()=>{
 //   return $store.getters['permission/routes']

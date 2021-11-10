@@ -2,7 +2,7 @@
  * @Description: 配置选项
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-11-03 11:31:01
+ * @LastEditTime: 2021-11-03 16:16:31
  * @LastEditors: Gavin
 -->
 <template>
@@ -82,8 +82,8 @@ const { labelCol, wrapperCol }: FormProp = {
   labelCol: { span: 10 },
   wrapperCol: { span: 14 },
 }
-// const isDark = useDark()
-// const toggleDark = useToggle(isDark)
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 //主题设定
 // const useStyle: (checked: boolean | string | number, event: Event) => void = (
 //   checked,
