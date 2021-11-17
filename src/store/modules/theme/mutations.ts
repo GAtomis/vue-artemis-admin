@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-11-03 16:12:16
+ * @LastEditTime: 2021-11-17 17:24:58
  * @LastEditors: Gavin
  */
 import { IThemeState } from './state'
@@ -16,7 +16,7 @@ export const mutations = {
   UPDATE_THEME_BG_COLOR: (state: IThemeState, color: string) => {
     const ex = 7 * 24 * 60 * 60 * 1000//过期时间
     Storage.set(THEME_BG_COLOR, color, ex)
-
+    state.themeBackgroundColor=color
   },
 
   // UPDATE_VISITED_VIEW: (state: IThemeState, view) => {

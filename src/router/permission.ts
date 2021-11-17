@@ -71,8 +71,6 @@ export function createGuardHook(router: Router): void {
               message: `Hi! ${store.getters.userInfo.name}, welcome in! Wish you a good mood every day ^-^!`,
             }) 
             console.log('hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！in fact，we are in different world，we are only passengers for each other！Dont matter! i love u! Never expire! I m dying to see how this one ends');
-                       
-
           }, 500);
 
         } catch (error) {

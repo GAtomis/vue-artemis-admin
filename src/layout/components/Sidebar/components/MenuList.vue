@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-11-03 16:37:04
+ * @LastEditTime: 2021-11-17 17:13:04
  * @LastEditors: Gavin
 -->
 
@@ -41,7 +41,7 @@ const $route = useRoute()
 const $router = useRouter()
 const $store = useStore()
 //加载菜单
-const menus = computed(() => isHidden($store?.getters?.['permission/routes']??[], [], "hidden"))
+const menus = computed(() => isHidden($store?.getters?.['permission/routes']??[], [], "hidden"))||[]    
   
 // const menus =computed(()=>{
 //   return $store.getters['permission/routes']
@@ -83,7 +83,6 @@ watch(
   () => {
     if ($route.name == 'Login' || props.collapsed) return
     console.error("OpenKey", getOpenKeys(), $route);
-
     state.openKeys = getOpenKeys()
     state.selectedKeys = [$route.name]
   }
