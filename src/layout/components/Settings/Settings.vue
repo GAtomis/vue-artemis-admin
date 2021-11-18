@@ -2,7 +2,7 @@
  * @Description: 配置选项
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-11-03 16:16:31
+ * @LastEditTime: 2021-11-18 14:11:13
  * @LastEditors: Gavin
 -->
 <template>
@@ -13,7 +13,7 @@
       placement="right"
       :closable="false"
       v-model:visible="visible"
-      :after-visible-change="afterVisibleChange"
+      @afterVisibleChange="afterVisibleChange"
     >
       <a-form
         :model="formState"

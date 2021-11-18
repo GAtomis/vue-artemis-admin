@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^5.1.4",
-    "ant-design-vue": "^2.2.8",
+    "ant-design-vue": "^3.0.0-alpha.11",
     "axios": "^0.21.1",
     "echarts": "^5.1.2",
     "faker": "^5.5.3",
