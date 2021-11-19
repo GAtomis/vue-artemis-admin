@@ -2,7 +2,7 @@
  * @Description: 标签层机翻勿6^Gavin^
  * @Author: Gavin
  * @Date: 2021-09-01 14:05:34
- * @LastEditTime: 2021-09-03 19:01:30
+ * @LastEditTime: 2021-11-19 17:40:21
  * @LastEditors: Gavin
 -->
 <template>
@@ -35,7 +35,7 @@
 
 import { watch, watchEffect, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 import { filterChildren as filterAffixTags } from "@/hooks/router"
 
 import {
@@ -85,7 +85,7 @@ const closeOtherLabels = (tag) => {
 
 }
 watch(() => visitedViews.value, () => {
-  console.error(visitedViews.value, "watchEffect");
+  // console.error(visitedViews.value, "watchEffect");
 
   if (visitedViews.value.some(item => {
     return item.name === $route.name

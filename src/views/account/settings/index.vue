@@ -2,18 +2,20 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-11-03 11:08:10
+ * @LastEditTime: 2021-11-19 18:31:14
  * @LastEditors: Gavin
 -->
 <template>
   <div>
     <a-table :columns="columns" :data-source="data">
-      <template #operation="{ record }">
-        <a @click="openDialog">setting</a>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'operation'">
+          <a @click="openDialog(record)">setting</a>
+        </template>
       </template>
     </a-table>
 
-    <a-modal v-model:visible="visible" title="Basic" @ok="visible=false">
+    <a-modal v-model:visible="visible" title="Basic" @ok="visible = false">
       <a-tree
         :show-line="showLine"
         :show-icon="showIcon"
@@ -56,14 +58,14 @@
 
 <script lang='ts' setup>
 import { ref, computed, watch } from 'vue'
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 import { filterAsyncRoutes } from '@/hooks/router'
 import { NodeIndexOutlined } from '@ant-design/icons-vue';
 import { SelectEvent } from 'ant-design-vue/es/tree/Tree';
 import { getPermissionList } from '@/api/account/index'
 import useDialogTree from './hooks/useDialogTree'
-
 import _ from 'lodash'
+
 const $store = useStore()
 interface DataItem {
   key: string | number;
@@ -73,17 +75,20 @@ interface DataItem {
 //api来自antdv
 const columns = [
   {
-    title: 'name',
-    dataIndex: 'name',
+    title: '#',
+    dataIndex: 'key',
   },
   {
     title: 'level',
     dataIndex: 'level',
   },
   {
+    title: 'des',
+    dataIndex: 'des',
+  },
+  {
     title: 'operation',
-    dataIndex: 'operation',
-    slots: { customRender: 'operation' },
+    key:"operation"
   },
 ];
 
@@ -91,8 +96,14 @@ const data = ref<DataItem[]>([
 
   {
     key: 0,
-    name: $store.getters['userInfo'].name,
-    level: $store.getters['userInfo'].level,
+    des: "用户权限",
+    level: "user",
+
+  },
+  {
+    key: 1,
+    des: "管理员",
+    level: "admin",
 
   }
 ])
@@ -109,14 +120,17 @@ const { expandedKeys, selectedKeys, checkedKeys, showLine, showIcon, onSelect } 
 // const expandedKeys = ref<string[]>([]);
 // const selectedKeys = ref<string[]>([]);
 // const checkedKeys = ref<string[]>([]);
-const openDialog = async () => {
+const openDialog = async (raw) => {
+
   checkedKeys.value = _.cloneDeep($store.getters['userInfo'].roles)
   let per = await getPermissionList({
-    level: $store.getters['userInfo'].level
+    level: raw.level
   })
   per = filterAsyncRoutes(undefined, per)
   perMeuns.value = per
   visible.value = true
+
+
 }
 
 //加载菜单

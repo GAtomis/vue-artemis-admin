@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-11-17 17:13:04
+ * @LastEditTime: 2021-11-19 17:40:28
  * @LastEditors: Gavin
 -->
 
@@ -28,7 +28,7 @@ import { reactive, computed, watch, onMounted} from 'vue'
 
 
 
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 import { filterAsyncRoutes as isHidden } from '@/hooks/router'
 import MenuItem from '../components/MenuItem.vue'
@@ -82,7 +82,7 @@ watch(
   () => $route.fullPath,
   () => {
     if ($route.name == 'Login' || props.collapsed) return
-    console.error("OpenKey", getOpenKeys(), $route);
+    // console.error("OpenKey", getOpenKeys(), $route);
     state.openKeys = getOpenKeys()
     state.selectedKeys = [$route.name]
   }

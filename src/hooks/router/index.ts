@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 10:00:31
- * @LastEditTime: 2021-10-27 11:03:02
+ * @LastEditTime: 2021-11-19 17:40:12
  * @LastEditors: Gavin
  */
 
@@ -95,7 +95,7 @@ export function filterAsyncRoutes(routes: Array<RouteRecordRaw>=asyncRoutes, rol
                 tmp.children = filterAsyncRoutes(tmp.children, roles,key);
             }
             // 如果有权限当前路由加入数组
-            console.error(tmp);
+            // console.error(tmp);
 
             res.push(tmp);
         }

@@ -52,7 +52,7 @@
 <script  lang='ts' setup >
 import DataPane from './components/DataPane.vue'
 import MessageBoard from './components/MessageBoard.vue'
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 import { computed } from 'vue'
 import {
   UserOutlined

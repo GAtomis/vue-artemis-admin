@@ -65,7 +65,7 @@
   </div>
 </template>
 <script lang='ts' setup>
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import {
   GithubOutlined,

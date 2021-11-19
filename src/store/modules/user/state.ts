@@ -2,7 +2,7 @@
  * @Description: state定义
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-10-26 16:51:21
+ * @LastEditTime: 2021-11-19 15:37:41
  * @LastEditors: Gavin
  */
 import { createStorage } from '@/utils/storage'
@@ -20,6 +20,7 @@ export type IUserState = {
   avatar: string
   roles: any[]
   info?: any
+  catchPhrase:string
 }
 
 export const state: IUserState = {
@@ -31,7 +32,8 @@ export const state: IUserState = {
   level:"",
   username:Storage.get(CACHE_USERNAME, ''),
   age:0,
-  jobType:''
+  jobType:'',
+  catchPhrase:''
 
   // info: Storage.get(CURRENT_USER, {})
 }

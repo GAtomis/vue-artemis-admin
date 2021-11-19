@@ -59,7 +59,7 @@ import type { LoginFrom } from '@/components/Form/base'//深坑一定要用type�
 import type { RuleObject, ValidateErrorEntity } from 'ant-design-vue/es/form/interface'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 
 

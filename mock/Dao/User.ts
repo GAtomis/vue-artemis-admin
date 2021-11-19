@@ -4,7 +4,7 @@ import { Interface } from "readline"
  * @Description: User Tao声明
  * @Author: Gavin
  * @Date: 2021-08-04 16:55:59
- * @LastEditTime: 2021-10-26 16:53:50
+ * @LastEditTime: 2021-11-19 15:27:08
  * @LastEditors: Gavin
  */
 export interface UserInfo {
@@ -16,12 +16,13 @@ export interface UserInfo {
   avatar?: string
   gender?: string
   token?: string,
+  catchPhrase?:string,
   roles?: Array<string>,
-  content?: string,
-  unlike?: number | string,
-  like?: number | string,
-  action?:number,
-  action1?:number,
+  // content?: string,
+  // unlike?: number | string,
+  // like?: number | string,
+  // action?:number,
+  // action1?:number,
   setName?(name: string | number)
 }
 // const userData:userInfo={
@@ -40,10 +41,11 @@ class User implements UserInfo {
   roles
   content
   level
+  catchPhrase
   setName(name: string | number) {
     this.name = name
   }
-  constructor({ age, jobType, avatar, name, token, roles, content,level }: UserInfo) {
+  constructor({ age, jobType, avatar, name, token, roles, content,level,catchPhrase }: UserInfo) {
     this.age = age
     this.jobType = jobType
     this.level=level
@@ -52,23 +54,30 @@ class User implements UserInfo {
     this.setName(name)
     this.roles = roles
     this.content = content
+    this.catchPhrase=catchPhrase
   }
 }
 export default User
 
+interface Comment extends UserInfo {
+  content?: string,
+  unlike?: number | string,
+  like?: number | string,
+  action?:number,
+  action1?:number,
+}
 
-
-export class CommentItem extends User {
+export class CommentItem extends User implements Comment {
   like
   unlike
   content
   action
   action1
-  constructor(obj: UserInfo) {
+  constructor({like,unlike,content,...obj}:Comment) {
     super(obj)
-    this.unlike = obj.like
-    this.like = obj.unlike
-    this.content=obj.content
+    this.unlike = like
+    this.like = unlike
+    this.content=content
     this.action=0
     this.action1=0
   }

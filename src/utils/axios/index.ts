@@ -219,7 +219,7 @@ const transform: AxiosTransform = {
     // 请求是否被取消
     const isCancel = axios.isCancel(error)
     if (!isCancel) {
-      console.error(error);
+      // console.error(error);
       
       checkStatus(error.response && error.response.status, msg)
     } else {

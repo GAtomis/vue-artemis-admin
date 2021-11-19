@@ -56,7 +56,7 @@ import moment from 'moment';
 import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
 import { ref, onMounted, reactive } from 'vue';
 import { getComments } from "@/api/dashboard/index"
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 import type {UserInfo} from '@/utils/interface/index'
 
 const $store = useStore();

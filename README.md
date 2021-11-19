@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-11-18 14:28:21
+ * @LastEditTime: 2021-11-19 18:46:28
  * @LastEditors: Gavin
 -->
 
@@ -24,8 +24,13 @@ Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+
 - 单点登录功能
 - 动态路由加载
 - 主题色替换
+- 个人主页已经权限配置
 
 
+
+## 疑难杂症日记
+* 热更新白页内存移除=>store配置初始化
+* 热更新还是无法使用内容白页=>keep-alive和router-view 需要加key保证他的唯一性
 
 ## Project setup
 

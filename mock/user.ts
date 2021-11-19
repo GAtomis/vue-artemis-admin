@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2021-10-26 16:50:38
+ * @LastEditTime: 2021-11-19 15:41:05
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
@@ -27,12 +27,13 @@ export const userInfo: AccountList = {
         token: faker.datatype.uuid(),
         getUserInfo() {
             return new User({
-                name: faker.name.findName(),
+                name: faker.name.lastName() + faker.name.firstName(),
                 age: faker.random.number(),
                 jobType: faker.name.jobType(),
                 avatar: faker.image.avatar(),
                 level: "admin",
-                roles: ['admin']
+                roles: ['admin'],
+                catchPhrase: faker.company.catchPhrase()
 
             })
 
@@ -43,14 +44,15 @@ export const userInfo: AccountList = {
         token: faker.datatype.uuid(),
         getUserInfo() {
             return new User({
-                name: faker.name.findName(),
+                name: faker.name.lastName() + faker.name.firstName(),
                 age: faker.random.number(),
                 jobType: faker.name.jobType(),
                 avatar: faker.image.avatar(),
                 level: "user",
                 roles: ['user', "/account"
                     , "/account/center"
-                    , "/account/settings"]
+                    , "/account/settings"],
+                catchPhrase: faker.company.catchPhrase()
 
             })
 

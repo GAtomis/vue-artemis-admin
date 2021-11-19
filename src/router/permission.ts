@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2021-11-10 15:35:50
+ * @LastEditTime: 2021-11-19 17:40:36
  * @LastEditors: Gavin
  */
 import { isNavigationFailure, Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
@@ -90,7 +90,7 @@ export function createGuardHook(router: Router): void {
   router.afterEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
     const htmlTitle = useTitle()
     htmlTitle.value = to.meta.title as string
-    console.error("导航完成", to);
+    // console.error("导航完成", to);
 
     NProgress.done()
   })

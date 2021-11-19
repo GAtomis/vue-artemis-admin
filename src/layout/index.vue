@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-11-04 14:07:43
+ * @LastEditTime: 2021-11-19 18:34:13
  * @LastEditors: Gavin
 -->
 <template>
@@ -50,9 +50,9 @@
         >
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in">
-            <keep-alive>
-              <component :is="Component" :key="route.full" />
-            </keep-alive>
+              <keep-alive :key="$route.full">
+                <component :is="Component" :key="$route.full" />
+              </keep-alive>
             </transition>
           </router-view>
         </section>
@@ -74,12 +74,12 @@ import {
 } from '@/layout/components/index'
 import { useRoute } from 'vue-router'
 import { ref, computed, provide, watch } from 'vue'
-import { useStore } from '@/store'
+import { useStore } from 'vuex'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
 import { useStorage } from '@vueuse/core'
 const collapsed = ref<boolean>(false)
-// const $route = useRoute()
+const $route = useRoute()
 const $store = useStore()
 const pointerLocation = getPointerLocationByElement()
 const offsetWidth = document.body.offsetWidth
@@ -88,6 +88,8 @@ const op = computed(() => {
   return offsetWidth - pointerLocation.x > offsetWidth * 0.08 ? 0 : 1
 })
 const storage = useStorage<boolean>('storg', true, sessionStorage)
+ 
+ 
 
 </script>
 <style lang="scss" scope>
