@@ -2,7 +2,7 @@
  * @Description: 配置选项
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-11-19 17:40:25
+ * @LastEditTime: 2021-11-30 18:50:54
  * @LastEditors: Gavin
 -->
 <template>
@@ -32,9 +32,7 @@
          
           />
         </a-form-item>
-        <a-form-item label="styleMode">
-          <a-switch v-model:checked="formState.checked" @click="useStyle" />
-        </a-form-item>
+
       </a-form>
     </a-drawer>
   </div>

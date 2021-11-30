@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-11-19 18:31:14
+ * @LastEditTime: 2021-11-30 18:50:25
  * @LastEditors: Gavin
 -->
 <template>
@@ -69,7 +69,7 @@ import _ from 'lodash'
 const $store = useStore()
 interface DataItem {
   key: string | number;
-  name: string;
+  des: string;
   level: string;
 }
 //api来自antdv

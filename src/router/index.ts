@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2021-10-26 13:20:03
+ * @LastEditTime: 2021-11-30 18:40:36
  * @LastEditors: Gavin
  */
 
@@ -13,6 +13,7 @@ import { createGuardHook } from './permission'
 import redirect from './modules/redirect'
 import nested from './modules/nested'
 import account from './modules/account'
+import constructor from './modules/constructor'
 
 
 
@@ -67,13 +68,13 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
     component: layout,
     name: 'Dashboard',
     redirect: '/dashboard/monitoring',
-    meta: { title: 'Dashboard', icon: 'icon-alibaba', roles: "/dashboard"},
+    meta: { title: 'Dashboard', icon: 'icon-dashboard', roles: "/dashboard"},
     children: [
       {
         path: 'monitoring',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Monitoring',
-        meta: { title: 'monitoring', icon: 'icon-taobao', affix: true, roles: "/dashboard" }
+        meta: { title: 'monitoring', icon: 'icon-dashboard', affix: true, roles: "/dashboard" }
       }
     ],
 
@@ -95,7 +96,7 @@ export const privateRouteTable: Array<RouteRecordRaw> = [
     component: layout,
     redirect: '/readme/read',
     name: 'Readme',
-    meta: { title: 'Readme', icon: 'icon-HTML', roles: "/readme", affix: true },
+    meta: { title: 'Readme', icon: 'icon-read', roles: "/readme", affix: true },
     children: [
       {
         path: 'read',
@@ -133,7 +134,8 @@ export const privateRouteTable: Array<RouteRecordRaw> = [
     ],
   },
   ...nested,
-  ...account
+  ...account,
+  ...constructor,
 
 
 

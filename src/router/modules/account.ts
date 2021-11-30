@@ -3,7 +3,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2021-10-26 13:20:56
+ * @LastEditTime: 2021-11-30 18:27:18
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -23,14 +23,14 @@ const mixinRouter: Array<RouteRecordRaw> = [{
   children: [
 
     {
-      path: '/account/center',
+      path: 'center',
       name: 'Center',
       component: () => import('@/views/account/center/index.vue'),
       meta: { title: 'Center',icon: 'icon-user',
       roles: "/account/center" }
     },
     {
-      path: '/account/settings',
+      path: 'settings',
       name: 'Settings',
       component: () => import('@/views/account/settings/index.vue'),
       meta: { title: 'Settings',icon: 'icon-switchuser',

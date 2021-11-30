@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-11-19 18:34:13
+ * @LastEditTime: 2021-11-30 18:52:10
  * @LastEditors: Gavin
 -->
 <template>
@@ -49,9 +49,10 @@
           class="appMain"
         >
           <router-view v-slot="{ Component, route }">
+          
             <transition name="fade" mode="out-in">
-              <keep-alive :key="$route.full">
-                <component :is="Component" :key="$route.full" />
+              <keep-alive :key="$route.fullPath">
+                <component :is="Component" :key="$route.fullPath" />
               </keep-alive>
             </transition>
           </router-view>
@@ -89,7 +90,7 @@ const op = computed(() => {
 })
 const storage = useStorage<boolean>('storg', true, sessionStorage)
  
- 
+
 
 </script>
 <style lang="scss" scope>

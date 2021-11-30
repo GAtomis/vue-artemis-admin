@@ -2,17 +2,17 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 16:33:10
- * @LastEditTime: 2021-11-19 15:59:46
+ * @LastEditTime: 2021-11-26 18:24:48
  * @LastEditors: Gavin
  */
 
-
+import {IStore} from '@/store/types'
 
 const getters = {
-  sidebar: (state:any)=> state.app.name,
-  userInfo:(state:any)=> state.user,
-  visitedViews:(state:any)=>state.tagsView.visitedViews,
-  themeBackgroundColor:(state:any)=>state.theme.themeBackgroundColor,
-  isNavShow:(state:any)=>state.tagsView.isShow,
+  sidebar: (state:IStore)=> state.app.name,
+  userInfo:(state:IStore)=> state.user,
+  visitedViews:(state:IStore)=>state.tagsView.visitedViews,
+  themeBackgroundColor:(state:IStore)=>state.theme.themeBackgroundColor,
+  isNavShow:(state:IStore)=>state.tagsView.isShow,
 }
 export default getters
