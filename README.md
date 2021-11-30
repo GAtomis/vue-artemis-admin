@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-11-19 18:46:28
+ * @LastEditTime: 2021-11-30 18:56:45
  * @LastEditors: Gavin
 -->
 
@@ -25,6 +25,7 @@ Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+
 - 动态路由加载
 - 主题色替换
 - 个人主页已经权限配置
+- 表单构造器
 
 
 
