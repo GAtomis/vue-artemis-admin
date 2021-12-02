@@ -19,6 +19,7 @@
     "vite-plugin-eruda": "^1.0.1",
     "vue": "^3.2.1",
     "vue-router": "^4.0.11",
+    "vuedraggable": "^4.1.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

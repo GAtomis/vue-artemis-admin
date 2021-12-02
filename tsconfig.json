@@ -24,8 +24,14 @@
     "removeComments": false,
     "strictFunctionTypes": false,
     "baseUrl": ".",
-    "types": ["vite/client", "node"],
-    "typeRoots": ["./node_modules/@types/", "./types"],
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./types"
+    ],
     "paths": {
       "@/*": [
         "src/*"
@@ -35,7 +41,10 @@
       "esnext",
       "dom",
       "dom.iterable",
-      "scripthost"
+      "scripthost",
+      "es5",
+      "es6",
+      "es7"
     ]
   },
   "include": [

@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-09-18 12:49:21
+ * @LastEditTime: 2021-12-01 18:18:25
  * @LastEditors: Gavin
  */
 import { UserConfig , ConfigEnv } from 'vite'
@@ -69,7 +69,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       ]
     },
     server: {
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      open: true,
     },
     css: {
       preprocessorOptions: {

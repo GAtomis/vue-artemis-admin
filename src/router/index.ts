@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2021-11-30 18:40:36
+ * @LastEditTime: 2021-12-01 11:06:36
  * @LastEditors: Gavin
  */
 
@@ -68,13 +68,13 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
     component: layout,
     name: 'Dashboard',
     redirect: '/dashboard/monitoring',
-    meta: { title: 'Dashboard', icon: 'icon-dashboard', roles: "/dashboard"},
+    meta: { title: 'Dashboard', icon: 'icon-dashboard', roles: "/dashboard",only:true},
     children: [
       {
         path: 'monitoring',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Monitoring',
-        meta: { title: 'monitoring', icon: 'icon-dashboard', affix: true, roles: "/dashboard" }
+        meta: { title: 'Dashboard', icon: 'icon-dashboard', affix: true, roles: "/dashboard" }
       }
     ],
 
