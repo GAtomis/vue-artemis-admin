@@ -2,11 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 13:36:35
- * @LastEditTime: 2021-09-08 13:37:12
+ * @LastEditTime: 2021-12-06 16:02:22
  * @LastEditors: Gavin
 -->
 <template>
-    <div>二级菜单</div>
+    <div class="app-container bg-fff">二级菜单</div>
 </template>
 
 <script lang="ts">

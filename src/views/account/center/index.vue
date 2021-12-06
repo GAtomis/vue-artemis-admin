@@ -6,7 +6,7 @@
  * @LastEditors: Gavin
 -->
 <template>
-  <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
+  <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" class="app-container bg-fff">
     <a-row :gutter="16" class="card">
       <a-col :span="12" class="card-info">
         <a-card title="个人资料" style="width:100%">

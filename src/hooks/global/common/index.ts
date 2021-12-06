@@ -2,7 +2,7 @@
  * @Description: 公用全局函数
  * @Author: Gavin
  * @Date: 2021-09-10 10:27:47
- * @LastEditTime: 2021-12-02 19:02:49
+ * @LastEditTime: 2021-12-06 13:22:46
  * @LastEditors: Gavin
  */
 
@@ -38,8 +38,8 @@ export function getPointerLocationByElement(element: MaybeRef<HTMLElement | HTML
  * @return {*}
  * @Date: 2021-12-02 19:00:10
  */
-export function useCloneByJSON(target, call?: (x: any) => any) {
-  const cloned = JSON.stringify(toRaw(target))
+export function useCloneByJSON<T>(target, call?: (x: T) => any) {
+  const cloned = JSON.parse(JSON.stringify(toRaw(target)))
   return call?.(cloned) ?? cloned
 }
 

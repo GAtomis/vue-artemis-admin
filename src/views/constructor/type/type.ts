@@ -2,15 +2,18 @@
  * @Description: 问卷Class类型
  * @Author: Gavin
  * @Date: 2021-09-28 10:46:18
- * @LastEditTime: 2021-12-02 16:22:45
+ * @LastEditTime: 2021-12-06 14:16:45
  * @LastEditors: Gavin
  */
 import faker from "faker"
-import {TypeEnum as TYPE_PROXY } from '../enmu/enum'
+import { TypeEnum as TYPE_PROXY } from '../enmu/enum'
 
 
 interface BaseType {
   type: string
+  formItemId: number | string
+  getId: () => number | string
+  setId: (id: number | string) => void
 }
 /**
  * @description: 基类Class
@@ -20,7 +23,7 @@ interface BaseType {
 class FormTypes implements BaseType {
   type: any
   label: string
-  formItemId: number
+  formItemId: number | string
   imgUrl: string
   style: string
   constructor(style = "Default", imgUrl = faker.image.avatar(), label = "示例检查名称 ") {
@@ -29,6 +32,12 @@ class FormTypes implements BaseType {
     this.imgUrl = imgUrl
     this.style = style//空间标题
 
+  }
+  setId(id: number | string = faker.datatype.number()): void {
+    this.formItemId = id
+  }
+  getId() {
+    return this.formItemId
   }
 }
 
@@ -55,7 +64,7 @@ export class Option {
  */
 export class Radio extends FormTypes {
   options: any[]
-  option:object
+  option: object
 
   /**
    * @description: 单选构造函数
@@ -66,11 +75,11 @@ export class Radio extends FormTypes {
    * @return {*}
    * @Date: 2021-12-02 11:49:51
    */
-  constructor(style = "单选", option:object=new Option() , imgUrl, label) {
+  constructor(style = "单选", option: object = new Option(), imgUrl, label) {
     super(style, imgUrl, label,)
     this.type = TYPE_PROXY.RADIO
     this.options = new Array()
-    this.option=option
+    this.option = option
     this.addOption()
   }
   /**
@@ -79,7 +88,7 @@ export class Radio extends FormTypes {
    * @return {*}
    * @Date: 2021-10-12 14:29:53
    */
-  addOption() {
+  addOption(): void {
     this.options.push(this.option)
   }
   /**
@@ -88,7 +97,7 @@ export class Radio extends FormTypes {
    * @return {*}
    * @Date: 2021-10-12 14:29:40
    */
-  delOption(index: number) {
+  delOption(index: number): void {
     this.options.splice(index, 1)
   }
 
@@ -134,8 +143,8 @@ export class Radio extends FormTypes {
  * @Date: 2021-10-12 11:19:36
  */
 export class Empty extends FormTypes {
-  constructor(style:string = "拖动区域", imgUrl?, label="空选择区域" ) {
-    super(style, imgUrl, label )
+  constructor(style: string = "拖动区域", imgUrl?, label = "空选择区域") {
+    super(style, imgUrl, label)
     this.type = TYPE_PROXY.EMPTY
   }
 }

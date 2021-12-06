@@ -2,11 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-09 17:25:28
- * @LastEditTime: 2021-09-09 18:03:53
+ * @LastEditTime: 2021-12-06 16:02:53
  * @LastEditors: Gavin
 -->
 <template>
-  <a-row :gutter="16">
+  <a-row :gutter="16" class="app-container bg-fff">
     <a-col :span="12">
       <a-statistic-countdown
         title="Countdown"

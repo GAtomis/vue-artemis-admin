@@ -2,11 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-11-30 18:50:25
+ * @LastEditTime: 2021-12-06 16:05:13
  * @LastEditors: Gavin
 -->
 <template>
-  <div>
+  <div class="app-container bg-fff">
     <a-table :columns="columns" :data-source="data">
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'operation'">

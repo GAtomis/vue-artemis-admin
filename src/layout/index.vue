@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-11-30 18:52:10
+ * @LastEditTime: 2021-12-06 18:45:23
  * @LastEditors: Gavin
 -->
 <template>
@@ -38,18 +38,8 @@
         <artms-tags-view />
       </nav>
       <a-layout-content>
-        <section
-          style="
-            padding: 10px;
-            background: #fff;
-            position: relative;
-            min-height: 100%;
-            width: 100%;
-          "
-          class="appMain"
-        >
+        <section class="appMain scroll">
           <router-view v-slot="{ Component, route }">
-          
             <transition name="fade" mode="out-in">
               <keep-alive :key="$route.fullPath">
                 <component :is="Component" :key="$route.fullPath" />
@@ -89,7 +79,7 @@ const op = computed(() => {
   return offsetWidth - pointerLocation.x > offsetWidth * 0.08 ? 0 : 1
 })
 const storage = useStorage<boolean>('storg', true, sessionStorage)
- 
+
 
 
 </script>
@@ -130,6 +120,16 @@ const storage = useStorage<boolean>('storg', true, sessionStorage)
   }
   .trigger:hover {
     color: #1890ff;
+  }
+  .appMain {
+    position: relative;
+    padding: 24px;
+    box-sizing: border-box;
+    height: 100%;
+  }
+  .scroll {
+    overflow: hidden;
+    overflow-y: auto;
   }
 
   // .logo {
