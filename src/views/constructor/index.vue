@@ -2,7 +2,7 @@
  * @Description: Constructor
  * @Author: Gavin
  * @Date: 2021-11-30 18:30:19
- * @LastEditTime: 2021-12-07 18:30:37
+ * @LastEditTime: 2021-12-08 12:00:41
  * @LastEditors: Gavin
 -->
 <template>
@@ -99,7 +99,7 @@
 <script lang='ts' setup>
 import { ref, reactive, watch, computed } from 'vue'
 import draggable from 'vuedraggable'
-import { Radio, Empty } from './type/type'
+import { Radio, Empty,Option} from './type/type'
 import { RadioItem, EmptyItem, RadioBox, EmptyBox } from './components'
 import { TypeEnum } from './enmu/enum'
 import radioIcon from '@/assets/img/radio-icon.png'
@@ -111,8 +111,8 @@ import { provide } from 'vue'
 type Type = Radio | Empty
 //***************ControlArea****************
 const typeList1 = ref<Type[]>([
-  new Radio('Radio1', undefined, radioIcon, '我的内容'),
-  new Radio('Radio2', undefined, radioIcon, '我的内容'),
+  new Radio('Radio1', undefined, radioIcon ),
+  new Radio('DIY', [new Option("newday if 1",true),new Option("towday if 444",true),new Option("3234 if 2134",true),new Option("towday if 444",true)], undefined,undefined,false),
 ]),
   onClone = (item: any) => useCloneByJSON<Type>(item, res => {
     res.formItemId = faker.datatype.number()

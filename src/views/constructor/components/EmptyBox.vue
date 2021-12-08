@@ -2,13 +2,13 @@
  * @Description: 空区域
  * @Author: Gavin
  * @Date: 2021-12-02 16:03:05
- * @LastEditTime: 2021-12-06 11:26:57
+ * @LastEditTime: 2021-12-08 11:23:31
  * @LastEditors: Gavin
 -->
 
 <template>
   <div class="empty-warp">
-      <h1>请拖入组件</h1>
+      <h1>{{item.label}}</h1>
   </div>
 </template>
 

@@ -2,15 +2,15 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-03 17:54:06
- * @LastEditTime: 2021-12-07 18:38:49
+ * @LastEditTime: 2021-12-08 11:58:56
  * @LastEditors: Gavin
 -->
 <template>
   <a-form ref="expendRef" :model="expendForm" :label-col="labelCol" :wrapper-col="wrapperCol">
     <a-form-item
-      v-for="(option, index) in expendForm.options"
+      v-for="option, index in expendForm.options"
       :key="index"
-      :label="`option${index+1}`"
+      :label="`option${index + 1}`"
       name="option"
       :rules="{
         required: true,
@@ -20,6 +20,7 @@
     >
       <a-input
         v-model:value="option.content"
+        :readonly="option.readonly"
         placeholder="please input option"
         style="width: 80%; margin-right: 8px"
       />
@@ -30,7 +31,7 @@
       />
     </a-form-item>
 
-    <a-form-item >
+    <a-form-item v-if="item?.canAdd ?? true">
       <a-button type="dashed" style="width: 60%" @click="addOption">
         <PlusOutlined />Add field
       </a-button>
