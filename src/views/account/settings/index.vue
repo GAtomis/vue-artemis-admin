@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-12-06 16:05:13
+ * @LastEditTime: 2021-12-13 13:53:06
  * @LastEditors: Gavin
 -->
 <template>
@@ -35,7 +35,7 @@
           <a-tree-node
             :key="child?.meta.roles"
             :title="child?.meta.title"
-            v-for=" child in menuItem.children"
+            v-for="child in menuItem.children"
           >
             <template #icon>
               <node-index-outlined />
@@ -43,7 +43,7 @@
             <a-tree-node
               :key="nested?.meta.roles"
               :title="nested?.meta.title"
-              v-for=" nested in child.children"
+              v-for="nested in child.children"
             >
               <template #icon>
                 <node-index-outlined />
@@ -60,17 +60,18 @@
 import { ref, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import { filterAsyncRoutes } from '@/hooks/router'
-import { NodeIndexOutlined } from '@ant-design/icons-vue';
-import { SelectEvent } from 'ant-design-vue/es/tree/Tree';
+import { NodeIndexOutlined } from '@ant-design/icons-vue'
+import { SelectEvent } from 'ant-design-vue/es/tree/Tree'
 import { getPermissionList } from '@/api/account/index'
 import useDialogTree from './hooks/useDialogTree'
 import _ from 'lodash'
 
+
 const $store = useStore()
 interface DataItem {
-  key: string | number;
-  des: string;
-  level: string;
+  key: string | number
+  des: string
+  level: string
 }
 //api来自antdv
 const columns = [
@@ -88,49 +89,46 @@ const columns = [
   },
   {
     title: 'operation',
-    key:"operation"
+    key: 'operation',
   },
-];
+]
 
 const data = ref<DataItem[]>([
-
   {
     key: 0,
-    des: "用户权限",
-    level: "user",
-
+    des: '用户权限',
+    level: 'user',
   },
   {
     key: 1,
-    des: "管理员",
-    level: "admin",
-
-  }
+    des: '管理员',
+    level: 'admin',
+  },
 ])
 
 const level = computed(() => {
   return $store.getters.userInfo.level
 })
 
-
 const visible = ref<boolean>(false)
 const perMeuns = ref<any[]>([])
-//tree hook
-const { expandedKeys, selectedKeys, checkedKeys, showLine, showIcon, onSelect } = useDialogTree()
-// const expandedKeys = ref<string[]>([]);
-// const selectedKeys = ref<string[]>([]);
-// const checkedKeys = ref<string[]>([]);
-const openDialog = async (raw) => {
+const {
+  expandedKeys,
+  selectedKeys,
+  checkedKeys,
+  showLine,
+  showIcon,
+  onSelect,
+} = useDialogTree()
 
+const openDialog = async (raw) => {
   checkedKeys.value = _.cloneDeep($store.getters['userInfo'].roles)
   let per = await getPermissionList({
-    level: raw.level
+    level: raw.level,
   })
   per = filterAsyncRoutes(undefined, per)
   perMeuns.value = per
   visible.value = true
-
-
 }
 
 //加载菜单
@@ -151,7 +149,6 @@ const openDialog = async (raw) => {
 // watch(checkedKeys, () => {
 //   console.log('checkedKeys', checkedKeys);
 // })
-
 </script>
 
 <style scoped lang='scss'>

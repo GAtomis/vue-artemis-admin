@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-12-06 18:45:23
+ * @LastEditTime: 2021-12-09 15:46:12
  * @LastEditors: Gavin
 -->
 <template>
@@ -21,7 +21,7 @@
 
     <!-- 右边区域  包括头部 内容显示区域 -->
 
-    <a-layout :style="{ overflow: 'scroll', height: '100vh' }">
+    <a-layout :style="{ overflow: 'auto', height: '100vh' }">
       <a-layout-header style="background: #fff; padding: 0; height: 50px">
         <artms-navbar>
           <template #collapsed>

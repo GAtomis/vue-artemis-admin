@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-14 17:43:00
+ * @LastEditTime: 2021-12-14 17:44:38
  * @LastEditors: Gavin
 -->
 
@@ -22,23 +22,22 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
 </p>
 
-## Introduction
- English is no good - -, The template realized by 2 + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
+> Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+vite2+vueuse 实现的后台管理系统模板,项目意义重在与各位大佬交流学习。感谢两位大佬antFu和花裤衩大大给我了很大的启示（虽然没见过哈哈哈^^）,如果觉得 嘿！这个小伙儿挺可爱的！就给个小星星吧 ^ - ^0!拒绝下次一定哈哈哈！
 
-## Basic function of template (improvement)
-- feat-SSO(login)
-- feat-async-route loading
-- feat-Theme color replacement
-- feat-Permission configuration
-- feat-Form constructor
-
+## 模板基础功能(完善中)
+- 单点登录功能
+- 动态路由加载
+- 主题色替换
+- 个人主页已经权限配置
+- 表单构造器
 
 
-## Fix log
-* Hot-reloads no page memory overflow=>Store configuration initialization
-* Hot-reload no page&&router no page=>keep-aliv&&router-view add Key
 
-## Quick start
+## 疑难杂症日记
+* 热更新白页内存移除=>store配置初始化
+* 热更新还是无法使用内容白页=>keep-alive和router-view 需要加key保证他的唯一性
+
+## 快速启动
 
 ```
 yarn install
@@ -55,12 +54,11 @@ yarn dev
 ```
 yarn build
 ```
-
-## Maintainer
+## 作者
 [My blog](https://juejin.cn/post/6966454624819609631)  by Gavin
 
-## Thanks 
-I sincerely thank the three developers for their help, although I have never communicated
+## 鸣谢
+由衷感谢三位大佬的开源精神,虽然我们未曾交流过
 [@PanJiaChen](https://github.com/PanJiaChen) 花裤衩
 [@Anthony Fu](https://github.com/antfu) ant fu
 [@coderwhy](https://github.com/coderwhy?tab=repositories) 王红元老师

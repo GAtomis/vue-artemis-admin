@@ -2,7 +2,7 @@
  * @Description: type
  * @Author: Gavin
  * @Date: 2021-09-28 10:46:18
- * @LastEditTime: 2021-12-08 11:53:43
+ * @LastEditTime: 2021-12-08 14:07:33
  * @LastEditors: Gavin
  */
 import faker from "faker"
@@ -25,11 +25,11 @@ interface BaseType {
   style: string
 }
 /**
- * @description: base Class
+ * @description: abstractClass
  * @constructor  
  * @Date: 2021-09-28 13:51:19
  */
-class FormTypes implements BaseType {
+ abstract class FormTypes implements BaseType {
   type: string
   label: string
   formItemId: number | string

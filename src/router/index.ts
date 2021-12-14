@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2021-12-01 11:06:36
+ * @LastEditTime: 2021-12-09 11:07:49
  * @LastEditors: Gavin
  */
 
@@ -30,8 +30,7 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
              icon: 'icon-IE',// menu icon
              affix: false, // tagsView fixed header
              roles: "/readme/read", //backed async router
-             only:true  // no menuGroup  only page
-  
+             only:true  // no menuGroup  only page  
   */
 
   {
