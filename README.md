@@ -2,12 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-14 17:43:00
+ * @LastEditTime: 2021-12-14 17:59:20
  * @LastEditors: Gavin
 -->
 
 
-# Vue 3 + Typescript + Vite2 Artemis Admin
 
 
 <p align="center">
