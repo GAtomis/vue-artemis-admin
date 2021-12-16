@@ -1,8 +1,8 @@
 <!--
- * @Description: 配置选项
+ * @Description: Global Select
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-12-16 14:38:42
+ * @LastEditTime: 2021-12-16 14:40:30
  * @LastEditors: Gavin
 -->
 <template>
