@@ -2,58 +2,62 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-09 12:26:22
- * @LastEditTime: 2021-10-26 11:11:25
+ * @LastEditTime: 2021-12-16 12:41:40
  * @LastEditors: Gavin
 -->
 <template>
   <slot name="logo">
-    <div class="logo" >
+    <div class="logo" :class="{ collapsed: collapsed }">
       <img src="~@/assets/typescript-logo.jpg" />
-      <span :class="{anticon:collapsed}" style="color: #fff; font-size: 16px; white-space: nowrap;" >Artemis Admin</span>
+      <span
+        :class="{ anticon: collapsed }"
+        style="color: #fff; font-size: 16px; white-space: nowrap"
+        >Artemis Admin</span
+      >
     </div>
   </slot>
   <slot name="menu">
-    <menu-list  :collapsed="collapsed"/>
+    <menu-list :collapsed="collapsed" />
   </slot>
 
   <!-- 侧边栏标题 -->
 </template>
 <script lang='ts' setup>
 import MenuList from './components/MenuList.vue'
-import {inject} from 'vue'
+import { inject } from 'vue'
 defineProps({
-  collapsed:Boolean
+  collapsed: Boolean,
 })
-
-
-
-
 </script>
 
 <style lang="scss" scope>
+.collapsed {
+  padding: 0 10%;
+  text-overflow: clip;
+ 
+}
+
 .logo {
-  display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-    margin: 16px 5px;
-    overflow: hidden;
-    font-size: 15px;
-    color: #fff;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  .anticon{
+  height: 32px;
+  margin: 16px 5px;
+  overflow: hidden;
+  font-size: 15px;
+  color: #fff;
+  white-space: nowrap;
+  margin: 16px ;
+  transition: all 0.2s;
+  .anticon {
     display: inline-block;
     max-width: 0;
     opacity: 0;
-    transition: all .2s;
- 
+    transition: all 0.2s;
   }
+
   img {
     width: 32px;
     height: 32px;
   }
-  span{
+  span {
     padding-left: 20px;
   }
 }

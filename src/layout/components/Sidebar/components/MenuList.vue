@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-11-19 17:40:28
+ * @LastEditTime: 2021-12-16 11:50:39
  * @LastEditors: Gavin
 -->
 
@@ -10,6 +10,7 @@
   <a-menu
     v-model:open-keys="state.openKeys"
     v-model:selected-keys="state.selectedKeys"
+
     mode="inline"
     theme="dark"
     @click="clickMenuItem"
@@ -17,16 +18,12 @@
     <template v-for="item in menus" :key="item.name">
       <menu-item :menu-item="item" :collapsed="collapsed" />
     </template>
-  </a-menu> 
+  </a-menu>
 </template>
 
 
  <script lang='ts' setup>
-
-
-import { reactive, computed, watch, onMounted} from 'vue'
-
-
+import { reactive, computed, watch, onMounted } from 'vue'
 
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
@@ -34,15 +31,18 @@ import { filterAsyncRoutes as isHidden } from '@/hooks/router'
 import MenuItem from '../components/MenuItem.vue'
 
 const props = defineProps({
-  collapsed: Boolean
+  collapsed: Boolean,
 })
 //salute Vue2 ^-^
 const $route = useRoute()
 const $router = useRouter()
 const $store = useStore()
 //加载菜单
-const menus = computed(() => isHidden($store?.getters?.['permission/routes']??[], [], "hidden"))||[]    
-  
+const menus =
+  computed(() =>
+    isHidden($store?.getters?.['permission/routes'] ?? [], [], 'hidden')
+  ) || []
+
 // const menus =computed(()=>{
 //   return $store.getters['permission/routes']
 // })
@@ -52,19 +52,17 @@ const menus = computed(() => isHidden($store?.getters?.['permission/routes']??[]
 
 // 获取当前打开的子菜单
 const getOpenKeys = () => {
-
-  const parentsName = $route.matched.map(item=>{
+  const parentsName = $route.matched.map((item) => {
     return item.name
   })
   //弹出最后一栈
-  parentsName.length>1&&parentsName.pop()
+  parentsName.length > 1 && parentsName.pop()
 
-  
   return parentsName
 }
 const state = reactive({
   openKeys: getOpenKeys(),
-  selectedKeys: [$route.name]
+  selectedKeys: [$route.name],
 })
 // const {openKeys,selectedKeys}=toRefs(state)
 
@@ -92,8 +90,6 @@ watch(
 const clickMenuItem = ({ item, key, keyPath }) => {
   console.log(item, key, keyPath)
 
-
-
   if (/http(s)?:/.test(key)) {
     window.open(key)
   } else {
@@ -101,15 +97,8 @@ const clickMenuItem = ({ item, key, keyPath }) => {
   }
 }
 
-
-
-
-
-
- // expects emits options
+// expects emits options
 //const emit = defineEmits(['update', 'delete'])
-
-
 </script>
 
 

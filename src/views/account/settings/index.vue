@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-12-13 13:53:06
+ * @LastEditTime: 2021-12-15 18:29:37
  * @LastEditors: Gavin
 -->
 <template>
@@ -17,14 +17,16 @@
 
     <a-modal v-model:visible="visible" title="Basic" @ok="visible = false">
       <a-tree
-        :show-line="showLine"
-        :show-icon="showIcon"
+      :show-line="showLine"
+      :show-icon="showIcon"
         @select="onSelect"
         checkable
+
         v-model:expandedKeys="expandedKeys"
         v-model:selectedKeys="selectedKeys"
         v-model:checkedKeys="checkedKeys"
       >
+
         <a-tree-node :key="menuItem?.meta.roles" v-for="menuItem in perMeuns">
           <template #icon>
             <node-index-outlined />
@@ -57,11 +59,10 @@
 </template>
 
 <script lang='ts' setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { filterAsyncRoutes } from '@/hooks/router'
-import { NodeIndexOutlined } from '@ant-design/icons-vue'
-import { SelectEvent } from 'ant-design-vue/es/tree/Tree'
+import { CarryOutOutlined, SmileTwoTone } from '@ant-design/icons-vue';
 import { getPermissionList } from '@/api/account/index'
 import useDialogTree from './hooks/useDialogTree'
 import _ from 'lodash'

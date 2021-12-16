@@ -24,7 +24,7 @@ export default function (): UseDialogTree {
   const selectedKeys = ref<string[]>([]);
   const checkedKeys = ref<string[]>([]);
   const showLine = ref<boolean>(true);
-  const showIcon = ref<boolean>(false);
+  const showIcon = ref<boolean>(true);
   const onSelect = (selectedKeys: string[], info: SelectEvent) => {
     console.log('selected', selectedKeys, info);
   };

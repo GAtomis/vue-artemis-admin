@@ -2,14 +2,19 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-11-19 17:20:57
+ * @LastEditTime: 2021-12-15 14:20:00
  * @LastEditors: Gavin
 -->
 <template>
-  <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" class="app-container bg-fff">
+  <a-form
+    :model="form"
+    :label-col="labelCol"
+    :wrapper-col="wrapperCol"
+    class="app-container bg-fff"
+  >
     <a-row :gutter="16" class="card">
       <a-col :span="12" class="card-info">
-        <a-card title="个人资料" style="width:100%">
+        <a-card title="个人资料" style="width: 100%">
           <a-form-item label="用户名">
             <a-input v-model:value="form.name" />
           </a-form-item>
@@ -23,7 +28,11 @@
           </a-form-item>
           <a-divider />
           <a-form-item label="个人简介">
-            <a-textarea v-model:value="form.catchPhrase" show-count :maxlength="100" />
+            <a-textarea
+              v-model:value="form.catchPhrase"
+              show-count
+              :maxlength="100"
+            />
           </a-form-item>
           <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
             <a-button type="primary" @click="onSubmit">Save</a-button>
@@ -42,7 +51,13 @@
             :before-upload="beforeUpload"
             @change="handleChange"
           >
-            <img v-if="form.avatar" :src="form.avatar" alt="avatar" />
+            <a-image
+              v-if="form.avatar"
+              :src="form.avatar"
+              alt="avatar"
+              fallback="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic2.zhimg.com%2F50%2Fv2-6b648675305dc2c9130d6db9bfe61f24_hd.jpg&refer=http%3A%2F%2Fpic2.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1642141184&t=cbfe704354ff1b878abb93968e581e2c"
+            />
+
             <div v-else>
               <loading-outlined v-if="loading"></loading-outlined>
               <plus-outlined v-else></plus-outlined>
@@ -66,16 +81,18 @@ const $store = useStore()
 //坑早知道用interface了, type的继承真的丑
 type UserInfo = IUserState & {
   companyName: string
-
 }
-const form = reactive<UserInfo>({ companyName: "Arvato", ...toRaw($store.getters.userInfo) })
+const form = reactive<UserInfo>({
+  companyName: 'Arvato',
+  ...toRaw($store.getters.userInfo),
+})
 const labelCol = { span: 4 },
   wrapperCol = { span: 20 },
   onSubmit = (): void => {
-    console.log("芯片短缺");
-
+    console.log('芯片短缺')
   }
-const { fileList, loading, imageUrl, handleChange, beforeUpload } = useUpLoadByAvatar()
+const { fileList, loading, imageUrl, handleChange, beforeUpload } =
+  useUpLoadByAvatar()
 
 //
 </script>

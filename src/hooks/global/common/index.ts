@@ -2,7 +2,7 @@
  * @Description: 公用全局函数
  * @Author: Gavin
  * @Date: 2021-09-10 10:27:47
- * @LastEditTime: 2021-12-07 14:53:24
+ * @LastEditTime: 2021-12-15 11:32:22
  * @LastEditors: Gavin
  */
 
@@ -32,7 +32,7 @@ export function getPointerLocationByElement(element: MaybeRef<HTMLElement | HTML
 
 
 /**
- * @description: 方法说明....
+ * @description: 通过使用JSON进行克隆
  * @param {*} target 克隆目标
  * @param {function} call 函数式自定义
  * @return {*}
