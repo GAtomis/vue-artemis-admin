@@ -2,14 +2,14 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-11-17 17:24:58
+ * @LastEditTime: 2021-12-16 14:26:56
  * @LastEditors: Gavin
  */
 import { IThemeState } from './state'
-import { THEME_BG_COLOR } from '@/store/store-enum'
+import { THEME_BG_COLOR,THEME_BG_MENU} from '@/store/store-enum'
 import { createStorage } from '@/utils/storage'
 //第三方工具类hook
-import { useLocalStorage } from '@vueuse/core'
+
 const Storage = createStorage({ storage: localStorage })
 
 export const mutations = {
@@ -18,8 +18,11 @@ export const mutations = {
     Storage.set(THEME_BG_COLOR, color, ex)
     state.themeBackgroundColor=color
   },
+  UPDATE_THEME_BG_MENU: (state: IThemeState, color: string) => {
+    const ex = 7 * 24 * 60 * 60 * 1000//过期时间
+    Storage.set(THEME_BG_MENU, color, ex)
+    state.themeMenu=color
+  },
 
-  // UPDATE_VISITED_VIEW: (state: IThemeState, view) => {
-  //   state.visitedViews.some(v => v.name === view.name)
-  // }
+
 }

@@ -2,7 +2,7 @@
  * @Description: 公用全局函数
  * @Author: Gavin
  * @Date: 2021-09-10 10:27:47
- * @LastEditTime: 2021-12-15 11:32:22
+ * @LastEditTime: 2021-12-16 14:26:59
  * @LastEditors: Gavin
  */
 
@@ -25,7 +25,6 @@ export function getPointerLocationByElement(element: MaybeRef<HTMLElement | HTML
     pointerLocation.x = e.clientX
     pointerLocation.y = e.clientY
   })
-
   return pointerLocation
 
 }

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 16:50:22
- * @LastEditTime: 2021-12-16 12:23:21
+ * @LastEditTime: 2021-12-16 13:27:08
  * @LastEditors: Gavin
 -->
 
@@ -14,7 +14,7 @@
     v-bind="$attrs"
   >
     <template #icon>
-      <icon-font :style="{fontSize:fontSize}" :type="menuItem.meta.icon" />
+      <icon-font :style="{ fontSize: fontSize }" :type="menuItem.meta.icon" />
     </template>
     <template #title>
       <span>{{ menuItem?.meta?.title }}</span>
@@ -22,7 +22,7 @@
     <template v-for="item in menuItem.children" :key="item.name">
       <a-menu-item v-if="!item.children" :key="item.name">
         <template #icon>
-          <icon-font :style="{fontSize:fontSize}"  :type="item.meta.icon" />
+          <icon-font :style="{ fontSize: fontSize }" :type="item.meta.icon" />
         </template>
 
         <span>{{ item?.meta?.title }}</span>
@@ -35,7 +35,10 @@
   <!-- 默认读only第一个子集 -->
   <a-menu-item v-else :key="menuItem?.children?.[0].name">
     <template #icon>
-      <icon-font :style="{fontSize:fontSize}"  :type="menuItem?.children?.[0]?.meta.icon" />
+      <icon-font
+        :style="{ fontSize: fontSize }"
+        :type="menuItem?.children?.[0]?.meta.icon"
+      />
     </template>
     <span>{{ menuItem?.children?.[0]?.meta?.title }}</span>
   </a-menu-item>
@@ -62,7 +65,7 @@ const menuItem = {}
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 // import MenuItemChild from './MenuItem.vue'
-
+import { useStore } from 'vuex'
 export default defineComponent({
   name: 'MenuItem',
   components: {
@@ -77,13 +80,14 @@ export default defineComponent({
   },
 
   setup(props) {
+    const $store = useStore()
     //变量css太香了呀
     const fontSize = computed(() => (props.collapsed ? '21px' : '16px'))
-    // const fontWidth = computed(() => props.collapsed ? '38px' : '0px')
+    const themeMenu = computed(() => $store.getters.themeMenu)
 
     return {
       fontSize,
-      // fontWidth,
+      themeMenu
     }
   },
 })
@@ -93,23 +97,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 :deep(.ant-menu-item-icon) {
-  font-size: v-bind(fontSize);
-  // margin-right: v-bind(fontWidth);
   margin-left: 3px;
-
-
 }
-
-
 
 :deep(.ant-menu-item-selected) {
   background-color: #304156;
 }
-
-
 </style>
 <style  >
-.ant-menu-item-selected {
-  background-color: #304156 !important;
+#menu-warp .ant-menu-item-selected {
+  background-color: v-bind(themeMenu) !important;
 }
 </style>

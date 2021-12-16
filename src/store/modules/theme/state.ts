@@ -2,7 +2,7 @@
  * @Description: state定义
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-11-03 16:16:24
+ * @LastEditTime: 2021-12-16 13:25:57
  * @LastEditors: Gavin
  */
 // import { createStorage } from '@/utils/Storage'
@@ -11,13 +11,14 @@
 
 
 import {RouteRecordRaw } from 'vue-router'
-import {THEME_BG_COLOR} from '@/store/store-enum'
+import {THEME_BG_COLOR,THEME_BG_MENU} from '@/store/store-enum'
 import { createStorage } from '@/utils/storage'
 const Storage = createStorage({ storage: localStorage })
 
 export type IThemeState = {
   themeBackgroundColor:string,
   themeText:string,
+  themeMenu:string,
   themeStyle:boolean
 
 }
@@ -25,5 +26,6 @@ export type IThemeState = {
 export const state: IThemeState = {
   themeBackgroundColor:Storage.get(THEME_BG_COLOR)||"#55acee",
   themeText:"",
+  themeMenu:Storage.get(THEME_BG_MENU)||"#304156",
   themeStyle:false
 }

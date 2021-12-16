@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-09-03 11:44:02
+ * @LastEditTime: 2021-12-16 14:33:36
  * @LastEditors: Gavin
  */
 import { ActionContext } from 'vuex'
@@ -21,9 +21,15 @@ export const actions = {
 
   // },
 
-  addVisitedView({ commit }: ActionContext<IThemeState, IStore>, view) {
+  // addVisitedView({ commit }: ActionContext<IThemeState, IStore>, view) {
 
-  },
+  // },
+
+  resetTheme({commit}: ActionContext<IThemeState  , IStore>){
+    commit('UPDATE_THEME_BG_COLOR',"#55acee")
+    commit('UPDATE_THEME_BG_MENU',"#304156")
+      
+  }
 
 
 }
