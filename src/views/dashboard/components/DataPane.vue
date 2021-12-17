@@ -2,17 +2,17 @@
  * @Description: 图表战术
  * @Author: Gavin
  * @Date: 2021-09-17 14:04:41
- * @LastEditTime: 2021-10-19 16:53:54
+ * @LastEditTime: 2021-12-17 18:51:05
  * @LastEditors: Gavin
 -->
 <template>
-  <a-card title="雷达图" style="width: 300px;float:left;">
+  <a-card title="雷达图" style="width: 33%;float:left;">
     <div ref="charts1" :style="{ height: '16rem', width: '100%' }"></div>
   </a-card>
-  <a-card title="饼图" style="width: 300px;float:left;">
+  <a-card title="饼图" style="width: 33%;float:left;">
     <div ref="charts2" :style="{ height: '16rem', width: '100%' }"></div>
   </a-card>
-    <a-card title="折线图" style="width: 300px;float:left;">
+    <a-card title="折线图" style="width: 33%;float:left;">
     <div ref="charts3" :style="{ height: '16rem', width: '100%' }"></div>
   </a-card>
 </template>
