@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-12-16 13:07:29
+ * @LastEditTime: 2021-12-16 19:02:51
  * @LastEditors: Gavin
 -->
 
@@ -10,13 +10,13 @@
   <a-menu
     v-model:open-keys="state.openKeys"
     v-model:selected-keys="state.selectedKeys"
-    mode="inline"
+    :mode="sideModel"
     theme="dark"
     @click="clickMenuItem"
     id="menu-warp"
   >
     <template v-for="item in menus" :key="item.name">
-      <menu-item :menu-item="item" :collapsed="collapsed" />
+      <menu-item :menu-item="item" :collapsed="collapsed"  />
     </template>
   </a-menu>
 </template>
@@ -37,6 +37,10 @@ const props = defineProps({
 const $route = useRoute()
 const $router = useRouter()
 const $store = useStore()
+
+const sideModel= computed(()=>{
+  return $store.getters.sideModel
+})
 //加载菜单
 const menus =
   computed(() =>

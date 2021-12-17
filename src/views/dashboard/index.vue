@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-06 16:01:27
+ * @LastEditTime: 2021-12-17 18:40:39
  * @LastEditors: Gavin
 -->
 <template>
-  <div class="app-container bg-fff">
-    <a-card title="Dashboard" >
+  <div class="dashboard">
+    <a-card title="Dashboard">
       <a-row a-row type="flex" justify="space-around">
         <a-col :span="1" class="avatar">
           <a-avatar :size="64" :src="userInfo.avatar">
@@ -39,19 +39,30 @@
       </a-row>
     </a-card>
 
-    <a-tabs v-model:activeKey="activeKey">
+    <a-row type="flex" justify="start" >
+      <a-col :span="17">
+        <component :is="DataPane" />
+      </a-col>
+      <a-col :span="7">
+        <component :is="MessageBoard"    />
+      </a-col>
+    </a-row>
+
+    <!-- <a-tabs v-model:activeKey="activeKey">
       <a-tab-pane key="1" tab="图表页">
         <component :is="DataPane" />
       </a-tab-pane>
       <a-tab-pane key="2" tab="留言板">
         <component :is="MessageBoard" />
       </a-tab-pane>
-    </a-tabs>
+    </a-tabs>-->
+    <ToolRank />
   </div>
 </template>
 <script  lang='ts' setup >
 import DataPane from './components/DataPane.vue'
 import MessageBoard from './components/MessageBoard.vue'
+import ToolRank from './components/ToolRank.vue'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 import {
@@ -66,9 +77,6 @@ const userInfo = computed(() => {
 })
 const activeKey = ref('1')
 
-
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -82,7 +90,12 @@ const activeKey = ref('1')
 }
 
 .greeting {
-  line-height: 64px;
+  // line-height: 64px;
   font-size: 18px;
+}
+.dashboard {
+  & > * {
+    margin-bottom: 10px;
+  }
 }
 </style>

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-12-16 14:33:36
+ * @LastEditTime: 2021-12-16 18:34:03
  * @LastEditors: Gavin
  */
 import { ActionContext } from 'vuex'
@@ -28,6 +28,7 @@ export const actions = {
   resetTheme({commit}: ActionContext<IThemeState  , IStore>){
     commit('UPDATE_THEME_BG_COLOR',"#55acee")
     commit('UPDATE_THEME_BG_MENU',"#304156")
+    commit('UPDATE_THEME_SIDE_MODEL',"inline")
       
   }
 

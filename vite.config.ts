@@ -2,10 +2,10 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-01 18:18:25
+ * @LastEditTime: 2021-12-17 16:29:23
  * @LastEditors: Gavin
  */
-import { UserConfig , ConfigEnv } from 'vite'
+import { UserConfig, ConfigEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 // import eruda from 'vite-plugin-eruda'//调试工具
@@ -71,7 +71,16 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       host: '0.0.0.0',
       open: true,
+      proxy: {
+
+        '/api/repos': {
+          target: 'https://api.github.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        },
+      }
     },
+
     css: {
       preprocessorOptions: {
         less: {
@@ -86,7 +95,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         }
       }
     },
-    plugins: [vue(),vueJsx(),viteCompression({ deleteOriginFile: true }),imagemin(),viteMockServe({supportTs: true})]
+    plugins: [vue(), vueJsx(), viteCompression({ deleteOriginFile: true }), imagemin(), viteMockServe({ supportTs: true })]
   }
 
 }

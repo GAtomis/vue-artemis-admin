@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 16:50:22
- * @LastEditTime: 2021-12-16 13:27:08
+ * @LastEditTime: 2021-12-17 11:18:32
  * @LastEditors: Gavin
 -->
 
@@ -87,7 +87,7 @@ export default defineComponent({
 
     return {
       fontSize,
-      themeMenu
+      themeMenu,
     }
   },
 })
@@ -104,8 +104,18 @@ export default defineComponent({
   background-color: #304156;
 }
 </style>
-<style  >
-#menu-warp .ant-menu-item-selected {
-  background-color: v-bind(themeMenu) !important;
+<style  lang="scss">
+#menu-warp {
+  .ant-menu-item-selected,
+  .ant-menu-item:hover,
+  .ant-menu-item-active {
+    background-color: v-bind(themeMenu) !important;
+  }
 }
+  .ant-menu-item-selected,
+  .ant-menu-item:hover,
+  .ant-menu-item-active {
+    background-color: v-bind(themeMenu) !important;
+  }
+
 </style>

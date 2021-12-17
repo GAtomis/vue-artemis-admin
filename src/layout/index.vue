@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-12-09 15:46:12
+ * @LastEditTime: 2021-12-16 18:59:33
  * @LastEditors: Gavin
 -->
 <template>
@@ -10,27 +10,45 @@
   <a-layout class="layout">
     <!-- 侧边栏 -->
     <a-layout-sider
+   
       v-model:collapsed="collapsed"
       :style="{ overflow: 'auto', height: '100vh' }"
       :trigger="null"
-      collapsible
+      collapsible   v-if="sideModel=='inline'"
     >
-      <!-- 侧边栏菜单 可以插槽-->
-      <artms-sidebar :collapsed="collapsed" />
+    <!-- 侧边栏菜单 可以插槽-->
+    <artms-sidebar :collapsed="collapsed" />
     </a-layout-sider>
-
+    <a-layout-header :style="{ overflow: 'auto' }" style="display: flex"    v-if="sideModel=='horizontal'">
+      <artms-sidebar :collapsed="collapsed">
+        <template #logo>
+          <div>
+            <img src="~@/assets/typescript-logo.jpg" width="32" height="32" />
+            <span
+              :class="{ anticon: collapsed }"
+              style="color: #fff; font-size: 16px; white-space: nowrap;margin-left:10px;"
+              >Artemis Admin</span
+            >
+          </div>
+        </template>
+      </artms-sidebar>
+    </a-layout-header>
     <!-- 右边区域  包括头部 内容显示区域 -->
 
     <a-layout :style="{ overflow: 'auto', height: '100vh' }">
       <a-layout-header style="background: #fff; padding: 0; height: 50px">
         <artms-navbar>
-          <template #collapsed>
+          <template #collapsed    v-if="sideModel=='inline'">
             <menu-unfold-outlined
               v-if="collapsed"
               class="trigger"
               @click="() => (collapsed = !collapsed)"
             />
-            <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+            <menu-fold-outlined
+              v-else
+              class="trigger"
+              @click="() => (collapsed = !collapsed)"
+            />
           </template>
         </artms-navbar>
       </a-layout-header>
@@ -78,10 +96,11 @@ const offsetWidth = document.body.offsetWidth
 const op = computed(() => {
   return offsetWidth - pointerLocation.x > offsetWidth * 0.08 ? 0 : 1
 })
+
+const sideModel= computed(()=>{
+  return $store.getters.sideModel
+})
 const storage = useStorage<boolean>('storg', true, sessionStorage)
-
-
-
 </script>
 <style lang="scss" scope>
 .layout {

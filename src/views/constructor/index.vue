@@ -2,7 +2,7 @@
  * @Description: Constructor
  * @Author: Gavin
  * @Date: 2021-11-30 18:30:19
- * @LastEditTime: 2021-12-08 12:00:41
+ * @LastEditTime: 2021-12-17 15:53:33
  * @LastEditors: Gavin
 -->
 <template>
@@ -22,14 +22,18 @@
           <template #item="{ element }">
             <div class="type-group-item">
               <a-tooltip :title="element.style" color="cyan">
-                <img :src="element.imgUrl" />
+                <a-image
+                  :src="element.imgUrl"
+                  :preview="false"
+                  fallback="https://aliyuncdn.antdv.com/logo.png"
+                />
               </a-tooltip>
             </div>
           </template>
         </draggable>
       </a-col>
       <a-col
-        :span="12"
+        :span="11"
         style="overflow: hidden; overflow-y: auto; max-height: 100%"
         class="warp bg-fff app-container"
       >
@@ -41,7 +45,7 @@
           :component-data="{
             tag: 'div',
             type: 'transition-group',
-            name: !drag ? 'flip-list' : null
+            name: !drag ? 'flip-list' : null,
           }"
           v-bind="dragOptions"
           @start="drag = true"
@@ -62,7 +66,7 @@
           </template>
         </draggable>
       </a-col>
-      <a-col :span="6" class="warp bg-fff app-container">
+      <a-col :span="7" class="warp bg-fff app-container">
         <h3>PropertySelection</h3>
         <a-form
           ref="formRef"
@@ -80,16 +84,21 @@
               v-model:value="formState.style"
               placeholder="please select your type"
               @change="onChangeType"
-              :disabled="formState.type==TypeEnum.EMPTY"
+              :disabled="formState.type == TypeEnum.EMPTY"
             >
               <a-select-option
-                v-for=" typeItem of typeList1"
+                v-for="typeItem of typeList1"
                 :key="typeItem.formItemId"
                 :value="typeItem.style"
-              >{{ typeItem.style }}</a-select-option>
+                >{{ typeItem.style }}</a-select-option
+              >
             </a-select>
           </a-form-item>
-          <component :is="expendComp[formState.type]" :item="formState" :key="formState.formItemId"></component>
+          <component
+            :is="expendComp[formState.type]"
+            :item="formState"
+            :key="formState.formItemId"
+          ></component>
         </a-form>
       </a-col>
     </a-row>
@@ -99,7 +108,7 @@
 <script lang='ts' setup>
 import { ref, reactive, watch, computed } from 'vue'
 import draggable from 'vuedraggable'
-import { Radio, Empty,Option} from './type/type'
+import { Radio, Empty, Option } from './type/type'
 import { RadioItem, EmptyItem, RadioBox, EmptyBox } from './components'
 import { TypeEnum } from './enmu/enum'
 import radioIcon from '@/assets/img/radio-icon.png'
@@ -107,27 +116,40 @@ import { useCloneByJSON } from '@/hooks/global/common'
 import faker from 'faker'
 import { provide } from 'vue'
 
-
 type Type = Radio | Empty
 //***************ControlArea****************
 const typeList1 = ref<Type[]>([
-  new Radio('Radio1', undefined, radioIcon ),
-  new Radio('DIY', [new Option("newday if 1",true),new Option("towday if 444",true),new Option("3234 if 2134",true),new Option("towday if 444",true)], undefined,undefined,false),
-]),
-  onClone = (item: any) => useCloneByJSON<Type>(item, res => {
-    res.formItemId = faker.datatype.number()
-    reactive(res)
-  }),
+    new Radio('Radio1', undefined, radioIcon),
+    new Radio(
+      'DIY',
+      [
+        new Option('newday if 1', true),
+        new Option('towday if 444', true),
+        new Option('3234 if 2134', true),
+        new Option('towday if 444', true),
+      ],
+      undefined,
+      undefined,
+      false
+    ),
+  ]),
+  onClone = (item: any) =>
+    useCloneByJSON<Type>(item, (res) => {
+      res.formItemId = faker.datatype.number()
+      reactive(res)
+    }),
   onMove = (e) => {
-    const targetId = e.relatedContext.element && e.relatedContext.element.formItemId || 0
+    const targetId =
+      (e.relatedContext.element && e.relatedContext.element.formItemId) || 0
     const newArr = typeList1.value
-    const action = newArr.map(item => {
-      return item.formItemId
-    }).includes(targetId)
+    const action = newArr
+      .map((item) => {
+        return item.formItemId
+      })
+      .includes(targetId)
 
     return !action
   }
-
 
 //***************ControlArea****************
 //***************FormDisplay****************
@@ -137,13 +159,12 @@ const rules = {},
     [TypeEnum.RADIO]: RadioBox,
   },
   contentList = ref<Type[]>([new Empty()]),
-
   dragOptions = computed(() => {
     return {
       animation: 200,
-      group: "people",
+      group: 'people',
       disabled: false,
-      ghostClass: "ghost"
+      ghostClass: 'ghost',
     }
   }),
   drag = ref(false)
@@ -166,7 +187,6 @@ watch(
 //***************PropertySelection****************
 //ref=>dom
 
-
 const formRef = ref(),
   labelCol = { span: 5 },
   wrapperCol = { span: 14 },
@@ -177,17 +197,21 @@ const formRef = ref(),
   currentIndex = ref(0),
   formState = ref<Type>(new Empty()),
   onChangeType = (value) => {
-
-    typeList1.value.find(item => item.style === value)&&selectContent(contentList.value[currentIndex.value] = onClone(typeList1.value.find(item => item.style === value)), currentIndex.value)
+    typeList1.value.find((item) => item.style === value) &&
+      selectContent(
+        (contentList.value[currentIndex.value] = onClone(
+          typeList1.value.find((item) => item.style === value)
+        )),
+        currentIndex.value
+      )
   },
   selectContent = (item, index) => {
-    formState.value = item;
+    formState.value = item
     currentIndex.value = index
   }
 provide('labelCol', labelCol)
 provide('wrapperCol', wrapperCol)
 //***************PropertySelection****************
-
 </script>
 
 <style scoped lang='scss'>

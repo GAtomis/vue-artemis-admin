@@ -2,7 +2,7 @@
  * @Description: Global Select  
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-12-16 15:56:55
+ * @LastEditTime: 2021-12-16 18:35:06
  * @LastEditors: Gavin
 -->
 <template>
@@ -39,6 +39,20 @@
             v-model="formState.color"
           />
         </a-form-item>
+        <a-form-item :wrapperCol="{ span: 24 }">
+          <a-radio-group v-model:value="formState.sideModel" name="radioGroup">
+            <a-radio value="inline">
+              <a-image
+                :width="90"
+                src="https://corp-wecom-cdn.elcapp.cn/bb_test/material/image/20211216/20809349060934031.png"
+            /></a-radio>
+            <a-radio value="horizontal">
+              <a-image
+                :width="90"
+                src="https://corp-wecom-cdn.elcapp.cn/bb_test/material/image/20211216/20809386032210468.png"
+            /></a-radio>
+          </a-radio-group>
+        </a-form-item>
         <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
           <a-button type="primary" @click="onReset" style="margin-right: 10px"
             >RESET</a-button
@@ -73,6 +87,7 @@ interface FormState {
   tabViews: boolean
   color: string
   themeMenu: string
+  sideModel: string
   checked: boolean
 }
 
@@ -82,6 +97,7 @@ const defaultForm = (): FormState => {
     color: $store.state.theme.themeBackgroundColor,
     checked: $store.state.theme.themeStyle,
     themeMenu: $store.state.theme.themeMenu,
+    sideModel:$store.state.theme.sideModel
   }
 }
 const formState: UnwrapRef<FormState> = reactive<FormState>(defaultForm())
@@ -92,6 +108,7 @@ watch(
     $store.commit('tagsView/UPDATE_IS_SHOW', nVal.tabViews)
     $store.commit('theme/UPDATE_THEME_BG_COLOR', nVal.color)
     $store.commit('theme/UPDATE_THEME_BG_MENU', nVal.themeMenu)
+    $store.commit('theme/UPDATE_THEME_SIDE_MODEL', nVal.sideModel)
   },
   { deep: true }
 )

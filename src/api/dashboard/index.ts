@@ -2,7 +2,7 @@
  * @Description: axios api
  * @Author: Gavin
  * @Date: 2021-08-04 14:12:56
- * @LastEditTime: 2021-10-19 14:03:12
+ * @LastEditTime: 2021-12-17 16:48:27
  * @LastEditors: Gavin
  */
 import http from '@/utils/axios'
@@ -29,6 +29,22 @@ type comment ={
     {
       //序列化.data取值
       isTransformRequestResult: true,
+  
+    }
+  )
+}
+/**
+ * @description: 获取用户信息
+ */
+ export function getToolList() {
+  return http.request(
+    {
+      url:"/repos/Microsoft/TypeScript",
+      method: 'get',
+    },
+    {
+      //序列化.data取值
+      isTransformRequestResult: !true,
   
     }
   )

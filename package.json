@@ -41,5 +41,8 @@
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china"
+  },
+  "engines": {
+    "node": "^12 || >=14"
   }
 }

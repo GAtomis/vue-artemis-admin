@@ -2,52 +2,54 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2021-12-14 18:43:39
+ * @LastEditTime: 2021-12-17 18:36:44
  * @LastEditors: Gavin
 -->
 <template>
   <div>
-    <a-comment v-for="(item, index) in comments" :key="index">
-      <template #actions>
-        <span key="comment-basic-like">
-          <a-tooltip title="Like">
-            <template v-if="item.action">
-              <LikeFilled @click="like(item, - 1)" />
-            </template>
-            <template v-else>
-              <LikeOutlined @click="like(item, 1)" />
-            </template>
+    <a-card title="chart">
+      <a-comment v-for="(item, index) in comments" :key="index">
+        <template #actions>
+          <span key="comment-basic-like">
+            <a-tooltip title="Like">
+              <template v-if="item.action">
+                <LikeFilled @click="like(item, - 1)" />
+              </template>
+              <template v-else>
+                <LikeOutlined @click="like(item, 1)" />
+              </template>
+            </a-tooltip>
+            <span style="padding-left: 8px; cursor: auto">{{ item.like }}</span>
+          </span>
+          <span key="comment-basic-dislike">
+            <a-tooltip title="Dislike">
+              <template v-if="item.action1">
+                <DislikeFilled @click="dislike(item, - 1)" />
+              </template>
+              <template v-else>
+                <DislikeOutlined @click="dislike(item, 1)" />
+              </template>
+            </a-tooltip>
+            <span style="padding-left: 8px; cursor: auto">{{ item.unlike }}</span>
+          </span>
+          <span key="comment-basic-reply-to">Reply to</span>
+        </template>
+        <template #author>
+          <a>{{ item.name }}</a>
+        </template>
+        <template #avatar>
+          <a-avatar :src="item.avatar" :alt="item.name" />
+        </template>
+        <template #content>
+          <p>{{ `Hellow! I'm ${item.name},${item.content}. I'm looking forward to seeing you next time` }}</p>
+        </template>
+        <template #datetime>
+          <a-tooltip :title="moment().format('YYYY-MM-DD HH:mm:ss')">
+            <span>{{ moment().fromNow() }}</span>
           </a-tooltip>
-          <span style="padding-left: 8px; cursor: auto">{{ item.like }}</span>
-        </span>
-        <span key="comment-basic-dislike">
-          <a-tooltip title="Dislike">
-            <template v-if="item.action1">
-              <DislikeFilled @click="dislike(item, - 1)" />
-            </template>
-            <template v-else>
-              <DislikeOutlined @click="dislike(item,   1)" />
-            </template>
-          </a-tooltip>
-          <span style="padding-left: 8px; cursor: auto">{{ item.unlike }}</span>
-        </span>
-        <span key="comment-basic-reply-to">Reply to</span>
-      </template>
-      <template #author>
-        <a>{{ item.name }}</a>
-      </template>
-      <template #avatar>
-        <a-avatar :src="item.avatar" :alt="item.name" />
-      </template>
-      <template #content>
-        <p>{{ `Hellow! I'm ${item.name},${item.content}. I'm looking forward to seeing you next time` }}</p>
-      </template>
-      <template #datetime>
-        <a-tooltip :title="moment().format('YYYY-MM-DD HH:mm:ss')">
-          <span>{{ moment().fromNow() }}</span>
-        </a-tooltip>
-      </template>
-    </a-comment>
+        </template>
+      </a-comment>
+    </a-card>
   </div>
 </template>
 
@@ -57,7 +59,7 @@ import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-d
 import { ref, onMounted, reactive } from 'vue';
 import { getComments } from "@/api/dashboard/index"
 import { useStore } from 'vuex'
-import type {UserInfo} from '@/utils/interface/index'
+import type { UserInfo } from '@/utils/interface/index'
 
 const $store = useStore();
 let comments = ref<Array<UserInfo>>([])
@@ -74,13 +76,13 @@ onMounted(() => {
 
 const like = (item, index) => {
 
-  item.like = item.like+index
+  item.like = item.like + index
   item.action = !item.action
 };
 
 const dislike = (item, index) => {
 
-  item.unlike = item.unlike+index
+  item.unlike = item.unlike + index
   item.action1 = !item.action1
 };
 

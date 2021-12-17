@@ -2,12 +2,13 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-09 12:26:22
- * @LastEditTime: 2021-12-16 14:26:53
+ * @LastEditTime: 2021-12-16 17:23:46
  * @LastEditors: Gavin
 -->
 
 <template>
   <slot name="logo">
+      <!-- 侧边栏标题 -->
     <div class="logo" :class="{ collapsed: collapsed }">
       <img src="~@/assets/typescript-logo.jpg" />
       <span
@@ -21,7 +22,7 @@
     <menu-list :collapsed="collapsed" />
   </slot>
 
-  <!-- 侧边栏标题 -->
+
 </template>
 <script lang='ts' setup>
 import MenuList from './components/MenuList.vue'
