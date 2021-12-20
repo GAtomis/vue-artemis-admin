@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-17 18:49:31
+ * @LastEditTime: 2021-12-20 11:27:37
  * @LastEditors: Gavin
 -->
 <template>
@@ -69,13 +69,12 @@ import {
   UserOutlined
 } from '@ant-design/icons-vue';
 
-import { ref } from 'vue';
 
 const $store = useStore()
 const userInfo = computed(() => {
   return $store.getters.userInfo
 })
-const activeKey = ref('1')
+// const activeKey = ref('1')
 
 </script>
 
