@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-08-09 14:22:59
+ * @LastEditTime: 2021-12-21 16:31:21
  * @LastEditors: Gavin
  */
 import { createApp } from 'vue'
@@ -12,8 +12,6 @@ import { setupStore } from '@/store'
 import router, { setupRouter } from './router'
 import {registerIconComponents} from '@/components/Iconfont/Iconfont'
 import Antd from 'ant-design-vue';
-
-
 
 
 const app = createApp(App);
