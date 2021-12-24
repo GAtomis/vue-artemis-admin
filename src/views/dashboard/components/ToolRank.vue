@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-17 16:01:05
- * @LastEditTime: 2021-12-17 18:27:14
+ * @LastEditTime: 2021-12-24 13:50:31
  * @LastEditors: Gavin
 -->
 <template>
@@ -62,20 +62,20 @@ const toolList: Tool[] = [
     tags: ["Vue.js", "Nuxt.js", "Webpack"],
     tagColor: "#41B883"
   },
-  {
-    title: "Wechat",
-    cover: 'https://www.tslang.cn/assets/images/examples/wechat.png',
-    des: "从此入门指南开始使用TypeScript构建微信小程序。立刻尝试！",
-    tags: ["WeChat", "Node.js", "Express"],
-    tagColor: "#9cc24b"
-  },
-  {
-    title: "Express",
-    cover: 'https://www.tslang.cn/assets/images/examples/node.png',
-    des: "查看这个使用Express + MongoDB + TypeScript的新手项目，以了解为什么说TypeScript和Node.js是完美的组合。",
-    tags: ["Node.js", "Express", "Webpack"],
-    tagColor: "#9cc24b"
-  },
+  // {
+  //   title: "Wechat",
+  //   cover: 'https://www.tslang.cn/assets/images/examples/wechat.png',
+  //   des: "从此入门指南开始使用TypeScript构建微信小程序。立刻尝试！",
+  //   tags: ["WeChat", "Node.js", "Express"],
+  //   tagColor: "#9cc24b"
+  // },
+  // {
+  //   title: "Express",
+  //   cover: 'https://www.tslang.cn/assets/images/examples/node.png',
+  //   des: "查看这个使用Express + MongoDB + TypeScript的新手项目，以了解为什么说TypeScript和Node.js是完美的组合。",
+  //   tags: ["Node.js", "Express", "Webpack"],
+  //   tagColor: "#9cc24b"
+  // },
 
 ]
 

@@ -2,55 +2,53 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2021-12-24 12:00:48
+ * @LastEditTime: 2021-12-24 13:44:18
  * @LastEditors: Gavin
 -->
 <template>
-  <div class="chart">
-    <a-card title="chart">
-      <a-comment v-for="(item, index) in comments" :key="index">
-        <template #actions>
-          <span key="comment-basic-like">
-            <a-tooltip title="Like">
-              <template v-if="item.action">
-                <LikeFilled @click="like(item, - 1)" />
-              </template>
-              <template v-else>
-                <LikeOutlined @click="like(item, 1)" />
-              </template>
-            </a-tooltip>
-            <span style="padding-left: 8px; cursor: auto">{{ item.like }}</span>
-          </span>
-          <span key="comment-basic-dislike">
-            <a-tooltip title="Dislike">
-              <template v-if="item.action1">
-                <DislikeFilled @click="dislike(item, - 1)" />
-              </template>
-              <template v-else>
-                <DislikeOutlined @click="dislike(item, 1)" />
-              </template>
-            </a-tooltip>
-            <span style="padding-left: 8px; cursor: auto">{{ item.unlike }}</span>
-          </span>
-          <span key="comment-basic-reply-to">Reply to</span>
-        </template>
-        <template #author>
-          <a>{{ item.name }}</a>
-        </template>
-        <template #avatar>
-          <a-avatar :src="item.avatar" :alt="item.name" />
-        </template>
-        <template #content>
-          <p>{{ `Hellow! I'm ${item.name},${item.content}. I'm looking forward to seeing you next time` }}</p>
-        </template>
-        <template #datetime>
-          <a-tooltip :title="moment().format('YYYY-MM-DD HH:mm:ss')">
-            <span>{{ moment().fromNow() }}</span>
+  <a-card title="chart" class="chart">
+    <a-comment v-for="(item, index) in comments" :key="index">
+      <template #actions>
+        <span key="comment-basic-like">
+          <a-tooltip title="Like">
+            <template v-if="item.action">
+              <LikeFilled @click="like(item, - 1)" />
+            </template>
+            <template v-else>
+              <LikeOutlined @click="like(item, 1)" />
+            </template>
           </a-tooltip>
-        </template>
-      </a-comment>
-    </a-card>
-  </div>
+          <span style="padding-left: 8px; cursor: auto">{{ item.like }}</span>
+        </span>
+        <span key="comment-basic-dislike">
+          <a-tooltip title="Dislike">
+            <template v-if="item.action1">
+              <DislikeFilled @click="dislike(item, - 1)" />
+            </template>
+            <template v-else>
+              <DislikeOutlined @click="dislike(item, 1)" />
+            </template>
+          </a-tooltip>
+          <span style="padding-left: 8px; cursor: auto">{{ item.unlike }}</span>
+        </span>
+        <span key="comment-basic-reply-to">Reply to</span>
+      </template>
+      <template #author>
+        <a>{{ item.name }}</a>
+      </template>
+      <template #avatar>
+        <a-avatar :src="item.avatar" :alt="item.name" />
+      </template>
+      <template #content>
+        <p>{{ `Hellow! I'm ${item.name},${item.content}. I'm looking forward to seeing you next time` }}</p>
+      </template>
+      <template #datetime>
+        <a-tooltip :title="moment().format('YYYY-MM-DD HH:mm:ss')">
+          <span>{{ moment().fromNow() }}</span>
+        </a-tooltip>
+      </template>
+    </a-comment>
+  </a-card>
 </template>
 
 <script lang='ts' setup>
@@ -90,7 +88,7 @@ const dislike = (item, index) => {
 </script>
 
 <style scoped lang='scss'>
-.chart{
-  height:100%;
+.chart {
+  height: 100%;
 }
 </style>
