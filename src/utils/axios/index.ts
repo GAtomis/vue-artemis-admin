@@ -21,7 +21,7 @@ import { setObjToUrlParams } from './urlUtils'
 
 import { RequestOptions, Result } from './types'
 
-const isDev = import.meta.env.DEV 
+const isDev = import.meta.env.DEV
 import router from '@/router'
 import store from '@/store'
 import { storage } from '@/utils/storage'
@@ -46,8 +46,8 @@ const transform: AxiosTransform = {
 
     const { data } = res
     //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-  
-    
+
+
     const { code, result, message } = data
     // 请求成功
     const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS
@@ -167,29 +167,35 @@ const transform: AxiosTransform = {
    * @description: 请求拦截器处理
    */
   requestInterceptors: (config) => {
-   
-    
-    
-    
+
+
+
+
     // 请求之前处理config
-    const token = store.state.user.token
+    const token = store.getters.token
+
     if (token) {
+      // console.error(token);
+
       // jwt token
-      config.headers.token = token
+
+      const tokens = { Authorization: token };
+      Object.assign(config.headers, tokens);
+
     }
     return config
   },
-  responseInterceptors:(response:AxiosResponse<any>):any=>{
-      // const {data}=response
-      console.log(response);
-      
-      if(response?.data?.code===405){
+  responseInterceptors: (response: AxiosResponse<any>): any => {
+    // const {data}=response
+    console.log(response);
 
-        Message.error(response?.data?.message)
-          return Promise.reject(new Error(response?.data?.message || 'Error'))
-      }
-      
-        
+    if (response?.data?.code === 405) {
+
+      Message.error(response?.data?.message)
+      return Promise.reject(new Error(response?.data?.message || 'Error'))
+    }
+
+
     return response
   },
 
@@ -220,7 +226,7 @@ const transform: AxiosTransform = {
     const isCancel = axios.isCancel(error)
     if (!isCancel) {
       // console.error(error);
-      
+
       checkStatus(error.response && error.response.status, msg)
     } else {
       console.warn(error, '请求被取消！')

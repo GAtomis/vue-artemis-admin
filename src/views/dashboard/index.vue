@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-20 11:27:37
+ * @LastEditTime: 2021-12-24 11:59:48
  * @LastEditors: Gavin
 -->
 <template>
@@ -39,12 +39,12 @@
       </a-row>
     </a-card>
 
-    <a-row type="flex" justify="start" >
-      <a-col :span="17">
-        <component :is="DataPane" />
+    <a-row type="flex" justify="start" style="height:370px;">
+      <a-col :span="17" >
+        <component :is="DataPane"/>
       </a-col>
-      <a-col :span="7">
-        <component :is="MessageBoard"    />
+      <a-col :span="7" >
+        <component :is="MessageBoard"   />
       </a-col>
     </a-row>
 

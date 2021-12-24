@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-20 14:51:12
- * @LastEditTime: 2021-10-26 17:02:43
+ * @LastEditTime: 2021-12-24 11:51:16
  * @LastEditors: Gavin
  */
 import { ActionContext } from 'vuex'
@@ -27,6 +27,7 @@ export const actions = {
       storage.set(ACCESS_TOKEN, response.token, ex)
       storage.set(CACHE_USERNAME, username, ex)
       commit('setUserName',username)
+      commit('setToken',response.token)
       return Promise.resolve(response)
     } catch (e) {
       return Promise.reject(e)

@@ -2,11 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2021-12-17 18:36:44
+ * @LastEditTime: 2021-12-24 12:00:48
  * @LastEditors: Gavin
 -->
 <template>
-  <div>
+  <div class="chart">
     <a-card title="chart">
       <a-comment v-for="(item, index) in comments" :key="index">
         <template #actions>
@@ -90,4 +90,7 @@ const dislike = (item, index) => {
 </script>
 
 <style scoped lang='scss'>
+.chart{
+  height:100%;
+}
 </style>
