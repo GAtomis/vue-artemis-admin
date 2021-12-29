@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-24 13:48:11
+ * @LastEditTime: 2021-12-29 18:01:16
  * @LastEditors: Gavin
 -->
 <template>
   <div class="dashboard">
-    <a-card title="Dashboard">
+    <a-card title="Dashboard" >
       <a-row a-row type="flex" justify="space-around">
         <a-col :span="1" class="avatar">
           <a-avatar :size="64" :src="userInfo.avatar">
@@ -64,6 +64,7 @@ import DataPane from './components/DataPane.vue'
 import MessageBoard from './components/MessageBoard.vue'
 import ToolRank from './components/ToolRank.vue'
 import { useStore } from 'vuex'
+
 import { computed } from 'vue'
 import {
   UserOutlined
@@ -74,7 +75,9 @@ const $store = useStore()
 const userInfo = computed(() => {
   return $store.getters.userInfo
 })
+
 // const activeKey = ref('1')
+
 
 </script>
 
