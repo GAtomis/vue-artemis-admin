@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-16 17:04:43
- * @LastEditTime: 2021-11-03 18:58:08
+ * @LastEditTime: 2021-12-29 14:25:56
  * @LastEditors: Gavin
 -->
 
@@ -81,7 +81,7 @@ import { useFullscreen } from '@vueuse/core'
 import { getCurrentRoute } from '@/hooks/global/breadcrumb'
 import { getMenuList } from './hooks/avatarMenuHook'
 
-import { reactive, computed, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 
 //全屏hook
 const { isFullscreen, enter, exit, toggle } = useFullscreen()

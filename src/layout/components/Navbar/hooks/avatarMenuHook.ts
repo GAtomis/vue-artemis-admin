@@ -2,7 +2,7 @@
  * @Description: 头像hook
  * @Author: Gavin
  * @Date: 2021-08-26 11:46:16
- * @LastEditTime: 2021-09-06 23:24:54
+ * @LastEditTime: 2021-12-29 14:28:45
  * @LastEditors: Gavin
  */
 
@@ -31,7 +31,7 @@ export function getMenuList(): Array<MenuList> {
   return [{
     icon: UserOutlined, title: "Settings", handleEvent() {
 
-      $router.push({ path: '/userInfo', query: { from: 'navbar' } })
+      $router.push({ path: '/account/center', query: { from: 'navbar' } })
 
     }
   }, {
