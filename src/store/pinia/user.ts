@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-29 15:13:50
- * @LastEditTime: 2021-12-29 18:53:20
+ * @LastEditTime: 2021-12-30 18:54:04
  * @LastEditors: Gavin
  */
 import { defineStore } from 'pinia'
@@ -26,13 +26,13 @@ export type IUserState = {
 export default defineStore({
   id: "user",
   state: (): IUserState => ({
-    token: storage.get(ACCESS_TOKEN, ''),
+    token: storage.get(ACCESS_TOKEN, '') as string,
     name: '',
     welcome: '',
     avatar: '',
     roles: [],
     level: "",
-    username: storage.get(CACHE_USERNAME, ''),
+    username: storage.get(CACHE_USERNAME, '') as string,
     age: 0,
     jobType: '',
     catchPhrase: ''
@@ -40,9 +40,12 @@ export default defineStore({
   getters: {
     userInfo():IUserState{
 
-      return this.state
+      return this!.$state as IUserState
     },
-    token:(state:IStore)=>state.user.token,
+    token(){
+    
+     return  this.token
+    }
   },
   actions: {
     // ActionContext<S, R> s为state R为rootState

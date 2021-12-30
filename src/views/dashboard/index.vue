@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-29 18:01:16
+ * @LastEditTime: 2021-12-30 18:42:04
  * @LastEditors: Gavin
 -->
 <template>
@@ -64,6 +64,7 @@ import DataPane from './components/DataPane.vue'
 import MessageBoard from './components/MessageBoard.vue'
 import ToolRank from './components/ToolRank.vue'
 import { useStore } from 'vuex'
+import pinia from '@/store/pinia/user'
 
 import { computed } from 'vue'
 import {
@@ -75,6 +76,9 @@ const $store = useStore()
 const userInfo = computed(() => {
   return $store.getters.userInfo
 })
+
+console.log(pinia().userInfo,'pinia');
+
 
 // const activeKey = ref('1')
 
