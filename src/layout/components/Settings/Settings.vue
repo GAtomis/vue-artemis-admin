@@ -2,7 +2,7 @@
  * @Description: Global Select  
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-12-16 18:35:06
+ * @LastEditTime: 2021-12-31 15:37:52
  * @LastEditors: Gavin
 -->
 <template>
@@ -66,10 +66,11 @@
 
 <script lang='ts' setup>
 import { useDark, useToggle } from '@vueuse/core'
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import type { UnwrapRef } from 'vue'
 import type { FormProp } from '@/components/Form/interface'
 import { useStore } from 'vuex'
+import {useTheme} from '@/store/pinia/index'
 import { SettingFilled } from '@ant-design/icons-vue'
 
 const visible = ref<boolean>(false)

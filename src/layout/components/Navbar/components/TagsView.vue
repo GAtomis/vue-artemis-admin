@@ -2,7 +2,7 @@
  * @Description: 标签层机翻勿6^Gavin^
  * @Author: Gavin
  * @Date: 2021-09-01 14:05:34
- * @LastEditTime: 2021-11-19 17:40:21
+ * @LastEditTime: 2021-12-31 15:34:46
  * @LastEditors: Gavin
 -->
 <template>
@@ -35,15 +35,16 @@
 
 import { watch, watchEffect, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 import { filterChildren as filterAffixTags } from "@/hooks/router"
+import { useTagsView, usePermission, useTheme } from '@/store/pinia/index'
 
 import {
   FolderOpenFilled,
   FolderFilled
 } from '@ant-design/icons-vue';
 const $route = useRoute()
-const $store = useStore()
+// const $store = useStore()
 const $router = useRouter()
 onMounted(() => {
   initTags()
@@ -61,28 +62,27 @@ const initTags = () => {
   affixTags.forEach(tag => {
     console.log(tag);
 
-    tag?.name && $store.dispatch('tagsView/addVisitedView', tag)
+    tag?.name && useTagsView().addVisitedView(tag)
 
   });
 }
-const affixTags = filterAffixTags($store.getters['permission/routes'], [''], "affix")
+const affixTags = filterAffixTags(usePermission().routes, [''], "affix")
 
 const visitedViews = computed(() => {
-  return $store.getters.visitedViews
+  return useTagsView().visitedViews
 })
 const themeBackgroundColor = computed(() => {
-  return $store.getters.themeBackgroundColor
+  return useTheme().themeBackgroundColor
 })
 
 const closeAllLabels = () => {
-  $store.dispatch('tagsView/closeAllLabels')
+  useTagsView().closeAllLabels()
+
 
 
 }
 const closeOtherLabels = (tag) => {
-  $store.dispatch('tagsView/closeOtherLabels', tag)
-
-
+  useTagsView().closeOtherLabels(tag)
 }
 watch(() => visitedViews.value, () => {
   // console.error(visitedViews.value, "watchEffect");
@@ -106,9 +106,9 @@ watch(() => visitedViews.value, () => {
 const addTags = () => {
 
   if ($route?.name) {
-    $store.dispatch('tagsView/addVisitedView', $route)
+    useTagsView().addVisitedView($route)
+
   }
-  return false
 }
 
 /**
@@ -135,12 +135,9 @@ watch($route, (newRoute, oldRoute) => {
  * @Date: 2021-09-03 14:23:33
  */
 const handleClose = (tag) => {
-  $store.dispatch('tagsView/deleteVisitedView', tag)
+  useTagsView().deleteVisitedView(tag)
+
 }
-
-
-
-
 
 
 </script>

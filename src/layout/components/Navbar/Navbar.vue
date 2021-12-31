@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-16 17:04:43
- * @LastEditTime: 2021-12-29 14:25:56
+ * @LastEditTime: 2021-12-31 15:28:31
  * @LastEditors: Gavin
 -->
 
@@ -65,7 +65,7 @@
   </div>
 </template>
 <script lang='ts' setup>
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import {
   GithubOutlined,
@@ -82,7 +82,7 @@ import { getCurrentRoute } from '@/hooks/global/breadcrumb'
 import { getMenuList } from './hooks/avatarMenuHook'
 
 import { reactive, toRefs } from 'vue'
-
+import {useUser} from '@/store/pinia/index'
 //全屏hook
 const { isFullscreen, enter, exit, toggle } = useFullscreen()
 const toggleFullScreen = () => {
@@ -90,7 +90,7 @@ const toggleFullScreen = () => {
 }
 
 
-const $store = useStore()
+// const $store = useStore()
 const $route = useRoute()
 //个人信息 UserInfo
 export type UserInfo = {
@@ -100,9 +100,8 @@ export type UserInfo = {
 
 }
 const state = reactive<UserInfo>({
-  nickName: $store?.getters?.['userInfo']?.name??'',
-  avatar: $store?.getters?.['userInfo']?.avatar??'',
-   
+  nickName: useUser().name??'',
+  avatar: useUser().avatar??''
 })
 //toRefs解构reactive
 const { nickName, avatar } = toRefs(state)

@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-12-16 18:59:33
+ * @LastEditTime: 2021-12-31 15:25:49
  * @LastEditors: Gavin
 -->
 <template>
@@ -52,7 +52,7 @@
           </template>
         </artms-navbar>
       </a-layout-header>
-      <nav v-if="$store.getters.isNavShow">
+      <nav v-if="isNavShow">
         <artms-tags-view />
       </nav>
       <a-layout-content>
@@ -84,21 +84,26 @@ import {
 import { useRoute } from 'vue-router'
 import { ref, computed, provide, watch } from 'vue'
 import { useStore } from 'vuex'
+import {useTagsView,useTheme} from '@/store/pinia/index'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
 import { useStorage } from '@vueuse/core'
 const collapsed = ref<boolean>(false)
 const $route = useRoute()
-const $store = useStore()
+// const $store = useStore()
 const pointerLocation = getPointerLocationByElement()
 const offsetWidth = document.body.offsetWidth
+
 
 const op = computed(() => {
   return offsetWidth - pointerLocation.x > offsetWidth * 0.08 ? 0 : 1
 })
 
 const sideModel= computed(()=>{
-  return $store.getters.sideModel
+  return useTheme().sideModel
+})
+const isNavShow=computed(()=>{
+  return useTagsView().isShow
 })
 const storage = useStorage<boolean>('storg', true, sessionStorage)
 </script>

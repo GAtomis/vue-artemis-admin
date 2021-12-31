@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-06 12:43:12
- * @LastEditTime: 2021-12-30 18:33:30
+ * @LastEditTime: 2021-12-31 13:39:25
  * @LastEditors: Gavin
 -->
 <template>
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-// import { useStore } from 'vuex'
+
 
 export default defineComponent({
   name: 'RouterTransition',
@@ -34,12 +34,12 @@ export default defineComponent({
     }
   },
   setup() {
-    // const store = useStore()
+   
     // 需要缓存的路由组件
-    // const keepAliveComponents = computed(() => store.state.asyncRoute.keepAliveComponents)
+
 
     return {
-      // keepAliveComponents
+    
     }
   }
 })

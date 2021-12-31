@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-29 15:13:50
- * @LastEditTime: 2021-12-30 18:54:04
+ * @LastEditTime: 2021-12-30 19:18:15
  * @LastEditors: Gavin
  */
 import { defineStore } from 'pinia'
@@ -38,14 +38,8 @@ export default defineStore({
     catchPhrase: ''
   }),
   getters: {
-    userInfo():IUserState{
-
-      return this!.$state as IUserState
-    },
-    token(){
-    
-     return  this.token
-    }
+    getInfo:state=>state,
+    getToken:state=>state.token
   },
   actions: {
     // ActionContext<S, R> s为state R为rootState
@@ -67,7 +61,6 @@ export default defineStore({
     getUserInfo(username: string): Promise<unknown> {
       return new Promise(async (resolve, reject) => {
         const { roles, ...res } = await getUserInfo({ username: this.username })
-
         //信息填充
         Object.entries({ roles, ...res }).forEach(([key, value]) => {
           this[key] = value
@@ -78,8 +71,6 @@ export default defineStore({
           );
         }
         resolve(roles)
-
-
       })
     },
 

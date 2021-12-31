@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-30 18:42:04
+ * @LastEditTime: 2021-12-30 19:14:52
  * @LastEditors: Gavin
 -->
 <template>
   <div class="dashboard">
-    <a-card title="Dashboard" >
+    <a-card title="Dashboard" @click="onCard" >
       <a-row a-row type="flex" justify="space-around">
         <a-col :span="1" class="avatar">
           <a-avatar :size="64" :src="userInfo.avatar">
@@ -76,8 +76,10 @@ const $store = useStore()
 const userInfo = computed(() => {
   return $store.getters.userInfo
 })
-
-console.log(pinia().userInfo,'pinia');
+const onCard=()=>{
+  console.log(pinia().getUserInfo);
+  
+}
 
 
 // const activeKey = ref('1')

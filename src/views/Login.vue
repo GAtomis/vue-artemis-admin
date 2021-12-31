@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2021-09-07 14:33:53
+ * @LastEditTime: 2021-12-31 15:16:41
  * @LastEditors: Gavin
 -->
 
@@ -61,6 +61,9 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import {useUser} from '@/store/pinia/index'
+
+
 
 
 interface FormState extends LoginFrom {

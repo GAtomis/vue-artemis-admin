@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-29 15:12:41
+ * @LastEditTime: 2021-12-31 13:46:31
  * @LastEditors: Gavin
  */
 import { createApp } from 'vue'
@@ -12,7 +12,7 @@ import { setupStore } from '@/store'
 import router, { setupRouter } from './router'
 import {registerIconComponents} from '@/components/Iconfont/Iconfont'
 import Antd from 'ant-design-vue';
-import {createPinia} from 'pinia'
+import pinia from '@/store/pinia/index'
 
 const app = createApp(App);
 // app?.config?.productionTip?? = false;
@@ -29,7 +29,7 @@ setupStore(app)
 // 挂载路由
 setupRouter(app)
 //初始化pinia
-app.use(createPinia())
+app.use(pinia)
 // 路由准备就绪后挂载APP实例
 router.isReady().then(() => app.mount('#app'))
 
