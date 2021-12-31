@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 11:39:17
- * @LastEditTime: 2021-12-31 12:00:09
+ * @LastEditTime: 2021-12-31 16:31:26
  * @LastEditors: Gavin
  */
 import { defineStore } from 'pinia'
@@ -11,7 +11,7 @@ import { THEME_BG_COLOR, THEME_BG_MENU, THEME_SIDE_MODEL } from '@/store/store-e
 import { createStorage } from '@/utils/storage'
 const Storage = createStorage({ storage: localStorage })
 
-function commit(title: string, val: string) {
+function commit(title: string, val: any) {
 
   const ex = 7 * 24 * 60 * 60 * 1000//过期时间
   Storage.set(title, val, ex)
@@ -46,6 +46,15 @@ export default defineStore({
       commit.bind(this, 'UPDATE_THEME_BG_COLOR', "#55acee")
       commit.bind(this, 'UPDATE_THEME_BG_MENU', "#304156")
       commit.bind(this, 'UPDATE_THEME_SIDE_MODEL', "inline")
+    },
+    updateThemeBackgroundColor(val) {
+      commit.bind(this, 'UPDATE_THEME_BG_COLOR', val)
+    },
+    updateThemeMenu(val) {
+      commit.bind(this, 'UPDATE_THEME_BG_MENU', val)
+    },
+    updateSideModel(val) {
+      commit.bind(this, 'UPDATE_THEME_SIDE_MODEL', val)
     }
   },
 })

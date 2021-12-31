@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 16:50:22
- * @LastEditTime: 2021-12-17 11:18:32
+ * @LastEditTime: 2021-12-31 16:38:01
  * @LastEditors: Gavin
 -->
 
@@ -65,7 +65,8 @@ const menuItem = {}
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 // import MenuItemChild from './MenuItem.vue'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
+import {useTheme,useTagsView} from '@/store/pinia/index'
 export default defineComponent({
   name: 'MenuItem',
   components: {
@@ -80,10 +81,10 @@ export default defineComponent({
   },
 
   setup(props) {
-    const $store = useStore()
+    // const $store = useStore()
     //变量css太香了呀
     const fontSize = computed(() => (props.collapsed ? '21px' : '16px'))
-    const themeMenu = computed(() => $store.getters.themeMenu)
+    const themeMenu = computed(() => useTheme().themeMenu)
 
     return {
       fontSize,

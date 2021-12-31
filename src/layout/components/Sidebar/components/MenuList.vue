@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-12-16 19:02:51
+ * @LastEditTime: 2021-12-31 16:39:43
  * @LastEditors: Gavin
 -->
 
@@ -24,8 +24,8 @@
 
  <script lang='ts' setup>
 import { reactive, computed, watch, onMounted } from 'vue'
-
-import { useStore } from 'vuex'
+import {usePermission,useTheme} from '@/store/pinia/index'
+// import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 import { filterAsyncRoutes as isHidden } from '@/hooks/router'
 import MenuItem from '../components/MenuItem.vue'
@@ -36,16 +36,16 @@ const props = defineProps({
 //salute Vue2 ^-^
 const $route = useRoute()
 const $router = useRouter()
-const $store = useStore()
+// const $store = useStore()
 
 const sideModel= computed(()=>{
-  return $store.getters.sideModel
+  return useTheme().sideModel
 })
 //加载菜单
-const menus =
-  computed(() =>
-    isHidden($store?.getters?.['permission/routes'] ?? [], [], 'hidden')
-  ) || []
+const menus =  computed(() =>
+    isHidden(usePermission().routes ?? [], [], 'hidden')
+  ) 
+
 
 // const menus =computed(()=>{
 //   return $store.getters['permission/routes']

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-30 19:14:52
+ * @LastEditTime: 2021-12-31 17:42:38
  * @LastEditors: Gavin
 -->
 <template>
@@ -63,8 +63,8 @@
 import DataPane from './components/DataPane.vue'
 import MessageBoard from './components/MessageBoard.vue'
 import ToolRank from './components/ToolRank.vue'
-import { useStore } from 'vuex'
-import pinia from '@/store/pinia/user'
+// import { useStore } from 'vuex'
+import {useUser} from '@/store/pinia/index'
 
 import { computed } from 'vue'
 import {
@@ -72,14 +72,10 @@ import {
 } from '@ant-design/icons-vue';
 
 
-const $store = useStore()
+// const $store = useStore()
 const userInfo = computed(() => {
-  return $store.getters.userInfo
+  return useUser().getInfo
 })
-const onCard=()=>{
-  console.log(pinia().getUserInfo);
-  
-}
 
 
 // const activeKey = ref('1')

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-12-15 14:20:00
+ * @LastEditTime: 2021-12-31 17:30:46
  * @LastEditors: Gavin
 -->
 <template>
@@ -71,12 +71,12 @@
 </template>
 
 <script lang='ts' setup>
-import { useStore } from 'vuex'
-import { onMounted, computed, toRaw, reactive } from 'vue'
+// import { useStore } from 'vuex'
+import {  toRaw, reactive } from 'vue'
 import useUpLoadByAvatar from './Hooks/useUpLoadByAvatar'
-
-import type { IUserState } from '@/store/modules/user/state'
-const $store = useStore()
+import {useUser } from '@/store/pinia'
+import type { IUserState } from '@/store/pinia/user'
+// const $store = useStore()
 
 //坑早知道用interface了, type的继承真的丑
 type UserInfo = IUserState & {
@@ -84,12 +84,12 @@ type UserInfo = IUserState & {
 }
 const form = reactive<UserInfo>({
   companyName: 'Arvato',
-  ...toRaw($store.getters.userInfo),
+  ...toRaw(useUser().getInfo),
 })
 const labelCol = { span: 4 },
   wrapperCol = { span: 20 },
   onSubmit = (): void => {
-    console.log('芯片短缺')
+
   }
 const { fileList, loading, imageUrl, handleChange, beforeUpload } =
   useUpLoadByAvatar()

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-05 11:47:48
- * @LastEditTime: 2021-12-31 11:59:10
+ * @LastEditTime: 2021-12-31 16:16:09
  * @LastEditors: Gavin
  */
 export const ACCESS_TOKEN = 'Access-Token' // 用户token
@@ -12,4 +12,5 @@ export const TABS_ROUTES = 'Tabs-Routes' // 标签页
 export const CACHE_USERNAME='Cache-username'//缓存username
 export const THEME_BG_COLOR='themeBackgroundColor'//缓存标签背景
 export const THEME_BG_MENU='themeMenu'//缓存菜单
-export const THEME_SIDE_MODEL='sideModel'//缓存菜单
+export const THEME_SIDE_MODEL='sideModel'//缩进
+export const TAGS_VIEW_IS_SHOW ='isShow'//是否显示tab栏

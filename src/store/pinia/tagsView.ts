@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 12:23:51
- * @LastEditTime: 2021-12-31 13:37:55
+ * @LastEditTime: 2021-12-31 16:18:15
  * @LastEditors: Gavin
  */
 
 import { RouteRecordRaw } from 'vue-router'
-
+import { TAGS_VIEW_IS_SHOW} from '@/store/store-enum'
 export type VisitedViews = {
   meta?: any,
   name: string,
@@ -19,6 +19,12 @@ export type ITagsViewState = {
   cachedViews: Array<RouteRecordRaw>,
   isShow: boolean,
   activeColor?: ''
+}
+
+function commit(title: string, val: string) {
+  const ex = 7 * 24 * 60 * 60 * 1000//过期时间
+  Storage.set(title, val, ex)
+  this[title] = val
 }
 
 
@@ -53,6 +59,9 @@ export default defineStore({
     },
     closeOtherLabels(view){
       this.visitedViews = this.visitedViews.filter(tag => tag.name === view.name||tag.meta.affix)
-    }
+    },
+    updatIsShow(isShow) {
+      commit.bind(this,TAGS_VIEW_IS_SHOW,isShow)
+    },
   },
 })

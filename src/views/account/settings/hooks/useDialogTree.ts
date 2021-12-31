@@ -2,12 +2,12 @@
  * @Description: 使用dialog的hooks
  * @Author: Gavin
  * @Date: 2021-10-28 14:50:58
- * @LastEditTime: 2021-11-18 16:05:45
+ * @LastEditTime: 2021-12-31 17:40:17
  * @LastEditors: Gavin
  */
 
-import { ref, computed, watch, Ref } from 'vue'
-import { useStore } from 'vuex'
+import { ref, watch, Ref } from 'vue'
+
 import { SelectEvent } from 'ant-design-vue/es/tree/Tree';
 interface UseDialogTree {
   expandedKeys: Ref<string[]>

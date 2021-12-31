@@ -2,7 +2,7 @@
  * @Description: Global Select  
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-12-31 15:37:52
+ * @LastEditTime: 2021-12-31 16:37:12
  * @LastEditors: Gavin
 -->
 <template>
@@ -69,12 +69,12 @@ import { useDark, useToggle } from '@vueuse/core'
 import { ref, reactive, watch } from 'vue'
 import type { UnwrapRef } from 'vue'
 import type { FormProp } from '@/components/Form/interface'
-import { useStore } from 'vuex'
-import {useTheme} from '@/store/pinia/index'
+// import { useStore } from 'vuex'
+import {useTheme,useTagsView} from '@/store/pinia/index'
 import { SettingFilled } from '@ant-design/icons-vue'
 
 const visible = ref<boolean>(false)
-const $store = useStore()
+// const $store = useStore()
 const afterVisibleChange = (bool: boolean) => {
   bool && (mergForm = defaultForm())
   console.log(mergForm)
@@ -94,11 +94,11 @@ interface FormState {
 
 const defaultForm = (): FormState => {
   return {
-    tabViews: $store.state.tagsView.isShow,
-    color: $store.state.theme.themeBackgroundColor,
-    checked: $store.state.theme.themeStyle,
-    themeMenu: $store.state.theme.themeMenu,
-    sideModel:$store.state.theme.sideModel
+    tabViews: useTagsView().isShow,
+    color: useTheme().themeBackgroundColor,
+    checked: useTheme().themeStyle,
+    themeMenu: useTheme().themeMenu,
+    sideModel:useTheme().sideModel
   }
 }
 const formState: UnwrapRef<FormState> = reactive<FormState>(defaultForm())
@@ -106,10 +106,14 @@ const formState: UnwrapRef<FormState> = reactive<FormState>(defaultForm())
 watch(
   () => formState,
   (nVal) => {
-    $store.commit('tagsView/UPDATE_IS_SHOW', nVal.tabViews)
-    $store.commit('theme/UPDATE_THEME_BG_COLOR', nVal.color)
-    $store.commit('theme/UPDATE_THEME_BG_MENU', nVal.themeMenu)
-    $store.commit('theme/UPDATE_THEME_SIDE_MODEL', nVal.sideModel)
+    useTagsView().updatIsShow(nVal.tabViews)
+    useTheme().updateThemeBackgroundColor(nVal.color)
+    useTheme().updateThemeMenu(nVal.themeMenu)
+    useTheme().updateSideModel(nVal.sideModel)
+    // $store.commit('tagsView/UPDATE_IS_SHOW', nVal.tabViews)
+    // $store.commit('theme/UPDATE_THEME_BG_COLOR', nVal.color)
+    // $store.commit('theme/UPDATE_THEME_BG_MENU', nVal.themeMenu)
+    // $store.commit('theme/UPDATE_THEME_SIDE_MODEL', nVal.sideModel)
   },
   { deep: true }
 )
@@ -119,7 +123,7 @@ const onReset = () => {
   Object.assign(formState, mergForm)
 }
 const onDefault = () => {
-  $store.dispatch('theme/resetTheme')
+  useTheme().resetTheme()
   afterVisibleChange(true)
   onReset()
 }

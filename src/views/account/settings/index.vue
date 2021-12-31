@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-12-15 18:29:37
+ * @LastEditTime: 2021-12-31 17:37:15
  * @LastEditors: Gavin
 -->
 <template>
@@ -60,15 +60,16 @@
 
 <script lang='ts' setup>
 import { ref, computed } from 'vue'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 import { filterAsyncRoutes } from '@/hooks/router'
 import { CarryOutOutlined, SmileTwoTone } from '@ant-design/icons-vue';
 import { getPermissionList } from '@/api/account/index'
 import useDialogTree from './hooks/useDialogTree'
 import _ from 'lodash'
+import {useUser} from '@/store/pinia/index'
 
 
-const $store = useStore()
+// const $store = useStore()
 interface DataItem {
   key: string | number
   des: string
@@ -108,7 +109,7 @@ const data = ref<DataItem[]>([
 ])
 
 const level = computed(() => {
-  return $store.getters.userInfo.level
+  return useUser().level
 })
 
 const visible = ref<boolean>(false)
@@ -123,7 +124,7 @@ const {
 } = useDialogTree()
 
 const openDialog = async (raw) => {
-  checkedKeys.value = _.cloneDeep($store.getters['userInfo'].roles)
+  checkedKeys.value = _.cloneDeep(useUser().roles)
   let per = await getPermissionList({
     level: raw.level,
   })
