@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-04 13:17:24
+ * @LastEditTime: 2022-01-04 13:18:57
  * @LastEditors: Gavin
 -->
 
@@ -28,8 +28,8 @@
 - feat-SSO(login) :heavy_check_mark:
 - feat-async-route loading :heavy_check_mark:
 - feat-Theme color replacement :heavy_check_mark:
-- feat-Permission configuration :wrench
-- feat-Form constructor :wrench
+- feat-Permission configuration :wrench:
+- feat-Form constructor :wrench:
 
 
 
