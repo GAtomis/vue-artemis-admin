@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 16:50:22
- * @LastEditTime: 2021-12-31 16:38:01
+ * @LastEditTime: 2022-01-04 10:55:06
  * @LastEditors: Gavin
 -->
 
@@ -66,7 +66,7 @@ const menuItem = {}
 import { defineComponent, computed } from 'vue'
 // import MenuItemChild from './MenuItem.vue'
 // import { useStore } from 'vuex'
-import {useTheme,useTagsView} from '@/store/pinia/index'
+import {useTheme} from '@/store/pinia/index'
 export default defineComponent({
   name: 'MenuItem',
   components: {

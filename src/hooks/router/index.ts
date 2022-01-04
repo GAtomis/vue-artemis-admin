@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 10:00:31
- * @LastEditTime: 2021-12-31 11:27:12
+ * @LastEditTime: 2022-01-04 12:46:34
  * @LastEditors: Gavin
  */
 
@@ -79,10 +79,10 @@ function hasPermission(roles: Array<string>, route: RouteRecordRaw | any, key:st
 * @param routes asyncRoutes
 * @param roles
 */
-export function filterAsyncRoutes<T>(routes: Array<RouteRecordRaw>=asyncRoutes, roles: Array<string>,key?:string):T {
+export function filterAsyncRoutes(routes: Array<RouteRecordRaw>=asyncRoutes, roles: Array<string>,key?:string):Array<RouteRecordRaw> {
     // 关键筛选  第一个参数所有拥有的所有路由权限，第二参数权限路由
     // res是筛选完的路由
-    const res: any[] = [];
+    const res: Array<RouteRecordRaw> = [];
     // 所有异步路由遍历
     routes.forEach(route => {
         // 解构
@@ -92,7 +92,7 @@ export function filterAsyncRoutes<T>(routes: Array<RouteRecordRaw>=asyncRoutes, 
             // 是否存在子路由
             if (tmp.children) {
                 // 在进行判断;
-                tmp.children = filterAsyncRoutes(tmp.children, roles,key);
+                tmp.children = filterAsyncRoutes(tmp.children,roles,key);
             }
             // 如果有权限当前路由加入数组
             // console.error(tmp);
@@ -110,10 +110,10 @@ export function filterAsyncRoutes<T>(routes: Array<RouteRecordRaw>=asyncRoutes, 
 * @param routes asyncRoutes
 * @param roles
 */
-export function filterChildren(routes: Array<RouteRecordRaw>, roles: Array<string>,key?:string): any {
+export function filterChildren(routes: Array<RouteRecordRaw>, roles: Array<string>,key?:string): Array<RouteRecordRaw> {
     // 关键筛选  第一个参数所有拥有的所有路由权限，第二参数权限路由
     // res是筛选完的路由
-    let res: any[] = [];
+    let res: Array<RouteRecordRaw> = [];
     // 所有异步路由遍历
     routes.forEach(route => {
         // 解构

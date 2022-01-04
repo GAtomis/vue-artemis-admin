@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2021-12-31 15:25:49
+ * @LastEditTime: 2022-01-04 10:55:11
  * @LastEditors: Gavin
 -->
 <template>
@@ -83,7 +83,7 @@ import {
 } from '@/layout/components/index'
 import { useRoute } from 'vue-router'
 import { ref, computed, provide, watch } from 'vue'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 import {useTagsView,useTheme} from '@/store/pinia/index'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2021-12-31 16:39:43
+ * @LastEditTime: 2022-01-04 12:42:16
  * @LastEditors: Gavin
 -->
 
@@ -26,6 +26,8 @@
 import { reactive, computed, watch, onMounted } from 'vue'
 import {usePermission,useTheme} from '@/store/pinia/index'
 // import { useStore } from 'vuex'
+
+
 import { useRouter, useRoute } from 'vue-router'
 import { filterAsyncRoutes as isHidden } from '@/hooks/router'
 import MenuItem from '../components/MenuItem.vue'
@@ -43,7 +45,7 @@ const sideModel= computed(()=>{
 })
 //加载菜单
 const menus =  computed(() =>
-    isHidden(usePermission().routes ?? [], [], 'hidden')
+    isHidden(usePermission().routes, [], 'hidden')
   ) 
 
 

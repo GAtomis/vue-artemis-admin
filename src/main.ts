@@ -2,13 +2,13 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-31 13:46:31
+ * @LastEditTime: 2022-01-04 11:47:09
  * @LastEditors: Gavin
  */
 import { createApp } from 'vue'
 import App from './App.vue'
 import 'ant-design-vue/dist/antd.css';
-import { setupStore } from '@/store'
+// import { setupStore } from '@/store'
 import router, { setupRouter } from './router'
 import {registerIconComponents} from '@/components/Iconfont/Iconfont'
 import Antd from 'ant-design-vue';
@@ -25,7 +25,7 @@ app.use(Antd);
 //注册icon组件
 app.use(registerIconComponents)
 //状态管理工具挂在
-setupStore(app)
+// setupStore(app)
 // 挂载路由
 setupRouter(app)
 //初始化pinia

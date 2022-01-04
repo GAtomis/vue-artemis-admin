@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2021-12-24 13:44:18
+ * @LastEditTime: 2022-01-04 11:45:23
  * @LastEditors: Gavin
 -->
 <template>
@@ -56,16 +56,17 @@ import moment from 'moment';
 import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
 import { ref, onMounted, reactive } from 'vue';
 import { getComments } from "@/api/dashboard/index"
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 import type { UserInfo } from '@/utils/interface/index'
+import {useUser} from '@/store/pinia/index'
+// const $store = useStore();
 
-const $store = useStore();
 let comments = ref<Array<UserInfo>>([])
 
 //结果集可以应用后台api类型这里就不做演示了,引用了接口就不会提示属性不存在了
 
 const getList = async () => {
-  const res = await getComments({ username: $store.getters.userInfo.username })
+  const res = await getComments({ username: useUser().username })
   comments.value = res
 }
 onMounted(() => {

@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 11:13:13
- * @LastEditTime: 2021-12-31 11:38:35
+ * @LastEditTime: 2022-01-04 12:44:07
  * @LastEditors: Gavin
  */
 import { RouteRecordRaw } from 'vue-router'
 import { privateRouteTable, publicRouteTable } from '@/router'
-import { filterAsyncRoutes, resetRoute } from '@/hooks/router'
+import { filterAsyncRoutes} from '@/hooks/router'
 import { toRaw } from 'vue'
 
 export type IPermissionState = {
@@ -25,12 +25,14 @@ export default defineStore({
     keepAliveComponents: []
   }),
   getters: {
+
+    roles: state => state.addRoutes
   },
   actions: {
 
     async generateRoutes(roles: Array<string>) {
 
-      return new Promise(resolve => {
+      return new Promise<RouteRecordRaw[]>(resolve => {
         // 可访问的路由变量
         let accessedRoutes: RouteRecordRaw[];
         // roles的速度的
@@ -39,7 +41,7 @@ export default defineStore({
           accessedRoutes = privateRouteTable || [];
         } else {
           // 筛选路由
-          accessedRoutes = filterAsyncRoutes<RouteRecordRaw[]>(privateRouteTable, roles);
+          accessedRoutes = filterAsyncRoutes(privateRouteTable, roles);
         }
         // 设置路由
         this.addRoutes = accessedRoutes
@@ -54,7 +56,6 @@ export default defineStore({
     },
     resetRoles() {
       return new Promise(resolve => {
-
         resolve(toRaw(this.addRoutes))
         this.addRoutes = [];
         this.routes = [];

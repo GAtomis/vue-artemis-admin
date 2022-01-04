@@ -23,7 +23,8 @@ import { RequestOptions, Result } from './types'
 
 const isDev = import.meta.env.DEV
 import router from '@/router'
-import store from '@/store'
+// import store from '@/store'
+import {useUser} from '@/store/pinia/index'
 import { storage } from '@/utils/storage'
 /**
  * @description: 数据处理，方便区分多种处理方式
@@ -172,7 +173,8 @@ const transform: AxiosTransform = {
 
 
     // 请求之前处理config
-    const token = store.getters.token
+    const token = useUser().token
+    
 
     if (token) {
       // console.error(token);

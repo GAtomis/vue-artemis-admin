@@ -2,7 +2,7 @@
  * @Description: Global Select  
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2021-12-31 16:37:12
+ * @LastEditTime: 2022-01-04 11:49:33
  * @LastEditors: Gavin
 -->
 <template>
@@ -106,6 +106,8 @@ const formState: UnwrapRef<FormState> = reactive<FormState>(defaultForm())
 watch(
   () => formState,
   (nVal) => {
+    console.log(nVal);
+    
     useTagsView().updatIsShow(nVal.tabViews)
     useTheme().updateThemeBackgroundColor(nVal.color)
     useTheme().updateThemeMenu(nVal.themeMenu)

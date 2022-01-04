@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 16:01:08
- * @LastEditTime: 2021-09-07 16:38:39
+ * @LastEditTime: 2022-01-04 12:42:45
  * @LastEditors: Gavin
  */
 
@@ -11,7 +11,7 @@ import { IPermissionState } from './state'
 import { ActionContext } from 'vuex'
 import { IStore } from '@/store/types'
 import {privateRouteTable} from '@/router'
-import {filterAsyncRoutes,resetRoute} from '@/hooks/router'
+import {filterAsyncRoutes} from '@/hooks/router'
 import {RouteRecordRaw} from 'vue-router'
 
 import {toRaw} from 'vue'
@@ -22,7 +22,7 @@ import {toRaw} from 'vue'
 export const actions = {
   async generateRoutes({ commit}:ActionContext<IPermissionState, IStore>,roles:Array<string>) {
 
-    return new Promise(resolve => {
+    return new Promise<RouteRecordRaw[]>(resolve => {
       // 可访问的路由变量
       let accessedRoutes:RouteRecordRaw[] ;
       // roles的速度的

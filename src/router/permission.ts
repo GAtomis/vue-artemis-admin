@@ -2,11 +2,12 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2021-11-19 17:40:36
+ * @LastEditTime: 2022-01-04 11:39:45
  * @LastEditors: Gavin
  */
 import { isNavigationFailure, Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
-import store from '@/store'
+// import store from '@/store'
+import { useUser, usePermission } from '@/store/pinia/index'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // 进度条样式
 import { ACCESS_TOKEN } from '@/store/store-enum'
@@ -33,10 +34,16 @@ export function createGuardHook(router: Router): void {
     NProgress.start()
     const hasToken: string = storage.get(ACCESS_TOKEN, '')
     //白名单内路由表直接放行 redirect of routes included in the white list
+    //是否有路由
+    const hasRoute: string | boolean | undefined | null = router.hasRoute(to.name as string)
+    // 是否授权useUser,
+    const hasRoles: string | boolean | undefined | null = usePermission().roles?.length > 0
+    //是否有登录信息
+    const hasUserInfo: string | boolean | undefined | null = useUser().name
 
     if (whitelist.includes(to.name as string)) {
       if (to.path === "/Login") {
-        Promise.all([store.dispatch('user/resetToken'), store.dispatch('permission/resetRoles')]).then(([res1, res2]) => {
+        Promise.all([useUser().resetToken(), usePermission().resetRoles()]).then(([res1, res2]: Array<any>) => {
           console.log(res2);
           res2.length && history.go(0)
           next()
@@ -47,12 +54,7 @@ export function createGuardHook(router: Router): void {
 
     }
     else if (hasToken) {
-      //是否有路由
-      const hasRoute: string | boolean | undefined | null = router.hasRoute(to.name as string)
-      // 是否授权
-      const hasRoles: string | boolean | undefined | null = store?.getters?.["permission/roles"]?.length > 0
-      //是否有登录信息
-      const hasUserInfo: string | boolean | undefined | null = store?.getters?.userInfo?.name
+
 
 
       if (hasRoute && hasUserInfo) {
@@ -62,14 +64,14 @@ export function createGuardHook(router: Router): void {
         next()
       } else if (hasUserInfo) { next({ name: '404', query: { redirect: to.fullPath }, replace: true }) } else {
         try {
-          const roles: Array<RouteRecordRaw> = await store.dispatch('user/getUserInfo')
-          const accessedRoutes: Array<RouteRecordRaw> = await store.dispatch('permission/generateRoutes', roles)
+          const roles = await useUser().getUserInfo()
+          const accessedRoutes: Array<RouteRecordRaw> = await usePermission().generateRoutes(roles)
           resetRoute(accessedRoutes)
           next({ ...to, replace: true })
           setTimeout(() => {
             notification?.['success']?.({
-              message: `Hi! ${store.getters.userInfo.name}, welcome in! Wish you a good mood every day ^-^!`,
-            }) 
+              message: `Hi! ${hasUserInfo}, welcome in! Wish you a good mood every day ^-^!`,
+            })
             console.log('hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！in fact，we are in different world，we are only passengers for each other！Dont matter! i love u! Never expire! I m dying to see how this one ends');
           }, 500);
 

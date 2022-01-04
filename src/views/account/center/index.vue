@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-12-31 17:30:46
+ * @LastEditTime: 2022-01-04 10:54:56
  * @LastEditors: Gavin
 -->
 <template>
@@ -89,7 +89,6 @@ const form = reactive<UserInfo>({
 const labelCol = { span: 4 },
   wrapperCol = { span: 20 },
   onSubmit = (): void => {
-
   }
 const { fileList, loading, imageUrl, handleChange, beforeUpload } =
   useUpLoadByAvatar()

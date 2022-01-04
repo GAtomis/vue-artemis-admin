@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-29 15:13:50
- * @LastEditTime: 2021-12-30 19:18:15
+ * @LastEditTime: 2022-01-04 12:53:40
  * @LastEditors: Gavin
  */
 import { defineStore } from 'pinia'
@@ -58,8 +58,8 @@ export default defineStore({
       }
     },
     // 获取用户信息
-    getUserInfo(username: string): Promise<unknown> {
-      return new Promise(async (resolve, reject) => {
+    getUserInfo() {
+      return new Promise<Array<string>>(async (resolve, reject) => {
         const { roles, ...res } = await getUserInfo({ username: this.username })
         //信息填充
         Object.entries({ roles, ...res }).forEach(([key, value]) => {
@@ -74,7 +74,7 @@ export default defineStore({
       })
     },
 
-    resetToken(): Promise<unknown> {
+    resetToken(): Promise<string> {
       return new Promise(resolve => {
         this.token = ''
         this.name = ''
