@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-04 13:16:21
+ * @LastEditTime: 2022-01-04 13:19:28
  * @LastEditors: Gavin
 -->
 
@@ -35,7 +35,7 @@
 ## 疑难杂症日记
 * 热更新白页内存移除=>store配置初始化
 * 热更新还是无法使用内容白页=>keep-alive和router-view 需要加key保证他的唯一性
-* 关于pineapple:pinia 
+* 关于:pineapple:pinia 
 Vuex4对typescript的支持实际上并不合适。因此，重构了主要分支。Vuex配置文件仍保留在@/main.ts中
 
 ## 快速启动
