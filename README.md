@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-14 18:02:50
+ * @LastEditTime: 2022-01-04 13:04:59
  * @LastEditors: Gavin
 -->
 
@@ -23,8 +23,8 @@
 
 ## Introduction
  English is no good - -, The template realized by 2 + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
-
 ## Basic function of template (improvement)
+- reconstruct-vuex=>pinia :heavy_check_mark:
 - feat-SSO(login)
 - feat-async-route loading
 - feat-Theme color replacement
