@@ -36,7 +36,7 @@
 ## Fix log
 * Hot-reloads no page memory overflow=>Store configuration initialization
 * Hot-reload no page&&router no page=>keep-aliv&&router-view add Key
-* about pineapple:pinia 
+* about :pineapple:pinia 
   Vuex4 support for typescript doesn't really fit.Therefore, the main branch is reconstructed.Vuex configuration file is still retained in @/main.ts
 
 ## Quick start
