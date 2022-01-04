@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-04 13:04:59
+ * @LastEditTime: 2022-01-04 13:17:24
  * @LastEditors: Gavin
 -->
 
@@ -24,18 +24,20 @@
 ## Introduction
  English is no good - -, The template realized by 2 + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
 ## Basic function of template (improvement)
-- reconstruct-vuex=>pinia :heavy_check_mark:
-- feat-SSO(login)
-- feat-async-route loading
-- feat-Theme color replacement
-- feat-Permission configuration
-- feat-Form constructor
+- reconstruct-vuex=>:pineapple:pinia :heavy_check_mark:
+- feat-SSO(login) :heavy_check_mark:
+- feat-async-route loading :heavy_check_mark:
+- feat-Theme color replacement :heavy_check_mark:
+- feat-Permission configuration :wrench
+- feat-Form constructor :wrench
 
 
 
 ## Fix log
 * Hot-reloads no page memory overflow=>Store configuration initialization
 * Hot-reload no page&&router no page=>keep-aliv&&router-view add Key
+* about pineapple:pinia 
+  Vuex4 support for typescript doesn't really fit.Therefore, the main branch is reconstructed.Vuex configuration file is still retained in @/main.ts
 
 ## Quick start
 

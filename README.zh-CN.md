@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-14 17:58:01
+ * @LastEditTime: 2022-01-04 13:16:21
  * @LastEditors: Gavin
 -->
 
@@ -23,17 +23,20 @@
 > Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+vite2+vueuse 实现的后台管理系统模板,项目意义重在与各位大佬交流学习。感谢两位大佬antFu和花裤衩大大给我了很大的启示（虽然没见过哈哈哈^^）,如果觉得 嘿！这个小伙儿挺可爱的！就给个小星星吧 ^ - ^0!拒绝下次一定哈哈哈！
 
 ## 模板基础功能(完善中)
-- 单点登录功能
-- 动态路由加载
-- 主题色替换
-- 个人主页已经权限配置
-- 表单构造器
+- 重构:vuex=>:pineapple:pinia  :heavy_check_mark:
+- 单点登录功能(jwt)  :heavy_check_mark:
+- 动态路由加载   :heavy_check_mark:
+- 主题色替换   :heavy_check_mark:
+- 个人主页已经权限配置 :wrench:
+- 表单构造器 :wrench:
 
 
 
 ## 疑难杂症日记
 * 热更新白页内存移除=>store配置初始化
 * 热更新还是无法使用内容白页=>keep-alive和router-view 需要加key保证他的唯一性
+* 关于pineapple:pinia 
+Vuex4对typescript的支持实际上并不合适。因此，重构了主要分支。Vuex配置文件仍保留在@/main.ts中
 
 ## 快速启动
 
