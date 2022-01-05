@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-09 12:26:22
- * @LastEditTime: 2021-12-16 17:23:46
+ * @LastEditTime: 2022-01-05 10:47:17
  * @LastEditors: Gavin
 -->
 
@@ -10,7 +10,7 @@
   <slot name="logo">
       <!-- 侧边栏标题 -->
     <div class="logo" :class="{ collapsed: collapsed }">
-      <img src="~@/assets/typescript-logo.jpg" />
+         <img :src="LOGO_IMAGE" />
       <span
         :class="{ anticon: collapsed }"
         style="color: #fff; font-size: 16px; white-space: nowrap"
@@ -27,6 +27,7 @@
 <script lang='ts' setup>
 import MenuList from './components/MenuList.vue'
 import { inject } from 'vue'
+import { LOGO_IMAGE } from '@/settings'
 defineProps({
   collapsed: Boolean,
 })

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2021-12-31 17:19:45
+ * @LastEditTime: 2022-01-04 19:39:31
  * @LastEditors: Gavin
 -->
 
@@ -14,7 +14,7 @@
   <div class="login-bg">
     <div class="login-logo">
       <!--      <svg-icon name="logo" />-->
-      <img src="~@/assets/typescript-logo.jpg" />
+      <img :src="LOGO_IMAGE" />
       <h1>Artemis Admin</h1>
     </div>
     <a-form
@@ -61,7 +61,8 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 
 // import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import {useUser} from '@/store/pinia/index'
+import { useUser } from '@/store/pinia/index'
+import { LOGO_IMAGE } from '@/settings'
 
 
 
@@ -146,7 +147,6 @@ const handleFailed = (error: ValidateErrorEntity) => {
   // width: 100vw;
   height: 100vh;
   padding-top: 240px;
-
 
   background-size: 100%;
   flex-direction: column;

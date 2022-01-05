@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 13:41:15
- * @LastEditTime: 2021-12-31 15:10:34
+ * @LastEditTime: 2022-01-04 19:36:19
  * @LastEditors: Gavin
  */
 
@@ -25,6 +25,8 @@ const usePinia=()=>{
 //     modules[fileName.split('.')[0]] = allModules[path][fileName] || allModules[path].default || allModules[path]
 //     console.log(modules);   
 //   })
+  
+  
   return createPinia()
 }
 export {useApp,usePermission,useTagsView,useUser,useTheme}

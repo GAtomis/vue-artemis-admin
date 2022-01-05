@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2022-01-04 10:55:11
+ * @LastEditTime: 2022-01-04 19:43:20
  * @LastEditors: Gavin
 -->
 <template>
@@ -23,7 +23,8 @@
       <artms-sidebar :collapsed="collapsed">
         <template #logo>
           <div>
-            <img src="~@/assets/typescript-logo.jpg" width="32" height="32" />
+        
+               <img :src="LOGO_IMAGE" width="32" height="32"  />
             <span
               :class="{ anticon: collapsed }"
               style="color: #fff; font-size: 16px; white-space: nowrap;margin-left:10px;"
