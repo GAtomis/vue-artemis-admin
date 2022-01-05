@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-16 17:04:43
- * @LastEditTime: 2021-12-31 15:28:31
+ * @LastEditTime: 2022-01-05 16:45:08
  * @LastEditors: Gavin
 -->
 
@@ -63,6 +63,7 @@
     </div>
 
   </div>
+
 </template>
 <script lang='ts' setup>
 // import { useStore } from 'vuex'
@@ -126,10 +127,10 @@ const { data: breadcrumb } = getCurrentRoute($route)
   z-index: 10;
   // height: $header-height;
   padding: 0;
-  background-color: #fff;
+  // background-color: #fff;
 
   .header-primary {
-    border: 1px solid #eee;
+    // border-bottom: 1px solid rgb(71, 70, 70);;
     display: flex;
     justify-content: space-between;
     align-items: center;

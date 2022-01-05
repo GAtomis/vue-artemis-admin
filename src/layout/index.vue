@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2022-01-04 19:43:20
+ * @LastEditTime: 2022-01-05 17:56:33
  * @LastEditors: Gavin
 -->
 <template>
@@ -23,7 +23,6 @@
       <artms-sidebar :collapsed="collapsed">
         <template #logo>
           <div>
-        
                <img :src="LOGO_IMAGE" width="32" height="32"  />
             <span
               :class="{ anticon: collapsed }"
@@ -37,7 +36,7 @@
     <!-- 右边区域  包括头部 内容显示区域 -->
 
     <a-layout :style="{ overflow: 'auto', height: '100vh' }">
-      <a-layout-header style="background: #fff; padding: 0; height: 50px">
+      <a-layout-header style=" padding: 0; height: 50px" class="bg-fff">
         <artms-navbar>
           <template #collapsed    v-if="sideModel=='inline'">
             <menu-unfold-outlined
@@ -53,7 +52,7 @@
           </template>
         </artms-navbar>
       </a-layout-header>
-      <nav v-if="isNavShow">
+      <nav v-if="isNavShow" class="bg-fff" >
         <artms-tags-view />
       </nav>
       <a-layout-content>
@@ -89,6 +88,7 @@ import {useTagsView,useTheme} from '@/store/pinia/index'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
 import { useStorage } from '@vueuse/core'
+import {LOGO_IMAGE} from '@/settings'
 const collapsed = ref<boolean>(false)
 const $route = useRoute()
 // const $store = useStore()
@@ -106,6 +106,7 @@ const sideModel= computed(()=>{
 const isNavShow=computed(()=>{
   return useTagsView().isShow
 })
+
 const storage = useStorage<boolean>('storg', true, sessionStorage)
 </script>
 <style lang="scss" scope>
@@ -134,7 +135,7 @@ const storage = useStorage<boolean>('storg', true, sessionStorage)
 
   nav {
     line-height: 40px;
-    background: #fff;
+    // background: #fff;
     .tag {
       padding: 3px 8px;
       margin-right: 5px !important;
@@ -168,7 +169,7 @@ const storage = useStorage<boolean>('storg', true, sessionStorage)
   // }
 
   .site-layout .site-layout-background {
-    background: #fff;
+    // background: #fff;
   }
   .fade-enter-active,
   .fade-leave-active {

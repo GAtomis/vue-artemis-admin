@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 11:39:17
- * @LastEditTime: 2022-01-04 13:57:44
+ * @LastEditTime: 2022-01-05 17:26:59
  * @LastEditors: Gavin
  */
 import { defineStore } from 'pinia'
-import { THEME_BG_COLOR, THEME_BG_MENU, THEME_SIDE_MODEL } from '@/store/store-enum'
-import {SETTINGS_TABVIEW,SETTINGS_MENU,SETTINGS_ASIDE_MODEL} from '@/settings'
+import { THEME_BG_COLOR, THEME_BG_MENU, THEME_SIDE_MODEL,THEME_STYLE } from '@/store/store-enum'
+import {SETTINGS_TABVIEW,SETTINGS_MENU,SETTINGS_ASIDE_MODEL,SETTINGS_THEME_STYLE} from '@/settings'
 import { createStorage } from '@/utils/storage'
 const Storage = createStorage({ storage: localStorage })
 
@@ -36,7 +36,7 @@ export default defineStore({
     themeBackgroundColor: Storage.get(THEME_BG_COLOR) ||commit<string>(THEME_BG_COLOR, SETTINGS_TABVIEW),
     themeText: "",
     themeMenu: Storage.get(THEME_BG_MENU) || commit<string>(THEME_BG_MENU, SETTINGS_MENU),
-    themeStyle: false,
+    themeStyle: Storage.get(THEME_STYLE) || commit<boolean>(THEME_STYLE, SETTINGS_THEME_STYLE),
     sideModel: Storage.get(THEME_SIDE_MODEL) || commit<string>(THEME_SIDE_MODEL, SETTINGS_ASIDE_MODEL)
   }),
   getters: {
@@ -46,6 +46,7 @@ export default defineStore({
       this.updateThemeBackgroundColor()
       this.updateThemeMenu()
       this.updateSideModel()
+      this.updateThemeStyle()
 
     },
     updateThemeBackgroundColor(val:string=SETTINGS_TABVIEW,) {
@@ -56,6 +57,9 @@ export default defineStore({
     },
     updateSideModel(val:string=SETTINGS_ASIDE_MODEL) {
       this.sideModel=commit<string>(THEME_SIDE_MODEL, val)
+    },
+    updateThemeStyle(val:boolean=SETTINGS_THEME_STYLE) {
+      this.themeStyle=commit<boolean>(THEME_STYLE, val)
     }
   },
 })

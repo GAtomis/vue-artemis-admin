@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2021-12-17 16:29:23
+ * @LastEditTime: 2022-01-05 15:59:15
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv } from 'vite'
@@ -14,8 +14,9 @@ import viteCompression from 'vite-plugin-compression';//包压缩支持Gzip
 import { viteMockServe } from 'vite-plugin-mock'//mock
 
 import vueJsx from '@vitejs/plugin-vue-jsx'//jsx插件
-
-
+//https://blog.csdn.net/weixin_46827107/article/details/121235768
+import 
+  themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 // import compress from 'vite-plugin-compress'
 
 // function pathResolve(dir: string) {
@@ -23,6 +24,34 @@ import vueJsx from '@vitejs/plugin-vue-jsx'//jsx插件
 // }
 
 // https://vitejs.dev/config/
+const setTheme = () => themePreprocessorPlugin({
+  less: {
+    // // 启用任意主题色模式
+    // arbitraryMode: true,
+    // // 默认的主题色，用于对其他颜色值形成对比值，通常与 src/theme/theme-vars.less 中的一个主题色相同，也可以不相同，就看是不是你想要的效果
+    // defaultPrimaryColor: "#18ffb2",
+    // 各个主题文件的位置
+    multipleScopeVars: [
+      {
+        scopeName: "theme-default",
+        path: resolve("src/themes/default.less"),
+      },
+      {
+        scopeName: "theme-dark",
+        path: resolve("src/themes/dark.less"),
+      },
+
+    ],
+            // css中不是由主题色变量生成的颜色，也让它抽取到主题css内，可以提高权重
+    includeStyleWithColors: [
+      {
+
+        color: '#ffffff'
+      }
+    ],
+  },
+})
+
 
 const imagemin = () => {
   return viteImagemin({
@@ -95,7 +124,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         }
       }
     },
-    plugins: [vue(), vueJsx(), viteCompression({ deleteOriginFile: true }), imagemin(), viteMockServe({ supportTs: true })]
+    plugins: [vue(), vueJsx(), viteCompression({ deleteOriginFile: true }), imagemin(), viteMockServe({ supportTs: true }), setTheme()]
   }
 
 }
