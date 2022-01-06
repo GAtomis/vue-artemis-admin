@@ -2,7 +2,7 @@
  * @Description: axios api
  * @Author: Gavin
  * @Date: 2021-08-04 14:12:56
- * @LastEditTime: 2021-12-17 16:48:27
+ * @LastEditTime: 2022-01-06 16:06:40
  * @LastEditors: Gavin
  */
 import http from '@/utils/axios'
@@ -14,7 +14,7 @@ enum Api {
 }
 
 type comment ={
-  username:String
+  username:string
 }
 /**
  * @description: 获取用户信息

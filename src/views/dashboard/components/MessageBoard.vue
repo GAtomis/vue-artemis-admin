@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2022-01-04 11:45:23
+ * @LastEditTime: 2022-01-06 16:04:41
  * @LastEditors: Gavin
 -->
 <template>
@@ -66,7 +66,7 @@ let comments = ref<Array<UserInfo>>([])
 //结果集可以应用后台api类型这里就不做演示了,引用了接口就不会提示属性不存在了
 
 const getList = async () => {
-  const res = await getComments({ username: useUser().username })
+  const res = await getComments({ username: useUser().username as string})
   comments.value = res
 }
 onMounted(() => {

@@ -2,7 +2,7 @@
  * @Description: Global Select  
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2022-01-06 13:59:25
+ * @LastEditTime: 2022-01-06 16:06:55
  * @LastEditors: Gavin
 -->
 <template>
@@ -63,7 +63,7 @@ import { useTheme, useTagsView } from '@/store/pinia/index'
 import { SettingFilled } from '@ant-design/icons-vue'
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils.js";
 // "@setCustomTheme" 是 themePreprocessorPlugin 提供的模块，setCustomTheme的参数必须提供Color模块，至于为什么不把 Color 直接依赖进去是有原因的
-import { Sketch } from '@ckpack/vue-color';
+
 
 
 

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2021-12-31 17:37:15
+ * @LastEditTime: 2022-01-06 16:57:24
  * @LastEditors: Gavin
 -->
 <template>
@@ -21,7 +21,6 @@
       :show-icon="showIcon"
         @select="onSelect"
         checkable
-
         v-model:expandedKeys="expandedKeys"
         v-model:selectedKeys="selectedKeys"
         v-model:checkedKeys="checkedKeys"
@@ -62,7 +61,6 @@
 import { ref, computed } from 'vue'
 // import { useStore } from 'vuex'
 import { filterAsyncRoutes } from '@/hooks/router'
-import { CarryOutOutlined, SmileTwoTone } from '@ant-design/icons-vue';
 import { getPermissionList } from '@/api/account/index'
 import useDialogTree from './hooks/useDialogTree'
 import _ from 'lodash'

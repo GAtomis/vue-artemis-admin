@@ -2,11 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 12:23:51
- * @LastEditTime: 2022-01-04 14:30:19
+ * @LastEditTime: 2022-01-06 17:08:35
  * @LastEditors: Gavin
  */
 
-import { RouteRecordRaw,RouteRecordName} from 'vue-router'
+import { RouteRecordRaw,RouteRecordName,RouteLocationNormalizedLoaded} from 'vue-router'
 import { TAGS_VIEW_IS_SHOW} from '@/store/store-enum'
 import { createStorage } from '@/utils/storage'
 import { defineStore } from 'pinia'
@@ -16,7 +16,6 @@ export type VisitedViews = {
   meta?: any,
   name: RouteRecordName|undefined,
   path: string,
-
 }
 export type ITagsViewState = {
   visitedViews: Array<VisitedViews>,
@@ -44,7 +43,7 @@ export default defineStore({
   getters: {
   },
   actions: {
-    addVisitedView( view:RouteRecordRaw) {
+    addVisitedView( view:any) {
       if (this.visitedViews.some(v => v.name === view.name)) return
         
       this.visitedViews.push(
@@ -55,7 +54,7 @@ export default defineStore({
         }
       )
     },
-    deleteVisitedView( view:RouteRecordRaw){
+    deleteVisitedView( view:any){
         this.visitedViews = this.visitedViews.filter(tag => tag.name != view.name)
     },
     closeAllLabels(){

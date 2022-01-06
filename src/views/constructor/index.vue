@@ -2,7 +2,7 @@
  * @Description: Constructor
  * @Author: Gavin
  * @Date: 2021-11-30 18:30:19
- * @LastEditTime: 2021-12-17 15:53:33
+ * @LastEditTime: 2022-01-06 16:03:05
  * @LastEditors: Gavin
 -->
 <template>
@@ -14,7 +14,6 @@
           class="dragArea type-group"
           :list="typeList1"
           :group="{ name: 'people', pull: 'clone', put: false }"
-          @start="onStartDrag1"
           :move="onMove"
           :clone="onClone"
           item-key="formItemId"
@@ -50,7 +49,6 @@
           v-bind="dragOptions"
           @start="drag = true"
           @end="drag = false"
-          @change="log"
           item-key="formItemId"
         >
           <template #item="{ element, index }">

@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2021-12-31 17:42:38
+ * @LastEditTime: 2022-01-06 16:02:47
  * @LastEditors: Gavin
 -->
 <template>
   <div class="dashboard">
-    <a-card title="Dashboard" @click="onCard" >
+    <a-card title="Dashboard">
       <a-row a-row type="flex" justify="space-around">
         <a-col :span="1" class="avatar">
           <a-avatar :size="64" :src="userInfo.avatar">
