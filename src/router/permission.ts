@@ -2,10 +2,10 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-01-04 11:39:45
+ * @LastEditTime: 2022-01-06 14:38:53
  * @LastEditors: Gavin
  */
-import { isNavigationFailure, Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
+import { Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
 // import store from '@/store'
 import { useUser, usePermission } from '@/store/pinia/index'
 import NProgress from 'nprogress' // progress bar
@@ -72,7 +72,7 @@ export function createGuardHook(router: Router): void {
             notification?.['success']?.({
               message: `Hi! ${hasUserInfo}, welcome in! Wish you a good mood every day ^-^!`,
             })
-            console.log('hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！in fact，we are in different world，we are only passengers for each other！Dont matter! i love u! Never expire! I m dying to see how this one ends');
+            console.log('hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！In fact，we are in different world，we are only passengers for each other！Dont matter! I love u! Never expire! I m dying to see how this one ends');
           }, 500);
 
         } catch (error) {

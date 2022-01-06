@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-16 17:04:43
- * @LastEditTime: 2022-01-05 16:45:08
+ * @LastEditTime: 2022-01-06 14:39:06
  * @LastEditors: Gavin
 -->
 
@@ -26,7 +26,7 @@
             <span>{{ "GitHub" }}</span>
           </template>
 
-        <a  href="https://github.com/GAtomis/vue-artemis-admin" style="color:#333;" target="_blank" rel="noopener noreferrer"><GithubOutlined  /></a>
+        <a  href="https://github.com/GAtomis/vue-artemis-admin" style="color:#333;" target="_blank" rel="noopener noreferrer"><GithubOutlined/></a>
         </a-tooltip>
 
         <a-tooltip placement="bottom">

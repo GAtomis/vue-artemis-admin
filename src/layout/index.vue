@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2022-01-05 17:56:33
+ * @LastEditTime: 2022-01-06 14:32:05
  * @LastEditors: Gavin
 -->
 <template>
@@ -27,7 +27,7 @@
             <span
               :class="{ anticon: collapsed }"
               style="color: #fff; font-size: 16px; white-space: nowrap;margin-left:10px;"
-              >Artemis Admin</span
+              >{{HOME_TITLE}}</span
             >
           </div>
         </template>
@@ -88,7 +88,7 @@ import {useTagsView,useTheme} from '@/store/pinia/index'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
 import { useStorage } from '@vueuse/core'
-import {LOGO_IMAGE} from '@/settings'
+import {LOGO_IMAGE,HOME_TITLE} from '@/settings'
 const collapsed = ref<boolean>(false)
 const $route = useRoute()
 // const $store = useStore()

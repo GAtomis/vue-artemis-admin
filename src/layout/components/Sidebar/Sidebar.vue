@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-09 12:26:22
- * @LastEditTime: 2022-01-05 10:47:17
+ * @LastEditTime: 2022-01-06 14:32:16
  * @LastEditors: Gavin
 -->
 
@@ -14,7 +14,7 @@
       <span
         :class="{ anticon: collapsed }"
         style="color: #fff; font-size: 16px; white-space: nowrap"
-        >Artemis Admin</span
+        >{{HOME_TITLE}}</span
       >
     </div>
   </slot>
@@ -27,7 +27,7 @@
 <script lang='ts' setup>
 import MenuList from './components/MenuList.vue'
 import { inject } from 'vue'
-import { LOGO_IMAGE } from '@/settings'
+import { LOGO_IMAGE,HOME_TITLE } from '@/settings'
 defineProps({
   collapsed: Boolean,
 })

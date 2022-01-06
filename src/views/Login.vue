@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-01-04 19:39:31
+ * @LastEditTime: 2022-01-06 14:31:00
  * @LastEditors: Gavin
 -->
 
@@ -15,7 +15,7 @@
     <div class="login-logo">
       <!--      <svg-icon name="logo" />-->
       <img :src="LOGO_IMAGE" />
-      <h1>Artemis Admin</h1>
+      <h1>{{HOME_TITLE}}</h1>
     </div>
     <a-form
       layout="horizontal"
@@ -62,7 +62,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 // import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { useUser } from '@/store/pinia/index'
-import { LOGO_IMAGE } from '@/settings'
+import { LOGO_IMAGE,HOME_TITLE } from '@/settings'
 
 
 
