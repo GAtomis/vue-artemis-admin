@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-05 15:59:15
+ * @LastEditTime: 2022-01-07 10:32:34
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv } from 'vite'
@@ -15,8 +15,7 @@ import { viteMockServe } from 'vite-plugin-mock'//mock
 
 import vueJsx from '@vitejs/plugin-vue-jsx'//jsx插件
 //https://blog.csdn.net/weixin_46827107/article/details/121235768
-import 
-  themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
+import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 // import compress from 'vite-plugin-compress'
 
 // function pathResolve(dir: string) {
