@@ -2,7 +2,7 @@
  * @Description: Constructor
  * @Author: Gavin
  * @Date: 2021-11-30 18:30:19
- * @LastEditTime: 2022-01-06 16:03:05
+ * @LastEditTime: 2022-01-10 11:13:38
  * @LastEditors: Gavin
 -->
 <template>
@@ -24,7 +24,7 @@
                 <a-image
                   :src="element.imgUrl"
                   :preview="false"
-                  fallback="https://aliyuncdn.antdv.com/logo.png"
+                  fallback="https://t9.baidu.com/it/u=471057450,3953446105&fm=74&app=80&f=PNG&size=f121,121?sec=1880279984&t=625579a68f9da51c0bb0cdac61f1655f"
                 />
               </a-tooltip>
             </div>
