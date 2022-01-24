@@ -3,7 +3,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2021-11-30 18:27:18
+ * @LastEditTime: 2022-01-24 18:43:10
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -18,7 +18,8 @@ const mixinRouter: Array<RouteRecordRaw> = [{
   meta: {
     title: 'Account',
     icon: 'icon-team',
-    roles: "/account"
+    roles: "/account",
+    sortIndex:2
   },
   children: [
 

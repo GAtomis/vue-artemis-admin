@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2021-12-29 14:18:24
+ * @LastEditTime: 2022-01-24 17:14:45
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
@@ -30,7 +30,7 @@ export const userInfo: AccountList = {
                 name: faker.name.lastName() + faker.name.firstName(),
                 age: faker.random.number(),
                 jobType: faker.name.jobType(),
-                avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 30)}`,
+                avatar: `https://i.pravatar.cc/150}`,
                 level: "admin",
                 roles: ['admin'],
                 catchPhrase: faker.company.catchPhrase()
@@ -47,7 +47,7 @@ export const userInfo: AccountList = {
                 name: faker.name.lastName() + faker.name.firstName(),
                 age: faker.random.number(),
                 jobType: faker.name.jobType(),
-                avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() *30)}`,
+                avatar: `https://i.pravatar.cc/150`,
                 level: "user",
                 roles: ['user', "/account"
                     , "/account/center"

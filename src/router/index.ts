@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2022-01-10 11:06:56
+ * @LastEditTime: 2022-01-24 15:35:21
  * @LastEditors: Gavin
  */
 
@@ -14,7 +14,7 @@ import redirect from './modules/redirect'
 import nested from './modules/nested'
 import account from './modules/account'
 import constructor from './modules/constructor'
-
+import  modules from './modules'
 
 
 const layout = () => import('@/layout/index.vue');
@@ -132,9 +132,10 @@ export const privateRouteTable: Array<RouteRecordRaw> = [
       }
     ],
   },
-  ...nested,
-  ...account,
-  ...constructor,
+  // ...nested,
+  // ...account,
+  // ...constructor,
+  ...modules ,
 
 
 
@@ -154,6 +155,8 @@ export function setupRouter(app: App) {
   app.use(router)
   // 创建路由守卫 loading guard hook
   createGuardHook(router)
+  // console.log(modules);
+  
 }
 
 

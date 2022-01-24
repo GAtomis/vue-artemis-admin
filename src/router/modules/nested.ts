@@ -3,7 +3,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2021-10-25 11:56:13
+ * @LastEditTime: 2022-01-24 18:20:21
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -18,7 +18,8 @@ const nestedRouter: Array<RouteRecordRaw> = [{
   meta: {
     title: 'Nested Routes',
     icon: 'icon-apartment',
-    roles: "/nested"
+    roles: "/nested",
+    sortIndex:2
   },
   children: [
     {

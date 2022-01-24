@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-07 10:32:34
+ * @LastEditTime: 2022-01-24 16:47:11
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv } from 'vite'
@@ -13,15 +13,14 @@ import viteImagemin from 'vite-plugin-imagemin';//图片压缩
 import viteCompression from 'vite-plugin-compression';//包压缩支持Gzip
 import { viteMockServe } from 'vite-plugin-mock'//mock
 
+import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
 import vueJsx from '@vitejs/plugin-vue-jsx'//jsx插件
-//https://blog.csdn.net/weixin_46827107/article/details/121235768
+
 import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 // import compress from 'vite-plugin-compress'
-
 // function pathResolve(dir: string) {
 //   return resolve(process.cwd(), '.', dir);
 // }
-
 // https://vitejs.dev/config/
 const setTheme = () => themePreprocessorPlugin({
   less: {
@@ -41,7 +40,7 @@ const setTheme = () => themePreprocessorPlugin({
       },
 
     ],
-            // css中不是由主题色变量生成的颜色，也让它抽取到主题css内，可以提高权重
+    // css中不是由主题色变量生成的颜色，也让它抽取到主题css内，可以提高权重
     includeStyleWithColors: [
       {
 
@@ -81,6 +80,25 @@ const imagemin = () => {
     },
   })
 }
+//set CDN 
+
+function configCDN() {
+  
+  return importToCDN({
+    modules: [
+      {
+        name: 'three',
+        var: 'three',
+        path: 'https://elc-corp-global.oss-cn-shanghai.aliyuncs.com/da/three.min.js'
+      }
+
+    ]
+  })
+
+}
+
+
+
 
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
@@ -123,7 +141,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         }
       }
     },
-    plugins: [vue(), vueJsx(), viteCompression({ deleteOriginFile: true }), imagemin(), viteMockServe({ supportTs: true }), setTheme()]
+    plugins: [vue(), vueJsx(), viteCompression({ deleteOriginFile: true }), imagemin(), viteMockServe({ supportTs: true }), setTheme(), configCDN()]
   }
 
 }

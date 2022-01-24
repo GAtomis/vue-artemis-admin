@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-06 17:52:31
+ * @LastEditTime: 2022-01-24 19:05:37
  * @LastEditors: Gavin
 -->
 
@@ -30,6 +30,15 @@
 - feat-Theme light&dark replacement :heavy_check_mark:
 - feat-Permission configuration :wrench:
 - feat-Form constructor :wrench:
+- feat-auto Router modules : All routing tables will be automatically imported into Vue router. You only need to establish the corresponding configuration file in '@/router/modules/*.ts' to import them automatically
+
+
+## Q&A about poject
+### Q1 feat-auto Router modules, How to sort menus?
+ Sort by the weight value of sortIndex. The default value of item ortIndex without this attribute is 0(max)
+### Q2 Theme light&dar How to use？
+  enter HomePage Move the mouse to the right of the window DOM click Setting
+
 
 
 
@@ -38,6 +47,8 @@
 * Hot-reload no page&&router no page=>keep-aliv&&router-view add Key
 * about :pineapple:pinia 
   Vuex4 support for typescript doesn't really fit.Therefore, the main branch is reconstructed.Vuex configuration file is still retained in @/main.ts
+
+
 
 ## Quick start
 
