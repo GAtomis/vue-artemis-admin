@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-24 19:05:37
+ * @LastEditTime: 2022-01-24 19:15:08
  * @LastEditors: Gavin
 -->
 
@@ -22,7 +22,7 @@
 </p>
 
 ## Introduction
- English is no good - -, The template realized by 2 + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
+ English is no good - -, The template realized by vue-next + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
 ## Basic function of template (improvement)
 - reconstruct-vuex=>:pineapple:pinia :heavy_check_mark:
 - feat-SSO(login) :heavy_check_mark:
@@ -33,7 +33,7 @@
 - feat-auto Router modules : All routing tables will be automatically imported into Vue router. You only need to establish the corresponding configuration file in '@/router/modules/*.ts' to import them automatically
 
 
-## Q&A about poject
+## Q&A About project
 ### Q1 feat-auto Router modules, How to sort menus?
  Sort by the weight value of sortIndex. The default value of item ortIndex without this attribute is 0(max)
 ### Q2 Theme light&dar How to use？
