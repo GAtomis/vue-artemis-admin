@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2022-01-06 16:04:41
+ * @LastEditTime: 2022-01-25 15:19:43
  * @LastEditors: Gavin
 -->
 <template>
@@ -43,8 +43,8 @@
         <p>{{ `Hellow! I'm ${item.name},${item.content}. I'm looking forward to seeing you next time` }}</p>
       </template>
       <template #datetime>
-        <a-tooltip :title="moment().format('YYYY-MM-DD HH:mm:ss')">
-          <span>{{ moment().fromNow() }}</span>
+        <a-tooltip :title="dayjs().format('YYYY-MM-DD HH:mm:ss')">
+          <span>{{ dayjs().fromNow() }}</span>
         </a-tooltip>
       </template>
     </a-comment>
@@ -52,7 +52,8 @@
 </template>
 
 <script lang='ts' setup>
-import moment from 'moment';
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
 import { ref, onMounted, reactive } from 'vue';
 import { getComments } from "@/api/dashboard/index"
@@ -60,7 +61,8 @@ import { getComments } from "@/api/dashboard/index"
 import type { UserInfo } from '@/utils/interface/index'
 import {useUser} from '@/store/pinia/index'
 // const $store = useStore();
-
+//dayjs plugin
+dayjs.extend(relativeTime)
 let comments = ref<Array<UserInfo>>([])
 
 //结果集可以应用后台api类型这里就不做演示了,引用了接口就不会提示属性不存在了

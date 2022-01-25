@@ -2,7 +2,7 @@
  * @Description: 公用全局函数
  * @Author: Gavin
  * @Date: 2021-09-10 10:27:47
- * @LastEditTime: 2022-01-24 18:41:49
+ * @LastEditTime: 2022-01-25 10:51:35
  * @LastEditors: Gavin
  */
 
@@ -13,6 +13,12 @@ interface PointerLocation {
   x: number,
   y: number
 }
+/**
+ * @description: 获得当前鼠标指针位置
+ * @param {MaybeRef} element
+ * @return {*}
+ * @Date: 2022-01-25 10:51:16
+ */
 export function getPointerLocationByElement(element: MaybeRef<HTMLElement | HTMLDivElement | Document> = document): UnwrapRef<PointerLocation> {
 
   const pointerLocation: UnwrapRef<PointerLocation> = reactive({
@@ -43,11 +49,19 @@ export function useCloneByJSON<T>(target:any, call?: (x: T) => any) {
 }
 
 
-export function useBubblingSort<T>(arr:T[],fn1:(i:T[],j:number)=>void) {
+/**
+ * @description: 使用冒泡排序
+ * @generic {T} item类型
+ * @param {T} arr 需要排序的数组
+ * @param {function} fn1 进行比较的回调 arr为排序数组 J当前轮  i 从第几个下标开始
+ * @return {*}
+ * @Date: 2022-01-25 10:44:41
+ */
+export function useBubblingSort<T>(arr:T[],fn1:(i:T[],j:number)=>void):T[]{
   var len = arr.length;
   for (var i = 0; i < len-1; i++) {
     for (var j = 0; j < len - 1 - i; j++) {
-         // 相邻元素两两对比，元素交换，大的元素交换到后面
+         // 相邻元素两两s对比，元素交换，大的元素交换到后面
         fn1(arr,j)
     }
   }

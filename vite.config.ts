@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-24 16:47:11
+ * @LastEditTime: 2022-01-25 18:46:29
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv } from 'vite'
@@ -25,7 +25,7 @@ import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 const setTheme = () => themePreprocessorPlugin({
   less: {
     // // 启用任意主题色模式
-    // arbitraryMode: true,
+    arbitraryMode: false,
     // // 默认的主题色，用于对其他颜色值形成对比值，通常与 src/theme/theme-vars.less 中的一个主题色相同，也可以不相同，就看是不是你想要的效果
     // defaultPrimaryColor: "#18ffb2",
     // 各个主题文件的位置
@@ -47,6 +47,16 @@ const setTheme = () => themePreprocessorPlugin({
         color: '#ffffff'
       }
     ],
+    extract: !true,
+    // 独立主题css文件的输出路径，默认取 viteConfig.build.assetsDir 相对于 (viteConfig.build.outDir)
+    // outputDir: "",
+    // // 会选取defaultScopeName对应的主题css文件在html添加link
+    // themeLinkTagId: "theme-link-tag",
+    // // "head"||"head-prepend" || "body" ||"body-prepend"
+    // themeLinkTagInjectTo: "head",
+    // // 是否对抽取的css文件内对应scopeName的权重类名移除
+    // removeCssScopeName: false,
+    // // 可以自定义css文件名称的函数
   },
 })
 
@@ -105,7 +115,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
 
   return {
-    // base:'./',//绝对路径配置根据ngxin
+    base:'./',//绝对路径配置根据ngxin
     resolve: {
       alias: [
         {
@@ -141,7 +151,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         }
       }
     },
-    plugins: [vue(), vueJsx(), viteCompression({ deleteOriginFile: true }), imagemin(), viteMockServe({ supportTs: true }), setTheme(), configCDN()]
+    plugins: [vue(), vueJsx()
+      // , viteCompression({ deleteOriginFile: true })
+      , imagemin(), viteMockServe({ supportTs: true }), setTheme(), configCDN()]
   }
 
 }

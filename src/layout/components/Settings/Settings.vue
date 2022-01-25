@@ -2,7 +2,7 @@
  * @Description: Global Select  
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2022-01-06 16:06:55
+ * @LastEditTime: 2022-01-25 18:46:38
  * @LastEditors: Gavin
 -->
 <template>
@@ -55,7 +55,7 @@
 
 <script lang='ts' setup>
 import { useDark, useToggle } from '@vueuse/core'
-import { ref, reactive, watch,watchEffect } from 'vue'
+import { ref, reactive, watch, watchEffect } from 'vue'
 import type { UnwrapRef } from 'vue'
 import type { FormProp } from '@/components/Form/interface'
 // import { useStore } from 'vuex'
@@ -98,18 +98,31 @@ const defaultForm = (): FormState => {
 const formState: UnwrapRef<FormState> = reactive<FormState>(defaultForm())
 watchEffect(() => {
 
-    if (formState.checked) {
-        toggleTheme({
-          scopeName: "theme-dark",
-        });
-        console.log("已切换为暗黑主题");
-      } else {
-        toggleTheme({
-          scopeName: "theme-default",
-        });
-        console.log("已切换为默认主题");
-      }
-      useTheme().updateThemeStyle(formState.checked)
+  if (formState.checked) {
+    toggleTheme({
+      scopeName: "theme-dark",
+      // // 可选，link的href处理，看情况用， 当启用 themePreprocessorPlugin 的 extract后才需要
+      // customLinkHref: (href) => href,
+      // // 可选，默认对应 themePreprocessorPlugin 的 themeLinkTagId
+      // themeLinkTagId: "theme-link-tag",
+      // // 可选 "head" || "body"
+      // themeLinkTagInjectTo: "head",
+    });
+    console.log("已切换为暗黑主题");
+  } else {
+    toggleTheme({
+      scopeName: "theme-default",
+      // // 可选，link的href处理，看情况用， 当启用 themePreprocessorPlugin 的 extract后才需要
+      // customLinkHref: (href) => href,
+      // // 可选，默认对应 themePreprocessorPlugin 的 themeLinkTagId
+      // themeLinkTagId: "theme-link-tag",
+      // // 可选 "head" || "body"
+      // themeLinkTagInjectTo: "head",
+
+    });
+    console.log("已切换为默认主题");
+  }
+  useTheme().updateThemeStyle(formState.checked)
 
 })
 watch(
@@ -148,7 +161,7 @@ const onDefault = () => {
 }
 //我的Form属性
 const { labelCol, wrapperCol }: FormProp = {
-  labelCol: { span: 10},
+  labelCol: { span: 10 },
   wrapperCol: { span: 14 },
 }
 const isDark = useDark()
