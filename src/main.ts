@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-25 17:54:26
+ * @LastEditTime: 2022-01-26 10:52:16
  * @LastEditors: Gavin
  */
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'ant-design-vue/dist/antd.css';
+import 'ant-design-vue/dist/antd.less';
 // import { setupStore } from '@/store'
 import router, { setupRouter } from './router'
 import {registerIconComponents} from '@/components/Iconfont/Iconfont'

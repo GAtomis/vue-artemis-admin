@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-25 18:46:29
+ * @LastEditTime: 2022-01-26 11:08:42
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv } from 'vite'
@@ -47,16 +47,10 @@ const setTheme = () => themePreprocessorPlugin({
         color: '#ffffff'
       }
     ],
-    extract: !true,
-    // 独立主题css文件的输出路径，默认取 viteConfig.build.assetsDir 相对于 (viteConfig.build.outDir)
-    // outputDir: "",
-    // // 会选取defaultScopeName对应的主题css文件在html添加link
-    // themeLinkTagId: "theme-link-tag",
-    // // "head"||"head-prepend" || "body" ||"body-prepend"
-    // themeLinkTagInjectTo: "head",
-    // // 是否对抽取的css文件内对应scopeName的权重类名移除
-    // removeCssScopeName: false,
-    // // 可以自定义css文件名称的函数
+    defaultScopeName:'theme-default',
+    extract:false
+
+
   },
 })
 
@@ -152,7 +146,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       }
     },
     plugins: [vue(), vueJsx()
-      // , viteCompression({ deleteOriginFile: true })
+      , viteCompression({ deleteOriginFile: true })
       , imagemin(), viteMockServe({ supportTs: true }), setTheme(), configCDN()]
   }
 

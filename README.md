@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-24 19:15:08
+ * @LastEditTime: 2022-01-26 11:06:47
  * @LastEditors: Gavin
 -->
 
@@ -47,6 +47,7 @@
 * Hot-reload no page&&router no page=>keep-aliv&&router-view add Key
 * about :pineapple:pinia 
   Vuex4 support for typescript doesn't really fit.Therefore, the main branch is reconstructed.Vuex configuration file is still retained in @/main.ts
+* fix productionEnvironment light&dark 
 
 
 

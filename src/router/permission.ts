@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-01-25 18:20:15
+ * @LastEditTime: 2022-01-26 10:58:26
  * @LastEditors: Gavin
  */
 import { Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
