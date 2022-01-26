@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-16 17:04:43
- * @LastEditTime: 2022-01-06 14:39:06
+ * @LastEditTime: 2022-01-26 13:20:35
  * @LastEditors: Gavin
 -->
 
@@ -66,7 +66,7 @@
 
 </template>
 <script lang='ts' setup>
-// import { useStore } from 'vuex'
+
 import { useRoute } from 'vue-router'
 import {
   GithubOutlined,
@@ -91,10 +91,10 @@ const toggleFullScreen = () => {
 }
 
 
-// const $store = useStore()
+
 const $route = useRoute()
 //个人信息 UserInfo
-export type UserInfo = {
+ type UserInfo = {
   nickName: string,
   avatar: string,
   username?: string,

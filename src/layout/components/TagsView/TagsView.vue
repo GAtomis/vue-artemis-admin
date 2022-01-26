@@ -2,7 +2,7 @@
  * @Description: 标签层机翻勿6^Gavin^
  * @Author: Gavin
  * @Date: 2021-09-01 14:05:34
- * @LastEditTime: 2021-12-31 16:51:46
+ * @LastEditTime: 2022-01-26 13:21:13
  * @LastEditors: Gavin
 -->
 <template>
@@ -37,7 +37,7 @@
 
 import { watch, onMounted, computed, unref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-// import { useStore } from 'vuex'
+
 import {useTagsView,usePermission,useTheme} from '@/store/pinia/index'
 import { filterChildren as filterAffixTags, filterAsyncRoutes as filterHidden } from "@/hooks/router"
 
@@ -46,7 +46,7 @@ import {
   FolderFilled
 } from '@ant-design/icons-vue';
 const $route = useRoute()
-// const $store = useStore()
+
 const $router = useRouter()
 onMounted(() => {
   initTags()

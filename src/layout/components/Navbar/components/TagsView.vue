@@ -2,7 +2,7 @@
  * @Description: 标签层机翻勿6^Gavin^
  * @Author: Gavin
  * @Date: 2021-09-01 14:05:34
- * @LastEditTime: 2022-01-06 17:09:28
+ * @LastEditTime: 2022-01-26 13:18:59
  * @LastEditors: Gavin
 -->
 <template>
@@ -35,7 +35,7 @@
 
 import { watch, watchEffect, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-// import { useStore } from 'vuex'
+
 import { filterChildren as filterAffixTags } from "@/hooks/router"
 import { useTagsView, usePermission, useTheme } from '@/store/pinia/index'
 
@@ -44,7 +44,7 @@ import {
   FolderFilled
 } from '@ant-design/icons-vue';
 const $route = useRoute()
-// const $store = useStore()
+
 const $router = useRouter()
 onMounted(() => {
   initTags()
@@ -84,7 +84,7 @@ const closeOtherLabels = (tag) => {
   useTagsView().closeOtherLabels(tag)
 }
 watch(() => visitedViews.value, () => {
-  // console.error(visitedViews.value, "watchEffect");
+
 
   if (visitedViews.value.some(item => {
     return item.name === $route.name

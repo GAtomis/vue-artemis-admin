@@ -2,7 +2,7 @@
  * @Description: Global Select  
  * @Author: Gavin
  * @Date: 2021-09-08 17:29:16
- * @LastEditTime: 2022-01-25 18:46:38
+ * @LastEditTime: 2022-01-26 13:21:04
  * @LastEditors: Gavin
 -->
 <template>
@@ -58,7 +58,6 @@ import { useDark, useToggle } from '@vueuse/core'
 import { ref, reactive, watch, watchEffect } from 'vue'
 import type { UnwrapRef } from 'vue'
 import type { FormProp } from '@/components/Form/interface'
-// import { useStore } from 'vuex'
 import { useTheme, useTagsView } from '@/store/pinia/index'
 import { SettingFilled } from '@ant-design/icons-vue'
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils.js";
@@ -68,7 +67,7 @@ import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-
 
 
 const visible = ref<boolean>(false)
-// const $store = useStore()
+
 const afterVisibleChange = (bool: boolean) => {
   bool && (mergForm = defaultForm())
   console.log(mergForm)

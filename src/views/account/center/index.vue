@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-01-04 10:54:56
+ * @LastEditTime: 2022-01-26 13:21:22
  * @LastEditors: Gavin
 -->
 <template>
@@ -71,12 +71,12 @@
 </template>
 
 <script lang='ts' setup>
-// import { useStore } from 'vuex'
+
 import {  toRaw, reactive } from 'vue'
 import useUpLoadByAvatar from './Hooks/useUpLoadByAvatar'
 import {useUser } from '@/store/pinia'
 import type { IUserState } from '@/store/pinia/user'
-// const $store = useStore()
+
 
 //坑早知道用interface了, type的继承真的丑
 type UserInfo = IUserState & {

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-01-26 13:08:51
+ * @LastEditTime: 2022-01-26 13:22:26
  * @LastEditors: Gavin
 -->
 
@@ -58,7 +58,6 @@ import { message } from 'ant-design-vue';
 import type { LoginFrom } from '@/components/Form/base'//深坑一定要用type导出接口 vite专属bug
 import type { RuleObject, ValidateErrorEntity } from 'ant-design-vue/es/form/interface'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
-// import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { useUser } from '@/store/pinia/index'
 import { LOGO_IMAGE,HOME_TITLE } from '@/settings'
@@ -100,7 +99,7 @@ const loading = ref<boolean>(false)
  * @Date: 2021-08-01 01:32:51
  */
 const router = useRouter()
-// const store = useStore()
+
 const handleSubmit = async ({ username, password }: FormState) => {
   console.log('onSubmit');
   loading.value = true;

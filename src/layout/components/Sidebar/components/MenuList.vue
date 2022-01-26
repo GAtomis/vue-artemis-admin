@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2022-01-04 12:42:16
+ * @LastEditTime: 2022-01-26 13:21:39
  * @LastEditors: Gavin
 -->
 
@@ -25,7 +25,7 @@
  <script lang='ts' setup>
 import { reactive, computed, watch, onMounted } from 'vue'
 import {usePermission,useTheme} from '@/store/pinia/index'
-// import { useStore } from 'vuex'
+
 
 
 import { useRouter, useRoute } from 'vue-router'
@@ -38,7 +38,7 @@ const props = defineProps({
 //salute Vue2 ^-^
 const $route = useRoute()
 const $router = useRouter()
-// const $store = useStore()
+
 
 const sideModel= computed(()=>{
   return useTheme().sideModel
@@ -49,12 +49,7 @@ const menus =  computed(() =>
   ) 
 
 
-// const menus =computed(()=>{
-//   return $store.getters['permission/routes']
-// })
-// onMounted(()=>{
-//   menus=
-// })
+
 
 // 获取当前打开的子菜单
 const getOpenKeys = () => {

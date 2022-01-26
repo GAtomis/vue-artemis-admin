@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2022-01-06 14:32:05
+ * @LastEditTime: 2022-01-26 13:18:51
  * @LastEditors: Gavin
 -->
 <template>
@@ -83,7 +83,7 @@ import {
 } from '@/layout/components/index'
 import { useRoute } from 'vue-router'
 import { ref, computed, provide, watch } from 'vue'
-// import { useStore } from 'vuex'
+
 import {useTagsView,useTheme} from '@/store/pinia/index'
 //hook
 import { getPointerLocationByElement } from '@/hooks/global/common/index'
@@ -91,7 +91,7 @@ import { useStorage } from '@vueuse/core'
 import {LOGO_IMAGE,HOME_TITLE} from '@/settings'
 const collapsed = ref<boolean>(false)
 const $route = useRoute()
-// const $store = useStore()
+
 const pointerLocation = getPointerLocationByElement()
 const offsetWidth = document.body.offsetWidth
 

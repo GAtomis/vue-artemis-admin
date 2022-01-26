@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-01-06 16:57:24
+ * @LastEditTime: 2022-01-26 13:21:59
  * @LastEditors: Gavin
 -->
 <template>
@@ -59,7 +59,7 @@
 
 <script lang='ts' setup>
 import { ref, computed } from 'vue'
-// import { useStore } from 'vuex'
+
 import { filterAsyncRoutes } from '@/hooks/router'
 import { getPermissionList } from '@/api/account/index'
 import useDialogTree from './hooks/useDialogTree'
@@ -67,7 +67,7 @@ import _ from 'lodash'
 import {useUser} from '@/store/pinia/index'
 
 
-// const $store = useStore()
+
 interface DataItem {
   key: string | number
   des: string

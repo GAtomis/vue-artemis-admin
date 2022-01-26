@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 13:41:15
- * @LastEditTime: 2022-01-04 19:36:19
+ * @LastEditTime: 2022-01-26 13:21:50
  * @LastEditors: Gavin
  */
 
@@ -32,6 +32,3 @@ const usePinia=()=>{
 export {useApp,usePermission,useTagsView,useUser,useTheme}
 
 export default usePinia()
-// export {allModules}
-
-// console.log(modules, allModules,'vuex自动导包')

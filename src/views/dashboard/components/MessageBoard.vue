@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2022-01-25 15:19:43
+ * @LastEditTime: 2022-01-26 13:22:06
  * @LastEditors: Gavin
 -->
 <template>
@@ -57,10 +57,10 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
 import { ref, onMounted, reactive } from 'vue';
 import { getComments } from "@/api/dashboard/index"
-// import { useStore } from 'vuex'
+
 import type { UserInfo } from '@/utils/interface/index'
 import {useUser} from '@/store/pinia/index'
-// const $store = useStore();
+
 //dayjs plugin
 dayjs.extend(relativeTime)
 let comments = ref<Array<UserInfo>>([])
