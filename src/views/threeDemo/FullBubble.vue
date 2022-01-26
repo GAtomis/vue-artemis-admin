@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-01-24 14:24:38
- * @LastEditTime: 2022-01-25 17:15:07
+ * @LastEditTime: 2022-01-26 17:10:25
  * @LastEditors: Gavin
 -->
 
@@ -148,6 +148,7 @@ function render() {
     sphere.position.y = 5 * Math.sin(timer + i * 1.1);
 
   }
+
 
   effect.render(scene, camera);
 

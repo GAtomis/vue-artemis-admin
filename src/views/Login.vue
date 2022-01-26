@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-01-26 13:22:26
+ * @LastEditTime: 2022-01-26 18:37:25
  * @LastEditors: Gavin
 -->
 
@@ -11,48 +11,53 @@
 
 
 <template>
-  <div class="login-bg">
-    <div class="login-logo">
-      <!--      <svg-icon name="logo" />-->
-      <img :src="LOGO_IMAGE" />
-      <h1>{{HOME_TITLE}}</h1>
-    </div>
-    <a-form
-      layout="horizontal"
-      :model="formState"
-      @finish="handleFinish"
-      @finishFailed="handleFailed"
-      :rules="rules"
-    >
-      <a-form-item name="username">
-        <a-input v-model:value="formState.username" size="large" placeholder="admin">
-          <template #prefix>
-            <user-outlined type="user" />
-          </template>
-        </a-input>
-      </a-form-item>
-      <a-form-item name="password">
-        <a-input
-          v-model:value="formState.password"
-          size="large"
-          type="password"
-          placeholder="123456"
-          autocomplete="new-password"
-        >
-          <template #prefix>
-            <lock-outlined type="user" />
-          </template>
-        </a-input>
-      </a-form-item>
-      <a-form-item>
-        <a-button type="primary" html-type="submit" size="large" :loading="loading" block>登录</a-button>
-      </a-form-item>
-    </a-form>
+  <div id="login-warp">
+
+
+    <section class="login-bg" >
+      <div class="login-logo">
+        <!--      <svg-icon name="logo" />-->
+        <img :src="LOGO_IMAGE" />
+        <h1>{{ HOME_TITLE }}</h1>
+      </div>
+      <a-form
+        layout="horizontal"
+        :model="formState"
+        @finish="handleFinish"
+        @finishFailed="handleFailed"
+        :rules="rules"
+      >
+        <a-form-item name="username">
+          <a-input v-model:value="formState.username" size="large" placeholder="admin">
+            <template #prefix>
+              <user-outlined type="user" />
+            </template>
+          </a-input>
+        </a-form-item>
+        <a-form-item name="password">
+          <a-input
+            v-model:value="formState.password"
+            size="large"
+            type="password"
+            placeholder="123456"
+            autocomplete="new-password"
+          >
+            <template #prefix>
+              <lock-outlined type="user" />
+            </template>
+          </a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-button type="primary" html-type="submit" size="large" :loading="loading" block>登录</a-button>
+        </a-form-item>
+      </a-form>
+    </section>
+
   </div>
 </template>
 <script lang="ts" setup>
 
-import { reactive, ref } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 import type { UnwrapRef } from 'vue'
 import { message } from 'ant-design-vue';
 import type { LoginFrom } from '@/components/Form/base'//深坑一定要用type导出接口 vite专属bug
@@ -60,14 +65,21 @@ import type { RuleObject, ValidateErrorEntity } from 'ant-design-vue/es/form/int
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import { useRouter } from 'vue-router'
 import { useUser } from '@/store/pinia/index'
-import { LOGO_IMAGE,HOME_TITLE } from '@/settings'
+import { LOGO_IMAGE, HOME_TITLE } from '@/settings'
+// import creat3DText from '@/hooks/global/three-js/geometry-text'
+// //three login-stage2-dev
 
 
-
+// onMounted(() => {
+//   const dom = document.getElementById('login-warp')
+//   creat3DText(dom as HTMLElement, "there")
+// })
 
 interface FormState extends LoginFrom {
   name?: string
 }
+
+
 //表单验证
 const formState: UnwrapRef<FormState> = reactive({
   username: '',
@@ -140,6 +152,11 @@ const handleFailed = (error: ValidateErrorEntity) => {
 </script>
 
 <style lang="scss" scoped>
+#login-warp{
+  width: 100vw;
+  height:100vh;
+}
+
 .login-bg {
   display: flex;
   // width: 100vw;
