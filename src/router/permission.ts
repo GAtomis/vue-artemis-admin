@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-01-26 10:58:26
+ * @LastEditTime: 2022-01-26 13:25:30
  * @LastEditors: Gavin
  */
 import { Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
@@ -21,7 +21,7 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 
 //白名单
-const whitelist: Array<string> = ['Login', 'Error', '404','Dashboard','Monitoring'] // no redirect whitelist
+const whitelist: Array<string> = ['Login', 'Error', '404'] // no redirect whitelist
 
 
 
