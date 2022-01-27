@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-27 19:31:18
+ * @LastEditTime: 2022-01-27 19:32:26
  * @LastEditors: Gavin
 -->
 
@@ -30,7 +30,7 @@
 - 个人主页已经权限配置 :wrench:
 - 表单构造器 :wrench:
 - 功能-自动载入路由器模块 :heavy_check_mark:
-- 拓展-three-组件化
+- 拓展-three-组件化 :heavy_check_mark:
 
 ## Q&A 关于项目
 ### Q1 功能-自动路由器模块，如何排序菜单？
