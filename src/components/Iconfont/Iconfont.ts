@@ -2,7 +2,7 @@
  * @Description: 封装icon
  * @Author: Gavin
  * @Date: 2021-08-09 13:52:34
- * @LastEditTime: 2021-11-30 18:39:26
+ * @LastEditTime: 2022-01-27 12:17:08
  * @LastEditors: Gavin
  */
 
@@ -15,7 +15,7 @@ export function registerIconComponents(app:App):void {
     console.log('registerIconComponents');
     
   const IconFont = createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_2732043_zyf9iqfztko.js',
+    scriptUrl: '//at.alicdn.com/t/font_2732043_9vyrkwrodqw.js',
   });
   app.component('IconFont',IconFont);
 }

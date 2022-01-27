@@ -2,11 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2022-01-24 17:14:45
+ * @LastEditTime: 2022-01-27 12:57:03
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
-import faker from "faker"
+import faker from "@faker-js/faker"
 import User, { UserInfo } from './Dao/User'
 faker.locale = "zh_CN";
 
@@ -30,7 +30,7 @@ export const userInfo: AccountList = {
                 name: faker.name.lastName() + faker.name.firstName(),
                 age: faker.random.number(),
                 jobType: faker.name.jobType(),
-                avatar: `https://i.pravatar.cc/150}`,
+                avatar: faker.image.avatar(),
                 level: "admin",
                 roles: ['admin'],
                 catchPhrase: faker.company.catchPhrase()
@@ -47,7 +47,7 @@ export const userInfo: AccountList = {
                 name: faker.name.lastName() + faker.name.firstName(),
                 age: faker.random.number(),
                 jobType: faker.name.jobType(),
-                avatar: `https://i.pravatar.cc/150`,
+                avatar: faker.image.avatar(),
                 level: "user",
                 roles: ['user', "/account"
                     , "/account/center"

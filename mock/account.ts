@@ -10,7 +10,7 @@
 
 
 import { MockMethod } from 'vite-plugin-mock'
-import faker from "faker"
+import faker from "@faker-js/faker"
 
 faker.locale = "zh_CN";
 const baseUrl = '/api'

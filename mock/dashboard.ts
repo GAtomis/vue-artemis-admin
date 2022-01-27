@@ -7,7 +7,7 @@
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
-import faker from "faker"
+import faker from "@faker-js/faker"
 import { userInfo } from './user'
 import {UserInfo,CommentItem } from './Dao/User'
 faker.locale = "zh_CN";

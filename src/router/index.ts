@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2022-01-24 15:35:21
+ * @LastEditTime: 2022-01-27 12:06:46
  * @LastEditors: Gavin
  */
 
@@ -11,9 +11,9 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
 import { createGuardHook } from './permission'
 import redirect from './modules/redirect'
-import nested from './modules/nested'
-import account from './modules/account'
-import constructor from './modules/constructor'
+// import nested from './modules/nested'
+// import account from './modules/account'
+// import constructor from './modules/constructor'
 import  modules from './modules'
 
 
@@ -31,6 +31,7 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
              affix: false, // tagsView fixed header
              roles: "/readme/read", //backed async router
              only:true  // no menuGroup  only page  
+             sortIndex: sort
   */
 
   {
@@ -90,48 +91,7 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
 
 //按需加载路由表  Load routes according to permissions. This attribute is private
 export const privateRouteTable: Array<RouteRecordRaw> = [
-  {
-    path: '/readme',
-    component: layout,
-    redirect: '/readme/read',
-    name: 'Readme',
-    meta: { title: 'Readme', icon: 'icon-read', roles: "/readme", affix: true },
-    children: [
-      {
-        path: 'read',
-        component: () => import('@/views/readme/Readme.vue'),
-        name: 'Read',
-        meta: { title: 'Read', icon: 'icon-IE', affix: false, roles: "/readme/read" }
-      },
-      {
-        path: 'me',
-        component: () => import('@/views/readme/Readme.vue'),
-        name: 'Me',
-        meta: { title: 'Me', icon: 'icon-google', affix: false, roles: "/readme/me" }
-      }
-    ],
-  },
-  {
-    path: '/error',
-    component: layout,
-    redirect: '/error/404',
-    name: 'ErrorPage',
-    meta: { title: 'ErrorPage', icon: 'icon-disconnect', roles: "/error"},
-    children: [
-      {
-        path: '404',
-        component: () => import('@/views/ErrorPage/404.vue'),
-        name: '404',
-        meta: { title: '404', icon: 'icon-error', affix: false, roles: "/error/404" }
-      },
-      {
-        path: '500',
-        component: () => import('@/views/ErrorPage/500.vue'),
-        name: '500',
-        meta: { title: '500', icon: 'icon-error', affix: false, roles: "/error/500" }
-      }
-    ],
-  },
+
   // ...nested,
   // ...account,
   // ...constructor,
@@ -155,7 +115,7 @@ export function setupRouter(app: App) {
   app.use(router)
   // 创建路由守卫 loading guard hook
   createGuardHook(router)
-  // console.log(modules);
+  console.log(modules);
   
 }
 

@@ -2,10 +2,10 @@
  * @Description: type
  * @Author: Gavin
  * @Date: 2021-09-28 10:46:18
- * @LastEditTime: 2021-12-08 14:07:33
+ * @LastEditTime: 2022-01-27 12:52:54
  * @LastEditors: Gavin
  */
-import faker from "faker"
+import faker from "@faker-js/faker"
 import { TypeEnum as TYPE_PROXY } from '../enmu/enum'
 
 

@@ -5,7 +5,7 @@
  * @LastEditTime: 2021-08-04 17:04:44
  * @LastEditors: Gavin
  */
-// import faker from "faker"
+// import faker from "@faker-js/faker"
 // faker.locale = "zh_CN";
 
 // name: faker.name.findName(),

@@ -3,7 +3,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2022-01-26 17:17:05
+ * @LastEditTime: 2022-01-27 12:17:27
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -17,7 +17,7 @@ const mixinRouter: Array<RouteRecordRaw> = [{
   name: 'ThreeDemo',
   meta: {
     title: 'ThreeDemo',
-    icon: 'icon-team',
+    icon: 'icon-CodeSandbox',
     roles: "/threeDemo",
     sortIndex:4
   },
@@ -27,14 +27,14 @@ const mixinRouter: Array<RouteRecordRaw> = [{
       path: 'FullBubble',
       name: 'FullBubble',
       component: () => import('@/views/threeDemo/FullBubble.vue'),
-      meta: { title: 'FullBubble',icon: 'icon-user',
+      meta: { title: 'FullBubble',icon: 'icon-codepen',
       roles: "/threeDemo/FullBubble" }
     },
     {
       path: 'text',
       name: 'Text',
       component: () => import('@/views/threeDemo/Text.vue'),
-      meta: { title: 'Text',icon: 'icon-user',
+      meta: { title: 'Text',icon: 'icon-codepen',
       roles: "/threeDemo/text" }
     }
 

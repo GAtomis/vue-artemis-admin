@@ -2,7 +2,7 @@
  * @Description: Constructor
  * @Author: Gavin
  * @Date: 2021-11-30 18:30:19
- * @LastEditTime: 2022-01-10 11:13:38
+ * @LastEditTime: 2022-01-27 12:53:07
  * @LastEditors: Gavin
 -->
 <template>
@@ -111,7 +111,7 @@ import { RadioItem, EmptyItem, RadioBox, EmptyBox } from './components'
 import { TypeEnum } from './enmu/enum'
 import radioIcon from '@/assets/img/radio-icon.png'
 import { useCloneByJSON } from '@/hooks/global/common'
-import faker from 'faker'
+import faker from '@faker-js/faker'
 import { provide } from 'vue'
 
 type Type = Radio | Empty
