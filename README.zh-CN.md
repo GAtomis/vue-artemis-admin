@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-27 16:03:38
+ * @LastEditTime: 2022-01-27 19:31:18
  * @LastEditors: Gavin
 -->
 
@@ -20,7 +20,7 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
 </p>
 
-> Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+vite2+vueuse 实现的后台管理系统模板,项目意义重在与各位大佬交流学习。感谢两位大佬antFu和花裤衩大大给我了很大的启示（虽然没见过哈哈哈^^）,如果觉得 嘿！这个小伙儿挺可爱的！就给个小星星吧 ^ - ^0!拒绝下次一定哈哈哈！
+> Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+vite2+vueuse 实现的后台管理系统模板,项目意义重在与各位大佬交流学习。觉得好用就给颗星吧
 
 ## 模板基础功能(完善中)
 - 重构:vuex=>:pineapple:pinia  :heavy_check_mark:
