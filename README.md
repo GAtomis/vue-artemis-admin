@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-27 15:45:44
+ * @LastEditTime: 2022-01-27 16:03:58
  * @LastEditors: Gavin
 -->
 
@@ -30,12 +30,52 @@
 - feat-Theme light&dark replacement :heavy_check_mark:
 - feat-Permission configuration :wrench:
 - feat-Form constructor :wrench:
-- feat-auto Router modules : All routing tables will be automatically imported into Vue router. You only need to establish the corresponding configuration file in '@/router/modules/*.ts' to import them automatically
+- feat-auto Router modules :heavy_check_mark:
+- expand-threeJs-comp:heavy_check_mark:
 
 
 ## Q&A About project
 ### Q1 feat-auto Router modules, How to sort menus?
+ All routing tables will be automatically imported into Vue router. You only need to establish the corresponding configuration file in '@/router/modules/*.ts' to import them automatically
  Sort by the weight value of sortIndex. The default value of item ortIndex without this attribute is 0(max)
+```
+/** When your routing table is too long, you can split it into small modules **/
+const Layout = () => import('@/layout/index.vue');
+import { RouteRecordRaw } from 'vue-router'
+
+const mixinRouter: Array<RouteRecordRaw> = [{
+  path: '/account',
+  component: Layout,
+  redirect: '/account/settings',
+  name: 'Account',
+  meta: {
+    title: 'Account',
+    icon: 'icon-team',
+    roles: "/account",
+    sortIndex:2
+  },
+  children: [
+
+    {
+      path: 'center',
+      name: 'Center',
+      component: () => import('@/views/account/center/index.vue'),
+      meta: { title: 'Center',icon: 'icon-user',
+      roles: "/account/center" }
+    },
+    {
+      path: 'settings',
+      name: 'Settings',
+      component: () => import('@/views/account/settings/index.vue'),
+      meta: { title: 'Settings',icon: 'icon-switchuser',
+      roles: "/account/settings" }
+    }
+  ]
+}
+]
+
+export default mixinRouter
+```
 ### Q2 Theme light&dar How to use？
   enter HomePage Move the mouse to the right of the window DOM click Setting
 
@@ -46,7 +86,7 @@
 * Hot-reloads no page memory overflow=>Store configuration initialization
 * Hot-reload no page&&router no page=>keep-aliv&&router-view add Key
 * about :pineapple:pinia 
-  Vuex4 support for typescript doesn't really fit.Therefore, the main branch is reconstructed.Vuex configuration file is still retained in @/main.ts
+  Vuex4 support for typescript doesn't really fit.Therefore, the main branch is reconstructed.Vuex 
 * fix productionEnvironment light&dark 
 * fix Replace faker =>@faker-js/faker
 

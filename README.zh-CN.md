@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-04 13:19:28
+ * @LastEditTime: 2022-01-27 16:03:38
  * @LastEditors: Gavin
 -->
 
@@ -29,14 +29,61 @@
 - 主题色替换   :heavy_check_mark:
 - 个人主页已经权限配置 :wrench:
 - 表单构造器 :wrench:
+- 功能-自动载入路由器模块 :heavy_check_mark:
+- 拓展-three-组件化
 
+## Q&A 关于项目
+### Q1 功能-自动路由器模块，如何排序菜单？
+所有路由表将自动导入Vue-router。您只需要在“@/router/modules/*.ts中建立相应的配置文件 *.ts'自动导入它们
+按sortIndex的权重值排序。没有此属性的项OrIndex的默认值为0（最大值）
+```
+/** When your routing table is too long, you can split it into small modules **/
+const Layout = () => import('@/layout/index.vue');
+import { RouteRecordRaw } from 'vue-router'
+
+const mixinRouter: Array<RouteRecordRaw> = [{
+  path: '/account',
+  component: Layout,
+  redirect: '/account/settings',
+  name: 'Account',
+  meta: {
+    title: 'Account',
+    icon: 'icon-team',
+    roles: "/account",
+    sortIndex:2
+  },
+  children: [
+
+    {
+      path: 'center',
+      name: 'Center',
+      component: () => import('@/views/account/center/index.vue'),
+      meta: { title: 'Center',icon: 'icon-user',
+      roles: "/account/center" }
+    },
+    {
+      path: 'settings',
+      name: 'Settings',
+      component: () => import('@/views/account/settings/index.vue'),
+      meta: { title: 'Settings',icon: 'icon-switchuser',
+      roles: "/account/settings" }
+    }
+  ]
+}
+]
+
+export default mixinRouter
+```
+### Q2 夜间模式如何使用
+进入主页将鼠标移到窗口右侧单击设置
 
 
 ## 疑难杂症日记
 * 热更新白页内存移除=>store配置初始化
 * 热更新还是无法使用内容白页=>keep-alive和router-view 需要加key保证他的唯一性
-* 关于:pineapple:pinia 
-Vuex4对typescript的支持实际上并不合适。因此，重构了主要分支。Vuex配置文件仍保留在@/main.ts中
+* 关于:pineapple:pinia Vuex4对typescript的支持实际上并不合适。因此，重构了主要分支。
+* 修复 修复了生产环境没法切换夜间模式
+* 修复 替换了删库跑路的faker 从faker=>@faker-js/faker
 
 ## 快速启动
 
