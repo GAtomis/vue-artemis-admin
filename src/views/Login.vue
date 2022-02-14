@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-01-26 18:37:25
+ * @LastEditTime: 2022-02-14 18:31:29
  * @LastEditors: Gavin
 -->
 
@@ -48,7 +48,7 @@
           </a-input>
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" html-type="submit" size="large" :loading="loading" block>登录</a-button>
+          <a-button type="primary" html-type="submit" size="large" :loading="loading" block>  <template #icon><login-outlined /></template>CONTINUE</a-button>
         </a-form-item>
       </a-form>
     </section>
@@ -62,7 +62,7 @@ import type { UnwrapRef } from 'vue'
 import { message } from 'ant-design-vue';
 import type { LoginFrom } from '@/components/Form/base'//深坑一定要用type导出接口 vite专属bug
 import type { RuleObject, ValidateErrorEntity } from 'ant-design-vue/es/form/interface'
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
+import { UserOutlined, LockOutlined,LoginOutlined} from '@ant-design/icons-vue'
 import { useRouter } from 'vue-router'
 import { useUser } from '@/store/pinia/index'
 import { LOGO_IMAGE, HOME_TITLE } from '@/settings'
