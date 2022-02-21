@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-21 15:42:39
+ * @LastEditTime: 2022-02-21 18:26:04
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv,loadEnv} from 'vite'
@@ -17,6 +17,11 @@ import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
 import vueJsx from '@vitejs/plugin-vue-jsx'//jsx插件
 
 import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
+
+// import Components from 'unplugin-vue-components/vite'
+
+
+
 // import compress from 'vite-plugin-compress'
 // function pathResolve(dir: string) {
 //   return resolve(process.cwd(), '.', dir);
@@ -149,7 +154,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       }
     },
     plugins: [vue(), vueJsx()
-      , viteCompression({ deleteOriginFile: true })
+      , viteCompression({ deleteOriginFile: true }),
+
+  
+
       , imagemin(), viteMockServe({ supportTs: true }), setTheme(), configCDN()]
   }
 
