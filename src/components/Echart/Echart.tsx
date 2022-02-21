@@ -4,16 +4,12 @@ import faker from '@faker-js/faker'
 import { useEchartInit } from './hooks/useEchartInit'
 import {ECOption} from './index'
 /*
- * @Description: 请输入....
+ * @Description: 图表生成器,按需加载请在index中加载
  * @Author: Gavin
  * @Date: 2022-02-21 11:18:10
- * @LastEditTime: 2022-02-21 13:43:43
+ * @LastEditTime: 2022-02-21 16:40:32
  * @LastEditors: Gavin
  */
-
-
-
-
 
 export default defineComponent({
   props: ['option','id','style'],

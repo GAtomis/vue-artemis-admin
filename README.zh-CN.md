@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-27 19:32:26
+ * @LastEditTime: 2022-02-21 16:44:08
  * @LastEditors: Gavin
 -->
 
@@ -31,6 +31,7 @@
 - 表单构造器 :wrench:
 - 功能-自动载入路由器模块 :heavy_check_mark:
 - 拓展-three-组件化 :heavy_check_mark:
+- Echarts组件化:heavy_check_mark
 
 ## Q&A 关于项目
 ### Q1 功能-自动路由器模块，如何排序菜单？
@@ -84,6 +85,7 @@ export default mixinRouter
 * 关于:pineapple:pinia Vuex4对typescript的支持实际上并不合适。因此，重构了主要分支。
 * 修复 修复了生产环境没法切换夜间模式
 * 修复 替换了删库跑路的faker 从faker=>@faker-js/faker
+* 将图表功能组件化并且按需加载
 
 ## 快速启动
 

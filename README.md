@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-27 16:03:58
+ * @LastEditTime: 2022-02-21 16:45:53
  * @LastEditors: Gavin
 -->
 
@@ -32,6 +32,7 @@
 - feat-Form constructor :wrench:
 - feat-auto Router modules :heavy_check_mark:
 - expand-threeJs-comp:heavy_check_mark:
+- New component Echars:heavy_check_mark:
 
 
 ## Q&A About project
@@ -89,6 +90,7 @@ export default mixinRouter
   Vuex4 support for typescript doesn't really fit.Therefore, the main branch is reconstructed.Vuex 
 * fix productionEnvironment light&dark 
 * fix Replace faker =>@faker-js/faker
+* New component Echars=> load-on-demand 
 
 
 
