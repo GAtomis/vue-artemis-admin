@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-21 17:05:03
+ * @LastEditTime: 2022-02-21 17:08:38
  * @LastEditors: Gavin
 -->
 
@@ -19,7 +19,7 @@
 </p>
 
 
-## [English](./README.md) |  [简体中文](./README-zh_CN.md)
+## [English](./README.md) |  [简体中文](./README.zh-CN.md)
 ## Introduction
  English is no good - -, The template realized by vue-next + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
 ## Basic function of template (improvement)
