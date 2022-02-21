@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-21 16:44:08
+ * @LastEditTime: 2022-02-21 17:04:53
  * @LastEditors: Gavin
 -->
 
@@ -22,6 +22,8 @@
 
 > Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+vite2+vueuse 实现的后台管理系统模板,项目意义重在与各位大佬交流学习。觉得好用就给颗星吧
 
+
+## [English](./README.md) |  [简体中文](./README-zh_CN.md)
 ## 模板基础功能(完善中)
 - 重构:vuex=>:pineapple:pinia  :heavy_check_mark:
 - 单点登录功能(jwt)  :heavy_check_mark:
