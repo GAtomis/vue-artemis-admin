@@ -2,14 +2,14 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-17 16:01:05
- * @LastEditTime: 2021-12-24 13:50:31
+ * @LastEditTime: 2022-02-21 14:42:29
  * @LastEditors: Gavin
 -->
 <template>
   <section class="strap">
     <a-card
       hoverable
-      style="width:20%"
+
       v-for="{ title, cover, des, tags = [], tagColor },index of toolList"
       :key="index"
     >
@@ -41,20 +41,20 @@ interface Tool {
 }
 const toolList: Tool[] = [
 
-  {
-    title: "React",
-    cover: 'https://www.tslang.cn/assets/images/examples/react.png',
-    des: "如果create-react-app有一个包含TypeScript的选项，这将会使你得到：React + TypeScript的完美起点",
-    tags: ["React", "Redux", "Webpack"],
-    tagColor: "#61DAFB"
-  },
-  {
-    title: "Angular",
-    cover: 'https://www.tslang.cn/assets/images/examples/angular.png',
-    des: "Angular团队建议在所有的Angular项目中使用TypeScript。查看教程开始使用。",
-    tags: ["Angular", "Protractor", "Karma", "Webpack"],
-    tagColor: "#DF2E31"
-  },
+  // {
+  //   title: "React",
+  //   cover: 'https://www.tslang.cn/assets/images/examples/react.png',
+  //   des: "如果create-react-app有一个包含TypeScript的选项，这将会使你得到：React + TypeScript的完美起点",
+  //   tags: ["React", "Redux", "Webpack"],
+  //   tagColor: "#61DAFB"
+  // },
+  // {
+  //   title: "Angular",
+  //   cover: 'https://www.tslang.cn/assets/images/examples/angular.png',
+  //   des: "Angular团队建议在所有的Angular项目中使用TypeScript。查看教程开始使用。",
+  //   tags: ["Angular", "Protractor", "Karma", "Webpack"],
+  //   tagColor: "#DF2E31"
+  // },
   {
     title: "Vue.js",
     cover: 'https://www.tslang.cn/assets/images/examples/vue.png',

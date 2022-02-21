@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-02-14 18:31:29
+ * @LastEditTime: 2022-02-18 17:48:04
  * @LastEditors: Gavin
 -->
 
@@ -155,6 +155,8 @@ const handleFailed = (error: ValidateErrorEntity) => {
 #login-warp{
   width: 100vw;
   height:100vh;
+  background: url("../assets/img/bg_login.png") left top no-repeat;
+  // background-size: cover;
 }
 
 .login-bg {

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2022-01-26 13:22:36
+ * @LastEditTime: 2022-02-21 15:01:28
  * @LastEditors: Gavin
 -->
 <template>
@@ -38,47 +38,39 @@
         <a-col :span="4" class="data"></a-col>
       </a-row>
     </a-card>
+    <main>
+      <component :is="LineCard" />
+    </main>
+    <footer>
+      <a-row type="flex" justify="space-between" align="top">
+        <a-col :span="11">
+          <RadarCard />
+        </a-col>
+        <a-col :span="12">
+          <component :is="MessageBoard" />
+        </a-col>
+      </a-row>
+    </footer>
 
-    <a-row type="flex" justify="start" style="height:370px;">
-      <a-col :span="17" style="height:100%;">
-        <component :is="DataPane"/>
-      </a-col>
-      <a-col :span="7"  style="height:100%;">
-        <component :is="MessageBoard"   />
-      </a-col>
-    </a-row>
 
-    <!-- <a-tabs v-model:activeKey="activeKey">
-      <a-tab-pane key="1" tab="图表页">
-        <component :is="DataPane" />
-      </a-tab-pane>
-      <a-tab-pane key="2" tab="留言板">
-        <component :is="MessageBoard" />
-      </a-tab-pane>
-    </a-tabs>-->
-    <ToolRank />
   </div>
 </template>
 <script  lang='ts' setup >
-import DataPane from './components/DataPane.vue'
+import LineCard from './components/LineCard.vue'
 import MessageBoard from './components/MessageBoard.vue'
 import ToolRank from './components/ToolRank.vue'
 
-import {useUser} from '@/store/pinia/index'
+import { useUser } from '@/store/pinia/index'
 
 import { computed } from 'vue'
+
+import RadarCard from './components/RadarCard.vue'
 import {
   UserOutlined
 } from '@ant-design/icons-vue';
-
-
 const userInfo = computed(() => {
   return useUser().getInfo
 })
-
-
-
-
 
 </script>
 
@@ -91,7 +83,8 @@ const userInfo = computed(() => {
     }
   }
 }
-
+main {
+}
 .greeting {
   // line-height: 64px;
   font-size: 18px;

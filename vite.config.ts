@@ -2,10 +2,10 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-01-26 11:08:42
+ * @LastEditTime: 2022-02-21 15:42:39
  * @LastEditors: Gavin
  */
-import { UserConfig, ConfigEnv } from 'vite'
+import { UserConfig, ConfigEnv,loadEnv} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 // import eruda from 'vite-plugin-eruda'//调试工具
@@ -107,6 +107,8 @@ function configCDN() {
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
 
+  const env = loadEnv(mode, __dirname)
+
 
   return {
     base:'./',//绝对路径配置根据ngxin
@@ -121,6 +123,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       host: '0.0.0.0',
       open: true,
+      port:+env.VITE_PORT,
       proxy: {
 
         '/api/repos': {

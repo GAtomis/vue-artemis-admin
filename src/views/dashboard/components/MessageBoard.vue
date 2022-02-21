@@ -2,11 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2022-01-26 13:22:06
+ * @LastEditTime: 2022-02-21 14:43:13
  * @LastEditors: Gavin
 -->
 <template>
-  <a-card title="chart" class="chart">
+  <a-card title="chart" class="chart"  hoverable
+>
     <a-comment v-for="(item, index) in comments" :key="index">
       <template #actions>
         <span key="comment-basic-like">

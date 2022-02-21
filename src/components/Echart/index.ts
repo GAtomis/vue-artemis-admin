@@ -1,8 +1,8 @@
 /*
- * @Description: echars类型定义导出 官网https://echarts.apache.org/handbook/zh/basics/import/
+ * @Description: echars类型定义导出 官网https://echarts.apache.org/handbook/zh/basics/import/ 初始化
  * @Author: Gavin
  * @Date: 2021-09-16 14:08:44
- * @LastEditTime: 2021-09-17 16:49:55
+ * @LastEditTime: 2022-02-21 14:56:11
  * @LastEditors: Gavin
  */
 import * as echarts from 'echarts/core'
@@ -24,7 +24,9 @@ import {
     GridComponent,
     // 组件类型的定义后缀都为 ComponentOption
     TitleComponentOption,
-    GridComponentOption
+    GridComponentOption,
+    LegendComponent,
+    ToolboxComponent,
 } from 'echarts/components'
 import {
     CanvasRenderer
@@ -37,7 +39,7 @@ type ECOption = echarts.ComposeOption<
 
 // 注册必须的组件
 echarts.use(
-    [TitleComponent, TooltipComponent, GridComponent, BarChart, LineChart, RadarChart, RadarComponent, PieChart, CanvasRenderer]
+    [TitleComponent, LegendComponent,TooltipComponent, GridComponent, BarChart, LineChart, RadarChart, RadarComponent, PieChart, CanvasRenderer,  ToolboxComponent]
 )
 
 export {
