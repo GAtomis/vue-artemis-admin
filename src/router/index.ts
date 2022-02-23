@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2022-01-27 12:06:46
+ * @LastEditTime: 2022-02-23 13:53:26
  * @LastEditors: Gavin
  */
 
@@ -112,10 +112,11 @@ const router = createRouter({
 
 
 export function setupRouter(app: App) {
+  console.log(publicRouteTable);
   app.use(router)
   // 创建路由守卫 loading guard hook
   createGuardHook(router)
-  console.log(modules);
+  // console.log(modules);
   
 }
 

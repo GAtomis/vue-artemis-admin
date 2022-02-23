@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-01-26 13:25:30
+ * @LastEditTime: 2022-02-23 13:53:14
  * @LastEditors: Gavin
  */
 import { Router, RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
@@ -68,12 +68,13 @@ export function createGuardHook(router: Router): void {
           const accessedRoutes: Array<RouteRecordRaw> = await usePermission().generateRoutes(roles)
           resetRoute(accessedRoutes)
           next({ ...to, replace: true })
+          // next()
           setTimeout(() => {
             notification?.['success']?.({
               message: `Hi! ${hasUserInfo}, welcome in! Wish you a good mood every day ^-^!`,
             })
             console.log('hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！In fact，we are in different world，we are only passengers for each other！Dont matter! I love u! Never expire! I m dying to see how this one ends');
-          }, 500);
+          }, 706);
 
         } catch (error) {
           message.warning('Login credentials are invalid or expired. Please login again!');

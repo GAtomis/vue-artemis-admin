@@ -2,14 +2,14 @@
  * @Description: 雷达图
  * @Author: Gavin
  * @Date: 2022-02-21 14:27:39
- * @LastEditTime: 2022-02-21 15:05:56
+ * @LastEditTime: 2022-02-22 11:10:36
  * @LastEditors: Gavin
 -->
 <template>
 
   <a-card  hoverable title="使用状况">
     <Radar  
- :option="chartRadar" :style="{ width: '90%', height: '350px' }" />
+ :option="chartRadar" :chart-style="{ width: '90%', height: '350px' }" />
   </a-card>
 </template>
 

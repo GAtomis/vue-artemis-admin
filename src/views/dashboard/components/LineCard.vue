@@ -2,13 +2,13 @@
  * @Description: 图表战术
  * @Author: Gavin
  * @Date: 2021-09-17 14:04:41
- * @LastEditTime: 2022-02-21 15:04:28
+ * @LastEditTime: 2022-02-22 11:10:29
  * @LastEditors: Gavin
 -->
 <template>
 
   <a-card title="访问量(折线图)">
-    <Category :option="chartCategory" :style="{ width: '85%', height: '300px' }" />
+    <Category :option="chartCategory" :chart-style="{ width: '85%', height: '300px' }" />
   </a-card>
 </template>
 
@@ -24,7 +24,7 @@ import Category from '@/components/Echart/Echart'
 const chartCategory: () => ECOption = () => {
 
 
-  const option = {
+  const option:ECOption = {
     title: {
       text: '访问量'
     },
@@ -32,7 +32,7 @@ const chartCategory: () => ECOption = () => {
       trigger: 'axis'
     },
     legend: {
-      data: ['上周', '本周', ]
+      data: ['上周', '本周']
     },
     grid: {
       left: '3%',

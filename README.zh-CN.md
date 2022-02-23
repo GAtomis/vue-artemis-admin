@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-21 17:08:45
+ * @LastEditTime: 2022-02-23 14:07:18
  * @LastEditors: Gavin
 -->
 
@@ -33,7 +33,7 @@
 - 表单构造器 :wrench:
 - 功能-自动载入路由器模块 :heavy_check_mark:
 - 拓展-three-组件化 :heavy_check_mark:
-- Echarts组件化:heavy_check_mark
+- Echarts组件化 :heavy_check_mark:
 
 ## Q&A 关于项目
 ### Q1 功能-自动路由器模块，如何排序菜单？
@@ -78,8 +78,10 @@ const mixinRouter: Array<RouteRecordRaw> = [{
 export default mixinRouter
 ```
 ### Q2 夜间模式如何使用
-进入主页将鼠标移到窗口右侧单击设置
+  进入主页将鼠标移到窗口右侧单击设置
 
+### Q3 异步路由模式，开发环境中不能引入第三方库进入预加载?
+  这个问题正在调查中。目前项目开发不会受到太大影响
 
 ## 疑难杂症日记
 * 热更新白页内存移除=>store配置初始化

@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-21 18:26:04
+ * @LastEditTime: 2022-02-22 12:30:20
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv,loadEnv} from 'vite'
@@ -18,7 +18,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'//jsx插件
 
 import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 
-// import Components from 'unplugin-vue-components/vite'
+
 
 
 
@@ -155,9 +155,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
     plugins: [vue(), vueJsx()
       , viteCompression({ deleteOriginFile: true }),
-
-  
-
       , imagemin(), viteMockServe({ supportTs: true }), setTheme(), configCDN()]
   }
 

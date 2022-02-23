@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-02-18 17:48:04
+ * @LastEditTime: 2022-02-23 11:06:48
  * @LastEditors: Gavin
 -->
 
@@ -57,7 +57,7 @@
 </template>
 <script lang="ts" setup>
 
-import { reactive, ref, onMounted } from 'vue';
+import { reactive, ref } from 'vue';
 import type { UnwrapRef } from 'vue'
 import { message } from 'ant-design-vue';
 import type { LoginFrom } from '@/components/Form/base'//深坑一定要用type导出接口 vite专属bug
@@ -66,14 +66,6 @@ import { UserOutlined, LockOutlined,LoginOutlined} from '@ant-design/icons-vue'
 import { useRouter } from 'vue-router'
 import { useUser } from '@/store/pinia/index'
 import { LOGO_IMAGE, HOME_TITLE } from '@/settings'
-// import creat3DText from '@/hooks/global/three-js/geometry-text'
-// //three login-stage2-dev
-
-
-// onMounted(() => {
-//   const dom = document.getElementById('login-warp')
-//   creat3DText(dom as HTMLElement, "there")
-// })
 
 interface FormState extends LoginFrom {
   name?: string
