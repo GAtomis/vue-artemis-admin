@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-23 14:11:48
+ * @LastEditTime: 2022-02-24 15:52:14
  * @LastEditors: Gavin
 -->
 
@@ -32,6 +32,7 @@
 - feat-auto Router modules :heavy_check_mark:
 - expand-threeJs-comp:heavy_check_mark:
 - New component Echars:heavy_check_mark:
+- Added eslint & perttier review code specification :heavy_check_mark:
 
 
 ## Q&A About project

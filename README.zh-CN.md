@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-23 14:07:18
+ * @LastEditTime: 2022-02-24 15:52:34
  * @LastEditors: Gavin
 -->
 
@@ -34,7 +34,8 @@
 - 功能-自动载入路由器模块 :heavy_check_mark:
 - 拓展-three-组件化 :heavy_check_mark:
 - Echarts组件化 :heavy_check_mark:
-
+- 加入了Eslint&perttiers审查代码规范 :heavy_check_mark:
+- 
 ## Q&A 关于项目
 ### Q1 功能-自动路由器模块，如何排序菜单？
 所有路由表将自动导入Vue-router。您只需要在“@/router/modules/*.ts中建立相应的配置文件 *.ts'自动导入它们
