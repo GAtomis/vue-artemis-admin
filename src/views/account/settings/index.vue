@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-01-26 13:21:59
+ * @LastEditTime: 2022-02-24 11:20:21
  * @LastEditors: Gavin
 -->
 <template>
@@ -17,16 +17,15 @@
 
     <a-modal v-model:visible="visible" title="Basic" @ok="visible = false">
       <a-tree
-      :show-line="showLine"
-      :show-icon="showIcon"
-        @select="onSelect"
-        checkable
         v-model:expandedKeys="expandedKeys"
         v-model:selectedKeys="selectedKeys"
         v-model:checkedKeys="checkedKeys"
+        :show-line="showLine"
+        :show-icon="showIcon"
+        checkable
+        @select="onSelect"
       >
-
-        <a-tree-node :key="menuItem?.meta.roles" v-for="menuItem in perMeuns">
+        <a-tree-node v-for="menuItem in perMeuns" :key="menuItem?.meta.roles">
           <template #icon>
             <node-index-outlined />
           </template>
@@ -34,17 +33,17 @@
             <span style="color: #1890ff">{{ menuItem?.meta.title }}</span>
           </template>
           <a-tree-node
+            v-for="child in menuItem.children"
             :key="child?.meta.roles"
             :title="child?.meta.title"
-            v-for="child in menuItem.children"
           >
             <template #icon>
               <node-index-outlined />
             </template>
             <a-tree-node
+              v-for="nested in child.children"
               :key="nested?.meta.roles"
               :title="nested?.meta.title"
-              v-for="nested in child.children"
             >
               <template #icon>
                 <node-index-outlined />
@@ -57,99 +56,96 @@
   </div>
 </template>
 
-<script lang='ts' setup>
-import { ref, computed } from 'vue'
+<script lang="ts" setup>
+  import { ref, computed } from 'vue'
 
-import { filterAsyncRoutes } from '@/hooks/router'
-import { getPermissionList } from '@/api/account/index'
-import useDialogTree from './hooks/useDialogTree'
-import _ from 'lodash'
-import {useUser} from '@/store/pinia/index'
+  import { filterAsyncRoutes } from '@/hooks/router'
+  import { getPermissionList } from '@/api/account/index'
+  import useDialogTree from './hooks/useDialogTree'
+  import _ from 'lodash'
+  import { useUser } from '@/store/pinia/index'
 
+  interface DataItem {
+    key: string | number
+    des: string
+    level: string
+  }
+  //api来自antdv
+  const columns = [
+    {
+      title: '#',
+      dataIndex: 'key',
+    },
+    {
+      title: 'level',
+      dataIndex: 'level',
+    },
+    {
+      title: 'des',
+      dataIndex: 'des',
+    },
+    {
+      title: 'operation',
+      key: 'operation',
+    },
+  ]
 
+  const data = ref<DataItem[]>([
+    {
+      key: 0,
+      des: '用户权限',
+      level: 'user',
+    },
+    {
+      key: 1,
+      des: '管理员',
+      level: 'admin',
+    },
+  ])
 
-interface DataItem {
-  key: string | number
-  des: string
-  level: string
-}
-//api来自antdv
-const columns = [
-  {
-    title: '#',
-    dataIndex: 'key',
-  },
-  {
-    title: 'level',
-    dataIndex: 'level',
-  },
-  {
-    title: 'des',
-    dataIndex: 'des',
-  },
-  {
-    title: 'operation',
-    key: 'operation',
-  },
-]
+  // const level = computed(() => {
+  //   return useUser().level
+  // })
 
-const data = ref<DataItem[]>([
-  {
-    key: 0,
-    des: '用户权限',
-    level: 'user',
-  },
-  {
-    key: 1,
-    des: '管理员',
-    level: 'admin',
-  },
-])
+  const visible = ref<boolean>(false)
+  const perMeuns = ref<any[]>([])
+  const {
+    expandedKeys,
+    selectedKeys,
+    checkedKeys,
+    showLine,
+    showIcon,
+    onSelect,
+  } = useDialogTree()
 
-const level = computed(() => {
-  return useUser().level
-})
+  const openDialog = async (raw) => {
+    checkedKeys.value = _.cloneDeep(useUser().roles)
+    let per = await getPermissionList({
+      level: raw.level,
+    })
+    per = filterAsyncRoutes(undefined, per)
+    perMeuns.value = per
+    visible.value = true
+  }
 
-const visible = ref<boolean>(false)
-const perMeuns = ref<any[]>([])
-const {
-  expandedKeys,
-  selectedKeys,
-  checkedKeys,
-  showLine,
-  showIcon,
-  onSelect,
-} = useDialogTree()
+  //加载菜单
 
-const openDialog = async (raw) => {
-  checkedKeys.value = _.cloneDeep(useUser().roles)
-  let per = await getPermissionList({
-    level: raw.level,
-  })
-  per = filterAsyncRoutes(undefined, per)
-  perMeuns.value = per
-  visible.value = true
-}
+  // const showLine = ref<boolean>(true);
+  // const showIcon = ref<boolean>(false);
 
-//加载菜单
+  // const onSelect = (selectedKeys: string[], info: SelectEvent) => {
+  //   console.log('selected', selectedKeys, info);
+  // };
 
-// const showLine = ref<boolean>(true);
-// const showIcon = ref<boolean>(false);
-
-// const onSelect = (selectedKeys: string[], info: SelectEvent) => {
-//   console.log('selected', selectedKeys, info);
-// };
-
-// watch(expandedKeys, () => {
-//   console.log('expandedKeys', expandedKeys);
-// });
-// watch(selectedKeys, () => {
-//   console.log('selectedKeys', selectedKeys);
-// });
-// watch(checkedKeys, () => {
-//   console.log('checkedKeys', checkedKeys);
-// })
+  // watch(expandedKeys, () => {
+  //   console.log('expandedKeys', expandedKeys);
+  // });
+  // watch(selectedKeys, () => {
+  //   console.log('selectedKeys', selectedKeys);
+  // });
+  // watch(checkedKeys, () => {
+  //   console.log('checkedKeys', checkedKeys);
+  // })
 </script>
 
-<style scoped lang='scss'>
-</style>
+<style scoped lang="scss"></style>

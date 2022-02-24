@@ -5,9 +5,8 @@
  * @LastEditTime: 2022-01-27 12:52:54
  * @LastEditors: Gavin
  */
-import faker from "@faker-js/faker"
+import faker from '@faker-js/faker'
 import { TypeEnum as TYPE_PROXY } from '../enmu/enum'
-
 
 /* If you need to constructor a type, you just need to inherit the base type, define the desired properties and export them, for example class Radio */
 
@@ -26,47 +25,47 @@ interface BaseType {
 }
 /**
  * @description: abstractClass
- * @constructor  
+ * @constructor
  * @Date: 2021-09-28 13:51:19
  */
- abstract class FormTypes implements BaseType {
+abstract class FormTypes implements BaseType {
   type: string
   label: string
   formItemId: number | string
   imgUrl: string
   style: string
-  constructor(style: string = "Default", imgUrl: string = faker.image.avatar(), label: string = "Sample content") {
-    this.label = label//Sample content
-    this.formItemId = faker.datatype.number();//Id
-    this.imgUrl = imgUrl//avatar
-    this.style = style//name
-
+  constructor(
+    style = 'Default',
+    imgUrl: string = faker.image.avatar(),
+    label = 'Sample content'
+  ) {
+    this.label = label //Sample content
+    this.formItemId = faker.datatype.number() //Id
+    this.imgUrl = imgUrl //avatar
+    this.style = style //name
   }
-
 }
 
 /**
  * @content content
  * @disp
- * 
+ *
  **/
 export class Option {
   content: string
   readonly: boolean | number
- 
-  constructor(content: string = "content", readonly: boolean | number = false,) {
+
+  constructor(content = 'content', readonly: boolean | number = false) {
     this.content = content
     this.readonly = readonly
-    
   }
 }
 
-
 /**
  * @description: Radio
- * @constructor  
- * @extends FormTypes 
- * 
+ * @constructor
+ * @extends FormTypes
+ *
  * @Date: 2021-09-28 13:51:19
  */
 export class Radio extends FormTypes {
@@ -83,20 +82,24 @@ export class Radio extends FormTypes {
    * @return {*}
    * @Date: 2021-12-02 11:49:51
    */
-  constructor(style: string = "Radio", option: Option | Option[] = new Option(), imgUrl?: string, label?: string,canAdd?: boolean | number) {
-    super(style, imgUrl, label,)
+  constructor(
+    style = 'Radio',
+    option: Option | Option[] = new Option(),
+    imgUrl?: string,
+    label?: string,
+    canAdd?: boolean | number
+  ) {
+    super(style, imgUrl, label)
     this.type = TYPE_PROXY.RADIO
-    this.canAdd=canAdd
+    this.canAdd = canAdd
     if (Array.isArray(option)) {
       this.option = new Option()
       this.options = option
-
     } else {
-      this.options = new Array()
+      this.options = []
       this.option = option
       this.addOption()
     }
-
   }
   /**
    * @description: add option
@@ -116,7 +119,6 @@ export class Radio extends FormTypes {
   delOption(index: number): void {
     this.options.splice(index, 1)
   }
-
 }
 
 /**
@@ -127,9 +129,8 @@ export class Radio extends FormTypes {
  * @Date: 2021-10-12 11:19:36
  */
 export class Empty extends FormTypes {
-  constructor(style: string = "DragZone", imgUrl?, label: string = "DragZone") {
+  constructor(style = 'DragZone', imgUrl?, label = 'DragZone') {
     super(style, imgUrl, label)
     this.type = TYPE_PROXY.EMPTY
   }
 }
-

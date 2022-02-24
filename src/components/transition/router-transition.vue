@@ -2,14 +2,14 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-06 12:43:12
- * @LastEditTime: 2021-12-31 13:39:25
+ * @LastEditTime: 2022-02-24 10:49:04
  * @LastEditors: Gavin
 -->
 <template>
   <div>
-    <router-view v-slot="{ Component, route }">
+    <router-view v-slot="{ Component }">
       <transition name="zoom-fade" mode="out-in" appear>
-        <keep-alive >
+        <keep-alive>
           <component :is="Component" />
         </keep-alive>
       </transition>
@@ -18,29 +18,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+  import { defineComponent } from 'vue'
 
-
-export default defineComponent({
-  name: 'RouterTransition',
-  props: {
-    notNeedKey: {
-      type: Boolean,
-      default: false
+  export default defineComponent({
+    name: 'RouterTransition',
+    props: {
+      notNeedKey: {
+        type: Boolean,
+        default: false,
+      },
+      animate: {
+        type: Boolean,
+        default: true,
+      },
     },
-    animate: {
-      type: Boolean,
-      default: true
-    }
-  },
-  setup() {
-   
-    // 需要缓存的路由组件
+    setup() {
+      // 需要缓存的路由组件
 
-
-    return {
-    
-    }
-  }
-})
+      return {}
+    },
+  })
 </script>

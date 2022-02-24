@@ -14,26 +14,33 @@ interface IBreadcrumbList {
   title: string | symbol
 }
 
-type Obj={
-  data:Ref<Array<IBreadcrumbList>>
+type Obj = {
+  data: Ref<Array<IBreadcrumbList>>
 }
 
-export function getCurrentRoute(route: RouteLocationNormalizedLoaded):Obj  {
+export function getCurrentRoute(route: RouteLocationNormalizedLoaded): Obj {
   const fn = () => {
     const breadcrumbList: Array<IBreadcrumbList> = []
     const notShowBreadcrumbList = ['Dashboard', 'RedirectPage'] // 不显示面包屑的导航
-    if (route.matched[0] && (notShowBreadcrumbList.includes(route.matched[0].name as string))) return breadcrumbList
-    route.matched.forEach(v => {
+    if (
+      route.matched[0] &&
+      notShowBreadcrumbList.includes(route.matched[0].name as string)
+    )
+      return breadcrumbList
+    route.matched.forEach((v) => {
       const obj: IBreadcrumbList = {
         title: v.meta.title as string,
-        path: v.path
+        path: v.path,
       }
       breadcrumbList.push(obj)
     })
     return breadcrumbList
   }
-  let data = ref<Array<IBreadcrumbList>>(fn())
+  const data = ref<Array<IBreadcrumbList>>(fn())
 
-  watch(() => route.path, () => data.value = fn())
-  return {data}
+  watch(
+    () => route.path,
+    () => (data.value = fn())
+  )
+  return { data }
 }

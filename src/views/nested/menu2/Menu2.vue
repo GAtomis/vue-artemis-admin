@@ -6,13 +6,12 @@
  * @LastEditors: Gavin
 -->
 <template>
-    <div class="app-container bg-fff">二级菜单</div>
+  <div class="app-container bg-fff">二级菜单</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-    name: 'Menu2'
-})
+  import { defineComponent } from 'vue'
+  export default defineComponent({
+    name: 'Menu2',
+  })
 </script>
-

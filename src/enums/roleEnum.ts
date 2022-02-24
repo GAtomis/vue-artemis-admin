@@ -3,5 +3,5 @@ export enum RoleEnum {
   ADMIN = 'admin',
 
   // 普通用户
-  NORMAL = 'normal'
+  NORMAL = 'normal',
 }

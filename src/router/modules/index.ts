@@ -7,29 +7,28 @@
  */
 
 const allModules = import.meta.globEager('./*.ts')
-import { useBubblingSort } from "@/hooks/global/common"
+import { useBubblingSort } from '@/hooks/global/common'
 const modules = {} as any
-import {RouterItem} from '@/hooks/router/type/type-router'
-let modulesList = [] as Array<RouterItem >
+import { RouterItem } from '@/hooks/router/type/type-router'
+let modulesList = [] as Array<RouterItem>
 Object.keys(allModules).forEach((path) => {
   const fileName = path.split('/')[1]
-  modules[`${allModules[path].default?.meta?.point ?? 0}${fileName.split('.')[0]}`] = allModules[path][fileName] || allModules[path].default || allModules[path]
+  modules[
+    `${allModules[path].default?.meta?.point ?? 0}${fileName.split('.')[0]}`
+  ] = allModules[path][fileName] || allModules[path].default || allModules[path]
 
-  if(Array.isArray(allModules[path].default as Array<RouterItem >)){
-    modulesList = [...modulesList, ...allModules[path].default as Array<RouterItem >]
+  if (Array.isArray(allModules[path].default as Array<RouterItem>)) {
+    modulesList = [
+      ...modulesList,
+      ...(allModules[path].default as Array<RouterItem>),
+    ]
   }
-
-
 })
 
-
-
-export default useBubblingSort<RouterItem>(modulesList , (arr, j) => {
-
-  if ((arr[j].meta?.sortIndex??0)>(arr[j+1].meta?.sortIndex??0)) {
-    var temp = arr[j];
-    arr[j] = arr[j + 1];
-    arr[j + 1] = temp;
+export default useBubblingSort<RouterItem>(modulesList, (arr, j) => {
+  if ((arr[j].meta?.sortIndex ?? 0) > (arr[j + 1].meta?.sortIndex ?? 0)) {
+    const temp = arr[j]
+    arr[j] = arr[j + 1]
+    arr[j + 1] = temp
   }
-
 })

@@ -6,7 +6,6 @@
  * @LastEditors: Gavin
  */
 
-
 /**
  * @description: 拿到个人信息的hook
  * @param {*}
@@ -14,32 +13,29 @@
  * @Date: 2021-08-26 11:47:13
  */
 
- import {
-
-  UserOutlined,
-  LogoutOutlined
-
-} from '@ant-design/icons-vue';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons-vue'
 import { useRouter } from 'vue-router'
 export interface MenuList {
-  icon: any,
-  title: string,
+  icon: any
+  title: string
   handleEvent: () => void
 }
 export function getMenuList(): Array<MenuList> {
   const $router = useRouter()
-  return [{
-    icon: UserOutlined, title: "Settings", handleEvent() {
-
-      $router.push({ path: '/account/center', query: { from: 'navbar' } })
-
-    }
-  }, {
-    icon: LogoutOutlined, title: "Sign out", handleEvent() {
-
-      $router.push({ path: '/Login' })
-
-    }
-  }]
-
+  return [
+    {
+      icon: UserOutlined,
+      title: 'Settings',
+      handleEvent() {
+        $router.push({ path: '/account/center', query: { from: 'navbar' } })
+      },
+    },
+    {
+      icon: LogoutOutlined,
+      title: 'Sign out',
+      handleEvent() {
+        $router.push({ path: '/Login' })
+      },
+    },
+  ]
 }

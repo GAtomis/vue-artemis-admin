@@ -1,0 +1,5 @@
+# eslint 忽略检查
+node_modules
+dist
+!.prettierrc.js
+src/hooks/global/three-js/geometry-text.ts

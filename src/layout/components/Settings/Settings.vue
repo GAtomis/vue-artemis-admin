@@ -9,13 +9,17 @@
   <div>
     <SettingFilled @click="showDrawer" />
     <a-drawer
+      v-model:visible="visible"
       title="Global Select"
       placement="right"
       :closable="false"
-      v-model:visible="visible"
       @afterVisibleChange="afterVisibleChange"
     >
-      <a-form :model="formState" :label-col="labelCol" :wrapper-col="wrapperCol">
+      <a-form
+        :model="formState"
+        :label-col="labelCol"
+        :wrapper-col="wrapperCol"
+      >
         <a-form-item label="tabViews">
           <a-switch v-model:checked="formState.tabViews" />
         </a-form-item>
@@ -23,12 +27,22 @@
           <a-switch v-model:checked="formState.checked" />
         </a-form-item>
         <a-form-item label="themeMenu">
-          <input type="color" name="color" id="color" v-model="formState.themeMenu" />
+          <input
+            id="color"
+            v-model="formState.themeMenu"
+            type="color"
+            name="color"
+          />
         </a-form-item>
         <a-form-item label="themeTabview">
-          <input type="color" name="color" id="color" v-model="formState.color" />
+          <input
+            id="color"
+            v-model="formState.color"
+            type="color"
+            name="color"
+          />
         </a-form-item>
-        <a-form-item :wrapperCol="{ span: 24 }">
+        <a-form-item :wrapper-col="{ span: 24 }">
           <a-radio-group v-model:value="formState.sideModel" name="radioGroup">
             <a-radio value="inline">
               <a-image
@@ -45,7 +59,9 @@
           </a-radio-group>
         </a-form-item>
         <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-          <a-button type="primary" @click="onReset" style="margin-right: 10px">RESET</a-button>
+          <a-button type="primary" style="margin-right: 10px" @click="onReset">
+            RESET
+          </a-button>
           <a-button @click="onDefault">DEFAULT</a-button>
         </a-form-item>
       </a-form>
@@ -53,131 +69,124 @@
   </div>
 </template>
 
-<script lang='ts' setup>
-import { useDark, useToggle } from '@vueuse/core'
-import { ref, reactive, watch, watchEffect } from 'vue'
-import type { UnwrapRef } from 'vue'
-import type { FormProp } from '@/components/Form/interface'
-import { useTheme, useTagsView } from '@/store/pinia/index'
-import { SettingFilled } from '@ant-design/icons-vue'
-import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils.js";
-// "@setCustomTheme" 是 themePreprocessorPlugin 提供的模块，setCustomTheme的参数必须提供Color模块，至于为什么不把 Color 直接依赖进去是有原因的
+<script lang="ts" setup>
+  import { useDark, useToggle } from '@vueuse/core'
+  import { ref, reactive, watch, watchEffect } from 'vue'
+  import type { UnwrapRef } from 'vue'
+  import type { FormProp } from '@/components/Form/interface'
+  import { useTheme, useTagsView } from '@/store/pinia/index'
+  import { SettingFilled } from '@ant-design/icons-vue'
+  import { toggleTheme } from '@zougt/vite-plugin-theme-preprocessor/dist/browser-utils.js'
+  // "@setCustomTheme" 是 themePreprocessorPlugin 提供的模块，setCustomTheme的参数必须提供Color模块，至于为什么不把 Color 直接依赖进去是有原因的
 
+  const visible = ref<boolean>(false)
 
-
-
-const visible = ref<boolean>(false)
-
-const afterVisibleChange = (bool: boolean) => {
-  bool && (mergForm = defaultForm())
-  console.log(mergForm)
-}
-
-const showDrawer = () => {
-  visible.value = true
-}
-// console.error($store.state.tagsView.isShow)
-interface FormState {
-  tabViews: boolean
-  color: string
-  themeMenu: string
-  sideModel: string
-  checked: boolean
-}
-
-const defaultForm = (): FormState => {
-  return {
-    tabViews: useTagsView().isShow,
-    color: useTheme().themeBackgroundColor,
-    checked: useTheme().themeStyle,
-    themeMenu: useTheme().themeMenu,
-    sideModel: useTheme().sideModel
+  const afterVisibleChange = (bool: boolean) => {
+    bool && (mergForm = defaultForm())
+    console.log(mergForm)
   }
-}
-const formState: UnwrapRef<FormState> = reactive<FormState>(defaultForm())
-watchEffect(() => {
 
-  if (formState.checked) {
-    toggleTheme({
-      scopeName: "theme-dark",
-      // // 可选，link的href处理，看情况用， 当启用 themePreprocessorPlugin 的 extract后才需要
-      // customLinkHref: (href) => href,
-      // // 可选，默认对应 themePreprocessorPlugin 的 themeLinkTagId
-      // themeLinkTagId: "theme-link-tag",
-      // // 可选 "head" || "body"
-      // themeLinkTagInjectTo: "head",
-    });
-    console.log("已切换为暗黑主题");
-  } else {
-    toggleTheme({
-      scopeName: "theme-default",
-      // // 可选，link的href处理，看情况用， 当启用 themePreprocessorPlugin 的 extract后才需要
-      // customLinkHref: (href) => href,
-      // // 可选，默认对应 themePreprocessorPlugin 的 themeLinkTagId
-      // themeLinkTagId: "theme-link-tag",
-      // // 可选 "head" || "body"
-      // themeLinkTagInjectTo: "head",
-
-    });
-    console.log("已切换为默认主题");
+  const showDrawer = () => {
+    visible.value = true
   }
-  useTheme().updateThemeStyle(formState.checked)
+  // console.error($store.state.tagsView.isShow)
+  interface FormState {
+    tabViews: boolean
+    color: string
+    themeMenu: string
+    sideModel: string
+    checked: boolean
+  }
 
-})
-watch(
-  () => formState,
-  (nVal) => {
-    console.log(nVal);
+  const defaultForm = (): FormState => {
+    return {
+      tabViews: useTagsView().isShow,
+      color: useTheme().themeBackgroundColor,
+      checked: useTheme().themeStyle,
+      themeMenu: useTheme().themeMenu,
+      sideModel: useTheme().sideModel,
+    }
+  }
+  const formState: UnwrapRef<FormState> = reactive<FormState>(defaultForm())
+  watchEffect(() => {
+    if (formState.checked) {
+      toggleTheme({
+        scopeName: 'theme-dark',
+        // // 可选，link的href处理，看情况用， 当启用 themePreprocessorPlugin 的 extract后才需要
+        // customLinkHref: (href) => href,
+        // // 可选，默认对应 themePreprocessorPlugin 的 themeLinkTagId
+        // themeLinkTagId: "theme-link-tag",
+        // // 可选 "head" || "body"
+        // themeLinkTagInjectTo: "head",
+      })
+      console.log('已切换为暗黑主题')
+    } else {
+      toggleTheme({
+        scopeName: 'theme-default',
+        // // 可选，link的href处理，看情况用， 当启用 themePreprocessorPlugin 的 extract后才需要
+        // customLinkHref: (href) => href,
+        // // 可选，默认对应 themePreprocessorPlugin 的 themeLinkTagId
+        // themeLinkTagId: "theme-link-tag",
+        // // 可选 "head" || "body"
+        // themeLinkTagInjectTo: "head",
+      })
+      console.log('已切换为默认主题')
+    }
+    useTheme().updateThemeStyle(formState.checked)
+  })
+  watch(
+    () => formState,
+    (nVal) => {
+      console.log(nVal)
 
-    useTagsView().updatIsShow(nVal.tabViews)
-    useTheme().updateThemeBackgroundColor(nVal.color)
-    useTheme().updateThemeMenu(nVal.themeMenu)
-    useTheme().updateSideModel(nVal.sideModel)
-    //     setCustomTheme({
-    //   Color,
-    //   primaryColor:nVal.color,
+      useTagsView().updatIsShow(nVal.tabViews)
+      useTheme().updateThemeBackgroundColor(nVal.color)
+      useTheme().updateThemeMenu(nVal.themeMenu)
+      useTheme().updateSideModel(nVal.sideModel)
+      //     setCustomTheme({
+      //   Color,
+      //   primaryColor:nVal.color,
 
-    //   //gradientReplacer:{},
-    //   //targetValueReplacer:{}
-    // });
+      //   //gradientReplacer:{},
+      //   //targetValueReplacer:{}
+      // });
 
-    // $store.commit('tagsView/UPDATE_IS_SHOW', nVal.tabViews)
-    // $store.commit('theme/UPDATE_THEME_BG_COLOR', nVal.color)
-    // $store.commit('theme/UPDATE_THEME_BG_MENU', nVal.themeMenu)
-    // $store.commit('theme/UPDATE_THEME_SIDE_MODEL', nVal.sideModel)
-  },
-  { deep: true }
-)
-let mergForm = {}
+      // $store.commit('tagsView/UPDATE_IS_SHOW', nVal.tabViews)
+      // $store.commit('theme/UPDATE_THEME_BG_COLOR', nVal.color)
+      // $store.commit('theme/UPDATE_THEME_BG_MENU', nVal.themeMenu)
+      // $store.commit('theme/UPDATE_THEME_SIDE_MODEL', nVal.sideModel)
+    },
+    { deep: true }
+  )
+  let mergForm = {}
 
-const onReset = () => {
-  Object.assign(formState, mergForm)
-}
-const onDefault = () => {
-  useTheme().resetTheme()
-  afterVisibleChange(true)
-  onReset()
-}
-//我的Form属性
-const { labelCol, wrapperCol }: FormProp = {
-  labelCol: { span: 10 },
-  wrapperCol: { span: 14 },
-}
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
-//主题设定
-// const useStyle: (checked: boolean | string | number, event: Event) => void = (
-//   checked,
-//   event
-// ) => {}
+  const onReset = () => {
+    Object.assign(formState, mergForm)
+  }
+  const onDefault = () => {
+    useTheme().resetTheme()
+    afterVisibleChange(true)
+    onReset()
+  }
+  //我的Form属性
+  const { labelCol, wrapperCol }: FormProp = {
+    labelCol: { span: 10 },
+    wrapperCol: { span: 14 },
+  }
+  const isDark = useDark()
+  const toggleDark = useToggle(isDark)
+  //主题设定
+  // const useStyle: (checked: boolean | string | number, event: Event) => void = (
+  //   checked,
+  //   event
+  // ) => {}
 
-//expects props options
-/*const props = defineProps({
+  //expects props options
+  /*const props = defineProps({
 foo: String
 })*/
-//expects emits options
-//const emit = defineEmits(['update', 'delete'])
+  //expects emits options
+  //const emit = defineEmits(['update', 'delete'])
 </script>
 
-<style scoped lang='scss'>
-</style>
+<style scoped lang="scss"></style>

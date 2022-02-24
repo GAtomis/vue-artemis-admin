@@ -1,4 +1,3 @@
-
 /*
  * @Description: 请输入....
  * @Author: Gavin
@@ -7,38 +6,40 @@
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
-const Layout = () => import('@/layout/index.vue');
+const Layout = () => import('@/layout/index.vue')
 import { RouteRecordRaw } from 'vue-router'
 
-const mixinRouter: Array<RouteRecordRaw> = [{
-  path: '/account',
-  component: Layout,
-  redirect: '/account/settings',
-  name: 'Account',
-  meta: {
-    title: 'Account',
-    icon: 'icon-team',
-    roles: "/account",
-    sortIndex:2
-  },
-  children: [
-
-    {
-      path: 'center',
-      name: 'Center',
-      component: () => import('@/views/account/center/index.vue'),
-      meta: { title: 'Center',icon: 'icon-user',
-      roles: "/account/center" }
+const mixinRouter: Array<RouteRecordRaw> = [
+  {
+    path: '/account',
+    component: Layout,
+    redirect: '/account/settings',
+    name: 'Account',
+    meta: {
+      title: 'Account',
+      icon: 'icon-team',
+      roles: '/account',
+      sortIndex: 2,
     },
-    {
-      path: 'settings',
-      name: 'Settings',
-      component: () => import('@/views/account/settings/index.vue'),
-      meta: { title: 'Settings',icon: 'icon-switchuser',
-      roles: "/account/settings" }
-    }
-  ]
-}
+    children: [
+      {
+        path: 'center',
+        name: 'Center',
+        component: () => import('@/views/account/center/index.vue'),
+        meta: { title: 'Center', icon: 'icon-user', roles: '/account/center' },
+      },
+      {
+        path: 'settings',
+        name: 'Settings',
+        component: () => import('@/views/account/settings/index.vue'),
+        meta: {
+          title: 'Settings',
+          icon: 'icon-switchuser',
+          roles: '/account/settings',
+        },
+      },
+    ],
+  },
 ]
 
 export default mixinRouter

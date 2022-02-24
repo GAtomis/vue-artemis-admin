@@ -6,13 +6,9 @@
  * @LastEditors: Gavin
  */
 
-
 // src/types/env.d.ts
 interface ImportMetaEnv {
-
-  VITE_GLOB_APP_TITLE: string,
-
+  VITE_GLOB_APP_TITLE: string
 
   VITE_GLOB_APP_SHORT_NAME: string
 }
-

@@ -2,16 +2,11 @@
  * @Description: 本地缓存
  * @Author: Gavin
  * @Date: 2021-08-04 12:43:13
- * @LastEditTime: 2021-08-04 12:45:53
+ * @LastEditTime: 2022-02-24 11:01:36
  * @LastEditors: Gavin
  */
 
-
-
-
-
 // 默认缓存期限为7天
-
 
 const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7
 
@@ -20,7 +15,10 @@ const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7
  * @param {string=} prefixKey -
  * @param {Object} [storage=localStorage] - sessionStorage | localStorage
  */
-export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) => {
+export const createStorage = ({
+  prefixKey = '',
+  storage = localStorage,
+} = {}) => {
   /**
    * 本地缓存类
    * @class Storage
@@ -39,10 +37,14 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
      * @param {*} value 缓存值
      * @param expire
      */
-    set(key: string, value: any, expire: number | null = DEFAULT_CACHE_TIME) {
+    set(
+      key: string,
+      value: unknown,
+      expire: number | null = DEFAULT_CACHE_TIME
+    ) {
       const stringData = JSON.stringify({
         value,
-        expire: expire !== null ? new Date().getTime() + expire * 1000 : null
+        expire: expire !== null ? new Date().getTime() + expire * 1000 : null,
       })
       this.storage.setItem(this.getKey(key), stringData)
     }
@@ -95,7 +97,11 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
      * 如果过期时间为设置，默认关闭浏览器自动删除
      * @example
      */
-    setCookie(name: string, value: any, expire: number | null = DEFAULT_CACHE_TIME) {
+    setCookie(
+      name: string,
+      value: any,
+      expire: number | null = DEFAULT_CACHE_TIME
+    ) {
       document.cookie = `${this.getKey(name)}=${value}; Max-Age=${expire}`
     }
 

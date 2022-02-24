@@ -6,18 +6,14 @@
  * @LastEditors: Gavin
  */
 
-import {RouteRecordRaw} from "vue-router"
-export type RouterItem= RouteRecordRaw &{
-  meta:{
-    title: 'Account',
-    icon: 'icon-team',
-    roles: "/account",
-    affix:boolean,
-    only:boolean,
-    sortIndex:number
+import { RouteRecordRaw } from 'vue-router'
+export type RouterItem = RouteRecordRaw & {
+  meta: {
+    title: 'Account'
+    icon: 'icon-team'
+    roles: '/account'
+    affix: boolean
+    only: boolean
+    sortIndex: number
   }
 }
-
-
-
-

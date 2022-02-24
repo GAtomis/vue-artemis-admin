@@ -47,17 +47,17 @@
             name: !drag ? 'flip-list' : null,
           }"
           v-bind="dragOptions"
+          item-key="formItemId"
           @start="drag = true"
           @end="drag = false"
-          item-key="formItemId"
         >
           <template #item="{ element, index }">
             <component
               :is="contentComp[element.type]"
+              :key="index"
               :item="element"
               class="list-group-item"
               @click="selectContent(element, index)"
-              :key="index"
             >
               <template #index>Q{{ index + 1 }}:</template>
             </component>
@@ -67,12 +67,12 @@
       <a-col :span="7" class="warp bg-fff app-container">
         <h3>PropertySelection</h3>
         <a-form
+          v-if="Object.keys(formState).length"
           ref="formRef"
           :model="formState"
           :rules="rules"
           :label-col="labelCol"
           :wrapper-col="wrapperCol"
-          v-if="Object.keys(formState).length"
         >
           <a-form-item ref="title" label="title" name="title">
             <a-input v-model:value="formState.label" />
@@ -81,177 +81,178 @@
             <a-select
               v-model:value="formState.style"
               placeholder="please select your type"
-              @change="onChangeType"
               :disabled="formState.type == TypeEnum.EMPTY"
+              @change="onChangeType"
             >
               <a-select-option
                 v-for="typeItem of typeList1"
                 :key="typeItem.formItemId"
                 :value="typeItem.style"
-                >{{ typeItem.style }}</a-select-option
               >
+                {{ typeItem.style }}
+              </a-select-option>
             </a-select>
           </a-form-item>
           <component
             :is="expendComp[formState.type]"
-            :item="formState"
             :key="formState.formItemId"
-          ></component>
+            :item="formState"
+          />
         </a-form>
       </a-col>
     </a-row>
   </div>
 </template>
 
-<script lang='ts' setup>
-import { ref, reactive, watch, computed } from 'vue'
-import draggable from 'vuedraggable'
-import { Radio, Empty, Option } from './type/type'
-import { RadioItem, EmptyItem, RadioBox, EmptyBox } from './components'
-import { TypeEnum } from './enmu/enum'
-import radioIcon from '@/assets/img/radio-icon.png'
-import { useCloneByJSON } from '@/hooks/global/common'
-import faker from '@faker-js/faker'
-import { provide } from 'vue'
+<script lang="ts" setup>
+  import { ref, reactive, watch, computed } from 'vue'
+  import draggable from 'vuedraggable'
+  import { Radio, Empty, Option } from './type/type'
+  import { RadioItem, EmptyItem, RadioBox, EmptyBox } from './components'
+  import { TypeEnum } from './enmu/enum'
+  import radioIcon from '@/assets/img/radio-icon.png'
+  import { useCloneByJSON } from '@/hooks/global/common'
+  import faker from '@faker-js/faker'
+  import { provide } from 'vue'
 
-type Type = Radio | Empty
-//***************ControlArea****************
-const typeList1 = ref<Type[]>([
-    new Radio('Radio1', undefined, radioIcon),
-    new Radio(
-      'DIY',
-      [
-        new Option('newday if 1', true),
-        new Option('towday if 444', true),
-        new Option('3234 if 2134', true),
-        new Option('towday if 444', true),
-      ],
-      undefined,
-      undefined,
-      false
-    ),
-  ]),
-  onClone = (item: any) =>
-    useCloneByJSON<Type>(item, (res) => {
-      res.formItemId = faker.datatype.number()
-      reactive(res)
+  type Type = Radio | Empty
+  //***************ControlArea****************
+  const typeList1 = ref<Type[]>([
+      new Radio('Radio1', undefined, radioIcon),
+      new Radio(
+        'DIY',
+        [
+          new Option('newday if 1', true),
+          new Option('towday if 444', true),
+          new Option('3234 if 2134', true),
+          new Option('towday if 444', true),
+        ],
+        undefined,
+        undefined,
+        false
+      ),
+    ]),
+    onClone = (item: any) =>
+      useCloneByJSON<Type>(item, (res) => {
+        res.formItemId = faker.datatype.number()
+        reactive(res)
+      }),
+    onMove = (e) => {
+      const targetId =
+        (e.relatedContext.element && e.relatedContext.element.formItemId) || 0
+      const newArr = typeList1.value
+      const action = newArr
+        .map((item) => {
+          return item.formItemId
+        })
+        .includes(targetId)
+
+      return !action
+    }
+
+  //***************ControlArea****************
+  //***************FormDisplay****************
+  const rules = {},
+    contentComp = {
+      [TypeEnum.EMPTY]: EmptyBox,
+      [TypeEnum.RADIO]: RadioBox,
+    },
+    contentList = ref<Type[]>([new Empty()]),
+    dragOptions = computed(() => {
+      return {
+        animation: 200,
+        group: 'people',
+        disabled: false,
+        ghostClass: 'ghost',
+      }
     }),
-  onMove = (e) => {
-    const targetId =
-      (e.relatedContext.element && e.relatedContext.element.formItemId) || 0
-    const newArr = typeList1.value
-    const action = newArr
-      .map((item) => {
-        return item.formItemId
-      })
-      .includes(targetId)
+    drag = ref(false)
 
-    return !action
-  }
+  watch(
+    () => contentList.value,
+    (newVal) => {
+      const isEmpty = !newVal.length
+      const isIncludeEmpty = newVal.find((item) => item.type == TypeEnum.EMPTY)
+      if (isEmpty) {
+        contentList.value.push(new Empty())
+      } else if (isIncludeEmpty) {
+        contentList.value = newVal.filter((item) => item != isIncludeEmpty)
+      }
+    },
+    { deep: true }
+  )
+  //***************FormDisplay****************
 
-//***************ControlArea****************
-//***************FormDisplay****************
-const rules = {},
-  contentComp = {
-    [TypeEnum.EMPTY]: EmptyBox,
-    [TypeEnum.RADIO]: RadioBox,
-  },
-  contentList = ref<Type[]>([new Empty()]),
-  dragOptions = computed(() => {
-    return {
-      animation: 200,
-      group: 'people',
-      disabled: false,
-      ghostClass: 'ghost',
+  //***************PropertySelection****************
+  //ref=>dom
+
+  const formRef = ref(),
+    labelCol = { span: 5 },
+    wrapperCol = { span: 14 },
+    expendComp = {
+      [TypeEnum.EMPTY]: EmptyItem,
+      [TypeEnum.RADIO]: RadioItem,
+    },
+    currentIndex = ref(0),
+    formState = ref<Type>(new Empty()),
+    onChangeType = (value) => {
+      typeList1.value.find((item) => item.style === value) &&
+        selectContent(
+          (contentList.value[currentIndex.value] = onClone(
+            typeList1.value.find((item) => item.style === value)
+          )),
+          currentIndex.value
+        )
+    },
+    selectContent = (item, index) => {
+      formState.value = item
+      currentIndex.value = index
     }
-  }),
-  drag = ref(false)
-
-watch(
-  () => contentList.value,
-  (newVal) => {
-    const isEmpty = !newVal.length
-    const isIncludeEmpty = newVal.find((item) => item.type == TypeEnum.EMPTY)
-    if (isEmpty) {
-      contentList.value.push(new Empty())
-    } else if (isIncludeEmpty) {
-      contentList.value = newVal.filter((item) => item != isIncludeEmpty)
-    }
-  },
-  { deep: true }
-)
-//***************FormDisplay****************
-
-//***************PropertySelection****************
-//ref=>dom
-
-const formRef = ref(),
-  labelCol = { span: 5 },
-  wrapperCol = { span: 14 },
-  expendComp = {
-    [TypeEnum.EMPTY]: EmptyItem,
-    [TypeEnum.RADIO]: RadioItem,
-  },
-  currentIndex = ref(0),
-  formState = ref<Type>(new Empty()),
-  onChangeType = (value) => {
-    typeList1.value.find((item) => item.style === value) &&
-      selectContent(
-        (contentList.value[currentIndex.value] = onClone(
-          typeList1.value.find((item) => item.style === value)
-        )),
-        currentIndex.value
-      )
-  },
-  selectContent = (item, index) => {
-    formState.value = item
-    currentIndex.value = index
-  }
-provide('labelCol', labelCol)
-provide('wrapperCol', wrapperCol)
-//***************PropertySelection****************
+  provide('labelCol', labelCol)
+  provide('wrapperCol', wrapperCol)
+  //***************PropertySelection****************
 </script>
 
-<style scoped lang='scss'>
-.dragArea {
-  width: 100%;
-}
-.type-group {
-  &-item {
-    margin-bottom: 2%;
-    margin-right: 2%;
-    width: 30%;
-    display: inline-block;
-    img {
-      width: 100%;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-.list-group {
-  &-item {
-    min-height: 200px;
+<style scoped lang="scss">
+  .dragArea {
     width: 100%;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-    padding: 10px;
   }
-}
-.warp {
-  h3 {
-    text-align: center;
+  .type-group {
+    &-item {
+      margin-bottom: 2%;
+      margin-right: 2%;
+      width: 30%;
+      display: inline-block;
+      img {
+        width: 100%;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
-}
-.flip-list-move {
-  transition: transform 0.5s;
-}
-.no-move {
-  transition: transform 0s;
-}
-.ghost {
-  opacity: 0.5;
-  background: #c8ebfb;
-}
+  .list-group {
+    &-item {
+      min-height: 200px;
+      width: 100%;
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+  }
+  .warp {
+    h3 {
+      text-align: center;
+    }
+  }
+  .flip-list-move {
+    transition: transform 0.5s;
+  }
+  .no-move {
+    transition: transform 0s;
+  }
+  .ghost {
+    opacity: 0.5;
+    background: #c8ebfb;
+  }
 </style>

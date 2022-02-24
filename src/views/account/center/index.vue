@@ -59,8 +59,8 @@
             />
 
             <div v-else>
-              <loading-outlined v-if="loading"></loading-outlined>
-              <plus-outlined v-else></plus-outlined>
+              <loading-outlined v-if="loading" />
+              <plus-outlined v-else />
               <div class="ant-upload-text">Upload</div>
             </div>
           </a-upload>
@@ -70,46 +70,45 @@
   </a-form>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
+  import { toRaw, reactive } from 'vue'
+  import useUpLoadByAvatar from './Hooks/useUpLoadByAvatar'
+  import { useUser } from '@/store/pinia'
+  import type { IUserState } from '@/store/pinia/user'
 
-import {  toRaw, reactive } from 'vue'
-import useUpLoadByAvatar from './Hooks/useUpLoadByAvatar'
-import {useUser } from '@/store/pinia'
-import type { IUserState } from '@/store/pinia/user'
-
-
-//坑早知道用interface了, type的继承真的丑
-type UserInfo = IUserState & {
-  companyName: string
-}
-const form = reactive<UserInfo>({
-  companyName: 'Arvato',
-  ...toRaw(useUser().getInfo),
-})
-const labelCol = { span: 4 },
-  wrapperCol = { span: 20 },
-  onSubmit = (): void => {
+  //坑早知道用interface了, type的继承真的丑
+  type UserInfo = IUserState & {
+    companyName: string
   }
-const { fileList, loading, imageUrl, handleChange, beforeUpload } =
-  useUpLoadByAvatar()
+  const form = reactive<UserInfo>({
+    companyName: 'Arvato',
+    ...toRaw(useUser().getInfo),
+  })
+  const labelCol = { span: 4 },
+    wrapperCol = { span: 20 },
+    onSubmit = (): void => {
+      console.log('提交')
+    }
+  const { fileList, loading, imageUrl, handleChange, beforeUpload } =
+    useUpLoadByAvatar()
 
-//
+  //
 </script>
 
-<style scoped lang='scss'>
-.card {
-  .card-info {
-  }
-  .card-avatar {
-    position: relative;
+<style scoped lang="scss">
+  .card {
+    .card-info {
+    }
+    .card-avatar {
+      position: relative;
 
-    .avatar-uploader {
-      width: auto;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      .avatar-uploader {
+        width: auto;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
-}
 </style>

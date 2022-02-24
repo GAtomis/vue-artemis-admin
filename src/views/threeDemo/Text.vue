@@ -7,50 +7,45 @@
 -->
 <template>
   <div class="text">
-    <section id="text-warp" @click="ten"></section>
+    <section id="text-warp" @click="ten" />
   </div>
 </template>
 
-<script lang='ts' setup>
-import { onMounted,nextTick } from 'vue'
-import creat3DText from '@/hooks/global/three-js/geometry-text'
-import { log } from 'console';
+<script lang="ts" setup>
+  import { onMounted, nextTick } from 'vue'
+  import creat3DText from '@/hooks/global/three-js/geometry-text'
+  import { log } from 'console'
 
-onMounted(() => {
-
-  nextTick(()=>{
+  onMounted(() => {
+    nextTick(() => {
       const dom = document.getElementById('text-warp')
-      
-  console.log(dom?.clientWidth,dom?.clientHeight);
-    creat3DText(dom as HTMLElement)
 
+      console.log(dom?.clientWidth, dom?.clientHeight)
+      creat3DText(dom as HTMLElement)
+    })
   })
-
-
-})
-function ten(e){
-  console.log(e);
-  
-}
-//expects props options
-/*const props = defineProps({
+  function ten(e) {
+    console.log(e)
+  }
+  //expects props options
+  /*const props = defineProps({
 foo: String
 })*/
-//expects emits options
-//const emit = defineEmits(['update', 'delete'])
+  //expects emits options
+  //const emit = defineEmits(['update', 'delete'])
 </script>
 
-<style scoped lang='scss'>
-.text{
+<style scoped lang="scss">
+  .text {
     width: 100%;
-  height: 100%;
-}
-#text-warp{
-  width: 100%;
-  height: 100%;
-}
-// canvas {
-//   width: 100%;
-//   height: 100%;
-// }
+    height: 100%;
+  }
+  #text-warp {
+    width: 100%;
+    height: 100%;
+  }
+  // canvas {
+  //   width: 100%;
+  //   height: 100%;
+  // }
 </style>

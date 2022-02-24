@@ -6,20 +6,16 @@
  * @LastEditors: Gavin
 -->
 <template>
- <div>
-
- </div>
+  <div />
 </template>
 
-<script lang='ts' setup>
-//expects props options
-/*const props = defineProps({
+<script lang="ts" setup>
+  //expects props options
+  /*const props = defineProps({
 foo: String
 })*/
-//expects emits options
-//const emit = defineEmits(['update', 'delete'])
+  //expects emits options
+  //const emit = defineEmits(['update', 'delete'])
 </script>
 
-<style scoped lang='scss'>
-
-</style>
+<style scoped lang="scss"></style>

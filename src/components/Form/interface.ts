@@ -6,10 +6,10 @@
  * @LastEditors: Gavin
  */
 
-type Grid={
-  span:number
+type Grid = {
+  span: number
 }
-export declare interface FormProp{
-  labelCol?:Grid,
-  wrapperCol?:Grid
+export declare interface FormProp {
+  labelCol?: Grid
+  wrapperCol?: Grid
 }

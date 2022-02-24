@@ -6,16 +6,14 @@
  * @LastEditors: Gavin
  */
 
- 
-import {App} from 'vue'
-import { createFromIconfontCN } from '@ant-design/icons-vue';
+import { App } from 'vue'
+import { createFromIconfontCN } from '@ant-design/icons-vue'
 
+export function registerIconComponents(app: App): void {
+  console.log('registerIconComponents')
 
-export function registerIconComponents(app:App):void {
-    console.log('registerIconComponents');
-    
   const IconFont = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_2732043_9vyrkwrodqw.js',
-  });
-  app.component('IconFont',IconFont);
+  })
+  app.component('IconFont', IconFont)
 }

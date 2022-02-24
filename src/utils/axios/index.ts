@@ -5,8 +5,6 @@
  * @Date: 2021-08-04 12:46:20
  */
 
-
-
 import { VAxios } from './Axios'
 
 import { AxiosTransform } from './axiosTransform'
@@ -24,7 +22,7 @@ import { RequestOptions, Result } from './types'
 const isDev = import.meta.env.DEV
 import router from '@/router'
 // import store from '@/store'
-import {useUser} from '@/store/pinia/index'
+import { useUser } from '@/store/pinia/index'
 import { storage } from '@/utils/storage'
 /**
  * @description: 数据处理，方便区分多种处理方式
@@ -33,14 +31,17 @@ const transform: AxiosTransform = {
   /**
    * @description: 处理请求数据
    */
-  transformRequestData: (res: AxiosResponse<Result>, options: RequestOptions) => {
+  transformRequestData: (
+    res: AxiosResponse<Result>,
+    options: RequestOptions
+  ) => {
     const {
       isTransformRequestResult,
       isShowMessage = true,
       isShowErrorMessage,
       isShowSuccessMessage,
       successMessageText,
-      errorMessageText
+      errorMessageText,
     } = options
 
     const reject = Promise.reject
@@ -48,10 +49,10 @@ const transform: AxiosTransform = {
     const { data } = res
     //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
 
-
     const { code, result, message } = data
     // 请求成功
-    const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS
+    const hasSuccess =
+      data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS
     // 是否显示提示信息
     if (isShowMessage) {
       if (hasSuccess && (successMessageText || isShowSuccessMessage)) {
@@ -106,11 +107,11 @@ const transform: AxiosTransform = {
           router.replace({
             name: 'login',
             query: {
-              redirect: router.currentRoute.value.fullPath
-            }
+              redirect: router.currentRoute.value.fullPath,
+            },
           })
           storage.clear()
-        }
+        },
       })
       return reject(new Error(timeoutMsg))
     }
@@ -125,7 +126,8 @@ const transform: AxiosTransform = {
 
   // 请求之前处理config
   beforeRequestHook: (config, options) => {
-    const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, isParseToJson } = options
+    const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, isParseToJson } =
+      options
 
     config.url = isDev ? `/api${config.url}` : `${apiUrl || ''}${config.url}`
 
@@ -168,35 +170,27 @@ const transform: AxiosTransform = {
    * @description: 请求拦截器处理
    */
   requestInterceptors: (config) => {
-
-
-
-
     // 请求之前处理config
     const token = useUser().token
-    
 
     if (token) {
       // console.error(token);
 
       // jwt token
 
-      const tokens = { Authorization: token };
-      Object.assign(config.headers, tokens);
-
+      const tokens = { Authorization: token }
+      Object.assign(config.headers, tokens)
     }
     return config
   },
   responseInterceptors: (response: AxiosResponse<any>): any => {
     // const {data}=response
-    console.log(response);
+    console.log(response)
 
     if (response?.data?.code === 405) {
-
       Message.error(response?.data?.message)
       return Promise.reject(new Error(response?.data?.message || 'Error'))
     }
-
 
     return response
   },
@@ -207,7 +201,9 @@ const transform: AxiosTransform = {
   responseInterceptorsCatch: (error: any) => {
     const { response, code, message } = error || {}
     const msg: string =
-      response && response.data && response.data.error ? response.data.error.message : ''
+      response && response.data && response.data.error
+        ? response.data.error.message
+        : ''
     const err: string = error.toString()
     try {
       if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
@@ -217,7 +213,7 @@ const transform: AxiosTransform = {
       if (err && err.includes('Network Error')) {
         Modal.confirm({
           title: '网络异常',
-          content: '请检查您的网络连接是否正常!'
+          content: '请检查您的网络连接是否正常!',
         })
         return
       }
@@ -234,7 +230,7 @@ const transform: AxiosTransform = {
       console.warn(error, '请求被取消！')
     }
     return error
-  }
+  },
 }
 
 const Axios = new VAxios({
@@ -259,9 +255,9 @@ const Axios = new VAxios({
     // 消息提示类型
     errorMessageMode: 'none',
     // 接口地址
-    apiUrl: import.meta.env.VITE_APP_API_URL as string
+    apiUrl: import.meta.env.VITE_APP_API_URL as string,
   },
-  withCredentials: false
+  withCredentials: false,
 })
 
 export default Axios

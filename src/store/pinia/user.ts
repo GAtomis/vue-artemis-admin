@@ -12,9 +12,9 @@ import { login, getUserInfo } from '@/api/login'
 export type IUserState = {
   username?: string
   token?: string
-  age: number,
-  level?: string,
-  jobType: string,
+  age: number
+  level?: string
+  jobType: string
   name: string
   welcome: string
   avatar: string
@@ -24,30 +24,30 @@ export type IUserState = {
 }
 
 export default defineStore({
-  id: "user",
+  id: 'user',
   state: (): IUserState => ({
     token: storage.get(ACCESS_TOKEN, '') as string,
     name: '',
     welcome: '',
     avatar: '',
     roles: [],
-    level: "",
+    level: '',
     username: storage.get(CACHE_USERNAME, '') as string,
     age: 0,
     jobType: '',
-    catchPhrase: ''
+    catchPhrase: '',
   }),
   getters: {
-    getInfo:state=>state,
-    getToken:state=>state.token
+    getInfo: (state) => state,
+    getToken: (state) => state.token,
   },
   actions: {
     // ActionContext<S, R> s为state R为rootState
     // 登录获取token
-    async login({ username, password }):Promise<any>  {
+    async login({ username, password }): Promise<any> {
       try {
         const response = await login({ username, password })
-        const ex = 7 * 24 * 60 * 60 * 1000//过期时间
+        const ex = 7 * 24 * 60 * 60 * 1000 //过期时间
         storage.set(ACCESS_TOKEN, response.token, ex)
         storage.set(CACHE_USERNAME, username, ex)
         this.token = response.token
@@ -67,21 +67,20 @@ export default defineStore({
         })
         if (!roles || roles.length <= 0) {
           reject(
-            "getInfo: roles must be a non-null array!||登录的路由未获取权限列表"
-          );
+            'getInfo: roles must be a non-null array!||登录的路由未获取权限列表'
+          )
         }
         resolve(roles)
       })
     },
 
     resetToken(): Promise<string> {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         this.token = ''
         this.name = ''
         storage.clear()
         resolve(this.token)
       })
-    }
-  }
-
+    },
+  },
 })

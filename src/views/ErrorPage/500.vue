@@ -6,7 +6,12 @@
  * @LastEditors: Gavin
 -->
 <template>
-  <a-result status="500" title="500" sub-title="Sorry, the server is wrong." class="app-container bg-fff">
+  <a-result
+    status="500"
+    title="500"
+    sub-title="Sorry, the server is wrong."
+    class="app-container bg-fff"
+  >
     <template #extra>
       <a-button type="primary">Back Home</a-button>
     </template>

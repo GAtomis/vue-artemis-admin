@@ -8,25 +8,22 @@
 
 import http from '@/utils/axios'
 
-
-
-type comment ={
-  level:String
+type comment = {
+  level: string
 }
 /**
  * @description: 获取用户信息
  */
- export function getPermissionList(data:comment) {
+export function getPermissionList(data: comment) {
   return http.request(
     {
       url: '/account/getPermissionList',
       method: 'post',
-      data
+      data,
     },
     {
       //序列化.data取值
       isTransformRequestResult: true,
-  
     }
   )
 }

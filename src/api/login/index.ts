@@ -10,23 +10,22 @@ import http from '@/utils/axios'
 enum Api {
   login = '/login',
   logout = '/login/logout',
-  user='/getUserInfo'
+  user = '/getUserInfo',
 }
 
 /**
  * @description: 获取用户信息
  */
- export function login(data) {
+export function login(data) {
   return http.request(
     {
       url: Api.login,
       method: 'post',
-      data
+      data,
     },
     {
       //序列化.data取值
       isTransformRequestResult: true,
-  
     }
   )
 }
@@ -39,10 +38,10 @@ export function getUserInfo(data) {
     {
       url: Api.user,
       method: 'POST',
-      data
+      data,
     },
     {
-      isTransformRequestResult: true
+      isTransformRequestResult: true,
     }
   )
 }

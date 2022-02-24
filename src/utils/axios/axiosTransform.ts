@@ -9,12 +9,18 @@ export abstract class AxiosTransform {
    * @description: 请求之前处理配置
    * @description: Process configuration before request
    */
-  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => AxiosRequestConfig
+  beforeRequestHook?: (
+    config: AxiosRequestConfig,
+    options: RequestOptions
+  ) => AxiosRequestConfig
 
   /**
    * @description: 请求成功处理
    */
-  transformRequestData?: (res: AxiosResponse<Result>, options: RequestOptions) => any
+  transformRequestData?: (
+    res: AxiosResponse<Result>,
+    options: RequestOptions
+  ) => any
 
   /**
    * @description: 请求失败处理

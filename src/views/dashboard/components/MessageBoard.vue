@@ -6,14 +6,13 @@
  * @LastEditors: Gavin
 -->
 <template>
-  <a-card title="chart" class="chart"  hoverable
->
+  <a-card title="chart" class="chart" hoverable>
     <a-comment v-for="(item, index) in comments" :key="index">
       <template #actions>
         <span key="comment-basic-like">
           <a-tooltip title="Like">
             <template v-if="item.action">
-              <LikeFilled @click="like(item, - 1)" />
+              <LikeFilled @click="like(item, -1)" />
             </template>
             <template v-else>
               <LikeOutlined @click="like(item, 1)" />
@@ -24,7 +23,7 @@
         <span key="comment-basic-dislike">
           <a-tooltip title="Dislike">
             <template v-if="item.action1">
-              <DislikeFilled @click="dislike(item, - 1)" />
+              <DislikeFilled @click="dislike(item, -1)" />
             </template>
             <template v-else>
               <DislikeOutlined @click="dislike(item, 1)" />
@@ -41,7 +40,11 @@
         <a-avatar :src="item.avatar" :alt="item.name" />
       </template>
       <template #content>
-        <p>{{ `Hellow! I'm ${item.name},${item.content}. I'm looking forward to seeing you next time` }}</p>
+        <p>
+          {{
+            `Hellow! I'm ${item.name},${item.content}. I'm looking forward to seeing you next time`
+          }}
+        </p>
       </template>
       <template #datetime>
         <a-tooltip :title="dayjs().format('YYYY-MM-DD HH:mm:ss')">
@@ -52,47 +55,48 @@
   </a-card>
 </template>
 
-<script lang='ts' setup>
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
-import { ref, onMounted, reactive } from 'vue';
-import { getComments } from "@/api/dashboard/index"
+<script lang="ts" setup>
+  import dayjs from 'dayjs'
+  import relativeTime from 'dayjs/plugin/relativeTime'
+  import {
+    LikeFilled,
+    LikeOutlined,
+    DislikeFilled,
+    DislikeOutlined,
+  } from '@ant-design/icons-vue'
+  import { ref, onMounted, reactive } from 'vue'
+  import { getComments } from '@/api/dashboard/index'
 
-import type { UserInfo } from '@/utils/interface/index'
-import {useUser} from '@/store/pinia/index'
+  import type { UserInfo } from '@/utils/interface/index'
+  import { useUser } from '@/store/pinia/index'
 
-//dayjs plugin
-dayjs.extend(relativeTime)
-let comments = ref<Array<UserInfo>>([])
+  //dayjs plugin
+  dayjs.extend(relativeTime)
+  let comments = ref<Array<UserInfo>>([])
 
-//结果集可以应用后台api类型这里就不做演示了,引用了接口就不会提示属性不存在了
+  //结果集可以应用后台api类型这里就不做演示了,引用了接口就不会提示属性不存在了
 
-const getList = async () => {
-  const res = await getComments({ username: useUser().username as string})
-  comments.value = res
-}
-onMounted(() => {
-  getList()
-})
+  const getList = async () => {
+    const res = await getComments({ username: useUser().username as string })
+    comments.value = res
+  }
+  onMounted(() => {
+    getList()
+  })
 
-const like = (item, index) => {
+  const like = (item, index) => {
+    item.like = item.like + index
+    item.action = !item.action
+  }
 
-  item.like = item.like + index
-  item.action = !item.action
-};
-
-const dislike = (item, index) => {
-
-  item.unlike = item.unlike + index
-  item.action1 = !item.action1
-};
-
-
+  const dislike = (item, index) => {
+    item.unlike = item.unlike + index
+    item.action1 = !item.action1
+  }
 </script>
 
-<style scoped lang='scss'>
-.chart {
-  height: 100%;
-}
+<style scoped lang="scss">
+  .chart {
+    height: 100%;
+  }
 </style>

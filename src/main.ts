@@ -7,21 +7,18 @@
  */
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'ant-design-vue/dist/antd.less';
+import 'ant-design-vue/dist/antd.less'
 // import { setupStore } from '@/store'
 import router, { setupRouter } from './router'
-import {registerIconComponents} from '@/components/Iconfont/Iconfont'
-import Antd from 'ant-design-vue';
+import { registerIconComponents } from '@/components/Iconfont/Iconfont'
+import Antd from 'ant-design-vue'
 import pinia from '@/store/pinia/index'
 
-const app = createApp(App);
+const app = createApp(App)
 
-
-
-
-console.log(app.config);
+console.log(app.config)
 //挂在Antd
-app.use(Antd);
+app.use(Antd)
 //注册icon组件
 app.use(registerIconComponents)
 //状态管理工具挂在
@@ -33,7 +30,4 @@ app.use(pinia)
 // 路由准备就绪后挂载APP实例
 router.isReady().then(() => app.mount('#app'))
 
-
-
 // console.log(process.env.NODE_ENV === 'development');
-

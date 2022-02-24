@@ -7,12 +7,12 @@
  */
 import { RouteRecordRaw } from 'vue-router'
 import { privateRouteTable, publicRouteTable } from '@/router'
-import { filterAsyncRoutes} from '@/hooks/router'
+import { filterAsyncRoutes } from '@/hooks/router'
 import { toRaw } from 'vue'
 
 export type IPermissionState = {
-  routes: RouteRecordRaw[],
-  addRoutes: RouteRecordRaw[],
+  routes: RouteRecordRaw[]
+  addRoutes: RouteRecordRaw[]
   keepAliveComponents: string[]
 }
 
@@ -20,47 +20,43 @@ import { defineStore } from 'pinia'
 export default defineStore({
   id: 'permission',
   state: (): IPermissionState => ({
-    routes: [],//已有路由
+    routes: [], //已有路由
     addRoutes: [], //用户已有路由权限
-    keepAliveComponents: []
+    keepAliveComponents: [],
   }),
   getters: {
-
-    roles: state => state.addRoutes
+    roles: (state) => state.addRoutes,
   },
   actions: {
-
     async generateRoutes(roles: Array<string>) {
-
-      return new Promise<RouteRecordRaw[]>(resolve => {
+      return new Promise<RouteRecordRaw[]>((resolve) => {
         // 可访问的路由变量
-        let accessedRoutes: RouteRecordRaw[];
+        let accessedRoutes: RouteRecordRaw[]
         // roles的速度的
-        if (roles.includes("admin")) {
+        if (roles.includes('admin')) {
           // 异步全局路由
-          accessedRoutes = privateRouteTable || [];
+          accessedRoutes = privateRouteTable || []
         } else {
           // 筛选路由
-          accessedRoutes = filterAsyncRoutes(privateRouteTable, roles);
+          accessedRoutes = filterAsyncRoutes(privateRouteTable, roles)
         }
         // 设置路由
         this.addRoutes = accessedRoutes
-        this.routes = [...publicRouteTable, ...accessedRoutes];
+        this.routes = [...publicRouteTable, ...accessedRoutes]
         // 返回设置路由
-        resolve(accessedRoutes);
-      });
+        resolve(accessedRoutes)
+      })
       // 动态获取菜单
 
       // commit('setRouters', routers)
       // return routers
     },
     resetRoles() {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         resolve(toRaw(this.addRoutes))
-        this.addRoutes = [];
-        this.routes = [];
-
+        this.addRoutes = []
+        this.routes = []
       })
-    }
-  }
+    },
+  },
 })

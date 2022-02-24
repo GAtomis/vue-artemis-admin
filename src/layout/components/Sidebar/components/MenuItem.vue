@@ -6,7 +6,6 @@
  * @LastEditors: Gavin
 -->
 
-
 <template>
   <a-sub-menu
     v-if="menuItem?.children?.length && !menuItem?.meta?.only"
@@ -63,59 +62,55 @@ const menuItem = {}
 </script> -->
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+  import { defineComponent, computed } from 'vue'
 
-import {useTheme} from '@/store/pinia/index'
-export default defineComponent({
-  name: 'MenuItem',
-  components: {
-    // MenuItemChild
-  },
-  props: {
-    menuItem: {
-      type: Object,
-      default: () => ({}),
+  import { useTheme } from '@/store/pinia/index'
+  export default defineComponent({
+    name: 'MenuItem',
+    components: {
+      // MenuItemChild
     },
-    collapsed: Boolean,
-  },
+    props: {
+      menuItem: {
+        type: Object,
+        default: () => ({}),
+      },
+      collapsed: Boolean,
+    },
 
-  setup(props) {
+    setup(props) {
+      //变量css太香了呀
+      const fontSize = computed(() => (props.collapsed ? '21px' : '16px'))
+      const themeMenu = computed(() => useTheme().themeMenu)
 
-    //变量css太香了呀
-    const fontSize = computed(() => (props.collapsed ? '21px' : '16px'))
-    const themeMenu = computed(() => useTheme().themeMenu)
-
-    return {
-      fontSize,
-      themeMenu,
-    }
-  },
-})
+      return {
+        fontSize,
+        themeMenu,
+      }
+    },
+  })
 </script>
 
-
-
 <style lang="scss" scoped>
-:deep(.ant-menu-item-icon) {
-  margin-left: 3px;
-}
+  :deep(.ant-menu-item-icon) {
+    margin-left: 3px;
+  }
 
-:deep(.ant-menu-item-selected) {
-  background-color: #304156;
-}
+  :deep(.ant-menu-item-selected) {
+    background-color: #304156;
+  }
 </style>
-<style  lang="scss">
-#menu-warp {
+<style lang="scss">
+  #menu-warp {
+    .ant-menu-item-selected,
+    .ant-menu-item:hover,
+    .ant-menu-item-active {
+      background-color: v-bind(themeMenu) !important;
+    }
+  }
   .ant-menu-item-selected,
   .ant-menu-item:hover,
   .ant-menu-item-active {
     background-color: v-bind(themeMenu) !important;
   }
-}
-  .ant-menu-item-selected,
-  .ant-menu-item:hover,
-  .ant-menu-item-active {
-    background-color: v-bind(themeMenu) !important;
-  }
-
 </style>

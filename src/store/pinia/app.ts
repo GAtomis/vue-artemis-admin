@@ -6,7 +6,6 @@
  * @LastEditors: Gavin
  */
 
-
 export type IAppState = {
   token?: string
   name: string
@@ -15,7 +14,6 @@ export type IAppState = {
   roles: any[]
   info?: any
 }
-
 
 import { defineStore } from 'pinia'
 export default defineStore({
@@ -27,8 +25,7 @@ export default defineStore({
     roles: [],
   }),
   getters: {
-    sidebar:state=>state.name
+    sidebar: (state) => state.name,
   },
-  actions: {
-  }
+  actions: {},
 })

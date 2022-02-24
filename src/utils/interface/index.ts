@@ -12,12 +12,12 @@ export interface UserInfo {
   tags?: Array<string>
   avatar?: string
   gender?: string
-  token?: string,
-  roles?: Array<string>,
-  content?: string,
-  unlike?: number,
-  like?: number,
-  action?:number,
-  action1?:number,
+  token?: string
+  roles?: Array<string>
+  content?: string
+  unlike?: number
+  like?: number
+  action?: number
+  action1?: number
   setName?(name: string | number)
 }

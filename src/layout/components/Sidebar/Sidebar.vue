@@ -28,46 +28,46 @@
     <menu-list :collapsed="collapsed" />
   </slot>
 </template>
-<script lang='ts' setup>
-import MenuList from './components/MenuList.vue'
-import { inject } from 'vue'
-import { LOGO_IMAGE, HOME_TITLE } from '@/settings'
-defineProps({
-  collapsed: Boolean,
-})
+<script lang="ts" setup>
+  import MenuList from './components/MenuList.vue'
+  import { inject } from 'vue'
+  import { LOGO_IMAGE, HOME_TITLE } from '@/settings'
+  defineProps({
+    collapsed: Boolean,
+  })
 </script>
 
 <style lang="scss" scope>
-.collapsed {
-  padding: 0 10%;
-  text-overflow: clip;
-}
-
-.logo {
-  display: flex;
-  height: 32px;
-  overflow: hidden;
-  font-size: 15px;
-  color: #fff;
-  white-space: nowrap;
-  margin: 16px;
-  transition: all 0.2s;
-  align-items: center;
-
-  .anticon {
-    display: inline-block;
-    max-width: 0;
-    opacity: 0;
-    transition: all 0.2s;
+  .collapsed {
+    padding: 0 10%;
+    text-overflow: clip;
   }
 
-  img {
-    width: 32px;
+  .logo {
+    display: flex;
     height: 32px;
-    vertical-align: middle;
+    overflow: hidden;
+    font-size: 15px;
+    color: #fff;
+    white-space: nowrap;
+    margin: 16px;
+    transition: all 0.2s;
+    align-items: center;
+
+    .anticon {
+      display: inline-block;
+      max-width: 0;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+    span {
+      padding-left: 10px;
+    }
   }
-  span {
-    padding-left: 10px;
-  }
-}
 </style>

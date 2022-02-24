@@ -7,45 +7,43 @@
  */
 import http from '@/utils/axios'
 
-enum Api {
-  login = '/login',
-  logout = '/login/logout',
-  user='/getUserInfo'
-}
+// enum Api {
+//   login = '/login',
+//   logout = '/login/logout',
+//   user='/getUserInfo'
+// }
 
-type comment ={
-  username:string
+type comment = {
+  username: string
 }
 /**
  * @description: 获取用户信息
  */
- export function getComments(data:comment) {
+export function getComments(data: comment) {
   return http.request(
     {
       url: '/dashboard/getComments',
       method: 'post',
-      data
+      data,
     },
     {
       //序列化.data取值
       isTransformRequestResult: true,
-  
     }
   )
 }
 /**
  * @description: 获取用户信息
  */
- export function getToolList() {
+export function getToolList() {
   return http.request(
     {
-      url:"/repos/Microsoft/TypeScript",
+      url: '/repos/Microsoft/TypeScript',
       method: 'get',
     },
     {
       //序列化.data取值
       isTransformRequestResult: !true,
-  
     }
   )
 }

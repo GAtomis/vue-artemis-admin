@@ -6,11 +6,7 @@
  * @LastEditors: Gavin
  */
 
-export { default as ArtmsNavbar }
-  from './Navbar/Navbar.vue'
-export { default as ArtmsSidebar }
-  from './Sidebar/Sidebar.vue'
-export { default as ArtmsTagsView}
-  from './TagsView/TagsView.vue'
-export { default as ArtmsSettings }
-  from './Settings/Settings.vue'
+export { default as ArtmsNavbar } from './Navbar/Navbar.vue'
+export { default as ArtmsSidebar } from './Sidebar/Sidebar.vue'
+export { default as ArtmsTagsView } from './TagsView/TagsView.vue'
+export { default as ArtmsSettings } from './Settings/Settings.vue'
