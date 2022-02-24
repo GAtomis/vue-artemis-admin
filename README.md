@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-24 15:52:14
+ * @LastEditTime: 2022-02-24 16:05:12
  * @LastEditors: Gavin
 -->
 
@@ -81,8 +81,8 @@ export default mixinRouter
   enter HomePage Move the mouse to the right of the window DOM click Setting
 
 
-### Q3 Asynchronous routing mode, the third-party library cannot be introduced in the development environment?
-  This problem is being investigated. At present, the project development will not receive much impact
+### Q3 Asynchronous routing mode, the third-party library cannot be introduced in the development environment
+  This problem is being investigated. At present, the project development will not receive much impact.Submitted to Issues
 
 ## Fix log
 * Hot-reloads no page memory overflow=>Store configuration initialization
