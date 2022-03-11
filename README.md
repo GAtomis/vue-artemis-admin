@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-03-11 19:03:21
+ * @LastEditTime: 2022-03-11 19:04:27
  * @LastEditors: Gavin
 -->
 
@@ -92,7 +92,7 @@ export default mixinRouter
 * fix productionEnvironment light&dark 
 * fix Replace faker =>@faker-js/faker
 * New component Echars=> load-on-demand 
-* The page hiding function is repaired. Now the page setting hiding of routing level will not be displayed in the menu bar
+* The page hidding function is repaired. Now the page setting hiding of routing level will not be displayed in the menu bar
 
 
 
