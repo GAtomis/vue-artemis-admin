@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2022-02-21 15:01:28
+ * @LastEditTime: 2022-03-08 12:24:21
  * @LastEditors: Gavin
 -->
 <template>
@@ -51,7 +51,7 @@
           <RadarCard />
         </a-col>
         <a-col :span="12">
-          <component :is="MessageBoard" />
+          <MessageBoard />
         </a-col>
       </a-row>
     </footer>

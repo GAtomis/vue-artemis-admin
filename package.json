@@ -54,10 +54,42 @@
     "vite-plugin-html": "^2.1.2",
     "vite-plugin-imagemin": "^0.4.3",
     "vite-plugin-mock": "^2.9.4",
+    "vite-plugin-optimize-persist": "^0.1.2",
+    "vite-plugin-package-config": "^0.1.1",
     "vue-eslint-parser": "^8.3.0",
     "vue-tsc": "^0.30.2"
   },
   "engines": {
     "node": ">=14"
+  },
+  "vite": {
+    "optimizeDeps": {
+      "include": [
+        "@ant-design/icons-vue",
+        "@faker-js/faker",
+        "@vueuse/core",
+        "ant-design-vue",
+        "axios",
+        "dayjs",
+        "dayjs/plugin/relativeTime",
+        "echarts/charts",
+        "echarts/components",
+        "echarts/core",
+        "echarts/renderers",
+        "lodash",
+        "lodash-es",
+        "nprogress",
+        "pinia",
+        "qs",
+        "three",
+        "three/examples/jsm/effects/AnaglyphEffect",
+        "three/examples/jsm/geometries/TextGeometry",
+        "three/examples/jsm/libs/stats.module",
+        "three/examples/jsm/loaders/FontLoader",
+        "vue",
+        "vue-router",
+        "vuedraggable"
+      ]
+    }
   }
 }
