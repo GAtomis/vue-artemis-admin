@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 10:00:31
- * @LastEditTime: 2022-02-24 10:54:11
+ * @LastEditTime: 2022-03-11 18:43:04
  * @LastEditors: Gavin
  */
 
@@ -19,6 +19,8 @@ const routerStrategy = {
    * @Date: 2021-08-08 09:59:57
    */
   hidden(route: any, roles?: any): boolean {
+    // console.log(route, )
+
     return !route?.meta?.hidden
   },
 

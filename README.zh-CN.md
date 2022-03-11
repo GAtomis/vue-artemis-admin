@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-24 16:05:37
+ * @LastEditTime: 2022-03-11 19:02:57
  * @LastEditors: Gavin
 -->
 
@@ -91,6 +91,7 @@ export default mixinRouter
 * 修复 修复了生产环境没法切换夜间模式
 * 修复 替换了删库跑路的faker 从faker=>@faker-js/faker
 * 将图表功能组件化并且按需加载
+* 页面隐藏功能修复,现在路由层级的页面设置隐藏不会显示在菜单栏中
 
 ## 快速启动
 

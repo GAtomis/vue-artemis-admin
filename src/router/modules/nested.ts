@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2022-01-24 18:20:21
+ * @LastEditTime: 2022-03-11 18:57:21
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -41,6 +41,18 @@ const nestedRouter: Array<RouteRecordRaw> = [
               title: 'Menu1-1',
               icon: 'icon-apartment',
               roles: '/nested/menu1/menu1-1',
+              hidden: !false,
+            },
+          },
+          {
+            path: 'menu1-2',
+            component: () => import('@/views/nested/menu1/menu1-1/Menu1-1.vue'),
+            name: 'Menu1-2',
+            meta: {
+              title: 'Menu1-2',
+              icon: 'icon-apartment',
+              roles: '/nested/menu1/menu1-2',
+              // hidden: !false,
             },
           },
         ],

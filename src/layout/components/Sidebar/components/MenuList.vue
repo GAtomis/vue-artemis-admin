@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 22:07:59
- * @LastEditTime: 2022-01-26 13:21:39
+ * @LastEditTime: 2022-03-11 18:31:24
  * @LastEditors: Gavin
 -->
 
@@ -40,7 +40,10 @@
     return useTheme().sideModel
   })
   //加载菜单
-  const menus = computed(() => isHidden(usePermission().routes, [], 'hidden'))
+  const menus = computed(
+    () => isHidden(usePermission().routes, [], 'hidden') || []
+  )
+  console.error(menus)
 
   // 获取当前打开的子菜单
   const getOpenKeys = () => {

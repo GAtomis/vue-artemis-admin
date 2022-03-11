@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-08 16:50:22
- * @LastEditTime: 2022-01-26 13:19:19
+ * @LastEditTime: 2022-03-11 18:52:56
  * @LastEditors: Gavin
 -->
 
@@ -32,7 +32,10 @@
     </template>
   </a-sub-menu>
   <!-- 默认读only第一个子集 -->
-  <a-menu-item v-else :key="menuItem?.children?.[0].name">
+  <a-menu-item
+    v-else-if="menuItem?.meta?.only"
+    :key="menuItem?.children?.[0]?.name || ''"
+  >
     <template #icon>
       <icon-font
         :style="{ fontSize: fontSize }"
