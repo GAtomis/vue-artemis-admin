@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2021-10-26 14:16:35
+ * @LastEditTime: 2022-05-13 23:48:20
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
@@ -15,11 +15,11 @@ const model = '/dashboard'
 
 const commentsResult: UserInfo[] = [
   new CommentItem({
-    name: faker.name.findName(),
+    name: faker.name.lastName() + faker.name.firstName(),
     age: faker.random.number(),
     jobType: faker.name.jobType(),
     avatar: faker.image.avatar(),
-    content: faker.company.catchPhraseNoun,
+    content: faker.company.catchPhraseNoun(),
     like: 12,
     unlike: 5,
   }),

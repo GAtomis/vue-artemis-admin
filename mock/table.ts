@@ -2,7 +2,7 @@
  * @Description: table
  * @Author: Gavin
  * @Date: 2022-05-13 12:59:59
- * @LastEditTime: 2022-05-13 16:09:44
+ * @LastEditTime: 2022-05-13 22:16:18
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
@@ -38,8 +38,10 @@ function useQueryPage<T>(
   pageSize: number | string
 } {
   const startIndex: number = (+current - 1) * 10
-  const number: number = +pageSize
+  const number: number = +pageSize + startIndex
+
   const item = list.slice(startIndex, number)
+  console.log(startIndex, number, item)
   return {
     total: list.length,
     item,
@@ -56,7 +58,7 @@ const result: Array<Item> = Array.from({ length: 100 }, (_, index): Item => {
     phone: faker.phone.phoneNumber('1##-####-####'),
     gender: faker.name.gender(true),
     jobType: faker.name.jobType(),
-    avatar: faker.image.people(),
+    avatar: faker.image.people(null, null, true),
     id: faker.random.number() + index,
   }
 })

@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-02-23 13:53:14
+ * @LastEditTime: 2022-05-13 23:33:34
  * @LastEditors: Gavin
  */
 import {
@@ -28,11 +28,7 @@ const whitelist: Array<string> = ['Login', 'Error', '404'] // no redirect whitel
 
 export function createGuardHook(router: Router): void {
   router.beforeEach(
-    async (
-      to: RouteLocationNormalized,
-      from: RouteLocationNormalized,
-      next: NavigationGuardNext
-    ) => {
+    async (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
       // console.log("Hook开始", to);
 
       NProgress.start()
@@ -56,25 +52,27 @@ export function createGuardHook(router: Router): void {
           ]).then(([res1, res2]: Array<any>) => {
             console.log(res2)
             res2.length && history.go(0)
-            next()
+            return true
           })
         }
-        next()
+        return true
       } else if (hasToken) {
         if (hasRoute && hasUserInfo) {
           console.log('有条件放行')
 
-          next()
+          return true
         } else if (hasUserInfo) {
-          next({ name: '404', query: { redirect: to.fullPath }, replace: true })
+          return {
+            name: '404',
+            query: { redirect: to.fullPath },
+            replace: true,
+          }
         } else {
           try {
             const roles = await useUser().getUserInfo()
             const accessedRoutes: Array<RouteRecordRaw> =
               await usePermission().generateRoutes(roles)
             resetRoute(accessedRoutes)
-            next({ ...to, replace: true })
-            // next()
             setTimeout(() => {
               notification?.['success']?.({
                 message: `Hi! ${hasUserInfo}, welcome in! Wish you a good mood every day ^-^!`,
@@ -82,20 +80,25 @@ export function createGuardHook(router: Router): void {
               console.log(
                 'hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！In fact，we are in different world，we are only passengers for each other！Dont matter! I love u! Never expire! I m dying to see how this one ends'
               )
-            }, 706)
+            }, 700)
+            return to.fullPath
           } catch (error) {
             message.warning(
               'Login credentials are invalid or expired. Please login again!'
             )
-            next({
+            return {
               name: 'Login',
               query: { redirect: to.fullPath },
               replace: true,
-            })
+            }
           }
         }
       } else {
-        next({ name: 'Login', query: { redirect: to.fullPath }, replace: true })
+        return {
+          name: 'Login',
+          query: { redirect: to.fullPath },
+          replace: true,
+        }
         NProgress.done()
       }
     }

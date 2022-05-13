@@ -69,6 +69,7 @@
         "@faker-js/faker",
         "@vueuse/core",
         "ant-design-vue",
+        "ant-design-vue/es/locale/zh_CN",
         "axios",
         "dayjs",
         "dayjs/plugin/relativeTime",

@@ -2,14 +2,21 @@
  * @Description: 初始化
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-24 15:45:40
+ * @LastEditTime: 2022-05-13 22:22:09
  * @LastEditors: Gavin
 -->
 <template>
   <transition name="slide-up">
-    <router-view />
+    <a-config-provider :locale="locale">
+      <router-view />
+    </a-config-provider>
   </transition>
 </template>
+
+<script lang="ts" setup>
+  import zhCN from 'ant-design-vue/es/locale/zh_CN'
+  const locale = zhCN
+</script>
 
 <style lang="scss">
   @import 'styles/global.scss';
