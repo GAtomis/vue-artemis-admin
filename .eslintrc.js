@@ -2,7 +2,7 @@
  * @Description: eslint
  * @Author: Gavin
  * @Date: 2022-02-24 10:39:49
- * @LastEditTime: 2022-02-24 15:45:45
+ * @LastEditTime: 2022-05-13 12:53:35
  * @LastEditors: Gavin
  */
 module.exports = {
@@ -10,6 +10,7 @@ module.exports = {
   env: {
     browser: true, // 浏览器环境中的全局变量。
     es2021: true,
+    es6: true,
     node: true, // Node.js 全局变量和 Node.js 作用域。
   },
   // 继承共享的配置

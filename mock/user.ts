@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2022-01-27 12:57:03
+ * @LastEditTime: 2022-05-13 13:10:32
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
@@ -11,8 +11,8 @@ import User, { UserInfo } from './Dao/User'
 faker.locale = 'zh_CN'
 
 interface Account {
-  password: Number
-  token: String
+  password: number
+  token: string
   getUserInfo(): UserInfo
 }
 interface AccountList {
@@ -76,7 +76,7 @@ export default [
     url: '/api/getUserInfo',
     method: 'post',
     response: (res) => {
-      // console.log(res);
+      console.log(res)
 
       const { username, password } = res.body
       console.log('body>>>>>>>>')

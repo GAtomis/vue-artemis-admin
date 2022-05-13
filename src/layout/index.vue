@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2022-01-26 13:18:51
+ * @LastEditTime: 2022-05-13 16:24:50
  * @LastEditors: Gavin
 -->
 <template>
@@ -67,10 +67,10 @@
       </nav>
       <a-layout-content>
         <section class="appMain scroll">
-          <router-view v-slot="{ Component, route }">
+          <router-view v-slot="{ Component }">
             <transition name="fade" mode="out-in">
-              <keep-alive :key="$route.fullPath">
-                <component :is="Component" :key="$route.fullPath" />
+              <keep-alive>
+                <component :is="Component" :key="Component" />
               </keep-alive>
             </transition>
           </router-view>

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-03-11 19:02:57
+ * @LastEditTime: 2022-05-13 16:28:35
  * @LastEditors: Gavin
 -->
 
@@ -35,7 +35,7 @@
 - 拓展-three-组件化 :heavy_check_mark:
 - Echarts组件化 :heavy_check_mark:
 - 加入了Eslint&perttiers审查代码规范 :heavy_check_mark:
-- 
+- 加入了日常开发表格开发样例
 ## Q&A 关于项目
 ### Q1 功能-自动路由器模块，如何排序菜单？
 所有路由表将自动导入Vue-router。您只需要在“@/router/modules/*.ts中建立相应的配置文件 *.ts'自动导入它们
@@ -92,6 +92,7 @@ export default mixinRouter
 * 修复 替换了删库跑路的faker 从faker=>@faker-js/faker
 * 将图表功能组件化并且按需加载
 * 页面隐藏功能修复,现在路由层级的页面设置隐藏不会显示在菜单栏中
+* 修复了vue-router页面前进后退热更新无法更新问题=>通过在keep alive根节点加key值解决
 
 ## 快速启动
 

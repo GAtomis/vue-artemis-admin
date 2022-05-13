@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-03-11 19:04:27
+ * @LastEditTime: 2022-05-13 16:27:15
  * @LastEditors: Gavin
 -->
 
@@ -93,6 +93,7 @@ export default mixinRouter
 * fix Replace faker =>@faker-js/faker
 * New component Echars=> load-on-demand 
 * The page hidding function is repaired. Now the page setting hiding of routing level will not be displayed in the menu bar
+* fix vue-router hot-reload .ctx.deactivate is not a function=>keep alive component add key
 
 
 
