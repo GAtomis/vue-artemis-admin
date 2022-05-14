@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-13 16:28:35
+ * @LastEditTime: 2022-05-14 13:01:08
  * @LastEditors: Gavin
 -->
 
@@ -93,6 +93,7 @@ export default mixinRouter
 * 将图表功能组件化并且按需加载
 * 页面隐藏功能修复,现在路由层级的页面设置隐藏不会显示在菜单栏中
 * 修复了vue-router页面前进后退热更新无法更新问题=>通过在keep alive根节点加key值解决
+* 路由守卫已修改为官方推荐用法
 
 ## 快速启动
 
