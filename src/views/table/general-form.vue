@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-05-13 11:14:04
- * @LastEditTime: 2022-05-13 23:46:09
+ * @LastEditTime: 2022-05-14 12:58:25
  * @LastEditors: Gavin
 -->
 <template>
@@ -79,7 +79,6 @@
   const current = ref<number>(1)
   const total = ref<number>(0)
   const loading = ref(false)
-
   const getList = () => {
     loading.value = true
     getPerson({ current: current.value, pageSize: pageSize.value })
