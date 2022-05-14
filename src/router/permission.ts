@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-05-13 23:33:34
+ * @LastEditTime: 2022-05-14 11:41:38
  * @LastEditors: Gavin
  */
 import {
@@ -73,14 +73,14 @@ export function createGuardHook(router: Router): void {
             const accessedRoutes: Array<RouteRecordRaw> =
               await usePermission().generateRoutes(roles)
             resetRoute(accessedRoutes)
-            setTimeout(() => {
-              notification?.['success']?.({
-                message: `Hi! ${hasUserInfo}, welcome in! Wish you a good mood every day ^-^!`,
-              })
-              console.log(
-                'hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！In fact，we are in different world，we are only passengers for each other！Dont matter! I love u! Never expire! I m dying to see how this one ends'
-              )
-            }, 700)
+            // setTimeout(() => {
+            notification?.['success']?.({
+              message: `Hi! ${hasUserInfo}, welcome in! Wish you a good mood every day ^-^!`,
+            })
+            console.log(
+              'hi! Artemis! I m glad to meet you in my life!Tried, flattered, struggled！In fact，we are in different world，we are only passengers for each other！Dont matter! I love u! Never expire! I m dying to see how this one ends'
+            )
+            // }, 700)
             return to.fullPath
           } catch (error) {
             message.warning(

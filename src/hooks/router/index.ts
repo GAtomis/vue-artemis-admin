@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 10:00:31
- * @LastEditTime: 2022-03-11 18:43:04
+ * @LastEditTime: 2022-05-14 11:39:36
  * @LastEditors: Gavin
  */
 
@@ -35,7 +35,7 @@ const routerStrategy = {
     return roles.some((role) => route.meta.roles === role)
   },
   affix(route: any) {
-    console.log('每次图钉路由', route, route?.meta?.affix)
+    // console.log('每次图钉路由', route, route?.meta?.affix)
 
     return route?.meta?.affix
   },

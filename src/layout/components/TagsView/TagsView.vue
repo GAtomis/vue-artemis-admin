@@ -2,7 +2,7 @@
  * @Description: 标签层机翻勿6^Gavin^
  * @Author: Gavin
  * @Date: 2021-09-01 14:05:34
- * @LastEditTime: 2022-01-26 13:21:13
+ * @LastEditTime: 2022-05-14 12:25:06
  * @LastEditors: Gavin
 -->
 <template>
@@ -13,7 +13,7 @@
   >
     <a-tag
       class="tag"
-      :color="$route.name === tag.name && themeBackgroundColor"
+      :color="$route.name === tag.name ? themeBackgroundColor : ''"
       :closable="!tag.meta.affix"
       @close="handleClose(tag)"
     >

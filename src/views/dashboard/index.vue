@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2022-03-08 12:24:21
+ * @LastEditTime: 2022-05-14 11:49:06
  * @LastEditors: Gavin
 -->
 <template>
@@ -65,9 +65,12 @@
   import { useUser } from '@/store/pinia/index'
 
   import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
 
   import RadarCard from './components/RadarCard.vue'
   import { UserOutlined } from '@ant-design/icons-vue'
+  // throw new Error('页面异常')
+
   const userInfo = computed(() => {
     return useUser().getInfo
   })

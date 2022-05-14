@@ -62,6 +62,7 @@
   "engines": {
     "node": ">=14"
   },
+  "license": "MIT",
   "vite": {
     "optimizeDeps": {
       "include": [

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-02-21 18:26:28
+ * @LastEditTime: 2022-05-14 11:37:49
  * @LastEditors: Gavin
  */
 import { createApp } from 'vue'
@@ -16,7 +16,6 @@ import pinia from '@/store/pinia/index'
 
 const app = createApp(App)
 
-console.log(app.config)
 //挂在Antd
 app.use(Antd)
 //注册icon组件

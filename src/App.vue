@@ -2,15 +2,15 @@
  * @Description: 初始化
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-13 22:22:09
+ * @LastEditTime: 2022-05-14 12:26:08
  * @LastEditors: Gavin
 -->
 <template>
-  <transition name="slide-up">
-    <a-config-provider :locale="locale">
+  <a-config-provider :locale="locale">
+    <transition name="slide-up">
       <router-view />
-    </a-config-provider>
-  </transition>
+    </transition>
+  </a-config-provider>
 </template>
 
 <script lang="ts" setup>

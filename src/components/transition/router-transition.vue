@@ -2,15 +2,15 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-06 12:43:12
- * @LastEditTime: 2022-02-24 10:49:04
+ * @LastEditTime: 2022-05-14 12:31:37
  * @LastEditors: Gavin
 -->
 <template>
   <div>
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component, route }">
       <transition name="zoom-fade" mode="out-in" appear>
         <keep-alive>
-          <component :is="Component" />
+          <component :is="Component" :key="route.path" />
         </keep-alive>
       </transition>
     </router-view>
