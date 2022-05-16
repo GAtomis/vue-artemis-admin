@@ -16,7 +16,7 @@ const model = '/dashboard'
 const commentsResult: UserInfo[] = [
   new CommentItem({
     name: faker.name.lastName() + faker.name.firstName(),
-    age: faker.random.number(),
+    age: faker.datatype.number(),
     jobType: faker.name.jobType(),
     avatar: faker.image.avatar(),
     content: faker.company.catchPhraseNoun(),
@@ -25,10 +25,10 @@ const commentsResult: UserInfo[] = [
   }),
   new CommentItem({
     name: faker.name.findName(),
-    age: faker.random.number(),
+    age: faker.datatype.number(),
     jobType: faker.name.jobType(),
     avatar: faker.image.avatar(),
-    content: faker.company.catchPhraseNoun,
+    content: faker.company.catchPhraseNoun(),
     like: 12,
     unlike: 5,
   }),

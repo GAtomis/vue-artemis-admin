@@ -14,7 +14,7 @@ import { useEchartInit } from './hooks/useEchartInit'
 export default defineComponent({
   props: ['option', 'id', 'chartStyle'],
   setup(props) {
-    const domId = ref<string>(props.id || faker.random.number().toString())
+    const domId = ref<string>(props.id || faker.datatype.number().toString())
     const style = ref<any>(props.chartStyle || { height: '16rem' })
     const option = props.option
     useEchartInit(domId, option)

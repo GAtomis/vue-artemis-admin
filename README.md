@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-14 13:00:21
+ * @LastEditTime: 2022-05-15 12:45:21
  * @LastEditors: Gavin
 -->
 
@@ -83,6 +83,17 @@ export default mixinRouter
 
 ### Q3 Asynchronous routing mode, the third-party library cannot be introduced in the development environment
   This problem is being investigated. At present, the project development will not receive much impact.Submitted to Issues
+### Q4 How to replace icons in the menu
+  Icons setting through antdv custom icon. [iconfont]('https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=9402')Collect your favorite charts and customize icon settings.Configure icons by generating links
+    ```
+  //path @/components/Iconfont
+  export function registerIconComponents(app: App): void {
+  const IconFont = createFromIconfontCN({
+    scriptUrl: '//at.alicdn.com/t/font_2732043_9vyrkwrodqw.js',
+  })
+  app.component('IconFont', IconFont)
+}
+  ```
 
 ## Fix log
 * Hot-reloads no page memory overflow=>Store configuration initialization
@@ -95,6 +106,7 @@ export default mixinRouter
 * The page hidding function is repaired. Now the page setting hiding of routing level will not be displayed in the menu bar
 * fix vue-router hot-reload .ctx.deactivate is not a function=>keep alive component add key
 * beforeEach has been revised to the official recommended usage
+* pending  vite-plugin-imagemin(plugins) install error 
 
 
 

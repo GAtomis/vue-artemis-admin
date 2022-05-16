@@ -9,6 +9,6 @@
 // faker.locale = "zh_CN";
 
 // name: faker.name.findName(),
-// age: faker.random.number(),
+// age: faker.datatype.number(),
 // jobType: faker.name.jobType(),
 // avatar: faker.image.avatar()

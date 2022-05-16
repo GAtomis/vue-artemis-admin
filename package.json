@@ -10,7 +10,7 @@
     "lint:prettier": "prettier {src,mock}/**/*.{html,vue,css,sass,scss,ts,md} --write"
   },
   "dependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.5",
+    "@faker-js/faker":"^6.3.1",
     "@vueuse/core": "^7.5.3",
     "ant-design-vue": "^3.2.3",
     "axios": "^0.25.0",
@@ -52,17 +52,16 @@
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.3.3",
     "vite-plugin-html": "^2.1.2",
-    "vite-plugin-imagemin": "^0.4.3",
-    "vite-plugin-mock": "^2.9.4",
+    "vite-plugin-mock": "^2.9.6",
     "vite-plugin-optimize-persist": "^0.1.2",
     "vite-plugin-package-config": "^0.1.1",
     "vue-eslint-parser": "^8.3.0",
-    "vue-tsc": "^0.30.2"
+    "vue-tsc": "^0.34.13"
   },
   "engines": {
     "node": ">=14"
   },
-  "license": "MIT",
+
   "vite": {
     "optimizeDeps": {
       "include": [
@@ -93,5 +92,6 @@
         "vuedraggable"
       ]
     }
-  }
+  },
+  "license": "MIT"
 }

@@ -2,14 +2,14 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-03-08 12:36:04
+ * @LastEditTime: 2022-05-15 11:59:33
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 // import eruda from 'vite-plugin-eruda'//调试工具
-import viteImagemin from 'vite-plugin-imagemin' //图片压缩
+// import viteImagemin from 'vite-plugin-imagemin' //图片压缩
 import viteCompression from 'vite-plugin-compression' //包压缩支持Gzip
 import { viteMockServe } from 'vite-plugin-mock' //mock
 
@@ -143,7 +143,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       vueJsx(),
       viteCompression({ deleteOriginFile: true }),
       ,
-      imagemin(),
+      // imagemin(),
       viteMockServe({ supportTs: true }),
       setTheme(),
       configCDN(),

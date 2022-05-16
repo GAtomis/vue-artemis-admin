@@ -2,11 +2,15 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-05-13 11:14:04
- * @LastEditTime: 2022-05-14 12:58:25
+ * @LastEditTime: 2022-05-16 10:17:58
  * @LastEditors: Gavin
 -->
 <template>
   <div>
+    <a-card style="width: 100%">
+      <general-form></general-form>
+    </a-card>
+
     <a-table
       :data-source="dataSource"
       :columns="columns"
@@ -36,6 +40,7 @@
   import { getPerson } from '@/api/table'
   import type { Person } from './type'
   import { ref } from 'vue'
+  import GeneralForm from './components/GeneralForm.vue'
   type Columns = {
     title: string
     dataIndex: string

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:34:38
- * @LastEditTime: 2022-05-13 13:10:32
+ * @LastEditTime: 2022-05-15 12:49:29
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
@@ -27,7 +27,7 @@ export const userInfo: AccountList = {
     getUserInfo() {
       return new User({
         name: faker.name.lastName() + faker.name.firstName(),
-        age: faker.random.number(),
+        age: faker.datatype.number(),
         jobType: faker.name.jobType(),
         avatar: faker.image.avatar(),
         level: 'admin',
@@ -42,7 +42,7 @@ export const userInfo: AccountList = {
     getUserInfo() {
       return new User({
         name: faker.name.lastName() + faker.name.firstName(),
-        age: faker.random.number(),
+        age: faker.datatype.number(),
         jobType: faker.name.jobType(),
         avatar: faker.image.avatar(),
         level: 'user',
@@ -76,7 +76,7 @@ export default [
     url: '/api/getUserInfo',
     method: 'post',
     response: (res) => {
-      console.log(res)
+      // console.log(res)
 
       const { username, password } = res.body
       console.log('body>>>>>>>>')

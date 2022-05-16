@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-14 13:01:08
+ * @LastEditTime: 2022-05-15 12:41:59
  * @LastEditors: Gavin
 -->
 
@@ -83,6 +83,17 @@ export default mixinRouter
 
 ### Q3 异步路由模式，开发环境中不能引入第三方库进入预加载
   这个问题正在调查中。目前项目开发不会受到太大影响，已提交至Issuse
+### Q4 如何设置菜单上的icon
+  本项目通过antdv中给出的自定义icon设置图标,[iconfont]('https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=9402')通过收集自己喜欢的icon生成链接配置到项目的配置文件中
+  ```
+  //path @/components/Iconfont
+  export function registerIconComponents(app: App): void {
+  const IconFont = createFromIconfontCN({
+    scriptUrl: '//at.alicdn.com/t/font_2732043_9vyrkwrodqw.js',
+  })
+  app.component('IconFont', IconFont)
+}
+  ```
 
 ## 疑难杂症日记
 * 热更新白页内存移除=>store配置初始化
@@ -93,7 +104,8 @@ export default mixinRouter
 * 将图表功能组件化并且按需加载
 * 页面隐藏功能修复,现在路由层级的页面设置隐藏不会显示在菜单栏中
 * 修复了vue-router页面前进后退热更新无法更新问题=>通过在keep alive根节点加key值解决
-* 路由守卫已修改为官方推荐用法
+* 修复路由守卫已修改为官方推荐用法
+* 暂停由于vite-plugin-imagemin插件出现了安装错误问题暂时停止使用 package列表已删除
 
 ## 快速启动
 
