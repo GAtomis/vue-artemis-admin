@@ -2,7 +2,7 @@
  * @Description: Constructor
  * @Author: Gavin
  * @Date: 2021-11-30 18:30:19
- * @LastEditTime: 2022-01-27 12:53:07
+ * @LastEditTime: 2022-05-16 10:56:44
  * @LastEditors: Gavin
 -->
 <template>
@@ -217,20 +217,24 @@
   .dragArea {
     width: 100%;
   }
+
   .type-group {
     &-item {
       margin-bottom: 2%;
       margin-right: 2%;
       width: 30%;
       display: inline-block;
+
       img {
         width: 100%;
       }
+
       &:hover {
         cursor: pointer;
       }
     }
   }
+
   .list-group {
     &-item {
       min-height: 200px;
@@ -240,17 +244,21 @@
       padding: 10px;
     }
   }
+
   .warp {
     h3 {
       text-align: center;
     }
   }
+
   .flip-list-move {
     transition: transform 0.5s;
   }
+
   .no-move {
     transition: transform 0s;
   }
+
   .ghost {
     opacity: 0.5;
     background: #c8ebfb;

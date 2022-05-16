@@ -2,7 +2,7 @@
  * @Description: 构造器
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2022-01-24 18:20:09
+ * @LastEditTime: 2022-05-16 11:40:07
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -21,6 +21,7 @@ const mixinRouter: Array<RouteRecordRaw> = [
       roles: '/constructor',
       only: true,
       sortIndex: 2,
+      hidden: true,
     },
     children: [
       {

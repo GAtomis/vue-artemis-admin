@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2022-05-14 11:38:51
+ * @LastEditTime: 2022-05-16 12:16:58
  * @LastEditors: Gavin
  */
 
@@ -28,6 +28,7 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
              roles: "/readme/read", //backed async router
              only:true  // no menuGroup  only page  
              sortIndex: sort
+             keepAlive:true
   */
 
   {
@@ -95,6 +96,7 @@ export const privateRouteTable: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes: publicRouteTable,
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
 export function setupRouter(app: App) {

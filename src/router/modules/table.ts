@@ -2,7 +2,7 @@
  * @Description: table
  * @Author: Gavin
  * @Date: 2022-05-13 15:30:28
- * @LastEditTime: 2022-05-15 13:01:31
+ * @LastEditTime: 2022-05-16 12:17:45
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -30,6 +30,7 @@ const mixinRouter: Array<RouteRecordRaw> = [
           title: 'General',
           icon: 'icon-filesearch',
           roles: '/table/general',
+          keepAlive: true,
         },
       },
     ],

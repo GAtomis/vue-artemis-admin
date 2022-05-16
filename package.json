@@ -10,7 +10,7 @@
     "lint:prettier": "prettier {src,mock}/**/*.{html,vue,css,sass,scss,ts,md} --write"
   },
   "dependencies": {
-    "@faker-js/faker":"^6.3.1",
+    "@faker-js/faker": "^6.3.1",
     "@vueuse/core": "^7.5.3",
     "ant-design-vue": "^3.2.3",
     "axios": "^0.25.0",
@@ -61,7 +61,6 @@
   "engines": {
     "node": ">=14"
   },
-
   "vite": {
     "optimizeDeps": {
       "include": [

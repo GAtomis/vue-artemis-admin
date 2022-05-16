@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-15 12:41:59
+ * @LastEditTime: 2022-05-16 13:16:40
  * @LastEditors: Gavin
 -->
 
@@ -30,7 +30,7 @@
 - 动态路由加载   :heavy_check_mark:
 - 主题色替换   :heavy_check_mark:
 - 个人主页已经权限配置 :wrench:
-- 表单构造器 :wrench:
+- 表单构造器(已关闭) :wrench:
 - 功能-自动载入路由器模块 :heavy_check_mark:
 - 拓展-three-组件化 :heavy_check_mark:
 - Echarts组件化 :heavy_check_mark:
@@ -106,6 +106,7 @@ export default mixinRouter
 * 修复了vue-router页面前进后退热更新无法更新问题=>通过在keep alive根节点加key值解决
 * 修复路由守卫已修改为官方推荐用法
 * 暂停由于vite-plugin-imagemin插件出现了安装错误问题暂时停止使用 package列表已删除
+* 表单构造器关闭=>由于插件对vue3.2或vite的不支持导致插件在开发环境出现了异常情况,所以暂时先取消了这个功能,等待官方修复
 
 ## 快速启动
 

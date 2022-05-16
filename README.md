@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-15 12:45:21
+ * @LastEditTime: 2022-05-16 13:17:26
  * @LastEditors: Gavin
 -->
 
@@ -28,7 +28,7 @@
 - feat-async-route loading :heavy_check_mark:
 - feat-Theme light&dark replacement :heavy_check_mark:
 - feat-Permission configuration :wrench:
-- feat-Form constructor :wrench:
+- feat-form-constructor(closed) :wrench:
 - feat-auto Router modules :heavy_check_mark:
 - expand-threeJs-comp:heavy_check_mark:
 - New component Echars:heavy_check_mark:
@@ -107,6 +107,7 @@ export default mixinRouter
 * fix vue-router hot-reload .ctx.deactivate is not a function=>keep alive component add key
 * beforeEach has been revised to the official recommended usage
 * pending  vite-plugin-imagemin(plugins) install error 
+* form-constructor =>due to plug-in to Vue3.2 or vite is not supported, which leads to abnormal conditions in the development environment of the plug-in, so this function is temporarily cancelled and waiting for official repair
 
 
 

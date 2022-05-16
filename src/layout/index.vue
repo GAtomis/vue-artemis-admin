@@ -2,7 +2,7 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2022-05-14 12:30:36
+ * @LastEditTime: 2022-05-16 12:18:40
  * @LastEditors: Gavin
 -->
 <template>
@@ -69,9 +69,10 @@
         <section class="appMain scroll">
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in">
-              <keep-alive>
+              <keep-alive v-if="route.meta.keepAlive">
                 <component :is="Component" :key="route.path" />
               </keep-alive>
+              <component :is="Component" v-else :key="route.path" />
             </transition>
           </router-view>
         </section>
@@ -128,6 +129,7 @@
       -moz-transition: font-size 0.3s ease, opacity 0.2s ease;
       -o-transition: font-size 0.3s ease, opacity 0.2s ease;
       transition: font-size 0.3s ease, opacity 0.2s ease;
+
       &:hover {
         font-size: 30px;
         opacity: 1;
@@ -144,24 +146,29 @@
 
     nav {
       line-height: 40px;
+
       // background: #fff;
       .tag {
         padding: 3px 8px;
         margin-right: 5px !important;
       }
+
       .tag:nth-child(1) {
         margin-left: 10px;
       }
     }
+
     .trigger:hover {
       color: #1890ff;
     }
+
     .appMain {
       position: relative;
       padding: 24px;
       box-sizing: border-box;
       height: 100%;
     }
+
     .scroll {
       overflow: hidden;
       overflow-y: auto;
@@ -180,6 +187,7 @@
     .site-layout .site-layout-background {
       // background: #fff;
     }
+
     .fade-enter-active,
     .fade-leave-active {
       transition: opacity 0.3s ease;
@@ -189,6 +197,7 @@
     .fade-leave-to {
       opacity: 0;
     }
+
     .artms-settings {
       position: fixed;
       right: 20px;

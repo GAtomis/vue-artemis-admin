@@ -2,13 +2,13 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-05-13 11:14:04
- * @LastEditTime: 2022-05-16 10:17:58
+ * @LastEditTime: 2022-05-16 12:20:08
  * @LastEditors: Gavin
 -->
 <template>
   <div>
     <a-card style="width: 100%">
-      <general-form></general-form>
+      <general-form @search="handleSearch"></general-form>
     </a-card>
 
     <a-table
@@ -40,7 +40,8 @@
   import { getPerson } from '@/api/table'
   import type { Person } from './type'
   import { ref } from 'vue'
-  import GeneralForm from './components/GeneralForm.vue'
+  import GeneralForm, { FormState } from './components/GeneralForm.vue'
+
   type Columns = {
     title: string
     dataIndex: string
@@ -84,7 +85,7 @@
   const current = ref<number>(1)
   const total = ref<number>(0)
   const loading = ref(false)
-  const getList = () => {
+  const getList = (form: any = {}) => {
     loading.value = true
     getPerson({ current: current.value, pageSize: pageSize.value })
       .then((res) => {
@@ -99,7 +100,9 @@
     console.log(page, pageSize)
     getList()
   }
-  console.log('setup time')
+  const handleSearch = (form: FormState) => {
+    console.log(form, '主页 asdsadassd')
+  }
 
   getList()
 </script>

@@ -2,7 +2,7 @@
  * @Description: Form content
  * @Author: Gavin
  * @Date: 2022-05-15 12:59:09
- * @LastEditTime: 2022-05-16 10:19:32
+ * @LastEditTime: 2022-05-16 11:58:18
  * @LastEditors: Gavin
 -->
 <template>
@@ -14,17 +14,26 @@
     @finish="onFinish"
     @finishFailed="onFinishFailed"
   >
-    <a-form-item
-      label="name"
-      name="name"
-      :rules="[{ required: true, message: 'Please input your username!' }]"
-    >
+    <a-form-item label="name" name="name">
       <a-input v-model:value="formState.name"></a-input>
     </a-form-item>
-
+    <a-form-item label="gender" name="gender">
+      <a-select
+        ref="select"
+        v-model:value="formState.gender"
+        style="width: 120px"
+        placeholder="Please select gender"
+      >
+        <a-select-option value="Female">Female</a-select-option>
+        <a-select-option value="Male">Male</a-select-option>
+        <a-select-option value="">any</a-select-option>
+      </a-select>
+    </a-form-item>
     <a-form-item>
-      <a-button :disabled="disabled" type="primary" html-type="submit">
-        <template #icon><SearchOutlined /></template>
+      <a-button type="primary" html-type="submit">
+        <template #icon>
+          <SearchOutlined />
+        </template>
         Search
       </a-button>
     </a-form-item>
@@ -32,13 +41,13 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, computed } from 'vue'
+  import { reactive } from 'vue'
   import { SearchOutlined } from '@ant-design/icons-vue'
   //expects props options
   // const props = defineProps({
   //   foo: String,
   // })
-  interface FormState {
+  export interface FormState {
     name: string
     gender: string
   }
@@ -46,18 +55,22 @@
     name: '',
     gender: '',
   })
-  const onFinish = (values: any) => {
+  const onFinish = (values: FormState) => {
     console.log('Success:', values)
+    emit('search', values)
   }
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
   }
-  const disabled = computed(() => {
-    return !(formState.username && formState.password)
-  })
+
   //expects emits options
   //const emit = defineEmits(['update', 'delete'])
+
+  // 基于类型
+  const emit = defineEmits<{
+    (e: 'search', form: FormState): void
+  }>()
 </script>
 
 <style scoped lang="scss"></style>
