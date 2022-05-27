@@ -2,7 +2,7 @@
  * @Description: table
  * @Author: Gavin
  * @Date: 2022-05-13 12:59:59
- * @LastEditTime: 2022-05-15 12:05:40
+ * @LastEditTime: 2022-05-18 14:51:58
  * @LastEditors: Gavin
  */
 import { MockMethod } from 'vite-plugin-mock'
@@ -15,7 +15,8 @@ interface Pagination {
   total?: number | string
 }
 interface Body extends Pagination {
-  gender: number | string
+  gender?: string
+  name?: string
 }
 interface Item {
   country: string
@@ -49,6 +50,14 @@ function useQueryPage<T>(
     pageSize,
   }
 }
+function queryListByString<T>(key: string, value: string, list: T[]): T[] {
+  return list.filter((item) => {
+    if (typeof item[key] === 'string') {
+      return item[key].includes(value)
+    }
+    return false
+  })
+}
 
 const result: Array<Item> = Array.from({ length: 100 }, (_, index): Item => {
   return {
@@ -68,8 +77,17 @@ export default [
     method: 'post',
     response: ({ body }: { body: Body }) => {
       if (body) {
-        const { current = 1, pageSize = 10 } = body
-        const res = useQueryPage<Item>(current, pageSize, result)
+        const { current = 1, pageSize = 10, name = '', gender = '' } = body
+        const res = useQueryPage<Item>(
+          current,
+          pageSize,
+
+          queryListByString<Item>(
+            'gender',
+            gender,
+            queryListByString<Item>('name', name, result)
+          )
+        )
         return {
           code: 0,
           message: 'ok',

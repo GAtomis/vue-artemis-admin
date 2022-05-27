@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-05-13 11:14:04
- * @LastEditTime: 2022-05-16 12:20:08
+ * @LastEditTime: 2022-05-18 14:53:49
  * @LastEditors: Gavin
 -->
 <template>
@@ -49,33 +49,33 @@
   }
   const columns: Columns[] = [
     {
-      title: '头像',
+      title: 'avatar',
       dataIndex: 'avatar',
       key: 'avatar',
     },
     {
-      title: '姓名',
+      title: 'name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: '性别',
+      title: 'gender',
       dataIndex: 'gender',
       key: 'gender',
     },
 
     {
-      title: '国家',
+      title: 'country',
       dataIndex: 'country',
       key: 'country',
     },
     {
-      title: '工作类型',
+      title: 'jobType',
       dataIndex: 'jobType',
       key: 'jobType',
     },
     {
-      title: '手机号',
+      title: 'phone',
       dataIndex: 'phone',
       key: 'phone',
     },
@@ -87,7 +87,11 @@
   const loading = ref(false)
   const getList = (form: any = {}) => {
     loading.value = true
-    getPerson({ current: current.value, pageSize: pageSize.value })
+    const params = {
+      ...form,
+      ...{ current: current.value, pageSize: pageSize.value },
+    }
+    getPerson(params)
       .then((res) => {
         dataSource.value = res.item
         total.value = res.total
@@ -101,7 +105,7 @@
     getList()
   }
   const handleSearch = (form: FormState) => {
-    console.log(form, '主页 asdsadassd')
+    getList(form)
   }
 
   getList()

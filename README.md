@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-16 13:17:26
+ * @LastEditTime: 2022-05-27 17:21:58
  * @LastEditors: Gavin
 -->
 
@@ -85,7 +85,7 @@ export default mixinRouter
   This problem is being investigated. At present, the project development will not receive much impact.Submitted to Issues
 ### Q4 How to replace icons in the menu
   Icons setting through antdv custom icon. [iconfont]('https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=9402')Collect your favorite charts and customize icon settings.Configure icons by generating links
-    ```
+```
   //path @/components/Iconfont
   export function registerIconComponents(app: App): void {
   const IconFont = createFromIconfontCN({
@@ -93,7 +93,8 @@ export default mixinRouter
   })
   app.component('IconFont', IconFont)
 }
-  ```
+
+```
 
 ## Fix log
 * Hot-reloads no page memory overflow=>Store configuration initialization

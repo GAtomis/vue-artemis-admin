@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-16 13:16:40
+ * @LastEditTime: 2022-05-27 17:23:24
  * @LastEditors: Gavin
 -->
 
@@ -85,7 +85,8 @@ export default mixinRouter
   这个问题正在调查中。目前项目开发不会受到太大影响，已提交至Issuse
 ### Q4 如何设置菜单上的icon
   本项目通过antdv中给出的自定义icon设置图标,[iconfont]('https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=9402')通过收集自己喜欢的icon生成链接配置到项目的配置文件中
-  ```
+  
+```
   //path @/components/Iconfont
   export function registerIconComponents(app: App): void {
   const IconFont = createFromIconfontCN({
@@ -93,7 +94,7 @@ export default mixinRouter
   })
   app.component('IconFont', IconFont)
 }
-  ```
+```
 
 ## 疑难杂症日记
 * 热更新白页内存移除=>store配置初始化
