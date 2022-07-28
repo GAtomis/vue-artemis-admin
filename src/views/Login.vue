@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-02-24 11:12:49
+ * @LastEditTime: 2022-07-25 10:45:36
  * @LastEditors: Gavin
 -->
 
@@ -45,6 +45,29 @@
             </template>
           </a-input>
         </a-form-item>
+        <a-form-item name="code">
+          <a-input
+            v-model:value="formState.code"
+            size="large"
+            placeholder="code"
+          >
+            <template #prefix>
+              <lock-outlined type="user" />
+            </template>
+
+            <template #addonAfter>
+              <img
+                :src="captchaUrl"
+                class="captcha"
+                @click="
+                  (e) => {
+                    captchaUrl = `${codeApi}?v=${Math.random()}`
+                  }
+                "
+              />
+            </template>
+          </a-input>
+        </a-form-item>
         <a-form-item>
           <a-button
             type="primary"
@@ -67,7 +90,7 @@
   import { reactive, ref } from 'vue'
   import type { UnwrapRef } from 'vue'
   import { message } from 'ant-design-vue'
-  import type { LoginFrom } from '@/components/Form/base' //深坑一定要用type导出接口 vite专属bug
+  import type { LoginFrom } from '@/model/login/login-form' //深坑一定要用type导出接口 vite专属bug
   import type {
     RuleObject,
     ValidateErrorEntity,
@@ -81,14 +104,15 @@
   import { useUser } from '@/store/pinia/index'
   import { LOGO_IMAGE, HOME_TITLE } from '@/settings'
 
-  interface FormState extends LoginFrom {
-    name?: string
-  }
+  //验证码地址
+  const captchaUrl = ref<string>('api/base/code')
+  const codeApi = 'api/base/code'
 
   //表单验证
-  const formState: UnwrapRef<FormState> = reactive({
+  const formState: UnwrapRef<LoginFrom> = reactive({
     username: '',
     password: '',
+    code: '',
   })
   // 自定义验证规则
   let validatePass = async (rule: RuleObject, value: string) => {
@@ -99,7 +123,7 @@
     }
   }
 
-  //验证规则
+  //验证规则合集
   const rules = {
     username: [
       {
@@ -120,14 +144,15 @@
    */
   const router = useRouter()
 
-  const handleSubmit = async ({ username, password }: FormState) => {
+  const handleSubmit = async ({ username, password, code }: any) => {
     console.log('onSubmit')
     loading.value = true
 
     await useUser()
-      .login({ username, password })
+      .login({ username, password, code })
       .finally(() => {
         loading.value = false
+        captchaUrl.value = `${codeApi}?v=${Math.random()}`
       })
     router.push({ path: '/Dashboard', query: { name: username } })
   }
@@ -137,8 +162,7 @@
    * @return {*}
    * @Date: 2021-08-01 01:32:35
    */
-  const handleFinish = (values: FormState) => {
-    console.log(values, formState)
+  const handleFinish = (values: any) => {
     handleSubmit(values)
   }
 
@@ -161,6 +185,11 @@
     width: 100vw;
     height: 100vh;
     background: url('../assets/img/bg_login.png') left top no-repeat;
+    .captcha {
+      &:hover {
+        cursor: pointer;
+      }
+    }
     // background-size: cover;
   }
 

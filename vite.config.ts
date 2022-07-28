@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-15 11:59:33
+ * @LastEditTime: 2022-07-23 17:47:09
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
@@ -54,7 +54,7 @@ const setTheme = () =>
       extract: false,
     },
   })
-
+//在暂时废弃
 const imagemin = () => {
   return viteImagemin({
     gifsicle: {
@@ -120,6 +120,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           target: 'https://api.github.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+        '/api/base': {
+          target: 'http://localhost:8888',
+          changeOrigin: true,
+        },
+        '/api/user': {
+          target: 'http://localhost:8888',
+          changeOrigin: true,
         },
       },
     },

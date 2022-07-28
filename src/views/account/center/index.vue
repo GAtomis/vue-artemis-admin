@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-01-26 13:21:22
+ * @LastEditTime: 2022-07-27 22:58:14
  * @LastEditors: Gavin
 -->
 <template>
@@ -11,23 +11,29 @@
     :label-col="labelCol"
     :wrapper-col="wrapperCol"
     class="app-container bg-fff"
+    @finish="onFinish"
+    @finishFailed="onFinishFailed"
   >
     <a-row :gutter="16" class="card">
       <a-col :span="12" class="card-info">
         <a-card title="个人资料" style="width: 100%">
-          <a-form-item label="用户名">
+          <a-form-item
+            label="name"
+            name="name"
+            :rules="[{ required: true, message: 'Please input your name!' }]"
+          >
             <a-input v-model:value="form.name" />
           </a-form-item>
           <a-divider />
-          <a-form-item label="职位">
+          <a-form-item label="job" name="jobType">
             <a-input v-model:value="form.jobType" />
           </a-form-item>
           <a-divider />
-          <a-form-item label="公司">
-            <a-input v-model:value="form.companyName" />
+          <a-form-item label="company" name="company">
+            <a-input v-model:value="form.company" />
           </a-form-item>
           <a-divider />
-          <a-form-item label="个人简介">
+          <a-form-item label="catchPhrase" name="catchPhrase">
             <a-textarea
               v-model:value="form.catchPhrase"
               show-count
@@ -35,7 +41,7 @@
             />
           </a-form-item>
           <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-            <a-button type="primary" @click="onSubmit">Save</a-button>
+            <a-button type="primary" html-type="submit">Save</a-button>
             <a-button style="margin-left: 10px">Cancel</a-button>
           </a-form-item>
         </a-card>
@@ -74,20 +80,25 @@
   import { toRaw, reactive } from 'vue'
   import useUpLoadByAvatar from './Hooks/useUpLoadByAvatar'
   import { useUser } from '@/store/pinia'
-  import type { IUserState } from '@/store/pinia/user'
-
-  //坑早知道用interface了, type的继承真的丑
-  type UserInfo = IUserState & {
-    companyName: string
-  }
+  import { updateItem } from '@/api/account'
+  import { UserInfo } from '@/model/account'
+  import { message } from 'ant-design-vue'
   const form = reactive<UserInfo>({
-    companyName: 'Arvato',
-    ...toRaw(useUser().getInfo),
+    id: useUser().id,
+    name: useUser().name,
+    company: useUser().company,
+    catchPhrase: useUser().catchPhrase,
+    jobType: useUser().jobType,
+    avatar: useUser().avatar,
   })
   const labelCol = { span: 4 },
     wrapperCol = { span: 20 },
-    onSubmit = (): void => {
-      console.log('提交')
+    onFinish = async (values: UserInfo) => {
+      await updateItem<UserInfo, string>(form)
+      message.success('提交')
+    },
+    onFinishFailed = (errorInfo: UserInfo) => {
+      console.log('Failed:', errorInfo)
     }
   const { fileList, loading, imageUrl, handleChange, beforeUpload } =
     useUpLoadByAvatar()

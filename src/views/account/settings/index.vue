@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-02-24 11:20:21
+ * @LastEditTime: 2022-07-28 13:39:40
  * @LastEditors: Gavin
 -->
 <template>
@@ -23,35 +23,10 @@
         :show-line="showLine"
         :show-icon="showIcon"
         checkable
+        :field-names="fieldNames"
+        :tree-date="perMeuns"
         @select="onSelect"
-      >
-        <a-tree-node v-for="menuItem in perMeuns" :key="menuItem?.meta.roles">
-          <template #icon>
-            <node-index-outlined />
-          </template>
-          <template #title>
-            <span style="color: #1890ff">{{ menuItem?.meta.title }}</span>
-          </template>
-          <a-tree-node
-            v-for="child in menuItem.children"
-            :key="child?.meta.roles"
-            :title="child?.meta.title"
-          >
-            <template #icon>
-              <node-index-outlined />
-            </template>
-            <a-tree-node
-              v-for="nested in child.children"
-              :key="nested?.meta.roles"
-              :title="nested?.meta.title"
-            >
-              <template #icon>
-                <node-index-outlined />
-              </template>
-            </a-tree-node>
-          </a-tree-node>
-        </a-tree-node>
-      </a-tree>
+      ></a-tree>
     </a-modal>
   </div>
 </template>
@@ -59,7 +34,7 @@
 <script lang="ts" setup>
   import { ref, computed } from 'vue'
 
-  import { filterAsyncRoutes } from '@/hooks/router'
+  import { filterChildren, filterAsyncRoutes } from '@/hooks/router'
   import { getPermissionList } from '@/api/account/index'
   import useDialogTree from './hooks/useDialogTree'
   import _ from 'lodash'
@@ -70,6 +45,9 @@
     des: string
     level: string
   }
+
+  const fieldNames = { children: 'children', title: 'name', key: 'roles' }
+
   //api来自antdv
   const columns = [
     {
@@ -123,7 +101,8 @@
     let per = await getPermissionList({
       level: raw.level,
     })
-    per = filterAsyncRoutes(undefined, per)
+    let asyncRoutes = filterAsyncRoutes(undefined, per)
+    per = filterChildren(asyncRoutes, [], 'tree')
     perMeuns.value = per
     visible.value = true
   }

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2022-01-24 18:43:10
+ * @LastEditTime: 2022-07-28 11:56:12
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
@@ -36,6 +36,16 @@ const mixinRouter: Array<RouteRecordRaw> = [
           title: 'Settings',
           icon: 'icon-switchuser',
           roles: '/account/settings',
+        },
+      },
+      {
+        path: 'menu',
+        name: 'Menu',
+        component: () => import('@/views/account/menu/index.vue'),
+        meta: {
+          title: 'Menu',
+          icon: 'icon-switchuser',
+          roles: '/account/menu',
         },
       },
     ],

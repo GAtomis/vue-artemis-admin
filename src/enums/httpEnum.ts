@@ -1,9 +1,16 @@
+/*
+ * @Description: 请输入....
+ * @Author: Gavin
+ * @Date: 2022-06-18 09:39:59
+ * @LastEditTime: 2022-07-22 22:18:01
+ * @LastEditors: Gavin
+ */
 /**
  * @description: 请求结果集
  */
 export enum ResultEnum {
   SUCCESS = 0,
-  ERROR = -1,
+  ERROR = 7,
   TIMEOUT = 10042,
   TYPE = 'success',
 }

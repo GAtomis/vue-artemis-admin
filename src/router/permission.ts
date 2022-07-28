@@ -2,7 +2,7 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-05-14 11:41:38
+ * @LastEditTime: 2022-07-24 01:26:09
  * @LastEditors: Gavin
  */
 import {
@@ -70,8 +70,10 @@ export function createGuardHook(router: Router): void {
         } else {
           try {
             const roles = await useUser().getUserInfo()
+
             const accessedRoutes: Array<RouteRecordRaw> =
               await usePermission().generateRoutes(roles)
+            console.warn(accessedRoutes)
             resetRoute(accessedRoutes)
             // setTimeout(() => {
             notification?.['success']?.({
