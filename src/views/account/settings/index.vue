@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-07-28 13:39:40
+ * @LastEditTime: 2022-08-03 04:51:01
  * @LastEditors: Gavin
 -->
 <template>
@@ -10,102 +10,80 @@
     <a-table :columns="columns" :data-source="data">
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'operation'">
-          <a @click="openDialog(record)">setting</a>
+          <a @click="handleSetting(record, column)">setting</a>
         </template>
       </template>
     </a-table>
-
-    <a-modal v-model:visible="visible" title="Basic" @ok="visible = false">
-      <a-tree
-        v-model:expandedKeys="expandedKeys"
-        v-model:selectedKeys="selectedKeys"
-        v-model:checkedKeys="checkedKeys"
-        :show-line="showLine"
-        :show-icon="showIcon"
-        checkable
-        :field-names="fieldNames"
-        :tree-date="perMeuns"
-        @select="onSelect"
-      ></a-tree>
-    </a-modal>
+    <a-pagination
+      v-model:current="page"
+      v-model:pageSize="pageSize"
+      show-size-changer
+      :total="total"
+      :show-total="(total) => `共有${total}条`"
+      :style="{ textAlign: 'center', margin: '10px 0' }"
+      @change="handlePage"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed } from 'vue'
-
-  import { filterChildren, filterAsyncRoutes } from '@/hooks/router'
-  import { getPermissionList } from '@/api/account/index'
-  import useDialogTree from './hooks/useDialogTree'
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { getList } from '@/api/account/role'
   import _ from 'lodash'
-  import { useUser } from '@/store/pinia/index'
-
-  interface DataItem {
-    key: string | number
-    des: string
-    level: string
-  }
-
-  const fieldNames = { children: 'children', title: 'name', key: 'roles' }
+  import { usePage } from './hooks/usePage'
+  import type { Role } from '@/model/account'
 
   //api来自antdv
   const columns = [
     {
       title: '#',
-      dataIndex: 'key',
+      dataIndex: 'id',
     },
     {
-      title: 'level',
-      dataIndex: 'level',
+      title: 'name',
+      dataIndex: 'name',
     },
     {
-      title: 'des',
-      dataIndex: 'des',
+      title: 'createTime',
+      dataIndex: 'createdAt',
     },
+    {
+      title: 'updateTime',
+      dataIndex: 'updatedAt',
+    },
+
     {
       title: 'operation',
       key: 'operation',
     },
   ]
 
-  const data = ref<DataItem[]>([
-    {
-      key: 0,
-      des: '用户权限',
-      level: 'user',
-    },
-    {
-      key: 1,
-      des: '管理员',
-      level: 'admin',
-    },
-  ])
+  const data = ref<Role[]>([])
+  const { handlePage, page, pageSize, total } = usePage(async () => {
+    const params = {
+      page: page.value,
+      pageSize: pageSize.value,
+    }
+    const { item, total: itemTotal } = await getList(params)
+    data.value = item
+    total.value = itemTotal
+  })
+  handlePage()
+
+  const $router = useRouter()
+  const handleSetting = (record: Role) => {
+    console.log(record)
+
+    $router.push({
+      path: '/account/menu',
+      query: { id: record.id },
+    })
+  }
 
   // const level = computed(() => {
   //   return useUser().level
   // })
-
-  const visible = ref<boolean>(false)
-  const perMeuns = ref<any[]>([])
-  const {
-    expandedKeys,
-    selectedKeys,
-    checkedKeys,
-    showLine,
-    showIcon,
-    onSelect,
-  } = useDialogTree()
-
-  const openDialog = async (raw) => {
-    checkedKeys.value = _.cloneDeep(useUser().roles)
-    let per = await getPermissionList({
-      level: raw.level,
-    })
-    let asyncRoutes = filterAsyncRoutes(undefined, per)
-    per = filterChildren(asyncRoutes, [], 'tree')
-    perMeuns.value = per
-    visible.value = true
-  }
 
   //加载菜单
 

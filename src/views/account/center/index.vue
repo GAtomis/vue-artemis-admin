@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-07-27 22:58:14
+ * @LastEditTime: 2022-08-03 11:14:05
  * @LastEditors: Gavin
 -->
 <template>
@@ -95,7 +95,7 @@
     wrapperCol = { span: 20 },
     onFinish = async (values: UserInfo) => {
       await updateItem<UserInfo, string>(form)
-      message.success('提交')
+      message.success('表单已提交')
     },
     onFinishFailed = (errorInfo: UserInfo) => {
       console.log('Failed:', errorInfo)

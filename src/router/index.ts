@@ -2,7 +2,7 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2022-05-16 12:16:58
+ * @LastEditTime: 2022-07-28 19:16:24
  * @LastEditors: Gavin
  */
 
@@ -14,11 +14,12 @@ import redirect from './modules/redirect'
 // import account from './modules/account'
 // import constructor from './modules/constructor'
 import modules from './modules'
+import { ExpandRouteRecordRaw } from '@/model/router'
 
 const layout = () => import('@/layout/index.vue')
 
 //公共的路由表  Public
-export const publicRouteTable: Array<RouteRecordRaw> = [
+export const publicRouteTable: Array<ExpandRouteRecordRaw> = [
   /*  meta-api
  
              title: 'Read', // menu name
@@ -86,7 +87,7 @@ export const publicRouteTable: Array<RouteRecordRaw> = [
 ]
 
 //按需加载路由表  Load routes according to permissions. This attribute is private
-export const privateRouteTable: Array<RouteRecordRaw> = [
+export const privateRouteTable: Array<ExpandRouteRecordRaw> = [
   // ...nested,
   // ...account,
   // ...constructor,

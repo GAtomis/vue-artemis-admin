@@ -2,14 +2,14 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-05 19:11:51
- * @LastEditTime: 2021-09-17 18:29:52
+ * @LastEditTime: 2022-07-28 19:18:40
  * @LastEditors: Gavin
  */
 
-import { RouteRecordRaw } from 'vue-router'
+import { ExpandRouteRecordRaw } from '@/model/router'
 import { RouterTransition } from '@/components/transition'
 
-const routes: Array<RouteRecordRaw> = [
+const routes: Array<ExpandRouteRecordRaw> = [
   {
     path: '/redirect/:path*',
     name: 'Redirect',

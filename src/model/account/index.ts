@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-07-27 18:48:38
- * @LastEditTime: 2022-07-27 22:42:08
+ * @LastEditTime: 2022-07-31 17:47:37
  * @LastEditors: Gavin
  */
 
@@ -14,4 +14,11 @@ export type UserInfo = {
   catchPhrase: string
   jobType: string
   avatar: string
+}
+//
+export type Role = {
+  id?: number
+  name: string
+  available: string
+  sysUsers: UserInfo[] | null
 }

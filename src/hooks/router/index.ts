@@ -2,12 +2,12 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 10:00:31
- * @LastEditTime: 2022-07-28 13:18:51
+ * @LastEditTime: 2022-07-28 19:33:04
  * @LastEditors: Gavin
  */
 
 import { privateRouteTable as asyncRoutes } from '@/router/index'
-import { RouteRecordRaw } from 'vue-router'
+import type { ExpandRouteRecordRaw } from '@/model/router'
 
 import router from '@/router/index'
 
@@ -31,31 +31,27 @@ const routerStrategy = {
    * @return {*}
    * @Date: 2021-09-01 15:13:03
    */
-  roles(route: any, roles: any): boolean {
+  roles(route: ExpandRouteRecordRaw, roles: any): boolean {
     return roles.some((role) => route.meta.roles === role)
   },
-  affix(route: any) {
+  affix(route: ExpandRouteRecordRaw) {
     // console.log('每次图钉路由', route, route?.meta?.affix)
 
     return route?.meta?.affix
   },
-  tree(route: any) {
-    route.roles = route?.meta?.roles
-    return true
-  },
 }
 
 /**
- * @description: 方法说明....
+ * @description: 是否有权限
  * @param {Array} roles
- * @param {RouteRecordRaw} route
+ * @param {ExpandRouteRecordRaw} route
  * @param {string} key
  * @return {boolean}
  * @Date: 2021-08-08 09:36:00
  */
 function hasPermission(
   roles: Array<string>,
-  route: RouteRecordRaw | any,
+  route: ExpandRouteRecordRaw | any,
   key = 'roles'
 ): boolean {
   // meta并且有roles进行判断
@@ -75,13 +71,13 @@ function hasPermission(
  * @param roles
  */
 export function filterAsyncRoutes(
-  routes: Array<RouteRecordRaw> = asyncRoutes,
+  routes: Array<ExpandRouteRecordRaw> = asyncRoutes,
   roles: Array<string>,
   key?: string
-): Array<RouteRecordRaw> {
+): Array<ExpandRouteRecordRaw> {
   // 关键筛选  第一个参数所有拥有的所有路由权限，第二参数权限路由
   // res是筛选完的路由
-  const res: Array<RouteRecordRaw> = []
+  const res: Array<ExpandRouteRecordRaw> = []
   // 所有异步路由遍历
   routes.forEach((route) => {
     // 解构
@@ -89,7 +85,7 @@ export function filterAsyncRoutes(
     // 当前路由组是否包含roles
     if (hasPermission(roles, tmp, key)) {
       // 是否存在子路由
-      if (tmp.children) {
+      if (tmp?.children) {
         // 在进行判断;
         tmp.children = filterAsyncRoutes(tmp.children, roles, key)
       }
@@ -109,30 +105,19 @@ export function filterAsyncRoutes(
  * @param roles
  */
 export function filterChildren(
-  routes: Array<RouteRecordRaw>,
+  routes: Array<ExpandRouteRecordRaw>,
   roles: Array<string>,
   key?: string
-): Array<RouteRecordRaw> {
+): Array<ExpandRouteRecordRaw> {
   // 关键筛选  第一个参数所有拥有的所有路由权限，第二参数权限路由
   // res是筛选完的路由
-  let res: Array<RouteRecordRaw> = []
+  let res: Array<ExpandRouteRecordRaw> = []
   // 所有异步路由遍历
   routes.forEach((route) => {
     // 解构
     const tmp = { ...route }
     let result
     // 当前路由组是否包含roles
-    // if (hasPermission(roles,tmp,key)) {
-    //     // 是否存在子路由
-    //     if (tmp.children) {
-    //         // 在进行判断;
-    //         tmp.children = filterAsyncRoutes(tmp.children, roles,key);
-    //     }
-    //     // 如果有权限当前路由加入数组
-    //     console.error(tmp);
-
-    //     res.push(tmp);
-    // }
     if (tmp.children) {
       result = filterChildren(tmp.children, roles, key)
       res = [...res, ...result]
@@ -146,7 +131,33 @@ export function filterChildren(
   return res
 }
 
-export function resetRoute(list: Array<RouteRecordRaw>): void {
+/**
+ * @description: 遍历路由
+ * @param routerMap 路由树
+ * @param cb 每次路由遍历回调
+ * @return {*}
+ * @Date: 2022-07-28 19:25:05
+ */
+export function deepRouteMap(
+  routerMap: Array<ExpandRouteRecordRaw>,
+  cb: (r: ExpandRouteRecordRaw) => void
+): ExpandRouteRecordRaw[] {
+  routerMap.forEach((route) => {
+    if (route?.children?.length) {
+      deepRouteMap(route.children, cb)
+    }
+    cb(route)
+  })
+  return routerMap
+}
+
+/**
+ * @description: 重载路由
+ * @param {Array} list 重载路由列表
+ * @return {*}
+ * @Date: 2022-07-28 19:27:30
+ */
+export function resetRoute(list: Array<ExpandRouteRecordRaw>): void {
   list.forEach((item) => {
     router.addRoute(item.name as string, item)
   })
