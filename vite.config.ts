@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-01 22:08:21
+ * @LastEditTime: 2022-08-03 11:50:18
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
@@ -130,6 +130,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           changeOrigin: true,
         },
         '/api/role': {
+          target: 'http://localhost:8888',
+          changeOrigin: true,
+        },
+        '/api/permission': {
           target: 'http://localhost:8888',
           changeOrigin: true,
         },

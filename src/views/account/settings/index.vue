@@ -2,15 +2,15 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-08-03 04:51:01
+ * @LastEditTime: 2022-08-03 15:54:43
  * @LastEditors: Gavin
 -->
 <template>
   <div class="app-container bg-fff">
-    <a-table :columns="columns" :data-source="data">
+    <a-table :columns="columns" :data-source="data" :loading="loading">
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'operation'">
-          <a @click="handleSetting(record, column)">setting</a>
+          <a @click="handleSetting(record)">setting</a>
         </template>
       </template>
     </a-table>
@@ -60,7 +60,9 @@
   ]
 
   const data = ref<Role[]>([])
-  const { handlePage, page, pageSize, total } = usePage(async () => {
+
+  const { handlePage, page, pageSize, total, loading } = usePage(async () => {
+    loading.value = true
     const params = {
       page: page.value,
       pageSize: pageSize.value,
@@ -68,6 +70,7 @@
     const { item, total: itemTotal } = await getList(params)
     data.value = item
     total.value = itemTotal
+    loading.value = false
   })
   handlePage()
 

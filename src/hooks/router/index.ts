@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-06 10:00:31
- * @LastEditTime: 2022-07-28 19:33:04
+ * @LastEditTime: 2022-08-05 11:38:56
  * @LastEditors: Gavin
  */
 
@@ -10,7 +10,7 @@ import { privateRouteTable as asyncRoutes } from '@/router/index'
 import type { ExpandRouteRecordRaw } from '@/model/router'
 
 import router from '@/router/index'
-
+// 在路由筛选中命中的策略统一策略
 const routerStrategy = {
   /**
    * @description: 筛选隐藏策略方法
