@@ -2,14 +2,14 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-01-27 11:50:29
- * @LastEditTime: 2022-01-27 12:06:29
+ * @LastEditTime: 2022-08-05 15:53:15
  * @LastEditors: Gavin
  */
 
 const Layout = () => import('@/layout/index.vue')
-import { RouteRecordRaw } from 'vue-router'
+import { ExpandRouteRecordRaw } from '@/model/router'
 
-const mixinRouter: Array<RouteRecordRaw> = [
+const mixinRouter: Array<ExpandRouteRecordRaw> = [
   {
     path: '/error',
     component: Layout,

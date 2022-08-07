@@ -2,19 +2,19 @@
  * @Description: 路由核心 所有翻译均为机翻 勿6
  * @Author: Gavin
  * @Date: 2021-06-29 16:03:25
- * @LastEditTime: 2022-07-28 19:16:24
+ * @LastEditTime: 2022-08-05 15:45:47
  * @LastEditors: Gavin
  */
 
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import type { App } from 'vue'
 import { createGuardHook } from './permission'
-import redirect from './modules/redirect'
+import redirect from './redirect'
 // import nested from './modules/nested'
 // import account from './modules/account'
 // import constructor from './modules/constructor'
 import modules from './modules'
-import { ExpandRouteRecordRaw } from '@/model/router'
+import type { ExpandRouteRecordRaw } from '@/model/router'
 
 const layout = () => import('@/layout/index.vue')
 

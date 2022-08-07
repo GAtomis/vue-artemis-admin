@@ -2,13 +2,13 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-01-24 14:34:43
- * @LastEditTime: 2022-07-28 19:07:00
+ * @LastEditTime: 2022-08-05 18:20:52
  * @LastEditors: Gavin
  */
 
 const allModules = import.meta.globEager('./*.ts')
 import { useBubblingSort } from '@/hooks/global/common'
-const modules: unknown = {}
+const modules: any = {}
 
 import { ExpandRouteRecordRaw } from '@/model/router'
 

@@ -2,14 +2,14 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2022-07-28 11:56:12
+ * @LastEditTime: 2022-08-07 10:08:08
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
 const Layout = () => import('@/layout/index.vue')
-import { RouteRecordRaw } from 'vue-router'
+import { ExpandRouteRecordRaw } from '@/model/router'
 
-const mixinRouter: Array<RouteRecordRaw> = [
+const mixinRouter: Array<ExpandRouteRecordRaw> = [
   {
     path: '/account',
     component: Layout,
@@ -29,23 +29,35 @@ const mixinRouter: Array<RouteRecordRaw> = [
         meta: { title: 'Center', icon: 'icon-user', roles: '/account/center' },
       },
       {
-        path: 'settings',
-        name: 'Settings',
-        component: () => import('@/views/account/settings/index.vue'),
+        path: 'roles',
+        name: 'Roles',
+        component: () => import('@/views/account/roles/index.vue'),
         meta: {
-          title: 'Settings',
+          title: 'Roles',
           icon: 'icon-switchuser',
-          roles: '/account/settings',
+          roles: '/account/roles',
         },
       },
       {
-        path: 'menu',
-        name: 'Menu',
-        component: () => import('@/views/account/menu/index.vue'),
+        path: 'editRole',
+        name: 'EditRole',
+        component: () => import('@/views/account/editRole/index.vue'),
         meta: {
-          title: 'Menu',
+          title: 'EditRole',
           icon: 'icon-switchuser',
-          roles: '/account/menu',
+          roles: '/account/editRole',
+          hidden: true,
+        },
+      },
+      {
+        path: 'permissons',
+        name: 'Permissons',
+        component: () => import('@/views/account/permissons/index.vue'),
+        meta: {
+          title: 'Permissons',
+          icon: 'icon-switchuser',
+          roles: '/account/permissons',
+          hidden: false,
         },
       },
     ],

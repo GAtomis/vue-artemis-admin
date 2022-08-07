@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-08-03 11:14:05
+ * @LastEditTime: 2022-08-07 10:02:20
  * @LastEditors: Gavin
 -->
 <template>
@@ -53,7 +53,7 @@
             name="avatar"
             list-type="picture-card"
             :show-upload-list="false"
-            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            action="http://yourname/api/v1/upload"
             :before-upload="beforeUpload"
             @change="handleChange"
           >
@@ -77,7 +77,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { toRaw, reactive } from 'vue'
+  import { reactive } from 'vue'
   import useUpLoadByAvatar from './Hooks/useUpLoadByAvatar'
   import { useUser } from '@/store/pinia'
   import { updateItem } from '@/api/account'
@@ -93,7 +93,7 @@
   })
   const labelCol = { span: 4 },
     wrapperCol = { span: 20 },
-    onFinish = async (values: UserInfo) => {
+    onFinish = async () => {
       await updateItem<UserInfo, string>(form)
       message.success('表单已提交')
     },

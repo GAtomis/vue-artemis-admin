@@ -2,17 +2,19 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 11:13:13
- * @LastEditTime: 2022-01-04 12:44:07
+ * @LastEditTime: 2022-08-05 17:35:59
  * @LastEditors: Gavin
  */
-import { RouteRecordRaw } from 'vue-router'
+import type { ExpandRouteRecordRaw } from '@/model/router'
+import type { Permission } from '@/model/account'
 import { privateRouteTable, publicRouteTable } from '@/router'
-import { filterAsyncRoutes } from '@/hooks/router'
+import { filterAsyncRoutesByMeun } from '@/hooks/router'
 import { toRaw } from 'vue'
+import { getListByRoleId } from '@/api/account/menu'
 
 export type IPermissionState = {
-  routes: RouteRecordRaw[]
-  addRoutes: RouteRecordRaw[]
+  routes: ExpandRouteRecordRaw[]
+  addRoutes: ExpandRouteRecordRaw[]
   keepAliveComponents: string[]
 }
 
@@ -28,17 +30,25 @@ export default defineStore({
     roles: (state) => state.addRoutes,
   },
   actions: {
-    async generateRoutes(roles: Array<string>) {
-      return new Promise<RouteRecordRaw[]>((resolve) => {
+    async generateRoutes(roles: Permission[]) {
+      return new Promise<ExpandRouteRecordRaw[]>((resolve) => {
         // 可访问的路由变量
-        let accessedRoutes: RouteRecordRaw[]
+        let accessedRoutes: ExpandRouteRecordRaw[]
         // roles的速度的
-        if (roles.includes('admin')) {
+        if (false) {
+          //如果需要管理员权限开启
+
           // 异步全局路由
           accessedRoutes = privateRouteTable || []
         } else {
           // 筛选路由
-          accessedRoutes = filterAsyncRoutes(privateRouteTable, roles)
+          accessedRoutes = filterAsyncRoutesByMeun<Permission[]>(
+            privateRouteTable,
+            roles,
+            (roles, route) => {
+              return roles.some((item) => item.url === route.meta.roles)
+            }
+          )
         }
         // 设置路由
         this.addRoutes = accessedRoutes
@@ -51,12 +61,16 @@ export default defineStore({
       // commit('setRouters', routers)
       // return routers
     },
+
     resetRoles() {
       return new Promise((resolve) => {
         resolve(toRaw(this.addRoutes))
         this.addRoutes = []
         this.routes = []
       })
+    },
+    getPermission() {
+      return getListByRoleId
     },
   },
 })

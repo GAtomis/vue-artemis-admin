@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-07-31 15:52:34
- * @LastEditTime: 2022-08-03 11:31:35
+ * @LastEditTime: 2022-08-05 15:18:05
  * @LastEditors: Gavin
  */
 //入参数
@@ -21,7 +21,7 @@ export type Primarykey = {
 }
 
 export type DBModel = {
-  id?: string
+  id?: string | number
   createdAt?: string
   deletedAt?: string
   updatedAt?: string

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-07-25 10:45:36
+ * @LastEditTime: 2022-08-05 18:55:47
  * @LastEditors: Gavin
 -->
 
@@ -103,10 +103,11 @@
   import { useRouter } from 'vue-router'
   import { useUser } from '@/store/pinia/index'
   import { LOGO_IMAGE, HOME_TITLE } from '@/settings'
+  import { codeUrl } from '@/utils'
 
   //验证码地址
-  const captchaUrl = ref<string>('api/base/code')
-  const codeApi = 'api/base/code'
+  const captchaUrl = ref<string>(codeUrl)
+  const codeApi = codeUrl
 
   //表单验证
   const formState: UnwrapRef<LoginFrom> = reactive({

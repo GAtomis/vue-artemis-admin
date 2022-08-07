@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-03 11:50:18
+ * @LastEditTime: 2022-08-06 22:29:17
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
@@ -92,7 +92,7 @@ function configCDN() {
       {
         name: 'three',
         var: 'three',
-        path: 'https://elc-corp-global.oss-cn-shanghai.aliyuncs.com/da/three.min.js',
+        path: 'https://cdn.jsdelivr.net/npm/three@0.143.0/build/three.min.js',
       },
     ],
   })
@@ -157,8 +157,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     plugins: [
       vue(),
       vueJsx(),
-      viteCompression({ deleteOriginFile: true }),
       ,
+      // viteCompression({ deleteOriginFile: true }),
       // imagemin(),
       viteMockServe({ supportTs: true }),
       setTheme(),

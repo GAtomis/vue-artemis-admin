@@ -2,14 +2,14 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-09-08 12:07:06
- * @LastEditTime: 2022-03-11 18:57:21
+ * @LastEditTime: 2022-08-05 15:53:56
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
 const Layout = () => import('@/layout/index.vue')
-import { RouteRecordRaw } from 'vue-router'
+import { ExpandRouteRecordRaw } from '@/model/router'
 
-const nestedRouter: Array<RouteRecordRaw> = [
+const nestedRouter: Array<ExpandRouteRecordRaw> = [
   {
     path: '/nested',
     component: Layout,
@@ -41,7 +41,7 @@ const nestedRouter: Array<RouteRecordRaw> = [
               title: 'Menu1-1',
               icon: 'icon-apartment',
               roles: '/nested/menu1/menu1-1',
-              hidden: !false,
+              hidden: false,
             },
           },
           {

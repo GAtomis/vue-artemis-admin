@@ -2,14 +2,14 @@
  * @Description: table
  * @Author: Gavin
  * @Date: 2022-05-13 15:30:28
- * @LastEditTime: 2022-05-16 12:17:45
+ * @LastEditTime: 2022-08-05 15:54:38
  * @LastEditors: Gavin
  */
 /** When your routing table is too long, you can split it into small modules **/
 const Layout = () => import('@/layout/index.vue')
-import { RouteRecordRaw } from 'vue-router'
+import { ExpandRouteRecordRaw } from '@/model/router'
 
-const mixinRouter: Array<RouteRecordRaw> = [
+const mixinRouter: Array<ExpandRouteRecordRaw> = [
   {
     path: '/table',
     component: Layout,

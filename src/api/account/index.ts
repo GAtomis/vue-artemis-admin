@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-26 18:28:02
- * @LastEditTime: 2022-08-03 18:26:24
+ * @LastEditTime: 2022-08-05 18:18:11
  * @LastEditors: Gavin
  */
 
@@ -29,7 +29,7 @@ export function getPermissionList(data: comment) {
 }
 
 //user 改
-export function updateItem<Q = Primarykey, R = Permission[]>(data: Q) {
+export function updateItem<Q = any, R = any>(data: Q) {
   return http.request<R>(
     {
       url: '/user/user',

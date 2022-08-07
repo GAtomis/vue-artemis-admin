@@ -2,15 +2,15 @@
  * @Description: 路由守卫
  * @Author: Gavin
  * @Date: 2021-07-21 09:53:05
- * @LastEditTime: 2022-07-24 01:26:09
+ * @LastEditTime: 2022-08-05 17:39:31
  * @LastEditors: Gavin
  */
 import {
   Router,
-  RouteRecordRaw,
   RouteLocationNormalized,
   NavigationGuardNext,
 } from 'vue-router'
+import { ExpandRouteRecordRaw } from '@/model/router'
 // import store from '@/store'
 import { useUser, usePermission } from '@/store/pinia/index'
 import NProgress from 'nprogress' // progress bar
@@ -69,11 +69,15 @@ export function createGuardHook(router: Router): void {
           }
         } else {
           try {
-            const roles = await useUser().getUserInfo()
+            const [p1, p2] = await Promise.all([
+              usePermission().getPermission()(),
+              useUser().getUserInfo(),
+            ])
 
-            const accessedRoutes: Array<RouteRecordRaw> =
-              await usePermission().generateRoutes(roles)
-            console.warn(accessedRoutes)
+            const accessedRoutes: Array<ExpandRouteRecordRaw> =
+              await usePermission().generateRoutes(p1)
+
+            console.warn(accessedRoutes, p2)
             resetRoute(accessedRoutes)
             // setTimeout(() => {
             notification?.['success']?.({

@@ -2,15 +2,13 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-31 12:23:51
- * @LastEditTime: 2022-01-06 17:08:35
+ * @LastEditTime: 2022-08-05 15:56:49
  * @LastEditors: Gavin
  */
 
-import {
-  RouteRecordRaw,
-  RouteRecordName,
-  RouteLocationNormalizedLoaded,
-} from 'vue-router'
+import { RouteRecordName, RouteLocationNormalizedLoaded } from 'vue-router'
+
+import { ExpandRouteRecordRaw } from '@/model/router'
 import { TAGS_VIEW_IS_SHOW } from '@/store/store-enum'
 import { createStorage } from '@/utils/storage'
 import { defineStore } from 'pinia'
@@ -23,7 +21,7 @@ export type VisitedViews = {
 }
 export type ITagsViewState = {
   visitedViews: Array<VisitedViews>
-  cachedViews: Array<RouteRecordRaw>
+  cachedViews: Array<ExpandRouteRecordRaw>
   isShow: boolean
   activeColor?: ''
 }
@@ -60,7 +58,7 @@ export default defineStore({
     closeAllLabels() {
       this.visitedViews = this.visitedViews.filter((tag) => tag.meta.affix)
     },
-    closeOtherLabels(view: RouteRecordRaw) {
+    closeOtherLabels(view: ExpandRouteRecordRaw) {
       this.visitedViews = this.visitedViews.filter(
         (tag) => tag.name === view.name || tag.meta.affix
       )

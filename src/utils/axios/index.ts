@@ -129,7 +129,7 @@ const transform: AxiosTransform = {
     const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, isParseToJson } =
       options
 
-    config.url = isDev ? `/api${config.url}` : `${apiUrl || ''}${config.url}`
+    // config.url = isDev ? `/api${config.url}` : `${apiUrl || ''}${config.url}`
 
     // if (config.method === RequestEnum.GET) {
     //   const now = new Date().getTime()
@@ -179,7 +179,7 @@ const transform: AxiosTransform = {
       // jwt token
 
       const tokens = { Authorization: token }
-      Object.assign(config.headers, tokens)
+      config.headers && Object.assign(config.headers, tokens)
     }
     return config
   },
@@ -236,7 +236,7 @@ const transform: AxiosTransform = {
 const Axios = new VAxios({
   timeout: 15 * 1000,
   // 基础接口地址
-  // baseURL: globSetting.apiUrl,
+  baseURL: import.meta.env.VITE_BASE_API,
   // 接口可能会有通用的地址部分，可以统一抽取出来
   // prefixUrl: prefix,
   headers: { 'Content-Type': ContentTypeEnum.JSON },

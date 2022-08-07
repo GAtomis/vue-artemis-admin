@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-08-03 15:54:43
+ * @LastEditTime: 2022-08-07 11:38:26
  * @LastEditors: Gavin
 -->
 <template>
@@ -10,7 +10,10 @@
     <a-table :columns="columns" :data-source="data" :loading="loading">
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'operation'">
-          <a @click="handleSetting(record)">setting</a>
+          <a type="text" @click="handleSetting(record)">
+            <!-- <template #icon><edit-outlined /></template> -->
+            Edit
+          </a>
         </template>
       </template>
     </a-table>
@@ -79,7 +82,7 @@
     console.log(record)
 
     $router.push({
-      path: '/account/menu',
+      path: 'editRole',
       query: { id: record.id },
     })
   }

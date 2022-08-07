@@ -2,12 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-07-28 18:42:43
- * @LastEditTime: 2022-08-05 00:30:05
+ * @LastEditTime: 2022-08-05 18:08:37
  * @LastEditors: Gavin
  */
-import { deepRouteMap, filterAsyncRoutes as filterMenus } from '@/hooks/router'
+
 import type { ExpandRouteRecordRaw } from '@/model/router'
-import { privateRouteTable as asyncRoutes } from '@/router/index'
 import type { Permission } from '@/model/account'
 
 import { ref, watch } from 'vue'
@@ -20,17 +19,7 @@ export type CheckedKeys = {
 }
 
 export function useMenuTree() {
-  const meuns = ref<ExpandRouteRecordRaw[]>(
-    filterMenus(
-      deepRouteMap(asyncRoutes, (route) => {
-        if (route?.meta?.roles) {
-          route.value = route?.meta?.roles as string
-        }
-      }),
-      [],
-      'hidden'
-    )
-  )
+  const meuns = ref<ExpandRouteRecordRaw[]>([])
 
   const expandedKeys = ref<string[]>([])
   const selectedKeys = ref<string[]>([])
@@ -77,8 +66,9 @@ function createMenu(node: EventDataNode): Permission {
   const url = node.value
   const parentid = node?.parent?.node?.value ?? '0'
   const name = node?.name
+  const id = node.id
 
-  return { type, url, parentid, name }
+  return { type, url, parentid, name, id }
 }
 
 /**
@@ -90,7 +80,7 @@ function createMenu(node: EventDataNode): Permission {
  * @Date: 2022-08-03 16:46:14
  */
 function filterMenu(
-  checked: any[],
+  checked: string[],
   newItem: Permission,
   trees: Array<Permission>
 ) {
