@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-27 17:23:24
+ * @LastEditTime: 2022-08-09 00:33:48
  * @LastEditors: Gavin
 -->
 
@@ -20,10 +20,15 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
 </p>
 
-> Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+vite2+vueuse 实现的后台管理系统模板,项目意义重在与各位大佬交流学习。觉得好用就给颗星吧
+> Artemis Admin英文不太好先写中文了。本项目基于vue3.2+ts+antd-vue+vite2+vueuse 实现的后台管理系统模板,项目意义重在与各位大佬交流学习。觉得好用就给颗星吧,配套后台见详情
 
 
 ## [English](./README.md) |  [简体中文](./README.zh-CN.md)
+## [后台源代码 gin-artemis-admin](https://github.com/GAtomis/gin-artemis-admin)
+### 描述
+  此次搭建移除了之前版本中采用mock模拟RBAC的数据方案,通过后端服务实现RBAC鉴权的方式来登陆VAA(vue-artemis-admin)
+### 技术栈
+golang+gorm+gin实现的RBAC服务,后续会添加日志和redis等功能
 ## 模板基础功能(完善中)
 - 重构:vuex=>:pineapple:pinia  :heavy_check_mark:
 - 单点登录功能(jwt)  :heavy_check_mark:
@@ -108,6 +113,7 @@ export default mixinRouter
 * 修复路由守卫已修改为官方推荐用法
 * 暂停由于vite-plugin-imagemin插件出现了安装错误问题暂时停止使用 package列表已删除
 * 表单构造器关闭=>由于插件对vue3.2或vite的不支持导致插件在开发环境出现了异常情况,所以暂时先取消了这个功能,等待官方修复
+* 取消mock权限角色,接入后台RBAC权限
 
 ## 快速启动
 

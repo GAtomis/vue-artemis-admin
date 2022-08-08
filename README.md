@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-05-27 17:21:58
+ * @LastEditTime: 2022-08-09 00:37:40
  * @LastEditors: Gavin
 -->
 
@@ -22,6 +22,12 @@
 ## [English](./README.md) |  [简体中文](./README.zh-CN.md)
 ## Introduction
  English is no good - -, The template realized by vue-next + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
+
+ ## [server source code(gin-artemis-admin)](https://github.com/GAtomis/gin-artemis-admin)
+### Describe
+This setup removes the data scheme of mock simulating RBAC in the previous version, and logs in to VAA (Vue Artemis admin) by implementing RBAC authentication through the service
+### Language & Application
+Through the RBAC service implemented by (golang+gorm+gin), functions such as logging and redis will be added later
 ## Basic function of template (improvement)
 - reconstruct-vuex=>:pineapple:pinia :heavy_check_mark:
 - feat-SSO(login) :heavy_check_mark:
@@ -110,7 +116,7 @@ export default mixinRouter
 * pending  vite-plugin-imagemin(plugins) install error 
 * form-constructor =>due to plug-in to Vue3.2 or vite is not supported, which leads to abnormal conditions in the development environment of the plug-in, so this function is temporarily cancelled and waiting for official repair
 
-
+* Cancel the mock
 
 
 
