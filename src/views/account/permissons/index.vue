@@ -2,17 +2,37 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-08-07 09:50:26
- * @LastEditTime: 2022-08-07 22:50:53
+ * @LastEditTime: 2022-08-09 00:06:30
  * @LastEditors: Gavin
 -->
 <template>
   <div>
-    <a-table :columns="columns" :data-source="tableList" :loading="loading">
+    <nav>
+      <a-button type="primary" @click="handleEdit({ parentid: '0' })">
+        <template #icon><plus-outlined /></template>
+        Add
+      </a-button>
+    </nav>
+    <a-table
+      class="table"
+      :scroll="{ x: 1500 }"
+      :columns="columns"
+      :data-source="tableList"
+      :loading="loading"
+    >
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'operation'">
-          <a type="text" @click="handleEdit(record)">
+          <a class="table-btn" @click="handleEdit({ parentid: record.url })">
+            <!-- <template #icon><edit-outlined /></template> -->
+            Add
+          </a>
+          <a class="table-btn" @click="handleEdit(record)">
             <!-- <template #icon><edit-outlined /></template> -->
             Edit
+          </a>
+          <a class="table-btn" danger @click="handleDelete(record)">
+            <!-- <template #icon><edit-outlined /></template> -->
+            Delete
           </a>
         </template>
 
@@ -27,28 +47,67 @@
         </template>
       </template>
     </a-table>
-    <a-modal v-model:visible="visible" title="Basic Modal" @ok="handleOk">
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+    <a-modal v-model:visible="visibleEdit" :title="editTitle" @ok="handleOk">
+      <a-form
+        :model="form"
+        :label-col="labelCol"
+        :wrapper-col="wrapperCol"
+        class="app-container bg-fff"
+        @finish="onFinish"
+      >
+        <a-form-item
+          label="name"
+          name="name"
+          :rules="[{ required: true, message: 'Please insert name!' }]"
+        >
+          <a-input v-model:value="form.name" placeholder="insert link" />
+        </a-form-item>
+        <a-form-item
+          label="url"
+          name="url"
+          :rules="[{ required: true, message: 'Please insert url!' }]"
+        >
+          <a-input v-model:value="form.url" placeholder="insert url" />
+        </a-form-item>
+        <a-form-item
+          label="parentid"
+          name="parentid"
+          :rules="[{ required: true, message: 'Please input name!' }]"
+        >
+          <a-input v-model:value="form.parentid" />
+        </a-form-item>
+        <a-form-item label="type" name="type">
+          <a-radio-group v-model:value="form.type">
+            <a-radio value="menu">menu</a-radio>
+            <a-radio value="link">link</a-radio>
+          </a-radio-group>
+        </a-form-item>
+
+        <a-form-item label="available" name="available">
+          <a-switch v-model:checked="form.available" />
+        </a-form-item>
+        <a-divider />
+      </a-form>
     </a-modal>
   </div>
 </template>
 
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue'
-
-  import { getList } from '@/api/account/menu'
-  import { LockFilled, UnlockFilled } from '@ant-design/icons-vue'
+  import { getList, delItem } from '@/api/account/menu'
+  import { LockFilled, UnlockFilled, PlusOutlined } from '@ant-design/icons-vue'
   import { recursiveFormatting, PermissionItem } from './utils'
+  import { useEditDialog } from './hooks/useEditDialog'
+
   const tableList = ref<PermissionItem[]>([])
-  //api来自antdv
+  //api来自antdv-table
   const columns = [
     {
       title: 'type',
       dataIndex: 'type',
       key: 'type',
       width: '12%',
+      fixed: 'left',
     },
     {
       title: 'name',
@@ -85,10 +144,15 @@
     {
       title: 'operation',
       key: 'operation',
+      fixed: 'right',
+      width: '16%',
     },
   ]
+  const handleEdit = (target: any) => {
+    console.log(target)
 
-  const handleEdit = (item: PermissionItem) => {}
+    handleOpen(target)
+  }
   const loading = ref(false)
   const total = ref(0)
   const GetTableList = async () => {
@@ -100,7 +164,7 @@
     const { item, total: itemTotal } = await getList(params)
     console.log(recursiveFormatting(item, '0'))
 
-    tableList.value = recursiveFormatting(item, '0')
+    tableList.value = recursiveFormatting(item, '0') as PermissionItem[]
 
     total.value = itemTotal
     loading.value = false
@@ -108,6 +172,30 @@
   onMounted(() => {
     GetTableList()
   })
+  //弹窗逻辑
+  const ed = useEditDialog()
+
+  const {
+    //表单
+    labelCol,
+    wrapperCol,
+    form,
+    visibleEdit,
+    editTitle,
+  } = ed
+  //可覆盖方法
+  let { onFinish, handleOpen, handleOk } = ed
+  //覆盖确认关闭弹窗的方法
+  handleOk = async () => {
+    await onFinish()
+    visibleEdit.value = !true
+    GetTableList()
+  }
+  const handleDelete = async (item: PermissionItem) => {
+    await delItem(item)
+    visibleEdit.value = !true
+    GetTableList()
+  }
 
   //expects props options
   /*const props = defineProps({
@@ -117,4 +205,13 @@ foo: String
   //const emit = defineEmits(['update', 'delete'])
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+  nav {
+    margin-bottom: 10px;
+  }
+  .table {
+    &-btn {
+      margin-right: 5px;
+    }
+  }
+</style>

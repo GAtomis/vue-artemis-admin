@@ -234,7 +234,7 @@ const transform: AxiosTransform = {
 }
 
 const Axios = new VAxios({
-  timeout: 15 * 1000,
+  timeout: 30 * 1000,
   // 基础接口地址
   baseURL: import.meta.env.VITE_BASE_API,
   // 接口可能会有通用的地址部分，可以统一抽取出来

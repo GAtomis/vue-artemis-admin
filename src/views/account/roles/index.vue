@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-08-07 11:38:26
+ * @LastEditTime: 2022-08-09 00:18:16
  * @LastEditors: Gavin
 -->
 <template>
@@ -47,6 +47,7 @@
       title: 'name',
       dataIndex: 'name',
     },
+
     {
       title: 'createTime',
       dataIndex: 'createdAt',
@@ -54,6 +55,10 @@
     {
       title: 'updateTime',
       dataIndex: 'updatedAt',
+    },
+    {
+      title: 'describe',
+      dataIndex: 'describe',
     },
 
     {
