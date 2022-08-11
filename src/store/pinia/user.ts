@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-29 15:13:50
- * @LastEditTime: 2022-07-27 22:41:53
+ * @LastEditTime: 2022-08-10 21:46:31
  * @LastEditors: Gavin
  */
 import { defineStore } from 'pinia'
@@ -41,6 +41,7 @@ export default defineStore({
   getters: {
     getInfo: (state) => state,
     getToken: (state) => state.token,
+    getUserId: (state) => state.id,
   },
   actions: {
     // ActionContext<S, R> s为state R为rootState

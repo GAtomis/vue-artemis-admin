@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-08-09 00:18:16
+ * @LastEditTime: 2022-08-09 19:19:32
  * @LastEditors: Gavin
 -->
 <template>
@@ -14,6 +14,10 @@
             <!-- <template #icon><edit-outlined /></template> -->
             Edit
           </a>
+        </template>
+
+        <template v-if="defaultFieldList.includes(column.dataIndex)">
+          {{ getDateByUTC(record[column.dataIndex]) }}
         </template>
       </template>
     </a-table>
@@ -33,9 +37,9 @@
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { getList } from '@/api/account/role'
-  import _ from 'lodash'
   import { usePage } from './hooks/usePage'
   import type { Role } from '@/model/account'
+  import { getDateByUTC, defaultFieldList } from '@/utils'
 
   //api来自antdv
   const columns = [

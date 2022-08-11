@@ -2,29 +2,43 @@
  * @Description: axios api
  * @Author: Gavin
  * @Date: 2021-08-04 14:12:56
- * @LastEditTime: 2022-01-06 16:06:40
+ * @LastEditTime: 2022-08-10 21:48:06
  * @LastEditors: Gavin
  */
 import http from '@/utils/axios'
-
+import type { Comment } from '@/model/dashboard'
+import type { Primarykey } from '@/model/common'
 // enum Api {
 //   login = '/login',
 //   logout = '/login/logout',
 //   user='/getUserInfo'
 // }
 
-type comment = {
-  username: string
-}
 /**
  * @description: 获取用户信息
  */
-export function getComments(data: comment) {
-  return http.request(
+// export function getComments(data: comment) {
+//   return http.request(
+//     {
+//       url: '/dashboard/getComments',
+//       method: 'post',
+//       data,
+//     },
+//     {
+//       //序列化.data取值
+//       isTransformRequestResult: true,
+//     }
+//   )
+// }
+/**
+ * @description: 获取用户信息
+ */
+export function getComments<Q = Primarykey, R = Comment[]>(params: Q) {
+  return http.request<R>(
     {
-      url: '/dashboard/getComments',
-      method: 'post',
-      data,
+      url: '/comment/getComments',
+      method: 'GET',
+      params,
     },
     {
       //序列化.data取值

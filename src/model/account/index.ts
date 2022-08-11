@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-07-27 18:48:38
- * @LastEditTime: 2022-08-03 18:26:03
+ * @LastEditTime: 2022-08-10 20:23:49
  * @LastEditors: Gavin
  */
 
@@ -14,6 +14,7 @@ export type UserInfo = {
   catchPhrase: string
   jobType: string
   avatar: string
+  [key: string]: any
 } & DBModel
 //
 export type Role = {
@@ -21,6 +22,7 @@ export type Role = {
   available: boolean
   sysPermissions: Permission[] | null
   sysUsers: UserInfo[] | null
+  [key: string]: any
 } & DBModel
 export type Permission = {
   name?: string
@@ -32,4 +34,5 @@ export type Permission = {
   sortstring?: string
   available?: boolean
   sysRoles?: Role[] | null
+  [key: string]: any
 } & DBModel

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-08-07 09:50:26
- * @LastEditTime: 2022-08-09 00:06:30
+ * @LastEditTime: 2022-08-10 20:26:58
  * @LastEditors: Gavin
 -->
 <template>
@@ -30,16 +30,27 @@
             <!-- <template #icon><edit-outlined /></template> -->
             Edit
           </a>
-          <a class="table-btn" danger @click="handleDelete(record)">
-            <!-- <template #icon><edit-outlined /></template> -->
-            Delete
-          </a>
+          <a-popconfirm
+            title="All subtasks of the selected task will be deleted"
+            ok-text="Yes"
+            cancel-text="No"
+            @confirm="(e) => confirm(record, e)"
+            @cancel="(e) => cancel(record, e)"
+          >
+            <a class="table-btn">
+              <!-- <template #icon><edit-outlined /></template> -->
+              Delete
+            </a>
+          </a-popconfirm>
         </template>
 
         <template v-if="column.key === 'type'">
           <a-tag :color="record[column.key] == 'menu' ? '#87d068' : '#55acee'">
             {{ record[column.key] }}
           </a-tag>
+        </template>
+        <template v-if="defaultFieldList.includes(column.dataIndex)">
+          {{ getDateByUTC(record[column.dataIndex]) }}
         </template>
         <template v-if="column.key === 'available'">
           <unlock-filled v-if="+record[column.key]" />
@@ -96,10 +107,12 @@
   import { ref, onMounted } from 'vue'
   import { getList, delItem } from '@/api/account/menu'
   import { LockFilled, UnlockFilled, PlusOutlined } from '@ant-design/icons-vue'
-  import { recursiveFormatting, PermissionItem } from './utils'
+  import { recursiveFormatting } from './utils'
   import { useEditDialog } from './hooks/useEditDialog'
-
-  const tableList = ref<PermissionItem[]>([])
+  import { getDateByUTC, defaultFieldList } from '@/utils'
+  import { Permission } from '@/model/account'
+  import { message } from 'ant-design-vue'
+  const tableList = ref<Permission[]>([])
   //api来自antdv-table
   const columns = [
     {
@@ -164,7 +177,7 @@
     const { item, total: itemTotal } = await getList(params)
     console.log(recursiveFormatting(item, '0'))
 
-    tableList.value = recursiveFormatting(item, '0') as PermissionItem[]
+    tableList.value = recursiveFormatting(item, '0') as Permission[]
 
     total.value = itemTotal
     loading.value = false
@@ -191,11 +204,25 @@
     visibleEdit.value = !true
     GetTableList()
   }
-  const handleDelete = async (item: PermissionItem) => {
+
+  const confirm = async (item: Permission, e?) => {
+    if (item.children?.length) {
+      item.children?.forEach((item) => {
+        confirm(item)
+      })
+    }
     await delItem(item)
-    visibleEdit.value = !true
+    message.success(`${item.name}已删除`)
     GetTableList()
   }
+  const cancel = (item: Permission, e) => {
+    console.log(e)
+  }
+  // const handleDelete = async (item: Permission) => {
+  //   await delItem(item)
+
+  //   GetTableList()
+  // }
 
   //expects props options
   /*const props = defineProps({

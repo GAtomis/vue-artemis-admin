@@ -7,7 +7,7 @@ import { message } from 'ant-design-vue'
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-08-07 22:54:44
- * @LastEditTime: 2022-08-08 18:07:17
+ * @LastEditTime: 2022-08-09 23:30:41
  * @LastEditors: Gavin
  */
 
@@ -25,12 +25,15 @@ export function useEditDialog() {
   const visibleEdit = ref(false),
     form = ref<Permission>(defaultForm()),
     handleOpen = (current: any) => {
-      form.value = defaultForm()
       //避免内存地址引用
-      const cloneCurrent = _.cloneDeep(current)
-      if (cloneCurrent) {
+      const cloneCurrent: Permission = _.cloneDeep(current)
+      console.warn(cloneCurrent)
+      form.value = defaultForm()
+      if (cloneCurrent?.parentid) {
         Object.keys(form.value).forEach((item) => {
-          cloneCurrent?.[item] && (form.value[item] = cloneCurrent[item])
+          if (cloneCurrent[item] != undefined) {
+            form.value[item] = cloneCurrent[item]
+          }
         })
       }
       visibleEdit.value = true

@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2022-03-08 12:22:00
+ * @LastEditTime: 2022-08-10 21:49:30
  * @LastEditors: Gavin
 -->
 <template>
@@ -64,20 +64,19 @@
     DislikeFilled,
     DislikeOutlined,
   } from '@ant-design/icons-vue'
-  import { ref, onMounted, reactive } from 'vue'
+  import { ref, onMounted } from 'vue'
   import { getComments } from '@/api/dashboard/index'
 
-  import type { UserInfo } from '@/utils/interface/index'
   import { useUser } from '@/store/pinia/index'
 
   //dayjs plugin
   dayjs.extend(relativeTime)
-  let comments = ref<Array<UserInfo>>([])
+  let comments = ref<Array<any>>([])
 
   //结果集可以应用后台api类型这里就不做演示了,引用了接口就不会提示属性不存在了
-
+  const $uStore = useUser()
   const getList = async () => {
-    const res = await getComments({ username: useUser().username as string })
+    const res = await getComments({ id: $uStore.id ?? 0 })
     comments.value = res
   }
   onMounted(() => {

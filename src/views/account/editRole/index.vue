@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-07-26 09:31:56
- * @LastEditTime: 2022-08-07 22:52:18
+ * @LastEditTime: 2022-08-10 19:33:32
  * @LastEditors: Gavin
 -->
 <template>
@@ -121,14 +121,19 @@
   } = useMenuTree()
 
   const $route = useRoute()
-  const form = ref<Role>({})
+  const form = ref<Role>({
+    name: '',
+    available: false,
+    sysPermissions: [],
+    sysUsers: null,
+  })
 
   const onCheck: TreeProps['onCheck'] = (check: any, info) => {
     const newItem = createMenu(info.node)
     form.value.sysPermissions = filterMenu(
       check?.checked ?? check,
       newItem,
-      form.value.sysPermissions
+      form.value.sysPermissions || []
     )
     console.log(form.value.sysPermissions)
   }

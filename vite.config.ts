@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-06 22:29:17
+ * @LastEditTime: 2022-08-10 20:43:33
  * @LastEditors: Gavin
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
@@ -115,6 +115,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       host: '0.0.0.0',
       open: true,
       port: +env.VITE_PORT,
+      // https: true,
       proxy: {
         '/api/repos': {
           target: 'https://api.github.com',
@@ -122,19 +123,23 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
         '/api/base': {
-          target: 'http://localhost:8888',
+          target: env.VITE_PROXY_URL,
           changeOrigin: true,
         },
         '/api/user': {
-          target: 'http://localhost:8888',
+          target: env.VITE_PROXY_URL,
           changeOrigin: true,
         },
         '/api/role': {
-          target: 'http://localhost:8888',
+          target: env.VITE_PROXY_URL,
           changeOrigin: true,
         },
         '/api/permission': {
-          target: 'http://localhost:8888',
+          target: env.VITE_PROXY_URL,
+          changeOrigin: true,
+        },
+        '/api/comment': {
+          target: env.VITE_PROXY_URL,
           changeOrigin: true,
         },
       },
