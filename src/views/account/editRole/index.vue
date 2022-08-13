@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-07-26 09:31:56
- * @LastEditTime: 2022-08-10 19:33:32
+ * @LastEditTime: 2022-08-13 22:49:43
  * @LastEditors: Gavin
 -->
 <template>
@@ -107,6 +107,7 @@
   import type { TreeProps } from 'ant-design-vue'
   import type { Role, Permission } from '@/model/account'
   import { filterAsyncRoutesByMeun } from '@/hooks/router'
+  import { message } from 'ant-design-vue'
   const {
     meuns,
     expandedKeys,
@@ -137,8 +138,14 @@
     )
     console.log(form.value.sysPermissions)
   }
-  const onFinish = () => {
-    updateItem(form.value)
+  const onFinish = async () => {
+    await updateItem(form.value)
+    message.success('提交成功')
+    getItem({ id: $route?.query?.id }).then((res) => {
+      form.value = res
+      checkedKeys.value.checked =
+        res.sysPermissions?.map((item) => item.url) ?? []
+    })
   }
   const linkList = computed(() => {
     return form.value.sysPermissions?.filter((item) => item.type == 'link')
