@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-09 00:33:48
+ * @LastEditTime: 2022-08-13 14:55:10
  * @LastEditors: Gavin
 -->
 
@@ -24,7 +24,9 @@
 
 
 ## [English](./README.md) |  [简体中文](./README.zh-CN.md)
-## [后台源代码 gin-artemis-admin](https://github.com/GAtomis/gin-artemis-admin)
+## [后台服务 gin-artemis-admin](https://github.com/GAtomis/gin-artemis-admin)
+[预览](http://3.112.56.234/)
+线上服务以及部署,需要查看mock版本请移步至mock-dev 分支
 ### 描述
   此次搭建移除了之前版本中采用mock模拟RBAC的数据方案,通过后端服务实现RBAC鉴权的方式来登陆VAA(vue-artemis-admin)
 ### 技术栈

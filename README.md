@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-09 00:37:40
+ * @LastEditTime: 2022-08-13 14:53:10
  * @LastEditors: Gavin
 -->
 
@@ -23,7 +23,9 @@
 ## Introduction
  English is no good - -, The template realized by vue-next + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
 
- ## [server source code(gin-artemis-admin)](https://github.com/GAtomis/gin-artemis-admin)
+## [Server(gin-artemis-admin)](https://github.com/GAtomis/gin-artemis-admin)
+[Preview](http://3.112.56.234/)
+Online instance has been deployed
 ### Describe
 This setup removes the data scheme of mock simulating RBAC in the previous version, and logs in to VAA (Vue Artemis admin) by implementing RBAC authentication through the service
 ### Language & Application
