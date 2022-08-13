@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-21 15:09:55
- * @LastEditTime: 2022-08-05 18:55:47
+ * @LastEditTime: 2022-08-13 21:07:09
  * @LastEditors: Gavin
 -->
 
@@ -25,7 +25,7 @@
           <a-input
             v-model:value="formState.username"
             size="large"
-            placeholder="admin"
+            placeholder="user"
           >
             <template #prefix>
               <user-outlined type="user" />
@@ -37,7 +37,7 @@
             v-model:value="formState.password"
             size="large"
             type="password"
-            placeholder="123456"
+            placeholder="user"
             autocomplete="new-password"
           >
             <template #prefix>
@@ -49,10 +49,10 @@
           <a-input
             v-model:value="formState.code"
             size="large"
-            placeholder="code"
+            placeholder="4422"
           >
             <template #prefix>
-              <lock-outlined type="user" />
+              <question-circle-outlined />
             </template>
 
             <template #addonAfter>
@@ -99,6 +99,7 @@
     UserOutlined,
     LockOutlined,
     LoginOutlined,
+    QuestionCircleOutlined,
   } from '@ant-design/icons-vue'
   import { useRouter } from 'vue-router'
   import { useUser } from '@/store/pinia/index'
