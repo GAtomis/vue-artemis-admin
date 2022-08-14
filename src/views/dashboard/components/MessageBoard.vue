@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-19 10:55:00
- * @LastEditTime: 2022-08-10 21:49:30
+ * @LastEditTime: 2022-08-14 10:43:19
  * @LastEditors: Gavin
 -->
 <template>
@@ -52,6 +52,7 @@
         </a-tooltip>
       </template>
     </a-comment>
+    <a-empty v-if="isEmpty" description="NO_MESSAGE" />
   </a-card>
 </template>
 
@@ -64,7 +65,7 @@
     DislikeFilled,
     DislikeOutlined,
   } from '@ant-design/icons-vue'
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, computed } from 'vue'
   import { getComments } from '@/api/dashboard/index'
 
   import { useUser } from '@/store/pinia/index'
@@ -92,6 +93,9 @@
     item.unlike = item.unlike + index
     item.action1 = !item.action1
   }
+  const isEmpty = computed(() => {
+    return !comments.value.length
+  })
 </script>
 
 <style scoped lang="scss">
