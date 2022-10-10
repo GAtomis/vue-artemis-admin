@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-13 14:53:10
+ * @LastEditTime: 2022-10-10 11:48:27
  * @LastEditors: Gavin
 -->
 
@@ -41,6 +41,7 @@ Through the RBAC service implemented by (golang+gorm+gin), functions such as log
 - expand-threeJs-comp:heavy_check_mark:
 - New component Echars:heavy_check_mark:
 - Added eslint & perttier review code specification :heavy_check_mark:
+- replace tag ico
 
 
 ## Q&A About project
