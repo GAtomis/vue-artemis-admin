@@ -19,12 +19,11 @@
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",
-    "qs": "^6.10.1",
+    "qs": "^6.11.0",
     "three": "^0.136.0",
     "vite-plugin-eruda": "^1.0.1",
     "vue": "^3.2.23",
-    "vue-router": "^4.0.11",
-    "vuedraggable": "^4.1.0"
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.170",
@@ -65,7 +64,6 @@
     "optimizeDeps": {
       "include": [
         "@ant-design/icons-vue",
-        "@faker-js/faker",
         "@vueuse/core",
         "ant-design-vue",
         "ant-design-vue/es/locale/zh_CN",
@@ -87,8 +85,8 @@
         "three/examples/jsm/libs/stats.module",
         "three/examples/jsm/loaders/FontLoader",
         "vue",
-        "vue-router",
-        "vuedraggable"
+        "vue-router"
+    
       ]
     }
   },

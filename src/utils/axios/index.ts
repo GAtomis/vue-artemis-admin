@@ -9,7 +9,7 @@ import { VAxios } from './Axios'
 
 import { AxiosTransform } from './axiosTransform'
 import axios, { AxiosResponse } from 'axios'
-import qs from 'qs'
+// import qs from 'qs'
 import { checkStatus } from './checkStatus'
 import { Modal, message as Message } from 'ant-design-vue'
 import { RequestEnum, ResultEnum, ContentTypeEnum } from '@/enums/httpEnum'

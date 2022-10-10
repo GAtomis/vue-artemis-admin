@@ -173,22 +173,3 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     ],
   }
 }
-
-// export default defineConfig({
-//   resolve: {
-//     alias: [
-//       {
-//         find: '@',
-//         replacement: resolve(__dirname, './src')
-//       }
-//     ]
-//   },
-//   server: {
-//     host: '0.0.0.0'
-//   },
-//   plugins: [vue(), imagemin(), viteCompression({ deleteOriginFile: true }), viteMockServe({
-//     // default
-//     mockPath: 'mock',
-//     localEnabled: command === 'serve',
-//   }), eruda()]
-// })
