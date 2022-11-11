@@ -2,56 +2,77 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-08-09 19:19:32
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-11 16:59:32
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 <template>
   <div class="app-container bg-fff">
-    <a-table :columns="columns" :data-source="data" :loading="loading">
+
+    <nav>
+
+
+      <a-button type="primary" @click="() => (dialogVisible = true)" >
+        <template #icon>
+          <plus-outlined />
+        </template>
+        Add
+      </a-button>
+    </nav>
+    <a-table :columns="columns" :data-source="tableData" :loading="loading" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'operation'">
-          <a type="text" @click="handleSetting(record)">
+          <a type="text" class="operation-link" @click="handleEdit(record)">
             <!-- <template #icon><edit-outlined /></template> -->
             Edit
           </a>
         </template>
-
         <template v-if="defaultFieldList.includes(column.dataIndex)">
           {{ getDateByUTC(record[column.dataIndex]) }}
         </template>
       </template>
     </a-table>
-    <a-pagination
-      v-model:current="page"
-      v-model:pageSize="pageSize"
-      show-size-changer
-      :total="total"
-      :show-total="(total) => `共有${total}条`"
-      :style="{ textAlign: 'center', margin: '10px 0' }"
-      @change="handlePage"
-    />
+    <a-pagination v-model:current="page" v-model:pageSize="pageSize" show-size-changer :total="total"
+      :show-total="(total) => `共有${total}条`" :style="{ textAlign: 'center', margin: '10px 0' }" @change="handlePage" />
+    <!-- drawer for Edit -->
+    <a-drawer v-model:visible="visible" class="custom-class" size="large" title="Edit" placement="right"
+      @after-visible-change="afterVisibleChange">
+      <DrawerContainer></DrawerContainer>
+    </a-drawer>
+
+    <a-modal cancelText v-model:visible="dialogVisible" title="Add Role" @ok="handleOk">
+      <AddRole ref="addRef" />
+    </a-modal>
+
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
-  import { useRouter } from 'vue-router'
-  import { getList } from '@/api/account/role'
-  import { usePage } from './hooks/usePage'
-  import type { Role } from '@/model/account'
-  import { getDateByUTC, defaultFieldList } from '@/utils'
+import { ref, provide } from 'vue'
+import { getList } from '@/api/account/role'
+import { usePage } from './hooks/usePage'
+import type { Role } from '@/model/account'
+import { getDateByUTC, defaultFieldList } from '@/utils'
+import DrawerContainer from './components/DrawerContainer.vue'
+import AddRole from "./components/AddRole.vue"
+import { PlusOutlined } from '@ant-design/icons-vue';
 
-  //api来自antdv
-  const columns = [
+//choice item
+const currentItem = ref<Role>()
+provide(/* 注入名 */ 'currentItem', /* 值 */ currentItem)
+
+//tabledata
+const tableData = ref<Role[]>([]),
+  //api form antdv
+  columns = [
     {
-      title: '#',
+      title: 'id',
       dataIndex: 'id',
     },
+
     {
       title: 'name',
       dataIndex: 'name',
     },
-
     {
       title: 'createTime',
       dataIndex: 'createdAt',
@@ -71,53 +92,44 @@
     },
   ]
 
-  const data = ref<Role[]>([])
+// tablle&Pagination Hooks
+const { handlePage, page, pageSize, total, loading } = usePage(async () => {
+  loading.value = true
+  const params = {
+    page: page.value,
+    pageSize: pageSize.value,
+  }
+  const { item, total: itemTotal } = await getList(params)
+  tableData.value = item
+  total.value = itemTotal
+  loading.value = false
+})
 
-  const { handlePage, page, pageSize, total, loading } = usePage(async () => {
-    loading.value = true
-    const params = {
-      page: page.value,
-      pageSize: pageSize.value,
-    }
-    const { item, total: itemTotal } = await getList(params)
-    data.value = item
-    total.value = itemTotal
-    loading.value = false
-  })
-  handlePage()
 
-  const $router = useRouter()
-  const handleSetting = (record: Role) => {
-    console.log(record)
 
-    $router.push({
-      path: 'editRole',
-      query: { id: record.id },
-    })
+handlePage()
+
+const visible = ref<boolean>(false),
+  afterVisibleChange = (bool: boolean) => {
+    console.log('visible', bool);
+  };
+const handleEdit = (record: Role) => {
+  currentItem.value = record
+  visible.value = true
+}
+
+
+const addRef = ref(),
+  dialogVisible = ref<boolean>(false),
+  handleOk =async  () => {
+       await addRef.value.onFinish()
+       dialogVisible.value=!dialogVisible.value
   }
 
-  // const level = computed(() => {
-  //   return useUser().level
-  // })
-
-  //加载菜单
-
-  // const showLine = ref<boolean>(true);
-  // const showIcon = ref<boolean>(false);
-
-  // const onSelect = (selectedKeys: string[], info: SelectEvent) => {
-  //   console.log('selected', selectedKeys, info);
-  // };
-
-  // watch(expandedKeys, () => {
-  //   console.log('expandedKeys', expandedKeys);
-  // });
-  // watch(selectedKeys, () => {
-  //   console.log('selectedKeys', selectedKeys);
-  // });
-  // watch(checkedKeys, () => {
-  //   console.log('checkedKeys', checkedKeys);
-  // })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.operation-link {
+  margin-right: 10px;
+}
+</style>

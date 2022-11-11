@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-04 11:36:33
- * @LastEditTime: 2021-08-04 12:44:45
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-11 11:01:06
+ * @LastEditors: Gavin 850680822@qq.com
  */
 import { message as Message } from 'ant-design-vue'
 import router from '@/router'
@@ -41,7 +41,7 @@ export function checkStatus(status: number, msg: string): void {
       error('网络请求超时!')
       break
     case 500:
-      error('服务器错误,请联系管理员!')
+      error('Server error 500, please contact the administrator')
       break
     case 501:
       error('网络未实现!')
