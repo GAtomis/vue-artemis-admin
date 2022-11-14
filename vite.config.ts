@@ -2,8 +2,8 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-10 20:43:33
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 14:53:10
+ * @LastEditors: Gavin 850680822@qq.com
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -117,32 +117,18 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       port: +env.VITE_PORT,
       // https: true,
       proxy: {
-        '/api/repos': {
-          target: 'https://api.github.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-        '/api/base': {
+        '/api': {
           target: env.VITE_PROXY_URL,
           changeOrigin: true,
         },
-        '/api/user': {
-          target: env.VITE_PROXY_URL,
+        '/upload':{
+          target: 'https://smms.app',
           changeOrigin: true,
-        },
-        '/api/role': {
-          target: env.VITE_PROXY_URL,
-          changeOrigin: true,
-        },
-        '/api/permission': {
-          target: env.VITE_PROXY_URL,
-          changeOrigin: true,
-        },
-        '/api/comment': {
-          target: env.VITE_PROXY_URL,
-          changeOrigin: true,
-        },
+          rewrite: (path) => path.replace(/^\/upload/, '')
+        }
+
       },
+      
     },
 
     css: {

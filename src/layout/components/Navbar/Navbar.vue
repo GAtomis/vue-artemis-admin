@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-08-16 17:04:43
- * @LastEditTime: 2022-05-14 12:54:46
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 18:24:59
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 
 <template>
@@ -53,11 +53,11 @@
 
         <span class="info-inner">
           <label>User:</label>
-          <span>{{ nickName }}</span>
+          <span>{{userInfo.name }}</span>
         </span>
         <a-dropdown>
           <a-badge dot>
-            <a-avatar :src="avatar" />
+            <a-avatar :src="userInfo.avatar" />
           </a-badge>
           <template #overlay>
             <a-menu>
@@ -88,7 +88,7 @@
   import { getCurrentRoute } from '@/hooks/global/breadcrumb'
   import { getMenuList } from './hooks/avatarMenuHook'
 
-  import { reactive, toRefs } from 'vue'
+  import { computed, reactive, toRefs } from 'vue'
   import { useUser } from '@/store/pinia/index'
   //全屏hook
   const { isFullscreen, enter, exit } = useFullscreen()
@@ -98,17 +98,11 @@
 
   const $route = useRoute()
   //个人信息 UserInfo
-  type UserInfo = {
-    nickName: string
-    avatar: string
-    username?: string
-  }
-  const state = reactive<UserInfo>({
-    nickName: useUser().name ?? '',
-    avatar: useUser().avatar ?? '',
+  const userInfo=computed(()=>{
+    return useUser().getInfo
   })
   //toRefs解构reactive
-  const { nickName, avatar } = toRefs(state)
+
   //menuList 菜单
 
   const menuList = getMenuList()

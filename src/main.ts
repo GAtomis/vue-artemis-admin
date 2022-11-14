@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-05 18:45:20
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 19:33:16
+ * @LastEditors: Gavin 850680822@qq.com
  */
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -16,17 +16,19 @@ import pinia from '@/store/pinia/index'
 
 const app = createApp(App)
 
-//挂在Antd
+
+// use Antdv
 app.use(Antd)
-//注册icon组件
+//use icon
 app.use(registerIconComponents)
-//状态管理工具挂在
+
 // setupStore(app)
-// 挂载路由
+//  vue router
 setupRouter(app)
-//初始化pinia
+//init pinia
 app.use(pinia)
-// 路由准备就绪后挂载APP实例
+
+
 router.isReady().then(() => app.mount('#app'))
 
 // console.log(process.env.NODE_ENV === 'development');

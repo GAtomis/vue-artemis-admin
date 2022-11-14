@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-10-10 11:48:27
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 23:04:20
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 
 <p align="center">
@@ -22,15 +22,25 @@
 ## [English](./README.md) |  [简体中文](./README.zh-CN.md)
 ## Introduction
  English is no good - -, The template realized by vue-next + TS + antd Vue + vite2 + vueuse.The significance of the project is to communicate and learn with all leaders
+## About
 
-## [Server(gin-artemis-admin)](https://github.com/GAtomis/gin-artemis-admin)
-[Preview](http://3.112.56.234/)
+### Preview&Server
 Online instance has been deployed
+* [Preview](http://43.143.244.182/)
+* [Server(gin-artemis-admin)](https://github.com/GAtomis/gin-artemis-admin)
+
+<p >
+  <a href="https://www.antdv.com/">
+    <img width="300" style="margin-right:15px;" src="https://smms.app/image/aPz3UEesWINFtiLr.png">
+    <img width="300" src="https://s2.loli.net/2022/11/14/g5voDjAchPTCMlr.png">
+  </a>
+</p>
+
 ### Describe
 This setup removes the data scheme of mock simulating RBAC in the previous version, and logs in to VAA (Vue Artemis admin) by implementing RBAC authentication through the service
 ### Language & Application
 Through the RBAC service implemented by (golang+gorm+gin), functions such as logging and redis will be added later
-## Basic function of template (improvement)
+### Basic function of template (improvement)
 - reconstruct-vuex=>:pineapple:pinia :heavy_check_mark:
 - feat-SSO(login) :heavy_check_mark:
 - feat-async-route loading :heavy_check_mark:

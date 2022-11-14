@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-08-07 10:02:20
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 20:47:26
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 <template>
   <a-form
@@ -13,27 +13,29 @@
     class="app-container bg-fff"
     @finish="onFinish"
     @finishFailed="onFinishFailed"
+    layout="vertical"
   >
     <a-row :gutter="16" class="card">
-      <a-col :span="12" class="card-info">
-        <a-card title="个人资料" style="width: 100%">
+      <a-col :span="10" class="card-info">
+        <a-card title="Public profile" style="width: 100%">
+          
           <a-form-item
-            label="name"
+            label="Name"
             name="name"
             :rules="[{ required: true, message: 'Please input your name!' }]"
           >
             <a-input v-model:value="form.name" />
           </a-form-item>
-          <a-divider />
-          <a-form-item label="job" name="jobType">
+      
+          <a-form-item label="Job" name="jobType">
             <a-input v-model:value="form.jobType" />
           </a-form-item>
-          <a-divider />
-          <a-form-item label="company" name="company">
+    
+          <a-form-item label="Company" name="company">
             <a-input v-model:value="form.company" />
           </a-form-item>
-          <a-divider />
-          <a-form-item label="catchPhrase" name="catchPhrase">
+
+          <a-form-item label="CatchPhrase" name="catchPhrase">
             <a-textarea
               v-model:value="form.catchPhrase"
               show-count
@@ -41,35 +43,14 @@
             />
           </a-form-item>
           <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-            <a-button type="primary" html-type="submit">Save</a-button>
+            <a-button type="primary" html-type="submit">update</a-button>
             <a-button style="margin-left: 10px">Cancel</a-button>
           </a-form-item>
         </a-card>
       </a-col>
       <a-col :span="5" class="card-avatar">
         <section class="avatar-uploader">
-          <a-upload
-            v-model:file-list="fileList"
-            name="avatar"
-            list-type="picture-card"
-            :show-upload-list="false"
-            action="http://yourname/api/v1/upload"
-            :before-upload="beforeUpload"
-            @change="handleChange"
-          >
-            <a-image
-              v-if="form.avatar"
-              :src="form.avatar"
-              alt="avatar"
-              fallback="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic2.zhimg.com%2F50%2Fv2-6b648675305dc2c9130d6db9bfe61f24_hd.jpg&refer=http%3A%2F%2Fpic2.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1642141184&t=cbfe704354ff1b878abb93968e581e2c"
-            />
-
-            <div v-else>
-              <loading-outlined v-if="loading" />
-              <plus-outlined v-else />
-              <div class="ant-upload-text">Upload</div>
-            </div>
-          </a-upload>
+          <Avatar  v-model:url="form.avatar" ></Avatar>
         </section>
       </a-col>
     </a-row>
@@ -77,12 +58,14 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive } from 'vue'
-  import useUpLoadByAvatar from './Hooks/useUpLoadByAvatar'
+  import { onMounted, reactive, toRaw, watch } from 'vue'
+  import Avatar from '@/components/Avatar/Avatar.vue'
   import { useUser } from '@/store/pinia'
   import { updateItem } from '@/api/account'
   import { UserInfo } from '@/model/account'
   import { message } from 'ant-design-vue'
+  import {getUserInfo} from '@/api/login'
+
   const form = reactive<UserInfo>({
     id: useUser().id,
     name: useUser().name,
@@ -95,18 +78,25 @@
     wrapperCol = { span: 20 },
     onFinish = async () => {
       await updateItem<UserInfo, string>(form)
-      message.success('表单已提交')
+      message.success('submit success')
+      useUser().getUserInfo('1')
     },
     onFinishFailed = (errorInfo: UserInfo) => {
       console.log('Failed:', errorInfo)
     }
-  const { fileList, loading, imageUrl, handleChange, beforeUpload } =
-    useUpLoadByAvatar()
+
+
 
   //
 </script>
 
 <style scoped lang="scss">
+
+
+
+  .ant-form label {
+    font-size: 600 !important
+}
   .card {
     .card-info {
     }
@@ -123,3 +113,5 @@
     }
   }
 </style>
+
+

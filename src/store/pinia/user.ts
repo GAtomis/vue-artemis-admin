@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-12-29 15:13:50
- * @LastEditTime: 2022-08-10 21:46:31
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 18:03:58
+ * @LastEditors: Gavin 850680822@qq.com
  */
 import { defineStore } from 'pinia'
 import { ACCESS_TOKEN, CURRENT_USER, CACHE_USERNAME } from '@/store/store-enum'
@@ -76,10 +76,10 @@ export default defineStore({
       }
     },
     // 获取用户信息
-    getUserInfo() {
+    getUserInfo(noCache?:string) {
       return new Promise<Array<string>>(async (resolve, reject) => {
         try {
-          const { roleId, ...res } = await getUserInfo()
+          const { roleId, ...res } = await getUserInfo(noCache)
           //信息填充
           //测试不报错
           const roles = ['admin']

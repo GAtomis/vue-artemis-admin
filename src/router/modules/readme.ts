@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-01-27 11:50:29
- * @LastEditTime: 2022-08-05 15:54:19
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 20:28:15
+ * @LastEditors: Gavin 850680822@qq.com
  */
 
 const Layout = () => import('@/layout/index.vue')
@@ -16,7 +16,7 @@ const mixinRouter: Array<ExpandRouteRecordRaw> = [
     redirect: '/readme/read',
     name: 'Readme',
     meta: {
-      title: 'Readme',
+      title: 'About',
       icon: 'icon-read',
       roles: '/readme',
       affix: false,

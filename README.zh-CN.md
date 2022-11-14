@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-08-13 14:55:10
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-14 23:05:09
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 
 
@@ -24,14 +24,25 @@
 
 
 ## [English](./README.md) |  [简体中文](./README.zh-CN.md)
-## [后台服务 gin-artemis-admin](https://github.com/GAtomis/gin-artemis-admin)
-[预览](http://3.112.56.234/)
-线上服务以及部署,需要查看mock版本请移步至mock-dev 分支
+
+## 关于项目
+### 线上预览和后台服务
+  main分支线上服务,需要查看mock版本请移步至mock-dev 分支
+* [线上预览](http://3.112.56.234/)
+* [后台服务 gin-artemis-admin](https://github.com/GAtomis/gin-artemis-admin)
+<p >
+  <a href="https://www.antdv.com/">
+    <img width="300" style="margin-right:15px;" src="https://s2.loli.net/2022/11/14/aPz3UEesWINFtiL.png">
+    <img width="300" src="https://s2.loli.net/2022/11/14/g5voDjAchPTCMlr.png">
+  </a>
+</p>
+
+
 ### 描述
   此次搭建移除了之前版本中采用mock模拟RBAC的数据方案,通过后端服务实现RBAC鉴权的方式来登陆VAA(vue-artemis-admin)
 ### 技术栈
 golang+gorm+gin实现的RBAC服务,后续会添加日志和redis等功能
-## 模板基础功能(完善中)
+### 模板基础功能(完善中)
 - 重构:vuex=>:pineapple:pinia  :heavy_check_mark:
 - 单点登录功能(jwt)  :heavy_check_mark:
 - 动态路由加载   :heavy_check_mark:

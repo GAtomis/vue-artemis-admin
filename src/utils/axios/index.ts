@@ -24,6 +24,8 @@ import router from '@/router'
 // import store from '@/store'
 import { useUser } from '@/store/pinia/index'
 import { storage } from '@/utils/storage'
+
+
 /**
  * @description: 数据处理，方便区分多种处理方式
  */
@@ -173,7 +175,7 @@ const transform: AxiosTransform = {
     // 请求之前处理config
     const token = useUser().token
 
-    if (token) {
+    if (token&&!config?.headers?.Authorization) {
       // console.error(token);
 
       // jwt token
@@ -236,7 +238,7 @@ const transform: AxiosTransform = {
 const Axios = new VAxios({
   timeout: 30 * 1000,
   // 基础接口地址
-  baseURL: import.meta.env.VITE_BASE_API,
+  baseURL: import.meta.env.VITE_BASE_API ,
   // 接口可能会有通用的地址部分，可以统一抽取出来
   // prefixUrl: prefix,
   headers: { 'Content-Type': ContentTypeEnum.JSON },
@@ -259,5 +261,8 @@ const Axios = new VAxios({
   },
   withCredentials: false,
 })
+
+export const uploadApi=import.meta.env.VITE_UPLOAD_API
+export const uploadToken=import.meta.env.VITE_UPLOAD_TOKEN
 
 export default Axios
