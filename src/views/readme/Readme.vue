@@ -6,7 +6,7 @@
  * @LastEditors: Gavin
 -->
 <template>
-  <a-row :gutter="16" class="app-container bg-fff">
+  <a-row :gutter="16" class="app-container ">
     <a-col :span="12">
       <a-statistic-countdown
         title="Countdown"

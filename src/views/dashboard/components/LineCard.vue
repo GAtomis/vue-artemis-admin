@@ -2,14 +2,14 @@
  * @Description: 图表战术
  * @Author: Gavin
  * @Date: 2021-09-17 14:04:41
- * @LastEditTime: 2022-02-22 11:10:29
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-15 15:43:11
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 <template>
-  <a-card title="访问量(折线图)">
+  <a-card title="Visits (Line Chart)">
     <Category
       :option="chartCategory"
-      :chart-style="{ width: '85%', height: '300px' }"
+      :chart-style="{ width: '90%', height: '300px' }"
     />
   </a-card>
 </template>
@@ -22,7 +22,7 @@
   const chartCategory: () => ECOption = () => {
     const option: ECOption = {
       title: {
-        text: '访问量',
+        text: 'Visits',
       },
       tooltip: {
         trigger: 'axis',
@@ -51,13 +51,13 @@
       },
       series: [
         {
-          name: '上周',
+          name: 'last week',
           type: 'line',
           stack: 'Total',
           data: [120, 132, 101, 134, 90, 230, 210],
         },
         {
-          name: '本周',
+          name: 'this',
           type: 'line',
           stack: 'Total',
           data: [220, 182, 191, 234, 290, 330, 310],

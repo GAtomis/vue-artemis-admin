@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-07-31 17:05:12
- * @LastEditTime: 2022-05-14 11:49:06
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-15 15:41:53
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 <template>
   <div class="dashboard">
@@ -46,7 +46,7 @@
       <component :is="LineCard" />
     </main>
     <footer>
-      <a-row type="flex" justify="space-between" align="top">
+      <a-row type="flex" :gutter="16"  align="top">
         <a-col :span="11">
           <RadarCard />
         </a-col>

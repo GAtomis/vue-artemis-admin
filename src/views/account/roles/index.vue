@@ -2,11 +2,11 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-11-11 16:59:32
+ * @LastEditTime: 2022-11-15 15:27:19
  * @LastEditors: Gavin 850680822@qq.com
 -->
 <template>
-  <div class="app-container bg-fff">
+  <div class="app-container ">
 
     <nav>
 

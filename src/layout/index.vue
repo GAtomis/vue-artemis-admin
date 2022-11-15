@@ -2,8 +2,8 @@
  * @Description: 主页框架布局
  * @Author: Gavin
  * @Date: 2021-07-31 17:06:32
- * @LastEditTime: 2022-08-05 17:54:06
- * @LastEditors: Gavin
+ * @LastEditTime: 2022-11-15 15:27:31
+ * @LastEditors: Gavin 850680822@qq.com
 -->
 <template>
   <!-- 左区域 -->
@@ -66,7 +66,7 @@
         <artms-tags-view />
       </nav>
       <a-layout-content>
-        <section class="appMain scroll">
+        <section class="appMain scroll themes-bg">
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in">
               <!-- <keep-alive> -->

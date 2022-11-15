@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-10-02 09:35:40
- * @LastEditTime: 2022-11-14 20:47:26
+ * @LastEditTime: 2022-11-15 15:33:48
  * @LastEditors: Gavin 850680822@qq.com
 -->
 <template>
@@ -10,13 +10,13 @@
     :model="form"
     :label-col="labelCol"
     :wrapper-col="wrapperCol"
-    class="app-container bg-fff"
+    class="app-container"
     @finish="onFinish"
     @finishFailed="onFinishFailed"
     layout="vertical"
   >
-    <a-row :gutter="16" class="card">
-      <a-col :span="10" class="card-info">
+    <a-row :gutter="16" class="card ">
+      <a-col :span="10" class="card-info ">
         <a-card title="Public profile" style="width: 100%">
           
           <a-form-item
@@ -48,7 +48,7 @@
           </a-form-item>
         </a-card>
       </a-col>
-      <a-col :span="5" class="card-avatar">
+      <a-col :span="5" class="card-avatar ">
         <section class="avatar-uploader">
           <Avatar  v-model:url="form.avatar" ></Avatar>
         </section>
