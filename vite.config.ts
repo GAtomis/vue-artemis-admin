@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2023-02-04 12:16:01
+ * @LastEditTime: 2023-02-04 13:54:20
  * @LastEditors: GAtomis
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
@@ -126,10 +126,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           target: 'https://smms.app',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/upload/, '')
-        }
-
+        },
       },
-      
     },
 
     css: {

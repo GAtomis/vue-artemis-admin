@@ -21,7 +21,6 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",
     "qs": "^6.11.0",
-    "three": "^0.149.0",
     "vite-plugin-eruda": "^1.0.1",
     "vue": "^3.2.23",
     "vue-router": "^4.1.6"
@@ -78,7 +77,6 @@
         "echarts/core",
         "echarts/renderers",
         "lodash",
-        "lodash-es",
         "nprogress",
         "pinia",
         "qs",

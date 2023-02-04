@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2022-08-07 09:50:26
- * @LastEditTime: 2022-08-10 20:26:58
- * @LastEditors: Gavin
+ * @LastEditTime: 2023-02-04 13:50:14
+ * @LastEditors: GAtomis
 -->
 <template>
   <div>
@@ -78,7 +78,10 @@
           name="url"
           :rules="[{ required: true, message: 'Please insert url!' }]"
         >
-          <a-input v-model:value="form.url" placeholder="insert url" />
+          <a-input
+            v-model:value="form.url"
+            placeholder="insert url /parent/../nowlink"
+          />
         </a-form-item>
         <a-form-item
           label="parentid"
@@ -187,7 +190,6 @@
   })
   //弹窗逻辑
   const ed = useEditDialog()
-
   const {
     //表单
     labelCol,
