@@ -2,8 +2,8 @@
  * @Description: vite配置
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-11-14 14:53:10
- * @LastEditors: Gavin 850680822@qq.com
+ * @LastEditTime: 2023-02-04 12:16:01
+ * @LastEditors: GAtomis
  */
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -12,15 +12,16 @@ import { resolve } from 'path'
 // import viteImagemin from 'vite-plugin-imagemin' //图片压缩
 import viteCompression from 'vite-plugin-compression' //包压缩支持Gzip
 import { viteMockServe } from 'vite-plugin-mock' //mock
-
-import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
+//cdn
+// import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
 import vueJsx from '@vitejs/plugin-vue-jsx' //jsx插件
 
 import themePreprocessorPlugin from '@zougt/vite-plugin-theme-preprocessor'
 // Pre-Bundling optimization 3q anfu
 import OptimizationPersist from 'vite-plugin-optimize-persist'
+//
 import PkgConfig from 'vite-plugin-package-config'
-
+import svgLoader from 'vite-svg-loader'
 // import compress from 'vite-plugin-compress'
 // function pathResolve(dir: string) {
 //   return resolve(process.cwd(), '.', dir);
@@ -55,48 +56,48 @@ const setTheme = () =>
     },
   })
 //在暂时废弃
-const imagemin = () => {
-  return viteImagemin({
-    gifsicle: {
-      optimizationLevel: 7,
-      interlaced: false,
-    },
-    optipng: {
-      optimizationLevel: 7,
-    },
-    mozjpeg: {
-      quality: 20,
-    },
-    pngquant: {
-      quality: [0.8, 0.9],
-      speed: 4,
-    },
-    svgo: {
-      plugins: [
-        {
-          name: 'removeViewBox',
-        },
-        {
-          name: 'removeEmptyAttrs',
-          active: false,
-        },
-      ],
-    },
-  })
-}
+// const imagemin = () => {
+//   return viteImagemin({
+//     gifsicle: {
+//       optimizationLevel: 7,
+//       interlaced: false,
+//     },
+//     optipng: {
+//       optimizationLevel: 7,
+//     },
+//     mozjpeg: {
+//       quality: 20,
+//     },
+//     pngquant: {
+//       quality: [0.8, 0.9],
+//       speed: 4,
+//     },
+//     svgo: {
+//       plugins: [
+//         {
+//           name: 'removeViewBox',
+//         },
+//         {
+//           name: 'removeEmptyAttrs',
+//           active: false,
+//         },
+//       ],
+//     },
+//   })
+// }
 //set CDN
 
-function configCDN() {
-  return importToCDN({
-    modules: [
-      {
-        name: 'three',
-        var: 'three',
-        path: 'https://cdn.jsdelivr.net/npm/three@0.143.0/build/three.min.js',
-      },
-    ],
-  })
-}
+// function configCDN() {
+//   return importToCDN({
+//     modules: [
+//       {
+//         name: 'three',
+//         var: 'three',
+//         path: 'https://cdn.jsdelivr.net/npm/three@0.143.0/build/three.min.js',
+//       },
+//     ],
+//   })
+// }
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, __dirname)
@@ -149,11 +150,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       vue(),
       vueJsx(),
       ,
-      // viteCompression({ deleteOriginFile: true }),
+      viteCompression({ deleteOriginFile: !true }),
       // imagemin(),
+      svgLoader(),
       viteMockServe({ supportTs: true }),
       setTheme(),
-      configCDN(),
+      // configCDN(),
       PkgConfig(),
       OptimizationPersist(),
     ],
