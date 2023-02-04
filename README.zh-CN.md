@@ -2,8 +2,8 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2022-11-14 23:05:09
- * @LastEditors: Gavin 850680822@qq.com
+ * @LastEditTime: 2023-02-04 13:27:44
+ * @LastEditors: GAtomis
 -->
 
 
@@ -148,7 +148,8 @@ yarn build
 ```
 ## 作者
 [My blog](https://juejin.cn/post/6966454624819609631)  by Gavin
-
+## 其他
+[很棒的生态-vue3「简体中文」](./VUE3_README.md)
 ## 鸣谢
 由衷感谢三位大佬的开源精神,虽然我们未曾交流过
 [@PanJiaChen](https://github.com/PanJiaChen) 花裤衩

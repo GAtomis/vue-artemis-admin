@@ -2,7 +2,7 @@
  * @Description: 请输入....
  * @Author: Gavin
  * @Date: 2021-05-01 00:48:47
- * @LastEditTime: 2023-02-04 13:24:45
+ * @LastEditTime: 2023-02-04 13:28:45
  * @LastEditors: GAtomis
 -->
 
@@ -154,7 +154,7 @@ yarn build
 ## Maintainer
 [My blog](https://juejin.cn/post/6966454624819609631)  by Gavin
 ## Other
-[awesome-vue3「Zh-CN」](./VUE3_README.md)
+[awesome-vue3「zh-CN」](./VUE3_README.md)
 
 ## Thanks 
 I sincerely thank the three developers for their help, although I have never communicated
