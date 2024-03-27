@@ -28,7 +28,6 @@
   "devDependencies": {
     "@types/lodash": "^4.14.170",
     "@types/node": "^16.0.0",
-    "@types/three": "^0.149.0",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "@vitejs/plugin-vue": "^2.2.2",
@@ -63,32 +62,7 @@
     "node": ">=14"
   },
   "vite": {
-    "optimizeDeps": {
-      "include": [
-        "@ant-design/icons-vue",
-        "@vueuse/core",
-        "ant-design-vue",
-        "ant-design-vue/es/locale/zh_CN",
-        "axios",
-        "dayjs",
-        "dayjs/plugin/relativeTime",
-        "echarts/charts",
-        "echarts/components",
-        "echarts/core",
-        "echarts/renderers",
-        "lodash",
-        "nprogress",
-        "pinia",
-        "qs",
-        "three",
-        "three/examples/jsm/effects/AnaglyphEffect",
-        "three/examples/jsm/geometries/TextGeometry",
-        "three/examples/jsm/libs/stats.module",
-        "three/examples/jsm/loaders/FontLoader",
-        "vue",
-        "vue-router"
-      ]
-    }
+
   },
   "license": "MIT"
 }
